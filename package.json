@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -14,6 +15,7 @@
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
+    "daisyui": "^3.5.1",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.13",
     "framer-motion": "^10.15.1",
@@ -27,7 +29,6 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
-    "daisyui": "^3.5.1",
     "prettier": "^3.0.1",
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-organize-imports": "^3.2.3",
