@@ -121,14 +121,23 @@ module.exports = {
             "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
          },
          animation: {
-            reveal: "fadeIn 750ms ease-in-out",
+            reveal: "scaleAndFade 750ms ease-in-out",
             rotate: "rotate 20s linear infinite",
+            revealFromBottom: "fadeAndSlideFromBottom 1200ms ease-in-out 950ms both",
             ...defaultTheme.animation,
          },
          keyframes: {
+            fadeAndSlideFromBottom: {
+               "0%": {opacity: "0", transform: "translateY(100px)"},
+               "100%": {opacity: "1", transform: "translateY(0)"},
+            },
+            scaleAndFade: {
+               "0%": {opacity: "0", transform: "scale(0.95)"},
+               "100%": {opacity: "1", transform: "scale(1)"},
+            },
             fadeIn: {
-              "0%": { opacity: "0", scale:"0.95" },
-               "100%": { opacity: "1", scale:"1" },
+               "0%": {opacity: "0"},
+               "100%": {opacity: "1"},
             },
             rotate: {
                "0%": {transform: "rotate(0deg)"},

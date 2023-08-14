@@ -3,7 +3,7 @@ import {
    AiFillHome,
    AiFillInstagram,
    AiFillStar,
-   AiOutlineCloseCircle,
+   AiOutlineCloseCircle, AiOutlineDown,
    AiOutlineGithub,
    AiOutlineStar,
 } from "react-icons/ai"
@@ -47,6 +47,7 @@ const Icons = {
    Drink: FaWineGlassAlt,
    Tomate: GiTomato,
    Cow: FaCow,
+   Arrow: AiOutlineDown
 }
 
 export default Icons
