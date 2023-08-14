@@ -3,6 +3,7 @@ import type {Metadata} from "next"
 import React from "react"
 import StickyNavBar from "@/components/StickyNavBar"
 import Footer from "@/components/Footer"
+import {appWithTranslation} from "next-i18next"
 
 export const metadata: Metadata = {
    title: "Prod203 | ",
@@ -10,14 +11,14 @@ export const metadata: Metadata = {
 }
 
 
-export default function RootLayout(props: {
+function RootLayout(props: {
    children: React.ReactNode
 }) {
    let {
       children,
    } = props
    return (
-      <html lang="en" data-theme={'customTheme'}>
+      <html lang="en" data-theme={"customTheme"}>
       <head>
          <link rel="preconnect" href="https://fonts.googleapis.com" />
          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={"use-credentials"} />
@@ -31,7 +32,7 @@ export default function RootLayout(props: {
             rel="stylesheet" />
 
       </head>
-      <body className={'font-manrope'}>
+      <body className={"font-manrope"}>
       <StickyNavBar />
       {children}
       <Footer />
@@ -39,3 +40,5 @@ export default function RootLayout(props: {
       </html>
    )
 }
+
+export default RootLayout
