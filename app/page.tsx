@@ -50,7 +50,8 @@ export default function Home() {
                <SectionTitle>Mettez votre projet entre les mains <span
                   className={"text-clrPrimary-300"}>{"d'experts."}</span></SectionTitle>
                {/* eslint-disable-next-line react/no-unescaped-entities */}
-               <div className={"space-y-2"}><Text>Chez Jamais 203 Productions, nous fusionnons passion et expertise pour
+               <div className={"flex flex-col justify-center items-center gap-4"}><Text>Chez Jamais 203 Productions,
+                  nous fusionnons passion et expertise pour
                   créer des contenus
                   sonores
                   {/* eslint-disable-next-line react/no-unescaped-entities */}
