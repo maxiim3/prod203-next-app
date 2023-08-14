@@ -1,4 +1,5 @@
 export function HeroBanner() {
+   const useFadeIn = (delay: number) => `motion-safe:animate-[fadeIn_750ms_ease-out${delay ? "_" + delay + "ms" : ""}_both]`
    return <section aria-label={"Video hero banner"} className="hero w-screen h-screen">
       <video autoPlay={true} muted={true} loop={true} controls={false}
              className={"object-cover object-center w-[100%] h-[100vh]"}>
@@ -13,9 +14,11 @@ export function HeroBanner() {
 
       <main className="hero-overlay bg-opacity-20 relative"></main>
       <article className="hero-content text-center text-neutral-content">
-         <article className={"text-primary mx-auto"}>
-            <h1 className="text-5xl tracking-tighter font-black ">PROD203</h1>
-            <p>Jamais 203 Productions</p>
+         <article className={"text-primary mx-auto "}>
+            <h1
+               className={`text-5xl tracking-tighter font-black` + useFadeIn(75)}>PROD203</h1>
+            <p className={useFadeIn(250)}>Jamais 203
+               Productions</p>
          </article>
 
          <button className="btn btn-primary absolute bottom-4 ">Get Started</button>

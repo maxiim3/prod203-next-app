@@ -121,10 +121,15 @@ module.exports = {
             "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
          },
          animation: {
+            reveal: "fadeIn 750ms ease-in-out",
             rotate: "rotate 20s linear infinite",
             ...defaultTheme.animation,
          },
          keyframes: {
+            fadeIn: {
+              "0%": { opacity: "0", scale:"0.95" },
+               "100%": { opacity: "1", scale:"1" },
+            },
             rotate: {
                "0%": {transform: "rotate(0deg)"},
                "100%": {transform: "rotate(360deg)"},
