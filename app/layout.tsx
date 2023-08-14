@@ -1,10 +1,8 @@
 import "./globals.css"
 import type {Metadata} from "next"
 import React from "react"
-import FixedHeader from "@/components/navigationFeature/FixedHeader"
 import Footer from "@/components/Footer"
-import {appWithTranslation} from "next-i18next"
-import DefineLocalStorage from "@/components/atoms/DefineLocalStorage"
+import FixedHeader from "@/components/navigationFeature/FixedHeader"
 
 export const metadata: Metadata = {
    title: "Prod203 | ",
