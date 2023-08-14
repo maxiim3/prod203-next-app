@@ -1,5 +1,4 @@
 import {twMerge} from "tailwind-merge"
-import DefineLocalStorage from "@/components/atoms/DefineLocalStorage"
 import React from "react"
 import Icons from "@/lib/Icons"
 import {SectionTitle, Text} from "@/app/UI"
@@ -42,7 +41,6 @@ export default function Home() {
                   <Icons.Arrow
                      className={"text-2xl animate-bounce text-primary/75 group-hover:animate-none group-hover:scale-105"} />
                </a>
-               <DefineLocalStorage />
             </article>
          </section>
 
