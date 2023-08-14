@@ -1,7 +1,7 @@
 import "./globals.css"
 import type {Metadata} from "next"
 import React from "react"
-import StickyNavBar from "@/components/StickyNavBar"
+import FixedHeader from "@/components/navigationFeature/FixedHeader"
 import Footer from "@/components/Footer"
 import {appWithTranslation} from "next-i18next"
 
@@ -33,7 +33,7 @@ function RootLayout(props: {
 
       </head>
       <body className={"font-manrope"}>
-      <StickyNavBar />
+      <FixedHeader />
       {children}
       <Footer />
       </body>
