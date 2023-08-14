@@ -19,6 +19,7 @@
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.13",
     "framer-motion": "^10.15.1",
+    "htmx.org": "^1.9.4",
     "i18next": "^23.4.4",
     "nanoid": "^4.0.2",
     "next": "13.4.13",
