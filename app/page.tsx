@@ -98,6 +98,7 @@ export default function Home() {
                   </Text>
                   {/* eslint-disable-next-line react/no-unescaped-entities */}
                   <Text>
+                     {/* eslint-disable-next-line react/no-unescaped-entities */}
                      Nous vous accompagnerons de l'idée initiale à la réalisation finale,
                      garantissant une réponse à vos exigences les plus élevées.
                   </Text>
