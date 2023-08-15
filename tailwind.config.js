@@ -123,7 +123,7 @@ module.exports = {
          animation: {
             reveal: "scaleAndFade 750ms ease-in-out",
             rotate: "rotate 20s linear infinite",
-            revealFromBottom: "fadeAndSlideFromBottom 1200ms ease-in-out 950ms both",
+            revealFromBottom: "fadeAndSlideFromBottom 450ms ease-in-out 1.45s both",
             ...defaultTheme.animation,
          },
          keyframes: {
@@ -158,17 +158,17 @@ module.exports = {
       themes: [
          {
             customTheme: {
-               "primary": "#f7f7f6",
-               "secondary": "#1b555e",
-               "accent": "#12c5c8",
+               primary: "#f7f7f6",
+               secondary: "#1b555e",
+               accent: "#12c5c8",
                "base-100": "#1d1d1b",
                "base-200": "#32322f",
                "base-300": "#393936",
-               "neutral": "#84837d",
-               "info": "#0788F9",
-               "success": "#4BB72D",
-               "warning": "#E5A502",
-               "error": "#FF445D",
+               neutral: "#84837d",
+               info: "#0788F9",
+               success: "#4BB72D",
+               warning: "#E5A502",
+               error: "#FF445D",
             },
          },
          "dark",
@@ -182,4 +182,3 @@ module.exports = {
       logs: true, // Shows info about daisyUI version and used config in the console when building your CSS
    },
 }
-
