@@ -47,7 +47,7 @@ export default function Home() {
 
             <main className="hero-overlay relative bg-opacity-20"></main>
             <article className="hero-content text-center text-neutral-content">
-               <article className={"mx-auto text-primary "}>
+               <article className={"mx-auto select-none text-primary "}>
                   <h1
                      className={twMerge(
                         `font-black tracking-tighter`,
