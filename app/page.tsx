@@ -1,4 +1,4 @@
-import {SectionTitle, Text} from "@/app/UI"
+import PresentationInView from "@/app/PresentationInView"
 import Icons from "@/lib/Icons"
 import React from "react"
 import {twMerge} from "tailwind-merge"
@@ -79,43 +79,7 @@ export default function Home() {
             </article>
          </section>
 
-         <section
-            id="description"
-            className={"relative flex h-screen w-screen items-center justify-center"}>
-            <main className={"space-y-8 px-1 sm:px-2"}>
-               {/* eslint-disable-next-line react/no-unescaped-entities */}
-               <SectionTitle>
-                  Mettez votre projet entre les mains{" "}
-                  <span className={"text-clrPrimary-300"}>{"d'experts."}</span>
-               </SectionTitle>
-               {/* eslint-disable-next-line react/no-unescaped-entities */}
-               <div className={"flex flex-col items-center justify-center gap-4"}>
-                  <Text>
-                     Chez Jamais 203 Productions, nous fusionnons passion et expertise pour créer
-                     des contenus sonores
-                     {/* eslint-disable-next-line react/no-unescaped-entities */}
-                     d'une qualité inégalée.
-                  </Text>
-                  {/* eslint-disable-next-line react/no-unescaped-entities */}
-                  <Text>
-                     {/* eslint-disable-next-line react/no-unescaped-entities */}
-                     Nous vous accompagnerons de l'idée initiale à la réalisation finale,
-                     garantissant une réponse à vos exigences les plus élevées.
-                  </Text>
-               </div>
-            </main>
-
-            <a
-               href={"#"}
-               className={twMerge(
-                  "btn btn-primary absolute bottom-4",
-                  "border-none bg-base-200/50 text-primary backdrop-blur-sm",
-                  "hover:bg-base-200",
-                  "motion-safe:animate-[scaleAndFade_950ms_ease-out_950ms_forward]"
-               )}>
-               Back top
-            </a>
-         </section>
+         <PresentationInView />
       </main>
    )
 }
