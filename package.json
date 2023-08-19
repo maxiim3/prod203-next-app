@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sanity/image-url": "^1.0.2",
     "@tw-classed/react": "^1.5.1",
     "@types/node": "20.4.10",
     "@types/react": "18.2.20",
