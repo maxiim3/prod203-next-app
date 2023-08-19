@@ -2,7 +2,7 @@
 
 import {SectionTitle, Text} from "@/app/UI"
 import {motion, stagger, useAnimate, useInView} from "framer-motion"
-import React, {useEffect, useRef} from "react"
+import React, {useCallback, useEffect, useRef} from "react"
 import {twMerge} from "tailwind-merge"
 
 export default function PresentationInView() {
@@ -14,14 +14,14 @@ export default function PresentationInView() {
 
    const DELAY = useRef(0.6)
    const DURATION = useRef(0.6)
-   const OFFSET = useRef([window.innerWidth / 3, 0])
+   const OFFSET = useCallback(() => (isInView ? [window.innerWidth / 3, 0] : 0), [isInView])
 
    useEffect(() => {
       if (isInView) {
          animateTitle(
             titleRef.current,
             {
-               x: OFFSET.current,
+               x: OFFSET(),
                opacity: [0, 1],
             },
             {
@@ -32,7 +32,7 @@ export default function PresentationInView() {
          animateContainer(
             "li",
             {
-               x: OFFSET.current,
+               x: OFFSET(),
                opacity: [0, 1],
             },
             {
