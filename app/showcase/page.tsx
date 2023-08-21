@@ -1,6 +1,7 @@
-import {SectionTitle, Text} from "@/app/UI"
+import {SectionTitle} from "@/app/UI"
+import {ProjectPreview} from "@/app/showcase/ProjectPreview"
 import {ShadowTitleAnimation} from "@/app/showcase/ShadowTitleAnimation"
-import {client, imageUrlFor} from "@/lib/sanityClient"
+import {client, getCategories, getProjects} from "@/lib/sanityClient"
 import Category from "@/schemas/category.schema"
 import Project from "@/schemas/project.schema"
 import {classed} from "@tw-classed/react"
@@ -13,9 +14,9 @@ type PageWithParams = {
    searchParams: {category: string}
 }
 const Showcase = async ({params, searchParams}: PageWithParams) => {
-   const projects = (await client.fetch(`*[_type == "project"]`)) satisfies Project[]
+   const projects: Project[] = await getProjects()
 
-   const categories = (await client.fetch(`*[_type == "category"]`)) satisfies Category[]
+   const categories: Category[] = await getCategories()
 
    return (
       <main className={"min-h-screen w-screen py-24"}>
@@ -82,36 +83,6 @@ const PageHeadingParticule = ({title}: {title: string}) => (
       <ShadowTitleAnimation title={title} />
    </section>
 )
-
-const ProjectPreview = ({project}: {project: Project}) => {
-   console.log(project.slug.current)
-   return (
-      <li className="group/card card h-full min-h-[260px] w-full min-w-[260px] overflow-hidden bg-base-100 shadow-xl">
-         <Link href={`/showcase/${project.slug.current}`}>
-            <figure className="absolute left-0 top-0 h-full min-h-[260px] w-full min-w-[260px]">
-               <img
-                  className={
-                     "h-full min-h-[260px] w-full min-w-[260px] object-cover motion-safe:transition-all motion-safe:duration-1000 motion-safe:group-hover/card:scale-110"
-                  }
-                  src={imageUrlFor(project.thumbnail).url()}
-                  alt="Shoes"
-               />
-            </figure>
-            <div
-               className={twMerge(
-                  "card-body m-4 rounded-[inherit] bg-base-100/60 motion-safe:scale-95 motion-safe:transition-all motion-safe:delay-75 motion-safe:duration-200",
-                  "group-hover/card:bg-base-100/90 motion-safe:group-hover/card:scale-105 "
-               )}>
-               <h3 className="card-title">{project.title}</h3>
-               {project.description &&
-                  project.description.map(d => {
-                     return <p key={d._key}>{d.children[0].text}</p>
-                  })}
-            </div>
-         </Link>
-      </li>
-   )
-}
 
 const CategoryLink = classed("li", "select-none", {
    variants: {
