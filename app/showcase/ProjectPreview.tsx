@@ -26,7 +26,7 @@ function useProjectInView() {
          )
       }
    }, [isInView, animateContainer, containerRef])
-   return containerRef
+   return containerRef // todo fix the animation with intersection observer
 }
 
 export const ProjectPreview = ({project}: {project: Project}) => {

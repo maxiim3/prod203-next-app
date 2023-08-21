@@ -20,7 +20,6 @@ export const getProjects = async () => {
 }
 
 export const getProjectBySlug = async (slug: string) => {
-   console.log("slug : ", slug)
    const projects = await fetchData<Project>(`*[_type == "project" && slug.current =="${slug}"]`)
    return projects[0]
 }
@@ -35,11 +34,10 @@ export async function fetchData<T>(query: string) {
          return await client.fetch(query)
       case "mocked":
          if (query.includes('_type == "project"') && query.includes("slug.current")) {
-            console.log("I am here", "query : ", query)
             const slug = query
                .trim()
                .split("&&")[1]
-               .match(/"([^"]+)"/)[1]
+               .match(/"([^"]+)"/)![1]! as string
             return mockedProjects.filter(project => project.slug.current === slug) as T
          } else if (query.includes('_type == "project"')) {
             return mockedProjects as unknown as T[]
@@ -79,7 +77,6 @@ export function getImageSource(project: Project) {
  * @param project
  */
 export function getVideoSource(project: Project) {
-   console.log("VIDEO ==== ", project)
    switch (DATA_SOURCE) {
       case "sanity":
          const videoRef = project.preview.asset["_ref"].split("-")[1]
