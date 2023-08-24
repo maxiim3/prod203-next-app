@@ -1,6 +1,8 @@
-import PresentationInView from '@/app/PresentationInView'
+import {AnimatedClientBanner} from '@/components/atom/AnimatedClientBanner'
+import {TitleH2} from '@/components/atom/SectionH2'
+import StaticClientBanner from '@/components/atom/StaticClientBanner'
 import Icons from '@/lib/Icons'
-import React from 'react'
+import React, {PropsWithChildren, Suspense} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 /* NOTE about animation
@@ -65,7 +67,7 @@ export default function Home() {
                </article>
 
                <a
-                  href={'/#description'}
+                  href={'/#services'}
                   className={twMerge(
                      'btn btn-primary absolute bottom-4',
                      'border-none bg-base-100/50 backdrop-blur-sm',
@@ -81,6 +83,104 @@ export default function Home() {
                </a>
             </article>
          </section>
+         <SectionTemplate
+            id={'services'}
+            ariaLabel={'Nos Services'}
+            className={''}
+            title={'Nos Services'}>
+            <article className="grid w-full grid-cols-2 place-content-center place-items-center gap-2 sm:grid-cols-4 md:gap-6">
+               {services.map((service, index) => (
+                  <span
+                     key={service.title}
+                     className={twMerge(
+                        'flex w-full flex-col items-center justify-center place-self-center p-2 sm:w-1/2 ',
+                        index < services.length - 2 ? 'grid-col-auto' : 'grid-col-span-2'
+                     )}>
+                     <service.Icon className="text-4xl text-primary sm:text-5xl md:text-6xl" />
+                     <h3 className="text-center text-base text-primary text-balance md:text-lg">
+                        {service.title}
+                     </h3>
+                     {/*<p className="text-base text-center">{service.content}</p>*/}
+                  </span>
+               ))}
+            </article>
+         </SectionTemplate>
+         <SectionTemplate
+            title={'Clients'}
+            id={'clients'}
+            ariaLabel={'Nos Clients'}
+            className={'w-screen bg-primary/80 text-base-100 [&>*]:text-base-100'}>
+            <Suspense fallback={<p>Loading...</p>}>
+               <AnimatedClientBanner />
+               <StaticClientBanner />
+            </Suspense>
+         </SectionTemplate>
       </main>
    )
 }
+
+interface SectionTemplateProps extends PropsWithChildren {
+   title: string
+   id: string
+   className?: string
+   ariaLabel?: string
+}
+
+const SectionTemplate = ({children, className, ariaLabel, title, id}: SectionTemplateProps) => (
+   <section
+      className={twMerge(
+         'min-h-lg my-40 flex w-screen flex-col items-center justify-center gap-12 bg-base-200 px-8 py-20',
+         className
+      )}
+      aria-label={ariaLabel}
+      id={id}>
+      <TitleH2 className={'font-semibold'}>{title}</TitleH2>
+      {children}
+   </section>
+)
+
+// service : Musiques Originales, Production Executive, Édition, Mixage, Mastering, Mixage Immersif Atoms, Design Sonore, Gestion de Projet
+const services = [
+   {
+      title: 'Musiques Originales',
+      content: 'Musiques Originales',
+      Icon: Icons.Piano,
+   },
+   {
+      title: 'Production Executive',
+      content: 'Production Executive',
+      Icon: Icons.Music,
+   },
+   {
+      title: 'Édition',
+      content: 'Édition',
+      Icon: Icons.Cut,
+   },
+   {
+      title: 'Mixage',
+      content: 'Mixage',
+      Icon: Icons.Mixing,
+   },
+   {
+      title: 'Mastering',
+      content: 'Mastering',
+      Icon: Icons.SolidDisc,
+   },
+   {
+      title: 'Mixage Immersif Atoms',
+      content: 'Mixage Immersif Atoms',
+      Icon: Icons.Dolby,
+   },
+   {
+      title: 'Design Sonore',
+      content: 'Design Sonore',
+      Icon: Icons.SoundWave,
+   },
+   {
+      title: 'Gestion de Projet',
+      content: 'Gestion de Projet',
+      Icon: Icons.Calendar,
+   },
+]
+
+// clients: Canal+, M6, Balenciaga, Nike, DisneyLand Paris, Citroen, Le,Puy Du Fou, 24h Le Mans, Chateau Fort Sedan, Edith Piaf Symphonique, Mon PLus Beau Noel, Studio Canal, Coca Cola Credit Agricole,

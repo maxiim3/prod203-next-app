@@ -17,7 +17,7 @@ export default function LanguageSelection({
    const pathname = usePathname()
 
    return (
-      <ul className={twMerge('space-x-2', className)}>
+      <ul className={twMerge('flex items-center space-x-2', className)}>
          <Li
             onClick={onClick}
             isSelected={!pathname.includes('eng')}>

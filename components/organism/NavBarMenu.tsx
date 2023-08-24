@@ -9,7 +9,7 @@ import React from 'react'
 export default function NavBarMenu() {
    return (
       <>
-         <nav className={'hidden md:flex'}>
+         <nav className={'hidden items-center py-4 md:flex'}>
             <NavListStack>
                {ROUTES.map(route => (
                   <NavItem key={nanoid()}>

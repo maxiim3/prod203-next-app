@@ -22,7 +22,7 @@ const MenuPortal = () => {
          <motion.article className={'h-full w-full bg-base-100/95 backdrop-blur-lg md:hidden'}>
             <nav className={'flex h-full w-full flex-col items-end justify-center gap-16  px-4 '}>
                <NavListStack className="flex-col items-end gap-16 sm:gap-24">
-                  {ROUTES.map((route, index) => (
+                  {ROUTES.map(route => (
                      <NavItem
                         key={nanoid()}
                         className={`duration-250 text-5xl motion-safe:transition-all sm:text-6xl`}>

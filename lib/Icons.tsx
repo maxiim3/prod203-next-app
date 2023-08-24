@@ -3,20 +3,27 @@ import {
    AiFillHome,
    AiFillInstagram,
    AiFillStar,
-   AiOutlineCloseCircle, AiOutlineDown,
+   AiOutlineCloseCircle,
+   AiOutlineDown,
    AiOutlineGithub,
    AiOutlineStar,
-} from "react-icons/ai"
-import {BiSolidDrink, BiSolidPizza} from "react-icons/bi"
-import {BsClock, BsSunFill} from "react-icons/bs"
-import {CiMenuKebab, CiPizza} from "react-icons/ci"
-import {FaPizzaSlice, FaWineGlassAlt} from "react-icons/fa"
-import {FaCow} from "react-icons/fa6"
-import {GiIceCreamScoop, GiTomato} from "react-icons/gi"
-import {ImFacebook2, ImLocation} from "react-icons/im"
-import {IoMdIceCream} from "react-icons/io"
-import {MdNightlight, MdRestaurant, MdTouchApp} from "react-icons/md"
-import {SiNextdotjs, SiReact, SiTailwindcss, SiVercel} from "react-icons/si"
+   AiTwotoneCalendar,
+} from 'react-icons/ai'
+import {BiCut, BiSolidDisc, BiSolidDrink, BiSolidPizza} from 'react-icons/bi'
+import {BsClock, BsMusicNoteList, BsSunFill} from 'react-icons/bs'
+import {CgDolby} from 'react-icons/cg'
+import {CiMenuKebab, CiPizza} from 'react-icons/ci'
+import {FaPizzaSlice, FaWineGlassAlt} from 'react-icons/fa'
+import {FaCow} from 'react-icons/fa6'
+import {GiIceCreamScoop, GiSoundWaves, GiTomato} from 'react-icons/gi'
+import {GrTask} from 'react-icons/gr'
+import {ImFacebook2, ImLocation} from 'react-icons/im'
+import {IoMdIceCream} from 'react-icons/io'
+import {MdNightlight, MdRestaurant, MdTouchApp} from 'react-icons/md'
+import {PiPianoKeysDuotone} from 'react-icons/pi'
+import {RiSoundModuleFill} from 'react-icons/ri'
+import {SiNextdotjs, SiReact, SiTailwindcss, SiVercel} from 'react-icons/si'
+import {TbBrandDisney} from 'react-icons/tb'
 
 const Icons = {
    Sun: BsSunFill,
@@ -47,7 +54,17 @@ const Icons = {
    Drink: FaWineGlassAlt,
    Tomate: GiTomato,
    Cow: FaCow,
-   Arrow: AiOutlineDown
+   Arrow: AiOutlineDown,
+   Mixing: RiSoundModuleFill,
+   SolidDisc: BiSolidDisc,
+   Dolby: CgDolby,
+   SoundWave: GiSoundWaves,
+   Calendar: AiTwotoneCalendar,
+   Piano: PiPianoKeysDuotone,
+   Cut: BiCut,
+   Task: GrTask,
+   Music: BsMusicNoteList,
+   Disney: TbBrandDisney,
 }
 
 export default Icons

@@ -83,10 +83,10 @@ module.exports = {
             ...defaultTheme.colors,
          },
          fontSize: {
-            'xl-fluid': 'clamp(12px, 8.57vw, 96px)',
-            'lg-fluid': 'clamp(8px, 4.2vw, 32px)',
-            'md-fluid': 'clamp(8px, 3.5vw, 24px)',
-            'sm-fluid': 'clamp(8px, 3.5vw, 16px)',
+            'xl-fluid': ['clamp(12px, 8.57vw, 96px)'],
+            'lg-fluid': ['clamp(8px, 4.2vw, 32px)'],
+            'md-fluid': ['clamp(8px, 3.5vw, 24px)'],
+            'sm-fluid': ['clamp(8px, 3.5vw, 16px)'],
             '2xs': [
                '0.5rem',
                {
@@ -128,9 +128,15 @@ module.exports = {
             reveal: 'scaleAndFade 750ms ease-in-out',
             rotate: 'rotate 20s linear infinite',
             revealFromBottom: 'fadeAndSlideFromBottom 450ms ease-in-out 1.45s both',
+            marquee: 'marquee 10s linear infinite',
             ...defaultTheme.animation,
          },
          keyframes: {
+            marquee: {
+               '0%': {transform: 'translateX(-33%)'},
+               '100%': {transform: 'translateX(-50%)'},
+            },
+
             fadeAndSlideFromBottom: {
                '0%': {opacity: '0', transform: 'translateY(100px)'},
                '100%': {opacity: '1', transform: 'translateY(0)'},
