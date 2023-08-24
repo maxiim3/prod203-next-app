@@ -1,5 +1,5 @@
-import Footer from '@/components/Footer'
-import NavBar from '@/components/navigationFeature/NavBar'
+import Footer from '@/components/ui/Footer'
+import MainNavigation from '@/components/ui/MainNavigation'
 import {cormorant, manrope, poppins} from '@/styles/font'
 import type {Metadata} from 'next'
 import React, {PropsWithChildren} from 'react'
@@ -14,14 +14,18 @@ export async function generateStaticParams() {
    return [{lang: 'en-US'}, {lang: 'fr-FR'}]
 }
 
-function RootLayout({children, params}: PropsWithChildren<{params: {lang: string}}>) {
+interface LayoutProps extends PropsWithChildren {
+   params: {lang: string}
+}
+
+function RootLayout({children, params}: LayoutProps) {
    return (
       <html
          lang={params.lang}
          data-theme={'customTheme'}>
          <body
             className={`${cormorant.variable} ${manrope.variable} ${poppins.variable} font-poppins font-extralight`}>
-            <NavBar />
+            <MainNavigation />
             {children}
             <Footer />
          </body>

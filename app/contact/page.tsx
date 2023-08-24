@@ -1,9 +1,9 @@
-import React from "react"
-import {BuildingPage} from "@/components/molecule/BuildingPage"
+import {BuildingPage} from '@/components/ui/BuildingPage'
+import React from 'react'
 
 const Contact = () => {
    return (
-      <main className={'w-screen h-screen pt-24'}>
+      <main className={'h-screen w-screen pt-24'}>
          <BuildingPage title={'Contact Page'} />
       </main>
    )
