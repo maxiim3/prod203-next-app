@@ -4,19 +4,19 @@ import {useMobileNavigation} from '@/components/organism/MobileNavigationProvide
 import React from 'react'
 
 const BurgerButton = () => {
-   const {isVisible, burgerButtonIconType, handleCloseMenu, handleOpenMenu} = useMobileNavigation()
+   const {iconType, handleOpenMenu, handleCloseMenu, modalIsOpen} = useMobileNavigation()
 
    return (
       <button
          className="btn btn-square btn-ghost"
-         onClick={() => (isVisible ? handleCloseMenu() : handleOpenMenu())}>
+         onClick={() => (modalIsOpen ? handleCloseMenu() : handleOpenMenu())}>
          <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             className="inline-block h-6 w-6 stroke-current">
             {(() => {
-               switch (burgerButtonIconType) {
+               switch (iconType) {
                   case 'burger':
                      return (
                         <path

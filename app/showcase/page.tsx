@@ -1,6 +1,6 @@
-import {SectionTitle} from '@/app/UI'
 import {ProjectPreview} from '@/app/showcase/ProjectPreview'
 import {ShadowTitleAnimation} from '@/app/showcase/ShadowTitleAnimation'
+import {SectionTitle} from '@/components/atom/UI'
 import {getCategories, getProjects} from '@/lib/sanityClient'
 import Category from '@/schemas/category.schema'
 import Project from '@/schemas/project.schema'

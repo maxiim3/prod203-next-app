@@ -8,14 +8,13 @@ import React from 'react'
 import {createPortal} from 'react-dom'
 
 export default function DropDownMenu() {
-   const {isVisible} = useMobileNavigation()
+   const {modalIsOpen} = useMobileNavigation()
 
-   console.log(isVisible)
    return (
       <div className="flex-none md:hidden">
          {/*Burger Button Trigger*/}
          <BurgerButton />
-         {isVisible && createPortal(<MenuPortal />, document.body!)}
+         {modalIsOpen && createPortal(<MenuPortal />, document.body!)}
       </div>
    )
 }

@@ -1,13 +1,12 @@
 'use client'
 
-import LanguageElement from '@/components/atom/LanguageElement'
+import {classed} from '@tw-classed/react'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import React from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export default function LanguageSelection({
-   large,
    onClick,
    className,
 }: {
@@ -18,19 +17,32 @@ export default function LanguageSelection({
    const pathname = usePathname()
 
    return (
-      <article className={twMerge('space-x-2', className)}>
-         <LanguageElement
+      <ul className={twMerge('space-x-2', className)}>
+         <Li
             onClick={onClick}
-            large={large || false}
             isSelected={!pathname.includes('eng')}>
             <Link href={'/'}>FR</Link>
-         </LanguageElement>
-         <LanguageElement
+         </Li>
+         <Li
             onClick={onClick}
-            large={large || false}
             isSelected={pathname.includes('eng')}>
             <Link href={'/eng/'}>ENG</Link>
-         </LanguageElement>
-      </article>
+         </Li>
+      </ul>
    )
 }
+const Li = classed(
+   'span',
+   'font-poppins tracking-wider uppercase md:text-base lg:text-lg select-none',
+   {
+      variants: {
+         isSelected: {
+            true: 'font-semibold',
+            false: 'font-thin',
+         },
+      },
+      defaultVariants: {
+         isSelected: false,
+      },
+   }
+)

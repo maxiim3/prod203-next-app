@@ -4,65 +4,45 @@ import NavItem from '@/components/atom/NavItem'
 import {NavListStack} from '@/components/layout/NavListStack'
 import LanguageSelection from '@/components/molecule/LanguageSelection'
 import {useMobileNavigation} from '@/components/organism/MobileNavigationProvider'
-import useAnimateMenu from '@/hooks/useAnimateMenu'
 import ROUTES from '@/lib/ROUTES'
 import {motion} from 'framer-motion'
 import {nanoid} from 'nanoid'
 import Link from 'next/link'
+import {usePathname} from 'next/navigation'
 import React from 'react'
+import tailwindConfig from 'tailwindcss/stubs/tailwind.config'
 
 const MenuPortal = () => {
-   const {handleCloseMenu} = useMobileNavigation()
+   const {handleCloseMenu, modalIsOpen} = useMobileNavigation()
+   const pathName = usePathname()
 
    return (
-      <motion.article
-         // ref={modalScope}
-         initial={{translateY: '-100%'}}
-         animate={{translateY: 0}}
-         // transition={{...templateAnimationProps}}
-         className={
-            'absolute left-0 top-0 h-screen w-screen bg-base-100/95 backdrop-blur-lg md:hidden'
-         }>
-         <nav className={'flex h-full w-full flex-col items-end justify-center gap-16 px-4 '}>
-            <NavListStack className="flex-col items-end gap-12">
-               {ROUTES.map((route, index) => (
-                  <NavItem
-                     className={'text-4xl'}
-                     key={nanoid()}>
-                     <motion.span
-                     // initial={{opacity: 0, y: 30}}
-                     // animate={{opacity: 1, y: 0}}
-                     // transition={{
-                     //    duration: DURATION.current,
-                     //    delay: DELAY.current * (index + 1),
-                     //    ...templateAnimationProps,
-                     //    }}
-                     >
+      <dialog
+         className={'absolute left-0 top-0 h-screen w-screen md:hidden'}
+         open={modalIsOpen}>
+         <motion.article className={'h-full w-full bg-base-100/95 backdrop-blur-lg md:hidden'}>
+            <nav className={'flex h-full w-full flex-col items-end justify-center gap-16  px-4 '}>
+               <NavListStack className="flex-col items-end gap-16 sm:gap-24">
+                  {ROUTES.map((route, index) => (
+                     <NavItem
+                        key={nanoid()}
+                        className={`duration-250 text-5xl motion-safe:transition-all sm:text-6xl`}>
                         <Link
-                           onClick={handleCloseMenu}
+                           onClick={() => pathName === route.path && handleCloseMenu()}
                            href={route.path}>
                            {route.name}
                         </Link>
-                     </motion.span>
-                  </NavItem>
-               ))}
-            </NavListStack>
-            <motion.span
-            // initial={{opacity: 0, y: 30}}
-            // animate={{opacity: 1, y: 0}}
-            // transition={{
-            //    duration: DURATION.current,
-            //    delay: DELAY.current * (ROUTES.length + 1),
-            //    ...templateAnimationProps,
-            // }}
-            >
+                     </NavItem>
+                  ))}
+               </NavListStack>
                <LanguageSelection
+                  className={'text-2xl text-primary sm:text-4xl'}
                   onClick={handleCloseMenu}
                   large
                />
-            </motion.span>
-         </nav>
-      </motion.article>
+            </nav>
+         </motion.article>
+      </dialog>
    )
 }
 export default MenuPortal

@@ -1,9 +1,9 @@
-"use client"
+'use client'
 
-import {SectionTitle, Text} from "@/app/UI"
-import {motion, stagger, useAnimate, useInView} from "framer-motion"
-import React, {useCallback, useEffect, useRef} from "react"
-import {twMerge} from "tailwind-merge"
+import {SectionTitle, Text} from '@/components/atom/UI'
+import {motion, stagger, useAnimate, useInView} from 'framer-motion'
+import React, {useCallback, useEffect, useRef} from 'react'
+import {twMerge} from 'tailwind-merge'
 
 export default function PresentationInView() {
    const trigger = useRef(null)
@@ -30,7 +30,7 @@ export default function PresentationInView() {
             }
          )
          animateContainer(
-            "li",
+            'li',
             {
                x: OFFSET(),
                opacity: [0, 1],
@@ -39,8 +39,8 @@ export default function PresentationInView() {
                duration: DELAY.current,
                delay: stagger(DURATION.current / 2, {
                   startDelay: DELAY.current + DURATION.current / 2,
-                  from: "first",
-                  ease: "easeOut",
+                  from: 'first',
+                  ease: 'easeOut',
                }),
             }
          )
@@ -54,7 +54,7 @@ export default function PresentationInView() {
             {duration: 0.5, delay: 1}
          )
          animateContainer(
-            "li",
+            'li',
             {
                opacity: 0,
                x: -100,
@@ -62,36 +62,36 @@ export default function PresentationInView() {
             {duration: 0.5, delay: 1}
          )
       }
-      console.log("isInView", isInView)
+      console.log('isInView', isInView)
    }, [animateContainer, animateTitle, isInView, titleRef])
    return (
       <section
-         id={"description"}
-         className={"relative flex h-screen w-screen items-center justify-center"}>
+         id={'description'}
+         className={'relative flex h-screen w-screen items-center justify-center'}>
          <div
             ref={trigger}
             tabIndex={-1}
             aria-hidden={true}
-            className={"invisible absolute top-48 z-0 h-4 w-screen select-none bg-success "}
+            className={'invisible absolute top-48 z-0 h-4 w-screen select-none bg-success '}
          />
-         <main className={"space-y-8 px-1 sm:px-2"}>
+         <main className={'space-y-8 px-1 sm:px-2'}>
             <SectionTitle
-               as={"h2"}
+               as={'h2'}
                ref={titleRef}>
                Mettez votre projet entre les mains
-               <span className={"text-clrPrimary-300"}>{" d'experts."}</span>
+               <span className={'text-clrPrimary-300'}>{" d'experts."}</span>
             </SectionTitle>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
             <ul
                ref={container}
-               className={"flex flex-col items-center justify-center gap-4"}>
+               className={'flex flex-col items-center justify-center gap-4'}>
                {[
-                  "Chez Jamais 203 Productions, nous fusionnons passion et expertise pour créer des contenus sonores",
+                  'Chez Jamais 203 Productions, nous fusionnons passion et expertise pour créer des contenus sonores',
                   "Nous vous accompagnerons de l'idée initiale à la réalisation finale, garantissant une réponse à vos exigences les plus élevées.",
                ].map((text, index) => (
                   <Text
-                     as={"li"}
-                     className={"list-none"}
+                     as={'li'}
+                     className={'list-none'}
                      key={index}>
                      {text}
                   </Text>

@@ -10,7 +10,7 @@ export default function MainNavigation() {
       <header
          id={'header'}
          className={twMerge(
-            'left-o align-center navbar fixed top-0 z-50 flex justify-between bg-base-100/60 px-2 backdrop-blur-sm md:px-4 lg:px-8',
+            'align-center fixed left-0 top-0 z-50 flex w-screen justify-between bg-base-100/60 px-2 backdrop-blur-sm md:px-4 lg:px-8',
             'motion-safe:animate-[fadeIn_450ms_ease-out_650ms_both]'
          )}>
          <Image

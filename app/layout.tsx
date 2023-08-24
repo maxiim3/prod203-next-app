@@ -24,7 +24,7 @@ function RootLayout({children, params}: LayoutProps) {
          lang={params.lang}
          data-theme={'customTheme'}>
          <body
-            className={`${cormorant.variable} ${manrope.variable} ${poppins.variable} font-poppins font-extralight`}>
+            className={`${cormorant.variable} ${manrope.variable} ${poppins.variable} font-poppins overflow-x-none font-extralight`}>
             <MainNavigation />
             {children}
             <Footer />

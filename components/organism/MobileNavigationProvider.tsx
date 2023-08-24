@@ -1,67 +1,69 @@
 'use client'
 
-import {createContext, PropsWithChildren, useCallback, useContext, useReducer} from 'react'
-
-type contextActionType =
-   | {
-        type: 'SET_MENU_VISIBILITY'
-        payload: boolean
-     }
-   | {
-        type: 'CHANGE_ICON_TYPE'
-        payload: 'burger' | 'cross'
-     }
-
-type contextStateType = {
-   isVisible: boolean
-   burgerButtonIconType: 'burger' | 'cross'
-}
-const reducer = (state: contextStateType, action: contextActionType) => {
-   switch (action.type) {
-      case 'SET_MENU_VISIBILITY':
-         return {...state, isVisible: action.payload}
-      case 'CHANGE_ICON_TYPE':
-         return {...state, burgerButtonIconType: action.payload}
-      default:
-         return state
-   }
-}
+import {usePathname, useRouter} from 'next/navigation'
+import {PropsWithChildren, createContext, useCallback, useContext, useEffect, useState} from 'react'
 
 const useProvideContext = () => {
-   const [context, dispatch] = useReducer(reducer, {
-      isVisible: false,
-      burgerButtonIconType: 'burger',
-   })
+   const pathname = usePathname()
 
-   const openMenu = () => dispatch({type: 'SET_MENU_VISIBILITY', payload: true})
-   const closeMenu = () => dispatch({type: 'SET_MENU_VISIBILITY', payload: false})
-   const setIconType = (type: 'burger' | 'cross') =>
-      dispatch({type: 'CHANGE_ICON_TYPE', payload: type})
+   const [modalIsOpen, setModalVisibility] = useState(false)
 
-   const handleOpenMenu = useCallback(() => {
-      setIconType('cross')
-      const timeout = setTimeout(() => {
-         openMenu()
-      }, 25)
-      return () => clearTimeout(timeout)
-   }, [])
+   const [iconType, setIconType] = useState<'burger' | 'cross'>('burger')
 
-   const handleCloseMenu = useCallback(() => {
+   /**
+    * Close the menu when the route changes
+    */
+   useEffect(() => {
+      setModalVisibility(false)
+   }, [pathname])
+
+   /**
+    * Change the icon type depending on the modal state
+    */
+   useEffect(() => {
+      if (modalIsOpen) return setIconType('cross')
       setIconType('burger')
-      const timeout = setTimeout(() => {
-         closeMenu()
-      }, 250)
-      return () => clearTimeout(timeout)
+   }, [modalIsOpen])
+
+   /**
+    * Prevent scrolling when the menu is open
+    */
+   useEffect(() => {
+      if (modalIsOpen) {
+         document.body.style.overflow = 'hidden'
+      } else {
+         document.body.style.overflow = 'auto'
+      }
+      return () => {
+         document.body.style.overflow = 'auto' // Reset to default when component unmounts
+      }
+   }, [modalIsOpen])
+
+   /**
+    * Open the menu
+    */
+   const handleOpenMenu = useCallback(() => {
+      setModalVisibility(true)
    }, [])
 
-   return {handleOpenMenu, handleCloseMenu, ...context}
+   /**
+    * Close the menu
+    */
+   const handleCloseMenu = useCallback(() => {
+      setModalVisibility(false)
+   }, [])
+
+   return {
+      modalIsOpen,
+      iconType,
+      handleOpenMenu,
+      handleCloseMenu,
+   }
 }
 
 const MobileNavigationContext = createContext<null | ReturnType<typeof useProvideContext>>(null)
 
-interface MobileNavigationContextProps extends PropsWithChildren {}
-
-export function MobileNavigationProvider({children}: PropsWithChildren<{}>) {
+export function MobileNavigationProvider({children}: PropsWithChildren<null>) {
    // Use your custom hook to provide the context value
    const contextValue = useProvideContext()
 

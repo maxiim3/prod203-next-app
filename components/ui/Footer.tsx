@@ -1,19 +1,19 @@
-import {classed} from "@tw-classed/react"
-import Link from "next/link"
-import React from "react"
-import {twMerge} from "tailwind-merge"
+import {classed} from '@tw-classed/react'
+import Link from 'next/link'
+import React from 'react'
+import {twMerge} from 'tailwind-merge'
 
 export default function Footer() {
    return (
-      <footer className="footer relative flex flex-wrap items-start justify-start gap-9 bg-base-300 px-4 pb-12 pt-8 md:flex-row">
-         <section className={"flex-grow-1 mx-auto"}>
+      <footer className=" relative flex flex-wrap items-start justify-start gap-9 bg-base-300 px-4 pb-12 pt-8 md:flex-row">
+         <section className={'flex-grow-1 mx-auto'}>
             <a
-               href={"#"}
+               href={'#'}
                className={twMerge(
-                  "btn btn-primary ",
-                  "border-none bg-base-200/50 text-primary backdrop-blur-sm",
-                  "hover:bg-base-200",
-                  "motion-safe:animate-[scaleAndFade_950ms_ease-out_950ms_forward]"
+                  'btn btn-primary ',
+                  'border-none bg-base-200/50 text-primary backdrop-blur-sm',
+                  'hover:bg-base-200',
+                  'motion-safe:animate-[scaleAndFade_950ms_ease-out_950ms_forward]'
                )}>
                Retour en haut de la page
             </a>
@@ -21,16 +21,16 @@ export default function Footer() {
          <section>
             <SectionTitle>Liens rapides</SectionTitle>
             <Item>
-               <Link href={"/"}>Accueil</Link>
+               <Link href={'/'}>Accueil</Link>
             </Item>
             <Item>
-               <Link href={"/showcase"}>Showcase</Link>
+               <Link href={'/showcase'}>Showcase</Link>
             </Item>
             <Item>
-               <Link href={"/about"}>À Propos</Link>
+               <Link href={'/about'}>À Propos</Link>
             </Item>
             <Item>
-               <Link href={"/contact"}>Contact</Link>
+               <Link href={'/contact'}>Contact</Link>
             </Item>
          </section>
          <section>
@@ -75,7 +75,7 @@ export default function Footer() {
             <Item>Données Personnelles</Item>
          </section>
 
-         <section className={"flex-1"}>
+         <section className={'flex-1'}>
             <img
                src="/assets/Prod203/203white.png"
                alt=""
@@ -83,11 +83,11 @@ export default function Footer() {
          </section>
          <section
             className={
-               "flex-grow-1 flex flex-wrap gap-2 border-t border-dashed border-primary/20 py-1"
+               'flex-grow-1 flex flex-wrap gap-2 border-t border-dashed border-primary/20 py-1'
             }>
-            <Item className={"text-center font-thin"}>Maxime Tamburrini</Item>
+            <Item className={'text-center font-thin'}>Maxime Tamburrini</Item>
             <Item>
-               <strong className={"font-bold"}>Digital Solution Studio</strong>
+               <strong className={'font-bold'}>Digital Solution Studio</strong>
             </Item>
          </section>
       </footer>
@@ -95,12 +95,12 @@ export default function Footer() {
 }
 
 const SectionTitle = classed(
-   "span",
-   "font-regular footer-title font-cormorant text-xl text-primary uppercase"
+   'span',
+   'font-regular footer-title font-cormorant text-xl text-primary uppercase'
 )
 
 const Item = classed(
-   "li",
-   "list-none text-base text-primary/65 tracking-wide font-regular",
-   "hover:text-primary"
+   'li',
+   'list-none text-base text-primary/65 tracking-wide font-regular',
+   'hover:text-primary'
 )
