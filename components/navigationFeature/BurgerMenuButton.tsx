@@ -1,16 +1,16 @@
-"use client"
+'use client'
 
-import LanguageSelection from "@/components/navigationFeature/LanguageSelection"
-import StyledItem from "@/components/navigationFeature/StyledItem"
-import ROUTES from "@/lib/ROUTES"
-import {motion, useAnimate} from "framer-motion"
-import {nanoid} from "nanoid"
-import Link from "next/link"
-import React, {useEffect, useRef, useState} from "react"
-import {createPortal} from "react-dom"
+import LanguageSelection from '@/components/navigationFeature/LanguageSelection'
+import NavItem from '@/components/navigationFeature/NavItem'
+import ROUTES from '@/lib/ROUTES'
+import {motion, useAnimate} from 'framer-motion'
+import {nanoid} from 'nanoid'
+import Link from 'next/link'
+import React, {useEffect, useRef, useState} from 'react'
+import {createPortal} from 'react-dom'
 
 export function BurgerMenuButton() {
-   const [iconType, setIconType] = useState<"cross" | "burger">("burger")
+   const [iconType, setIconType] = useState<'cross' | 'burger'>('burger')
 
    const [modalIsVisible, setModalVisibility] = useState<Boolean>(false)
 
@@ -18,10 +18,10 @@ export function BurgerMenuButton() {
    const [ulScope, animateElements] = useAnimate()
 
    useEffect(() => {
-      if (iconType === "burger" && modalIsVisible) {
-         animateModal(modalScope.current, {translateY: "-100%"})
+      if (iconType === 'burger' && modalIsVisible) {
+         animateModal(modalScope.current, {translateY: '-100%'})
          setTimeout(() => setModalVisibility(false), 600)
-      } else if (iconType === "cross") {
+      } else if (iconType === 'cross') {
          setModalVisibility(true)
       } else {
          setModalVisibility(false)
@@ -31,7 +31,7 @@ export function BurgerMenuButton() {
    const DURATION = useRef(0.125)
    const DELAY = useRef(0.25)
    const templateAnimationProps = {
-      type: "spring",
+      type: 'spring',
       stiffness: 260,
       damping: 20,
    }
@@ -40,7 +40,7 @@ export function BurgerMenuButton() {
       <div className="flex-none md:hidden">
          <button
             className="btn btn-square btn-ghost"
-            onClick={() => setIconType(prev => (prev === "burger" ? "cross" : "burger"))}>
+            onClick={() => setIconType(prev => (prev === 'burger' ? 'cross' : 'burger'))}>
             <svg
                xmlns="http://www.w3.org/2000/svg"
                fill="none"
@@ -48,7 +48,7 @@ export function BurgerMenuButton() {
                className="inline-block h-6 w-6 stroke-current">
                {(() => {
                   switch (iconType) {
-                     case "burger":
+                     case 'burger':
                         return (
                            <path
                               strokeLinecap="round"
@@ -57,7 +57,7 @@ export function BurgerMenuButton() {
                               d="M4 6h16M4 12h16M4 18h16"
                            />
                         )
-                     case "cross":
+                     case 'cross':
                         return (
                            <path
                               strokeLinecap="round"
@@ -74,19 +74,19 @@ export function BurgerMenuButton() {
             createPortal(
                <motion.article
                   ref={modalScope}
-                  initial={{translateY: "-100%"}}
+                  initial={{translateY: '-100%'}}
                   animate={{translateY: 0}}
                   transition={{...templateAnimationProps}}
                   className={
-                     "absolute left-0 top-0 h-screen w-screen bg-base-100/95 backdrop-blur-lg md:hidden"
+                     'absolute left-0 top-0 h-screen w-screen bg-base-100/95 backdrop-blur-lg md:hidden'
                   }>
                   <nav
-                     className={"flex h-full w-full flex-col items-end justify-center gap-8 px-4 "}>
+                     className={'flex h-full w-full flex-col items-end justify-center gap-8 px-4 '}>
                      <ul
                         ref={ulScope}
                         className="menu menu-vertical items-end gap-8 ">
                         {ROUTES.map((route, index) => (
-                           <StyledItem key={nanoid()}>
+                           <NavItem key={nanoid()}>
                               <motion.span
                                  initial={{opacity: 0, y: 30}}
                                  animate={{opacity: 1, y: 0}}
@@ -96,12 +96,12 @@ export function BurgerMenuButton() {
                                     ...templateAnimationProps,
                                  }}>
                                  <Link
-                                    onClick={() => setIconType("burger")}
+                                    onClick={() => setIconType('burger')}
                                     href={route.path}>
                                     {route.name}
                                  </Link>
                               </motion.span>
-                           </StyledItem>
+                           </NavItem>
                         ))}
                      </ul>
                      <motion.span
@@ -113,7 +113,7 @@ export function BurgerMenuButton() {
                            ...templateAnimationProps,
                         }}>
                         <LanguageSelection
-                           onClick={() => setIconType("burger")}
+                           onClick={() => setIconType('burger')}
                            large
                         />
                      </motion.span>

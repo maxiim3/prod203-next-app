@@ -18,4 +18,4 @@ const manrope = Manrope({
    variable: '--font-manrope',
 })
 
-export {poppins}
+export {cormorant, manrope, poppins}

@@ -1,6 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
-/** @type {import("tailwindcss").Config} */
+/** @type {import('tailwindcss').Config} */
 module.exports = {
    content: [
       './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -145,9 +145,9 @@ module.exports = {
             },
          },
          fontFamily: {
-            cormorant: ['var(--cormorant'],
-            manrope: ['var(--manrope'],
-            sans: ['var(--poppins'],
+            cormorant: ['var(--font-cormorant)'],
+            manrope: ['var(--font-manrope)'],
+            poppins: ['var(--font-poppins)'],
             ...defaultTheme.fontFamily,
          },
       },

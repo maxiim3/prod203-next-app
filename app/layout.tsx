@@ -1,6 +1,6 @@
 import Footer from '@/components/Footer'
-import FixedHeader from '@/components/navigationFeature/FixedHeader'
-import {poppins} from '@/styles/font'
+import NavBar from '@/components/navigationFeature/NavBar'
+import {cormorant, manrope, poppins} from '@/styles/font'
 import type {Metadata} from 'next'
 import React, {PropsWithChildren} from 'react'
 import './globals.css'
@@ -19,8 +19,9 @@ function RootLayout({children, params}: PropsWithChildren<{params: {lang: string
       <html
          lang={params.lang}
          data-theme={'customTheme'}>
-         <body className={`${poppins.variable} font-sans`}>
-            <FixedHeader />
+         <body
+            className={`${cormorant.variable} ${manrope.variable} ${poppins.variable} font-poppins font-extralight`}>
+            <NavBar />
             {children}
             <Footer />
          </body>
