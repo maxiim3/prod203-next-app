@@ -51,14 +51,14 @@ export default function Home() {
                   <h1
                      className={twMerge(
                         `font-poppins font-bold uppercase`,
-                        'text-fluidTitle',
+                        'text-xl-fluid',
                         'motion-safe:animate-[scaleAndFade_800ms_ease-out_1.11s_both]'
                      )}>
                      Jamais 203 Productions
                   </h1>
                   <p
                      className={
-                        'text-fluidSubTitle motion-safe:animate-[scaleAndFade_800ms_ease-out_1.22s_both]'
+                        'text-lg-fluid motion-safe:animate-[scaleAndFade_800ms_ease-out_1.22s_both]'
                      }>
                      Façonnons l’Art du son
                   </p>
@@ -81,8 +81,6 @@ export default function Home() {
                </a>
             </article>
          </section>
-
-         <PresentationInView />
       </main>
    )
 }

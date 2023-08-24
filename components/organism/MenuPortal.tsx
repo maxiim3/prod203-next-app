@@ -10,7 +10,6 @@ import {nanoid} from 'nanoid'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import React from 'react'
-import tailwindConfig from 'tailwindcss/stubs/tailwind.config'
 
 const MenuPortal = () => {
    const {handleCloseMenu, modalIsOpen} = useMobileNavigation()

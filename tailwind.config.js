@@ -83,8 +83,10 @@ module.exports = {
             ...defaultTheme.colors,
          },
          fontSize: {
-            fluidTitle: 'clamp(12px, 8.57vw, 96px)',
-            fluidSubTitle: 'clamp(8px, 4.2vw, 32px)',
+            'xl-fluid': 'clamp(12px, 8.57vw, 96px)',
+            'lg-fluid': 'clamp(8px, 4.2vw, 32px)',
+            'md-fluid': 'clamp(8px, 3.5vw, 24px)',
+            'sm-fluid': 'clamp(8px, 3.5vw, 16px)',
             '2xs': [
                '0.5rem',
                {
