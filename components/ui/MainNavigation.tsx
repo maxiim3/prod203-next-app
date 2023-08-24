@@ -1,4 +1,5 @@
 import DropDownMenu from '@/components/organism/DropDownMenu'
+import {MobileNavigationProvider} from '@/components/organism/MobileNavigationProvider'
 import NavBarMenu from '@/components/organism/NavBarMenu'
 import Image from 'next/image'
 import React from 'react'
@@ -20,7 +21,9 @@ export default function MainNavigation() {
             alt="Prod203"
          />
          <NavBarMenu />
-         <DropDownMenu />
+         <MobileNavigationProvider>
+            <DropDownMenu />
+         </MobileNavigationProvider>
       </header>
    )
 }

@@ -3,6 +3,7 @@
 import NavItem from '@/components/atom/NavItem'
 import {NavListStack} from '@/components/layout/NavListStack'
 import LanguageSelection from '@/components/molecule/LanguageSelection'
+import {useMobileNavigation} from '@/components/organism/MobileNavigationProvider'
 import useAnimateMenu from '@/hooks/useAnimateMenu'
 import ROUTES from '@/lib/ROUTES'
 import {motion} from 'framer-motion'
@@ -11,14 +12,14 @@ import Link from 'next/link'
 import React from 'react'
 
 const MenuPortal = () => {
-   const {setIconType, modalScope, DURATION, DELAY, templateAnimationProps} = useAnimateMenu()
+   const {handleCloseMenu} = useMobileNavigation()
 
    return (
       <motion.article
-         ref={modalScope}
+         // ref={modalScope}
          initial={{translateY: '-100%'}}
          animate={{translateY: 0}}
-         transition={{...templateAnimationProps}}
+         // transition={{...templateAnimationProps}}
          className={
             'absolute left-0 top-0 h-screen w-screen bg-base-100/95 backdrop-blur-lg md:hidden'
          }>
@@ -29,15 +30,16 @@ const MenuPortal = () => {
                      className={'text-4xl'}
                      key={nanoid()}>
                      <motion.span
-                        initial={{opacity: 0, y: 30}}
-                        animate={{opacity: 1, y: 0}}
-                        transition={{
-                           duration: DURATION.current,
-                           delay: DELAY.current * (index + 1),
-                           ...templateAnimationProps,
-                        }}>
+                     // initial={{opacity: 0, y: 30}}
+                     // animate={{opacity: 1, y: 0}}
+                     // transition={{
+                     //    duration: DURATION.current,
+                     //    delay: DELAY.current * (index + 1),
+                     //    ...templateAnimationProps,
+                     //    }}
+                     >
                         <Link
-                           onClick={() => setIconType('burger')}
+                           onClick={handleCloseMenu}
                            href={route.path}>
                            {route.name}
                         </Link>
@@ -46,15 +48,16 @@ const MenuPortal = () => {
                ))}
             </NavListStack>
             <motion.span
-               initial={{opacity: 0, y: 30}}
-               animate={{opacity: 1, y: 0}}
-               transition={{
-                  duration: DURATION.current,
-                  delay: DELAY.current * (ROUTES.length + 1),
-                  ...templateAnimationProps,
-               }}>
+            // initial={{opacity: 0, y: 30}}
+            // animate={{opacity: 1, y: 0}}
+            // transition={{
+            //    duration: DURATION.current,
+            //    delay: DELAY.current * (ROUTES.length + 1),
+            //    ...templateAnimationProps,
+            // }}
+            >
                <LanguageSelection
-                  onClick={() => setIconType('burger')}
+                  onClick={handleCloseMenu}
                   large
                />
             </motion.span>

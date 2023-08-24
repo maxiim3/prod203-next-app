@@ -1,22 +1,22 @@
 'use client'
 
-import useAnimateMenu from '@/hooks/useAnimateMenu'
+import {useMobileNavigation} from '@/components/organism/MobileNavigationProvider'
 import React from 'react'
 
 const BurgerButton = () => {
-   const {iconType, setIconType} = useAnimateMenu()
+   const {isVisible, burgerButtonIconType, handleCloseMenu, handleOpenMenu} = useMobileNavigation()
 
    return (
       <button
          className="btn btn-square btn-ghost"
-         onClick={() => setIconType(prev => (prev === 'burger' ? 'cross' : 'burger'))}>
+         onClick={() => (isVisible ? handleCloseMenu() : handleOpenMenu())}>
          <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             className="inline-block h-6 w-6 stroke-current">
             {(() => {
-               switch (iconType) {
+               switch (burgerButtonIconType) {
                   case 'burger':
                      return (
                         <path

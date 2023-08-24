@@ -6,12 +6,12 @@ export default function useAnimateMenu() {
 
    const [modalIsVisible, setModalVisibility] = useState<Boolean>(false)
 
-   const [modalScope, animateModal] = useAnimate()
-   const [ulScope, animateElements] = useAnimate()
+   // const [modalScope, animateModal] = useAnimate()
+   // console.log(modalScope.current)
 
    useEffect(() => {
       if (iconType === 'burger' && modalIsVisible) {
-         animateModal(modalScope.current, {translateY: '-100%'})
+         // animateModal(modalScope.current, {translateY: '-100%'})
          setTimeout(() => setModalVisibility(false), 600)
       } else if (iconType === 'cross') {
          setModalVisibility(true)
@@ -20,20 +20,20 @@ export default function useAnimateMenu() {
       }
    }, [iconType])
 
-   const DURATION = useRef(0.125)
-   const DELAY = useRef(0.25)
-   const templateAnimationProps = {
-      type: 'spring',
-      stiffness: 260,
-      damping: 20,
-   }
+   // const DURATION = useRef(0.125)
+   // const DELAY = useRef(0.25)
+   // const templateAnimationProps = {
+   //    type: 'spring',
+   //    stiffness: 260,
+   //    damping: 20,
+   // }
    return {
       iconType,
       setIconType,
       modalIsVisible,
-      modalScope,
-      DURATION,
-      DELAY,
-      templateAnimationProps,
+      // modalScope,
+      // DURATION,
+      // DELAY,
+      // templateAnimationProps,
    }
 }
