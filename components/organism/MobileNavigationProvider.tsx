@@ -63,7 +63,7 @@ const useProvideContext = () => {
 
 const MobileNavigationContext = createContext<null | ReturnType<typeof useProvideContext>>(null)
 
-export function MobileNavigationProvider({children}: PropsWithChildren<null>) {
+export function MobileNavigationProvider({children}: PropsWithChildren<{}>) {
    // Use your custom hook to provide the context value
    const contextValue = useProvideContext()
 
