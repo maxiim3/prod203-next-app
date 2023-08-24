@@ -1,6 +1,6 @@
 'use client'
 
-import {SectionTitle} from '@/components/atom/UI'
+import {TitleH2} from '@/components/atom/SectionH2'
 import {useMounted} from '@/hooks/useMounted'
 import {classed} from '@tw-classed/react'
 import {motion, useAnimate} from 'framer-motion'
@@ -10,7 +10,7 @@ import {twMerge} from 'tailwind-merge'
 /**
  * @description composition from SectionTitle based classes
  */
-const AnimateTitle = classed(motion.span, SectionTitle)
+const AnimateTitle = classed(motion.span, TitleH2)
 
 export function ShadowTitleAnimation({title}: {title: string}) {
    const isMounted = useMounted()

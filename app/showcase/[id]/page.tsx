@@ -1,5 +1,5 @@
 import {VideoPreview} from '@/app/showcase/[id]/VideoPreview'
-import {SectionTitle} from '@/components/atom/UI'
+import {TitleH2} from '@/components/atom/SectionH2'
 import {client, getImageSource, getProjectBySlug, getVideoSource} from '@/lib/sanityClient'
 import Project, {ProjectDescription} from '@/schemas/project.schema'
 import Link from 'next/link'
@@ -29,7 +29,7 @@ const ProjectPage = async ({params}: {params: {id: string}}) => {
          </section>
          <section
             className={'flex min-h-[50vh] flex-grow flex-col items-center justify-center gap-1 '}>
-            <SectionTitle>Product Page</SectionTitle>
+            <TitleH2>Product Page</TitleH2>
 
             <h2 className={'text-4xl'}>{project.title}</h2>
             {project.description &&

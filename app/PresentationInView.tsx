@@ -1,6 +1,7 @@
 'use client'
 
-import {SectionTitle, Text} from '@/components/atom/UI'
+import {TitleH2} from '@/components/atom/SectionH2'
+import {Text} from '@/components/atom/Text'
 import {motion, stagger, useAnimate, useInView} from 'framer-motion'
 import React, {useCallback, useEffect, useRef} from 'react'
 import {twMerge} from 'tailwind-merge'
@@ -75,12 +76,12 @@ export default function PresentationInView() {
             className={'invisible absolute top-48 z-0 h-4 w-screen select-none bg-success '}
          />
          <main className={'space-y-8 px-1 sm:px-2'}>
-            <SectionTitle
+            <TitleH2
                as={'h2'}
                ref={titleRef}>
                Mettez votre projet entre les mains
                <span className={'text-clrPrimary-300'}>{" d'experts."}</span>
-            </SectionTitle>
+            </TitleH2>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
             <ul
                ref={container}

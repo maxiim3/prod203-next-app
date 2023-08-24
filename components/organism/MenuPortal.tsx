@@ -18,7 +18,7 @@ const MenuPortal = () => {
 
    return (
       <dialog
-         className={'absolute left-0 top-0 h-screen w-screen md:hidden'}
+         className={'fixed left-0 top-0 h-screen w-screen md:hidden'}
          open={modalIsOpen}>
          <motion.article className={'h-full w-full bg-base-100/95 backdrop-blur-lg md:hidden'}>
             <nav className={'flex h-full w-full flex-col items-end justify-center gap-16  px-4 '}>

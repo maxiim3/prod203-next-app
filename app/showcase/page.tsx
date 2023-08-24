@@ -1,6 +1,6 @@
 import {ProjectPreview} from '@/app/showcase/ProjectPreview'
 import {ShadowTitleAnimation} from '@/app/showcase/ShadowTitleAnimation'
-import {SectionTitle} from '@/components/atom/UI'
+import {TitleH2} from '@/components/atom/SectionH2'
 import {getCategories, getProjects} from '@/lib/sanityClient'
 import Category from '@/schemas/category.schema'
 import Project from '@/schemas/project.schema'
@@ -72,11 +72,11 @@ export default Showcase
 
 const PageHeadingParticule = ({title}: {title: string}) => (
    <section className={'relative'}>
-      <SectionTitle
+      <TitleH2
          as={'h1'}
          className={twMerge('mx-auto animate-reveal px-0')}>
          {title}
-      </SectionTitle>
+      </TitleH2>
       <ShadowTitleAnimation title={title} />
    </section>
 )
