@@ -6,7 +6,7 @@
    "arrowParens": "avoid",
    "tabWidth": 3,
    "semi": false,
-   "singleQuote": false,
+   "singleQuote": true,
    "printWidth": 100,
    "singleAttributePerLine": true,
    "embeddedLanguageFormatting": "auto",
