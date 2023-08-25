@@ -1,13 +1,5 @@
 import {PropsWithChildren} from 'react'
 import {twMerge} from 'tailwind-merge'
-//
-// const NavItem = classed(
-//    'li',
-//    'uppercase font-poppins',
-//    'text-right text-5xl sm:text-7xl',
-//    'text-center md:text-xl lg:text-2xl xl:text-3xl'
-// )
-//
 
 interface NavItemProps extends PropsWithChildren {
    className?: string

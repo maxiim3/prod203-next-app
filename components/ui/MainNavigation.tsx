@@ -1,6 +1,7 @@
 import DropDownMenu from '@/components/organism/DropDownMenu'
 import {MobileNavigationProvider} from '@/components/organism/MobileNavigationProvider'
 import NavBarMenu from '@/components/organism/NavBarMenu'
+import prod203 from '@/public/assets/logo/prod203-white.webp'
 import Image from 'next/image'
 import React from 'react'
 import {twMerge} from 'tailwind-merge'
@@ -14,10 +15,10 @@ export default function MainNavigation() {
             'motion-safe:animate-[fadeIn_450ms_ease-out_650ms_both]'
          )}>
          <Image
-            width={148}
-            height={36}
+            width={260}
+            height={80}
             className={'object-contain object-center'}
-            src="/assets/Prod203/203white.png"
+            src={prod203.src}
             alt="Prod203"
          />
          <NavBarMenu />

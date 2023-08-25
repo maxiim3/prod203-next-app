@@ -1,6 +1,6 @@
 import {VideoPreview} from '@/app/showcase/[id]/VideoPreview'
 import {TitleH2} from '@/components/atom/SectionH2'
-import {client, getImageSource, getProjectBySlug, getVideoSource} from '@/lib/sanityClient'
+import {getImageSource, getProjectBySlug, getVideoSource} from '@/lib/sanityClient'
 import Project, {ProjectDescription} from '@/schemas/project.schema'
 import Link from 'next/link'
 import React, {Suspense} from 'react'
