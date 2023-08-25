@@ -1,9 +1,9 @@
-import {AnimatedClientBanner} from '@/components/atom/AnimatedClientBanner'
-import {TitleH2} from '@/components/atom/SectionH2'
+import { AnimatedClientBanner } from '@/components/atom/AnimatedClientBanner'
+import { TitleH2 } from '@/components/atom/SectionH2'
 import StaticClientBanner from '@/components/atom/StaticClientBanner'
 import Icons from '@/lib/Icons'
-import React, {PropsWithChildren, Suspense} from 'react'
-import {twMerge} from 'tailwind-merge'
+import React, { PropsWithChildren, Suspense } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 export default function Home() {
    return (
@@ -206,8 +206,8 @@ const services = [
       Icon: Icons.SolidDisc,
    },
    {
-      title: 'Mixage Immersif Atoms',
-      content: 'Mixage Immersif Atoms',
+      title: 'Mixage Immersif Atmos',
+      content: 'Mixage Immersif Atmos',
       Icon: Icons.Dolby,
    },
    {
