@@ -1,5 +1,4 @@
-import {useAnimate} from 'framer-motion'
-import {useEffect, useRef, useState} from 'react'
+import {useEffect, useState} from 'react'
 
 export default function useAnimateMenu() {
    const [iconType, setIconType] = useState<'cross' | 'burger'>('burger')

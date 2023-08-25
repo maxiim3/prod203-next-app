@@ -5,6 +5,85 @@ import Icons from '@/lib/Icons'
 import React, {PropsWithChildren, Suspense} from 'react'
 import {twMerge} from 'tailwind-merge'
 
+export default function Home() {
+   return (
+      <main className={'relative'}>
+         <ScrollButton />
+         <header>
+            <LandingVideo />
+            <section className="h-screen text-center text-neutral-content">
+               <article
+                  className={
+                     'mx-auto flex h-full select-none flex-col items-center justify-center text-primary'
+                  }>
+                  <h1
+                     className={twMerge(
+                        `font-poppins font-bold uppercase`,
+                        'text-xl-fluid',
+                        'motion-safe:animate-[scaleAndFade_800ms_ease-out_1.11s_both]'
+                     )}>
+                     Jamais 203 Productions
+                  </h1>
+                  <p
+                     className={
+                        'text-lg-fluid motion-safe:animate-[scaleAndFade_800ms_ease-out_1.22s_both]'
+                     }>
+                     Façonnons l’Art du son
+                  </p>
+               </article>
+            </section>
+         </header>
+
+         <div className="relative snap-y snap-mandatory">
+            <SectionTemplate
+               id={'services'}
+               ariaLabel={'Services'}
+               overrideTitleClass={'mb-12'}
+               title={'Services'}>
+               <article className="mx-auto grid w-full max-w-4xl grid-cols-2 place-content-center place-items-center gap-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 md:gap-6">
+                  {services.map((service, index) => (
+                     <span
+                        key={service.title}
+                        className={twMerge(
+                           'flex w-full flex-col items-center justify-center place-self-center p-2 sm:w-1/2 ',
+                           index < services.length - 2 ? 'grid-col-auto' : 'grid-col-span-2'
+                        )}>
+                        {service.Icon ? (
+                           <service.Icon className="text-4xl text-primary sm:text-5xl md:text-6xl" />
+                        ) : (
+                           <img
+                              src={service.source}
+                              className={
+                                 'h-16 w-16 object-contain object-center sm:h-20 sm:w-20 md:h-24 md:w-24'
+                              }
+                              alt="error loading"
+                           />
+                        )}
+                        <h3 className="text-center text-base text-primary text-balance md:text-lg">
+                           {service.title}
+                        </h3>
+                        {/*<p className="text-base text-center">{service.content}</p>*/}
+                     </span>
+                  ))}
+               </article>
+            </SectionTemplate>
+
+            <SectionTemplate
+               title={'Clients'}
+               id={'clients'}
+               overrideTitleClass={'mb-2'}
+               ariaLabel={'Nos Clients'}
+               className={'w-screen bg-primary/80 text-base-100 [&>*]:text-base-100'}>
+               <Suspense fallback={<p>Loading...</p>}>
+                  <AnimatedClientBanner />
+                  <StaticClientBanner />
+               </Suspense>
+            </SectionTemplate>
+         </div>
+      </main>
+   )
+}
+
 function ScrollButton() {
    return (
       <a
@@ -16,7 +95,7 @@ function ScrollButton() {
             'hover:bg-base-100',
             'group z-50'
          )}>
-         <Icons.ArrowFull
+         <Icons.Arrow
             className={
                'animate-bounce text-4xl text-primary/75 group-hover:scale-105 group-hover:animate-none'
             }
@@ -64,87 +143,22 @@ function LandingVideo() {
    )
 }
 
-/* NOTE about animation
- * Animation is done within TailwindCSS - IN LINE -> animate-[keyframe...custom] - for the element of this page : Header apparition, title and subtitle apparition
- * The Button is animated in tailwind.config.js -> animate-revealFromBottom
- * I do not use framer motion here to keep the ability to use SSR
- * */
-export default function Home() {
-   return (
-      <main className={'relative'}>
-         <ScrollButton />
-         <header>
-            <LandingVideo />
-            <section className="h-screen text-center text-neutral-content">
-               <article
-                  className={
-                     'mx-auto flex h-full select-none flex-col items-center justify-center text-primary'
-                  }>
-                  <h1
-                     className={twMerge(
-                        `font-poppins font-bold uppercase`,
-                        'text-xl-fluid',
-                        'motion-safe:animate-[scaleAndFade_800ms_ease-out_1.11s_both]'
-                     )}>
-                     Jamais 203 Productions
-                  </h1>
-                  <p
-                     className={
-                        'text-lg-fluid motion-safe:animate-[scaleAndFade_800ms_ease-out_1.22s_both]'
-                     }>
-                     Façonnons l’Art du son
-                  </p>
-               </article>
-            </section>
-         </header>
-
-         <div className="relative snap-y snap-mandatory">
-            <SectionTemplate
-               id={'services'}
-               ariaLabel={'Nos Services'}
-               className={''}
-               title={'Nos Services'}>
-               <article className="grid w-full grid-cols-2 place-content-center place-items-center gap-2 sm:grid-cols-4 md:gap-6">
-                  {services.map((service, index) => (
-                     <span
-                        key={service.title}
-                        className={twMerge(
-                           'flex w-full flex-col items-center justify-center place-self-center p-2 sm:w-1/2 ',
-                           index < services.length - 2 ? 'grid-col-auto' : 'grid-col-span-2'
-                        )}>
-                        <service.Icon className="text-4xl text-primary sm:text-5xl md:text-6xl" />
-                        <h3 className="text-center text-base text-primary text-balance md:text-lg">
-                           {service.title}
-                        </h3>
-                        {/*<p className="text-base text-center">{service.content}</p>*/}
-                     </span>
-                  ))}
-               </article>
-            </SectionTemplate>
-
-            <SectionTemplate
-               title={'Clients'}
-               id={'clients'}
-               ariaLabel={'Nos Clients'}
-               className={'w-screen bg-primary/80 text-base-100 [&>*]:text-base-100'}>
-               <Suspense fallback={<p>Loading...</p>}>
-                  <AnimatedClientBanner />
-                  <StaticClientBanner />
-               </Suspense>
-            </SectionTemplate>
-         </div>
-      </main>
-   )
-}
-
 interface SectionTemplateProps extends PropsWithChildren {
    title: string
    id: string
    className?: string
    ariaLabel?: string
+   overrideTitleClass?: string
 }
 
-const SectionTemplate = ({children, className, ariaLabel, title, id}: SectionTemplateProps) => (
+const SectionTemplate = ({
+   children,
+   className,
+   overrideTitleClass,
+   ariaLabel,
+   title,
+   id,
+}: SectionTemplateProps) => (
    <section
       className={twMerge(' flex min-h-screen w-screen snap-center items-center')}
       aria-label={ariaLabel}
@@ -154,7 +168,10 @@ const SectionTemplate = ({children, className, ariaLabel, title, id}: SectionTem
             'min-h-xl my-32 w-full flex-col items-center justify-center gap-12 overflow-hidden bg-base-200 py-32',
             className
          )}>
-         <TitleH2 className={'font-semibold'}>{title}</TitleH2>
+         <TitleH2
+            className={twMerge('w-content mx-auto text-center font-semibold', overrideTitleClass)}>
+            {title}
+         </TitleH2>
          {children}
       </main>
    </section>
@@ -175,7 +192,8 @@ const services = [
    {
       title: 'Édition',
       content: 'Édition',
-      Icon: Icons.Cut,
+      // Icon: Icons.Cut,
+      source: '/assets/services/note-white.png',
    },
    {
       title: 'Mixage',
@@ -201,6 +219,18 @@ const services = [
       title: 'Gestion de Projet',
       content: 'Gestion de Projet',
       Icon: Icons.Calendar,
+   },
+   {
+      title: 'Concert',
+      content: 'Concert',
+      // Icon: Icons.Music,
+      source: '/assets/services/piano-white.png',
+   },
+   {
+      title: 'Enregistrement',
+      content: 'Enregistrement',
+      // Icon: Icons.Mixing,
+      source: '/assets/services/micro-white.png',
    },
 ]
 

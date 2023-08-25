@@ -3,7 +3,6 @@
 import BurgerButton from '@/components/molecule/BurgerButton'
 import MenuPortal from '@/components/organism/MenuPortal'
 import {useMobileNavigation} from '@/components/organism/MobileNavigationProvider'
-import useAnimateMenu from '@/hooks/useAnimateMenu'
 import React from 'react'
 import {createPortal} from 'react-dom'
 

@@ -1,6 +1,6 @@
 'use client'
 
-import {usePathname, useRouter} from 'next/navigation'
+import {usePathname} from 'next/navigation'
 import {PropsWithChildren, createContext, useCallback, useContext, useEffect, useState} from 'react'
 
 const useProvideContext = () => {

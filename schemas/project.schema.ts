@@ -1,13 +1,11 @@
-import Brand from "@/schemas/brand.schema"
-
 export default interface Project {
    title: string
-   slug: {current: string; _type: "slug"}
-   thumbnail: {_type: "image"; asset: {_ref: string; _type: "reference"}}
+   slug: {current: string; _type: 'slug'}
+   thumbnail: {_type: 'image'; asset: {_ref: string; _type: 'reference'}}
    releaseDate: Date
    description: ProjectDescription[]
-   preview: {_type: "file"; asset: {_ref: string; _type: "reference"}}
-   client: {_ref: string; _type: "reference"}
+   preview: {_type: 'file'; asset: {_ref: string; _type: 'reference'}}
+   client: {_ref: string; _type: 'reference'}
    _createdAt: Date
    _updatedAt: Date
    _id: string
@@ -15,12 +13,12 @@ export default interface Project {
    _type: string
    category: {
       _ref: string
-      _type: "reference"
+      _type: 'reference'
    }
 }
 
 export type ProjectDescription = {
-   _type: "block"
+   _type: 'block'
    style: string
    _key: string
    markDefs: any[]
@@ -29,7 +27,7 @@ export type ProjectDescription = {
 
 export type ProjectDescriptionChild = {
    _key: string
-   _type: "span"
+   _type: 'span'
    marks: any[]
    text: string
 }
