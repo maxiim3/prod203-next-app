@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function StaticClientBanner() {
    return (
-      <div
+      <article
          className={
             'mx-auto hidden max-w-5xl items-center justify-center gap-x-6 gap-y-0 md:flex  md:flex-wrap'
          }>
@@ -16,6 +16,6 @@ export default function StaticClientBanner() {
                />
             </figcaption>
          ))}
-      </div>
+      </article>
    )
 }

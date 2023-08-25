@@ -1,7 +1,3 @@
-// noinspection SpellCheckingInspection
-
-import Icons from '@/lib/Icons'
-import leMans from '@/public/assets/clients/24h-black.webp'
 import Project from '@/schemas/project.schema'
 
 export const mockedCategories = [

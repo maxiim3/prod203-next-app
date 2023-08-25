@@ -38,9 +38,9 @@ export default function Home() {
             <SectionTemplate
                id={'services'}
                ariaLabel={'Services'}
-               className={''}
-               title={'Nos Services'}>
-               <article className="grid w-full grid-cols-2 place-content-center place-items-center gap-2 sm:grid-cols-4 md:gap-6">
+               overrideTitleClass={'mb-12'}
+               title={'Services'}>
+               <article className="mx-auto grid w-full max-w-4xl grid-cols-2 place-content-center place-items-center gap-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 md:gap-6">
                   {services.map((service, index) => (
                      <span
                         key={service.title}
@@ -48,7 +48,17 @@ export default function Home() {
                            'flex w-full flex-col items-center justify-center place-self-center p-2 sm:w-1/2 ',
                            index < services.length - 2 ? 'grid-col-auto' : 'grid-col-span-2'
                         )}>
-                        <service.Icon className="text-4xl text-primary sm:text-5xl md:text-6xl" />
+                        {service.Icon ? (
+                           <service.Icon className="text-4xl text-primary sm:text-5xl md:text-6xl" />
+                        ) : (
+                           <img
+                              src={service.source}
+                              className={
+                                 'h-16 w-16 object-contain object-center sm:h-20 sm:w-20 md:h-24 md:w-24'
+                              }
+                              alt="error loading"
+                           />
+                        )}
                         <h3 className="text-center text-base text-primary text-balance md:text-lg">
                            {service.title}
                         </h3>
@@ -61,6 +71,7 @@ export default function Home() {
             <SectionTemplate
                title={'Clients'}
                id={'clients'}
+               overrideTitleClass={'mb-2'}
                ariaLabel={'Nos Clients'}
                className={'w-screen bg-primary/80 text-base-100 [&>*]:text-base-100'}>
                <Suspense fallback={<p>Loading...</p>}>
@@ -71,13 +82,6 @@ export default function Home() {
          </div>
       </main>
    )
-}
-
-interface SectionTemplateProps extends PropsWithChildren {
-   title: string
-   id: string
-   className?: string
-   ariaLabel?: string
 }
 
 function ScrollButton() {
@@ -139,7 +143,22 @@ function LandingVideo() {
    )
 }
 
-const SectionTemplate = ({children, className, ariaLabel, title, id}: SectionTemplateProps) => (
+interface SectionTemplateProps extends PropsWithChildren {
+   title: string
+   id: string
+   className?: string
+   ariaLabel?: string
+   overrideTitleClass?: string
+}
+
+const SectionTemplate = ({
+   children,
+   className,
+   overrideTitleClass,
+   ariaLabel,
+   title,
+   id,
+}: SectionTemplateProps) => (
    <section
       className={twMerge(' flex min-h-screen w-screen snap-center items-center')}
       aria-label={ariaLabel}
@@ -149,7 +168,10 @@ const SectionTemplate = ({children, className, ariaLabel, title, id}: SectionTem
             'min-h-xl my-32 w-full flex-col items-center justify-center gap-12 overflow-hidden bg-base-200 py-32',
             className
          )}>
-         <TitleH2 className={'font-semibold'}>{title}</TitleH2>
+         <TitleH2
+            className={twMerge('w-content mx-auto text-center font-semibold', overrideTitleClass)}>
+            {title}
+         </TitleH2>
          {children}
       </main>
    </section>
@@ -170,7 +192,8 @@ const services = [
    {
       title: 'Édition',
       content: 'Édition',
-      Icon: Icons.Cut,
+      // Icon: Icons.Cut,
+      source: '/assets/services/note-white.png',
    },
    {
       title: 'Mixage',
@@ -200,12 +223,14 @@ const services = [
    {
       title: 'Concert',
       content: 'Concert',
-      Icon: Icons.Music,
+      // Icon: Icons.Music,
+      source: '/assets/services/piano-white.png',
    },
    {
       title: 'Enregistrement',
       content: 'Enregistrement',
-      Icon: Icons.Mixing,
+      // Icon: Icons.Mixing,
+      source: '/assets/services/micro-white.png',
    },
 ]
 
