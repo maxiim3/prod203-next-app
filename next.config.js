@@ -1,7 +1,10 @@
+// noinspection GrazieInspection
+
 /** @type {import("next").NextConfig} */
 const nextConfig = {
    optimizeFonts: true,
-   crossOrigin: "use-credentials",
+   crossOrigin: 'use-credentials',
+
    // i18n: {
    //    // These are all the locales you want to support in
    //    // your application

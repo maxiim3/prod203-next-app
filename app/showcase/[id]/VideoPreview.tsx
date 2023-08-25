@@ -1,10 +1,12 @@
-"use client"
+// noinspection SpellCheckingInspection
 
-import React from "react"
+'use client'
+
+import React from 'react'
 
 export function VideoPreview({videoURL}: {videoURL: string}) {
    return (
-      <fieldset className={"group/video relative"}>
+      <fieldset className={'group/video relative'}>
          <video
             className={`w-screen`}
             controls={false}
@@ -28,7 +30,7 @@ export function VideoPreview({videoURL}: {videoURL: string}) {
             height="128"
             viewBox="0 0 32 32"
             className={
-               "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-80 group-hover/video:hidden"
+               'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-80 group-hover/video:hidden'
             }
             xmlns="http://www.w3.org/2000/svg">
             <path

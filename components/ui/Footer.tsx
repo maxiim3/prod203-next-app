@@ -1,4 +1,5 @@
 import {classed} from '@tw-classed/react'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import {twMerge} from 'tailwind-merge'
@@ -77,8 +78,10 @@ export default function Footer() {
 
          <section className={'flex-1'}>
             <img
-               src="/assets/Prod203/203white.png"
-               alt=""
+               src={
+                  'https://media4.giphy.com/media/Mah9dFWo1WZX0WM62Q/giphy.gif?cid=ecf05e478agi6i7r93sg1aa8fuenbbx4ovmk2lssg0nynj39&ep=v1_gifs_search&rid=giphy.gif&ct=ghttps://media4.giphy.com/media/Mah9dFWo1WZX0WM62Q/giphy.gif?cid=ecf05e478agi6i7r93sg1aa8fuenbbx4ovmk2lssg0nynj39&ep=v1_gifs_search&rid=giphy.gif&ct=g"'
+               }
+               alt={'Prod 203'}
             />
          </section>
          <section
