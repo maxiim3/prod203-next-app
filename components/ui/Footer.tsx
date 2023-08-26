@@ -104,13 +104,13 @@ const Section=  (props : PropsWithChildren<{ className?: string }>) => (
 
  const SectionTitle = (props: PropsWithChildren<{ className?: string }>) => {
    return (
-      <h3 className={twMerge('font-regular w-full font-semibold text-xl text-primary/80 uppercase tracking-widest'
+      <h3 className={twMerge('font-regular w-full font-semibold text-xl text-primary uppercase tracking-widest'
          , props.className)}>{props.children}</h3>
    )
 }
 const Item = classed(
    'li',
-   'list-none text-base text-primary/90 text-base sm:text-lg leading-loose tracking-wider font-regular',
+   'list-none text-base text-primary text-base sm:text-lg leading-loose tracking-wider font-regular',
    'hover:text-primary'
 )
 
