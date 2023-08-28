@@ -6,10 +6,10 @@ import Image from "next/image"
 import React, {PropsWithChildren, Suspense} from "react"
 import {twMerge} from "tailwind-merge"
 
-const Home = () => {
+export default async function Home() {
 	return (
 		<main className={"relative"}>
-			<ScrollButton />
+			{/* <ScrollButton /> */}
 			<header>
 				<LandingVideo />
 				<section className="h-screen text-center text-neutral-content">
@@ -28,7 +28,7 @@ const Home = () => {
 							src={"/assets/logo/prod203-white.webp"}
 							alt="Prod203"
 							className={twMerge(
-								"w-full max-h-[500px] object-center object-contain",
+								"w-full max-h-[250px] object-center object-contain",
 								"motion-safe:animate-[scaleAndFade_800ms_ease-out_1.11s_both]"
 							)}
 							width={1500}
@@ -48,29 +48,29 @@ const Home = () => {
 				{/* Section Services */}
 				<SectionTemplate
 					id={"services"}
+					overrideTitleClass="mb-12"
 					ariaLabel={"Services"}
-					overrideTitleClass={"mb-12"}
 					title={"Services"}>
-					<article className="grid w-full max-w-4xl grid-cols-2 gap-2 mx-auto place-content-center place-items-center xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 md:gap-6">
+					<article className="grid grid-cols-2 mx-auto w-fit gap-x-3 gap-y-5 place-content-center place-items-center xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 xs:gap-y-6 sm:gap-x-8 sm:gap-y-8 ">
 						{services.map((service, index) => (
 							<span
 								key={service.title}
 								className={twMerge(
-									"flex w-full flex-col items-center justify-center place-self-center p-2 sm:w-1/2 ",
-									index < services.length - 2 ? "grid-col-auto" : "grid-col-span-2"
+									"flex flex-col items-center justify-center place-self-center gap-2",
+									"h-fit px-0.5 sm:p-1 w-fit md:px-2"
 								)}>
 								{service.Icon ? (
-									<service.Icon className="text-4xl text-primary sm:text-5xl md:text-6xl" />
+									<service.Icon className="text-2xl text-primary" />
 								) : (
-									<img
-										src={service.source}
-										className={
-											"h-16 w-16 object-contain object-center sm:h-20 sm:w-20 md:h-24 md:w-24"
-										}
+									<Image
+										width={64}
+										height={64}
+										src={service.source!}
+										className={"h-8 w-8 object-contain object-center"}
 										alt="error loading"
 									/>
 								)}
-								<h3 className="text-base text-center text-primary text-balance md:text-lg">
+								<h3 className="w-32 text-sm font-light tracking-[1.4px] text-center text-primary text-balance">
 									{service.title}
 								</h3>
 								{/*<p className="text-base text-center">{service.content}</p>*/}
@@ -80,16 +80,32 @@ const Home = () => {
 				</SectionTemplate>
 				<SectionTemplate
 					id="about-us"
-					title="Hello">
-					<p></p>
+					className="my-20"
+					title="">
+					<div
+						className={
+							"relative flex flex-col px-4 m-4 gap-4 mx-auto xs:px-8 md:grid md:grid-cols-2 md:gap-x-12 border-t border-b py-12"
+						}>
+						<p className={"max-w-[70ch] tracking-wide leading-relaxed font-thin text-primary"}>
+							Fondée en 2021 par Jérôme Kuhn, Nathan Stornetta et Samuel Briand, Jamais 203 Productions est
+							spécialisée dans la création de contenus sonores variés.
+						</p>
+						<p className={"max-w-[70ch] tracking-wide leading-relaxed font-thin text-primary"}>
+							Nos services englobent la composition musicale, l{"'"}enregistrement, la production et le
+							mixage de musique symphonique et romantique, le design sonore pour des expériences immersives,
+							la réalisation de podcasts, la production de bandes sonores pour les spectacles en direct,
+							ainsi que l{"'"}édition musicale et la production pour divers supports. les concerts de
+							musique classique, les cérémonies, et bien plus encore.
+						</p>
+					</div>
 				</SectionTemplate>
 				{/* Section Clients / References */}
 				<SectionTemplate
 					title={"Références"}
 					id={"clients"}
+					className={"mb-40 w-screen"}
 					overrideTitleClass={"mb-2"}
-					ariaLabel={"Nos Clients"}
-					className={"w-screen bg-primary/80 text-base-100 [&>*]:text-base-100"}>
+					ariaLabel={"Nos Clients"}>
 					<Suspense fallback={<p>Loading...</p>}>
 						<AnimatedClientBanner />
 						<StaticClientBanner />
@@ -99,8 +115,6 @@ const Home = () => {
 		</main>
 	)
 }
-
-export default Home
 
 function ScrollButton() {
 	return (
@@ -169,15 +183,15 @@ interface SectionTemplateProps extends PropsWithChildren {
 
 const SectionTemplate = ({children, className, overrideTitleClass, ariaLabel, title, id}: SectionTemplateProps) => (
 	<section
-		className={twMerge(" flex min-h-screen w-screen snap-center items-center")}
 		aria-label={ariaLabel}
+		className={twMerge(" flex min-h-[420px] w-screen snap-center items-center max-w-[980px] mx-auto")}
 		id={id}>
-		<main
-			className={twMerge(
-				"min-h-xl my-32 w-full flex-col items-center justify-center gap-12 overflow-hidden bg-base-200 py-32",
-				className
-			)}>
-			<TitleH2 className={twMerge("w-content mx-auto text-center font-semibold", overrideTitleClass)}>
+		<main className={twMerge("min-h-xl  w-full flex-col gap-12 overflow-hidden py-8", className)}>
+			<TitleH2
+				className={twMerge(
+					"w-content mx-auto text-center text-4xl sm:text-5xl font-semibold ",
+					overrideTitleClass
+				)}>
 				{title}
 			</TitleH2>
 			{children}
@@ -214,8 +228,8 @@ const services = [
 		Icon: Icons.SolidDisc,
 	},
 	{
-		title: "Mixage Immersif Atmos",
-		content: "Mixage Immersif Atmos",
+		title: "Dolby Atmos",
+		content: "Dolby Atmos",
 		Icon: Icons.Dolby,
 	},
 	{
