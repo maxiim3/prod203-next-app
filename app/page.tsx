@@ -28,7 +28,7 @@ const Home = () => {
 							src={"/assets/logo/prod203-white.webp"}
 							alt="Prod203"
 							className={twMerge(
-								"w-full max-h-[500px] object-center object-contain z-50",
+								"w-full max-h-[500px] object-center object-contain",
 								"motion-safe:animate-[scaleAndFade_800ms_ease-out_1.11s_both]"
 							)}
 							width={1500}
@@ -45,6 +45,7 @@ const Home = () => {
 			</header>
 
 			<div className="relative snap-y snap-mandatory">
+				{/* Section Services */}
 				<SectionTemplate
 					id={"services"}
 					ariaLabel={"Services"}
@@ -77,7 +78,12 @@ const Home = () => {
 						))}
 					</article>
 				</SectionTemplate>
-
+				<SectionTemplate
+					id="about-us"
+					title="Hello">
+					<p></p>
+				</SectionTemplate>
+				{/* Section Clients / References */}
 				<SectionTemplate
 					title={"Références"}
 					id={"clients"}
