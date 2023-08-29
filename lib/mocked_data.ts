@@ -1370,6 +1370,10 @@ export const mockedBrands = [
 		_type: "brand",
 	},
 ]
+/**
+ * # Mocked Clients References
+ * @description Mocked Clients references
+ */
 export const clients = [
 	{
 		title: "Canal+",
