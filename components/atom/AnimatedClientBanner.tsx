@@ -19,7 +19,7 @@ export function AnimatedClientBanner() {
 							height={200}
 							alt={client.title}
 							src={client.source}
-							className={"mx-3 h-40 w-36 object-contain object-center opacity-70"}
+							className={"mx-3 h-24 w-36 object-contain object-center opacity-70"}
 						/>
 					</figcaption>
 				))}
@@ -35,7 +35,7 @@ export function AnimatedClientBanner() {
 							height={200}
 							alt={client.title}
 							src={client.source}
-							className={"mx-3 h-40 w-36 object-contain object-center opacity-70"}
+							className={"mx-3 h-24 w-36 object-contain object-center opacity-70"}
 						/>
 					</figcaption>
 				))}
