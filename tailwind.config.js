@@ -103,6 +103,7 @@ module.exports = {
          },
          screens: {
             xs: '475px',
+
             ...defaultTheme.screens,
          },
          width: {
