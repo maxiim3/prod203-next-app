@@ -17,7 +17,7 @@ export default function MainNavigation() {
 			<Image
 				width={260}
 				height={80}
-				className={"object-contain object-center w-32 -translate-x-2 sm:w-36"} // ADJUSTED THE TRANSLATE-X TO CENTER THE LOGO
+				className={"object-contain object-center w-32 -translate-x-2 sm:w-36"} // ! ADJUSTED THE TRANSLATE-X TO CENTER THE LOGO
 				src={prod203.src}
 				alt="Prod203"
 			/>
