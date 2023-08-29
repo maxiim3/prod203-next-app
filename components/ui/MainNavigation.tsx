@@ -12,7 +12,7 @@ export default function MainNavigation() {
 			id={"header"}
 			className={twMerge(
 				"align-center fixed py-3 left-0 top-0 z-50 flex w-screen justify-between bg-base-100/60 px-2 backdrop-blur-sm md:px-4 lg:px-8",
-				"motion-safe:animate-[fadeIn_450ms_ease-out_650ms_both]"
+				"motion-safe:animate-[fadeIn_850ms_ease-out_950ms_both]"
 			)}>
 			<Image
 				width={260}
