@@ -6,6 +6,7 @@ import Image from "next/image"
 import React, {PropsWithChildren, Suspense} from "react"
 import {twMerge} from "tailwind-merge"
 import {Video} from "./Video"
+import {classed} from "@tw-classed/react"
 
 // ? FEATURE Add a scroll parallax effect to the hero section
 
@@ -23,9 +24,7 @@ export default async function Home() {
 					id={"hero"}
 					aria-label={"Video hero banner"}
 					className="absolute top-0 w-screen h-screen">
-					<Suspense fallback={<p>Loading the video...</p>}>
-						<Video />
-					</Suspense>
+					<Video />
 				</section>
 				{/**
 				 * ==========================
@@ -128,17 +127,21 @@ export default async function Home() {
 						className={
 							"relative flex flex-col px-4 m-4 gap-4 mx-auto xs:px-8 md:grid md:grid-cols-2 md:gap-x-12 border-t border-b py-12"
 						}>
-						<p className={"max-w-[70ch] tracking-wide leading-relaxed font-extralight text-primary"}>
-							Fondée en 2021 par Jérôme Kuhn, Nathan Stornetta et Samuel Briand, Jamais 203 Productions est
-							spécialisée dans la création de contenus sonores variés.
-						</p>
-						<p className={"max-w-[70ch] tracking-wide leading-relaxed font-extralight text-primary"}>
-							Nos services englobent la composition musicale, l{"'"}enregistrement, la production et le
-							mixage de musique symphonique et romantique, le design sonore pour des expériences immersives,
-							la réalisation de podcasts, la production de bandes sonores pour les spectacles en direct,
-							ainsi que l{"'"}édition musicale et la production pour divers supports. les concerts de
-							musique classique, les cérémonies, et bien plus encore.
-						</p>
+						<Text>
+							Fondée en 2021 par Jérôme Kuhn, Nathan Stornetta et Samuel Briand,{" "}
+							<Accent className="uppercase">Jamais 203 Productions</Accent> est spécialisée dans la création
+							de contenus sonores exigeants.
+						</Text>
+						<Text>
+							Nos savoir-faire englobent la <Accent>composition musicale</Accent>, l{"'"}
+							<Accent>enregistrement</Accent>, la <Accent>production</Accent> et le mixage de musiques
+							symphoniques et romantiques; Le <Accent>design sonore</Accent> pour des expériences
+							immersives, la réalisation de <Accent>podcasts</Accent>, la production de{" "}
+							<Accent>bandes sonores pour les spectacles</Accent> en direct, ainsi que l{"'"}
+							<Accent>édition musicale</Accent> et la production pour divers supports tels que les{" "}
+							<Accent>concerts</Accent>
+							de <Accent>musique classique</Accent>, les <Accent>cérémonies</Accent>, et bien plus encore.
+						</Text>
 					</div>
 				</SectionTemplate>
 				{/**
@@ -229,3 +232,12 @@ const services = [
 ]
 
 // clients: Canal+, M6, Balenciaga, Nike, DisneyLand Paris, Citroen, Le,Puy Du Fou, 24h Le Mans, Chateau Fort Sedan, Edith Piaf Symphonique, Mon PLus Beau Noel, Studio Canal, Coca Cola Credit Agricole,
+
+const Text = ({children, className}: PropsWithChildren<{className?: string}>) => (
+	<p className={twMerge("max-w-[70ch] tracking-wider leading-relaxed font-extralight text-primary", className)}>
+		{children}
+	</p>
+)
+const Accent = ({children, className}: PropsWithChildren<{className?: string}>) => (
+	<strong className={twMerge("font-semibold", className)}>{children}</strong>
+)
