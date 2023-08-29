@@ -6,7 +6,7 @@ import Image from 'next/image'
 import React, {PropsWithChildren, Suspense} from 'react'
 import {twMerge} from 'tailwind-merge'
 import {ScrollButton} from './ScrollButton'
-import {Video} from './Video'
+import {VideoBanner} from './VideoBanner'
 
 export default async function Home() {
    return (
@@ -14,20 +14,20 @@ export default async function Home() {
          <header>
             {/**
              * ==========================
-             * 		HERO SECTION
-             * 	    VIDEO BANNER
+             *      HERO SECTION
+             *       VIDEO BANNER
              * ==========================
              * **/}
             <section
                id={'hero'}
                aria-label={'Video hero banner'}
                className="absolute top-0 h-screen w-screen">
-               <Video />
+               <VideoBanner />
             </section>
             {/**
              * ==========================
-             * 		HERO SECTION
-             * 	   CONTENT BANNER
+             *      HERO SECTION
+             *      CONTENT BANNER
              * ==========================
              * **/}
             <section className="relative h-screen text-center text-neutral-content">
@@ -46,8 +46,8 @@ export default async function Home() {
                   </h1>
                   {/**
                    * ==========================
-                   * 		HERO SECTION
-                   * 	     LOGO IMAGE
+                   *      HERO SECTION
+                   *        LOGO IMAGE
                    * ==========================
                    * **/}
                   <Image
@@ -74,16 +74,15 @@ export default async function Home() {
          <div className="relative snap-y snap-mandatory">
             {/**
              * ==========================
-             * 		TOP SECTION 1/3
+             *      TOP SECTION 1/3
              *       SERVICES
              * ==========================
              **/}
             <SectionTemplate
                id={'services'}
                ariaLabel={'Services'}
-               outterContainerStyles="mt-16"
                title={'Services'}>
-               <article className="mx-auto grid w-fit grid-cols-2 place-content-center place-items-center gap-x-3 gap-y-5 xs:grid-cols-3 xs:gap-y-6 sm:grid-cols-4 sm:gap-x-8 sm:gap-y-8 md:grid-cols-5 ">
+               <article className="mx-auto my-12 grid w-fit grid-cols-2 place-content-center place-items-center gap-x-3 gap-y-5 xs:grid-cols-3 xs:gap-y-6 sm:grid-cols-4 sm:gap-x-8 sm:gap-y-8 md:grid-cols-5 ">
                   {services.map((service, index) => (
                      <span
                         key={service.title}
@@ -115,18 +114,17 @@ export default async function Home() {
 
             {/**
              * ==========================
-             * 		MIDDLE SECTION 2/3
-             * 	 	  ABOUT US
+             *      MIDDLE SECTION 2/3
+             *        ABOUT US
              * ==========================
              * **/}
             <SectionTemplate
                id="about"
                sectionTitleStyles="hidden"
-               outterContainerStyles="my-16"
                title="">
                <div
                   className={
-                     'relative m-4 mx-auto flex flex-col gap-4 border-b border-t px-4 py-12 xs:px-8 md:grid md:grid-cols-2 md:gap-x-12'
+                     'relative m-12 mx-auto flex flex-col gap-4 border-b border-t px-4 py-12 xs:px-8 md:grid md:grid-cols-2 md:gap-x-12'
                   }>
                   <Text>
                      Fondée en 2021 par Jérôme Kuhn, Nathan Stornetta et Samuel Briand,{' '}
@@ -150,14 +148,13 @@ export default async function Home() {
             </SectionTemplate>
             {/**
              * ==========================
-             * 		BOTTOM SECTION 3/3
-             * 		  CLIENTS
+             *      BOTTOM SECTION 3/3
+             *        CLIENTS
              * ==========================
              * **/}
             <SectionTemplate
                title={'Références'}
                id={'references'}
-               outterContainerStyles={'mb-24'}
                innerContainerStyles={'w-screen'}
                ariaLabel={'Nos Clients'}>
                <Suspense fallback={<p>Loading...</p>}>
@@ -165,8 +162,9 @@ export default async function Home() {
                   <StaticClientBanner />
                </Suspense>
                <ScrollButton
+                  svgUp
                   sectionID={'#'}
-                  className={'rotate-180'}
+                  className={'-rotate-180'}
                />
             </SectionTemplate>
          </div>
@@ -176,7 +174,7 @@ export default async function Home() {
 
 const SectionTemplate = ({
    children,
-   outterContainerStyles,
+   outerContainerStyles,
    innerContainerStyles,
    sectionTitleStyles,
    ariaLabel,
@@ -185,7 +183,7 @@ const SectionTemplate = ({
 }: PropsWithChildren<{
    title: string
    id: string
-   outterContainerStyles?: string
+   outerContainerStyles?: string
    innerContainerStyles?: string
    sectionTitleStyles?: string
    ariaLabel?: string
@@ -193,8 +191,8 @@ const SectionTemplate = ({
    <section
       aria-label={ariaLabel}
       className={twMerge(
-         ' relative mx-auto flex h-screen w-screen max-w-[980px] snap-center items-center',
-         outterContainerStyles
+         ' relative mx-auto flex h-full min-h-screen w-screen max-w-[980px] snap-center items-center py-2',
+         outerContainerStyles
       )}
       id={id}>
       <main

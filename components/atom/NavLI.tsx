@@ -7,7 +7,7 @@ interface NavItemProps extends PropsWithChildren {
 	props?: any
 }
 
-const NavItem = ({children, active, className, ...props}: NavItemProps) => (
+const NavLI = ({children, active, className, ...props}: NavItemProps) => (
 	<li
 		className={twMerge(
 			"relative text-xl font-thin uppercase tracking-wide text-primary",
@@ -23,4 +23,4 @@ const NavItem = ({children, active, className, ...props}: NavItemProps) => (
 	</li>
 )
 
-export default NavItem
+export default NavLI
