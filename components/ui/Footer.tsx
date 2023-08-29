@@ -12,7 +12,7 @@ export default function Footer() {
 					<Image
 						width={260}
 						height={80}
-						className="object-contain object-left w-48 -translate-x-6"
+						className="object-contain object-left w-48 -translate-x-6 select-none"
 						src={"/assets/logo/prod203-white.webp"}
 						alt={"Prod 203"}
 					/>
