@@ -6,7 +6,7 @@ import {twMerge} from "tailwind-merge"
 
 export default function Footer() {
 	return (
-		<footer className={"bg-base-200/60"}>
+		<footer className={"bg-base-200/60 relative"}>
 			<div className="max-w-screen-xl px-4 py-16 mx-auto space-y-8 sm:px-6 lg:space-y-16 lg:px-8">
 				<div className="sm:flex sm:justify-between">
 					<Image

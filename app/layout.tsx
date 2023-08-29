@@ -4,6 +4,7 @@ import {cormorant, manrope, poppins} from "@/styles/font"
 import type {Metadata} from "next"
 import React, {PropsWithChildren} from "react"
 import "./globals.css"
+import Link from "next/link"
 
 export const metadata: Metadata = {
 	title: "Prod203 | ",
