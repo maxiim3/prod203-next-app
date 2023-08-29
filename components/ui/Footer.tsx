@@ -19,7 +19,11 @@ export default function Footer() {
 
 					<ul className="flex justify-start gap-6 mt-8 sm:mt-0 sm:justify-end">
 						<li>
-							<Link href={"#"}>
+							<Link
+								aria-label="Ouvrir notre page Linkedin"
+								title="Ouvrir notre page Linkedin"
+								aria-description="Cliquez pour être redirigé vers notre page Linkedin"
+								href={"https://www.linkedin.com/company/jamais-203-productions/"}>
 								<svg
 									width="24"
 									height="24"
