@@ -13,7 +13,7 @@ export default function StaticClientBanner() {
 						height={200}
 						alt={client.title}
 						src={client.source}
-						className={"mx-2 h-32 w-48 object-contain object-center opacity-70"}
+						className={"mx-2 h-32 w-48 object-contain object-center select-none opacity-70"}
 					/>
 				</figcaption>
 			))}
