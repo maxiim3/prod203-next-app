@@ -14,7 +14,7 @@ export const ScrollButton = ({
 }) => {
    return (
       <div
-         className={`absolute bottom-0 z-30 flex w-full items-center justify-end pb-8 pr-4 sm:justify-center sm:p-0 sm:pb-[5vw] 2xl:pb-40 landscape:justify-end landscape:pb-8 landscape:pr-4 landscape:md:justify-center landscape:md:p-0`}>
+         className={`absolute bottom-0 z-30 flex w-full items-center justify-end pb-8 pr-4 sm:justify-center sm:pb-[5vw] sm:pr-0 2xl:pb-40 landscape:justify-end landscape:pb-8 landscape:pr-4 landscape:md:justify-center  landscape:md:pb-[5vw] landscape:md:pr-0 landscape:2xl:pb-40`}>
          <motion.a
             initial={{scale: 0.9, translateY: -25, opacity: 0.2}}
             whileInView={{
