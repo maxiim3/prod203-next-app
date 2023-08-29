@@ -234,7 +234,11 @@ const services = [
 // clients: Canal+, M6, Balenciaga, Nike, DisneyLand Paris, Citroen, Le,Puy Du Fou, 24h Le Mans, Chateau Fort Sedan, Edith Piaf Symphonique, Mon PLus Beau Noel, Studio Canal, Coca Cola Credit Agricole,
 
 const Text = ({children, className}: PropsWithChildren<{className?: string}>) => (
-	<p className={twMerge("max-w-[70ch] tracking-wider leading-relaxed font-extralight text-primary", className)}>
+	<p
+		className={twMerge(
+			"max-w-[60ch] tracking-wider text-balance leading-relaxed font-extralight text-primary",
+			className
+		)}>
 		{children}
 	</p>
 )
