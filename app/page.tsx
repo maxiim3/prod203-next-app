@@ -9,26 +9,74 @@ import {twMerge} from "tailwind-merge"
 export default async function Home() {
 	return (
 		<main className={"relative"}>
-			{/* <ScrollButton /> */}
 			<header>
-				<LandingVideo />
+				{/**
+				 * ==========================
+				 * 		HERO SECTION
+				 * 	    VIDEO BANNER
+				 * ==========================
+				 * **/}
+				<section
+					id={"hero"}
+					aria-label={"Video hero banner"}
+					className="absolute top-0 w-screen h-screen">
+					<video
+						autoPlay={true}
+						muted={true}
+						loop={true}
+						controls={true}
+						className={twMerge(
+							"h-[100vh] w-[100%] object-cover object-center",
+							"motion-safe:animate-[scaleAndFade_50ms_ease-out_both]"
+						)}>
+						<source
+							src="/assets/video/pexels-c-technical-7095057%20(720p).mp4"
+							type="video/mp4"
+							media="(min-width: 680px) and (max-width: 1080px)"
+						/>
+						<source
+							src="/assets/video/pexels-c-technical-7095057%20(1080p).mp4"
+							type="video/mp4"
+							media="(min-width: 1080px) and (max-width: 1439px)"
+						/>
+						<source
+							src="/assets/video/pexels-c-technical-7095057%20(2160p).mp4"
+							type="video/mp4"
+							media="(min-width: 1440px)"
+						/>
+					</video>
+				</section>
+				{/**
+				 * ==========================
+				 * 		HERO SECTION
+				 * 	   CONTENT BANNER
+				 * ==========================
+				 * **/}
 				<section className="h-screen text-center text-neutral-content">
 					<article
-						className={"mx-auto flex h-full select-none flex-col items-center justify-center text-primary"}>
+						className={
+							"mx-auto flex h-full select-none flex-col relative items-center justify-center text-primary"
+						}>
 						<h1
 							className={twMerge(
 								`font-poppins font-bold uppercase`,
 								"text-xl-fluid",
 								"motion-safe:animate-[scaleAndFade_800ms_ease-out_1.11s_both]",
-								"hidden"
+								"invisible absolute -top-full -left-full"
 							)}>
 							Jamais 203 Productions
 						</h1>
+						{/**
+						 * ==========================
+						 * 		HERO SECTION
+						 * 	     LOGO IMAGE
+						 * ==========================
+						 * **/}
 						<Image
 							src={"/assets/logo/prod203-white.webp"}
 							alt="Prod203"
 							className={twMerge(
-								"w-full max-h-[250px] object-center object-contain",
+								"max-h-32 w-full object-center object-contain",
 								"motion-safe:animate-[scaleAndFade_800ms_ease-out_1.11s_both]"
 							)}
 							width={1500}
@@ -45,11 +93,16 @@ export default async function Home() {
 			</header>
 
 			<div className="relative snap-y snap-mandatory">
-				{/* Section Services */}
+				{/**
+				 * ==========================
+				 * 		TOP SECTION 1/3
+				 *       SERVICES
+				 * ==========================
+				 **/}
 				<SectionTemplate
 					id={"services"}
-					overrideTitleClass="mb-12"
 					ariaLabel={"Services"}
+					outterContainerStyles="mt-20"
 					title={"Services"}>
 					<article className="grid grid-cols-2 mx-auto w-fit gap-x-3 gap-y-5 place-content-center place-items-center xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 xs:gap-y-6 sm:gap-x-8 sm:gap-y-8 ">
 						{services.map((service, index) => (
@@ -78,19 +131,27 @@ export default async function Home() {
 						))}
 					</article>
 				</SectionTemplate>
+
+				{/**
+				 * ==========================
+				 * 		MIDDLE SECTION 2/3
+				 * 	 	  ABOUT US
+				 * ==========================
+				 * **/}
 				<SectionTemplate
 					id="about-us"
-					className="my-20"
+					sectionTitleStyles="hidden"
+					outterContainerStyles="my-24"
 					title="">
 					<div
 						className={
 							"relative flex flex-col px-4 m-4 gap-4 mx-auto xs:px-8 md:grid md:grid-cols-2 md:gap-x-12 border-t border-b py-12"
 						}>
-						<p className={"max-w-[70ch] tracking-wide leading-relaxed font-thin text-primary"}>
+						<p className={"max-w-[70ch] tracking-wide leading-relaxed font-extralight text-primary"}>
 							Fondée en 2021 par Jérôme Kuhn, Nathan Stornetta et Samuel Briand, Jamais 203 Productions est
 							spécialisée dans la création de contenus sonores variés.
 						</p>
-						<p className={"max-w-[70ch] tracking-wide leading-relaxed font-thin text-primary"}>
+						<p className={"max-w-[70ch] tracking-wide leading-relaxed font-extralight text-primary"}>
 							Nos services englobent la composition musicale, l{"'"}enregistrement, la production et le
 							mixage de musique symphonique et romantique, le design sonore pour des expériences immersives,
 							la réalisation de podcasts, la production de bandes sonores pour les spectacles en direct,
@@ -99,12 +160,17 @@ export default async function Home() {
 						</p>
 					</div>
 				</SectionTemplate>
-				{/* Section Clients / References */}
+				{/**
+				 * ==========================
+				 * 		BOTTOM SECTION 3/3
+				 * 		  CLIENTS
+				 * ==========================
+				 * **/}
 				<SectionTemplate
 					title={"Références"}
 					id={"clients"}
-					className={"mb-40 w-screen"}
-					overrideTitleClass={"mb-2"}
+					outterContainerStyles={"mb-20"}
+					innerContainerStyles={"w-screen"}
 					ariaLabel={"Nos Clients"}>
 					<Suspense fallback={<p>Loading...</p>}>
 						<AnimatedClientBanner />
@@ -134,63 +200,31 @@ function ScrollButton() {
 	)
 }
 
-function LandingVideo() {
-	return (
-		<section
-			id={"hero"}
-			aria-label={"Video hero banner"}
-			className="absolute top-0 w-screen h-screen">
-			<video
-				autoPlay={true}
-				muted={true}
-				loop={true}
-				controls={false}
-				className={twMerge(
-					"h-[100vh] w-[100%] object-cover object-center",
-					"motion-safe:animate-[scaleAndFade_50ms_ease-out_both]"
-				)}>
-				<source
-					src="/assets/video/pexels-c-technical-7095057%20(540p).mp4"
-					type="video/mp4"
-				/>
-				<source
-					src="/assets/video/pexels-c-technical-7095057%20(720p).mp4"
-					type="video/mp4"
-					media="(min-width: 680px) and (max-width: 1080px)"
-				/>
-				<source
-					src="/assets/video/pexels-c-technical-7095057%20(1080p).mp4"
-					type="video/mp4"
-					media="(min-width: 1080px) and (max-width: 1439px)"
-				/>
-				<source
-					src="/assets/video/pexels-c-technical-7095057%20(2160p).mp4"
-					type="video/mp4"
-					media="(min-width: 1440px)"
-				/>
-			</video>
-		</section>
-	)
-}
-
-interface SectionTemplateProps extends PropsWithChildren {
+const SectionTemplate = ({
+	children,
+	outterContainerStyles,
+	innerContainerStyles,
+	sectionTitleStyles,
+	ariaLabel,
+	title,
+	id,
+}: PropsWithChildren<{
 	title: string
 	id: string
-	className?: string
+	outterContainerStyles?: string
+	innerContainerStyles?: string
+	sectionTitleStyles?: string
 	ariaLabel?: string
-	overrideTitleClass?: string
-}
-
-const SectionTemplate = ({children, className, overrideTitleClass, ariaLabel, title, id}: SectionTemplateProps) => (
+}>) => (
 	<section
 		aria-label={ariaLabel}
-		className={twMerge(" flex min-h-[420px] w-screen snap-center items-center max-w-[980px] mx-auto")}
+		className={twMerge(" flex w-screen snap-center items-center max-w-[980px] mx-auto", outterContainerStyles)}
 		id={id}>
-		<main className={twMerge("min-h-xl  w-full flex-col gap-12 overflow-hidden py-8", className)}>
+		<main className={twMerge("min-h-xl flex w-full flex-col gap-12 overflow-hidden", innerContainerStyles)}>
 			<TitleH2
 				className={twMerge(
-					"w-content mx-auto text-center text-4xl sm:text-5xl font-semibold ",
-					overrideTitleClass
+					"w-content mx-auto text-center text-4xl sm:text-5xl font-thin uppercase ",
+					sectionTitleStyles
 				)}>
 				{title}
 			</TitleH2>
@@ -201,59 +235,16 @@ const SectionTemplate = ({children, className, overrideTitleClass, ariaLabel, ti
 
 // service : Musiques Originales, Production Executive, Édition, Mixage, Mastering, Mixage Immersif Atoms, Design Sonore, Gestion de Projet
 const services = [
-	{
-		title: "Musiques Originales",
-		content: "Musiques Originales",
-		Icon: Icons.Piano,
-	},
-	{
-		title: "Production Executive",
-		content: "Production Executive",
-		Icon: Icons.Music,
-	},
-	{
-		title: "Édition",
-		content: "Édition",
-		// Icon: Icons.Cut,
-		source: "/assets/services/note-white.png",
-	},
-	{
-		title: "Mixage",
-		content: "Mixage",
-		Icon: Icons.Mixing,
-	},
-	{
-		title: "Mastering",
-		content: "Mastering",
-		Icon: Icons.SolidDisc,
-	},
-	{
-		title: "Dolby Atmos",
-		content: "Dolby Atmos",
-		Icon: Icons.Dolby,
-	},
-	{
-		title: "Design Sonore",
-		content: "Design Sonore",
-		Icon: Icons.SoundWave,
-	},
-	{
-		title: "Gestion de Projet",
-		content: "Gestion de Projet",
-		Icon: Icons.Calendar,
-	},
-	{
-		title: "Concert",
-		content: "Concert",
-		// Icon: Icons.Music,
-		source: "/assets/services/piano-white.png",
-	},
-	{
-		title: "Enregistrement",
-		content: "Enregistrement",
-		// Icon: Icons.Mixing,
-		source: "/assets/services/micro-white.png",
-	},
+	{title: "Musiques Originales", content: "Musiques Originales", Icon: Icons.Piano},
+	{title: "Production Executive", content: "Production Executive", Icon: Icons.Music},
+	{title: "Édition", content: "Édition", source: "/assets/services/note-white.png"},
+	{title: "Enregistrement", content: "Enregistrement", source: "/assets/services/micro-white.png"},
+	{title: "Mixage", content: "Mixage", Icon: Icons.Mixing},
+	{title: "Mastering", content: "Mastering", Icon: Icons.SolidDisc},
+	{title: "Dolby Atmos", content: "Dolby Atmos", Icon: Icons.Dolby},
+	{title: "Design Sonore", content: "Design Sonore", Icon: Icons.SoundWave},
+	{title: "Concert", content: "Concert", source: "/assets/services/piano-white.png"},
+	{title: "Gestion de Projet", content: "Gestion de Projet", Icon: Icons.Calendar},
 ]
 
 // clients: Canal+, M6, Balenciaga, Nike, DisneyLand Paris, Citroen, Le,Puy Du Fou, 24h Le Mans, Chateau Fort Sedan, Edith Piaf Symphonique, Mon PLus Beau Noel, Studio Canal, Coca Cola Credit Agricole,
