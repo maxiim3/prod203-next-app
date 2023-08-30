@@ -23,7 +23,7 @@ export function VideoBanner() {
       if (videoElement) {
          videoElement?.addEventListener('error', handleError)
          videoElement?.load()
-         console.log('Video element is Loaded')
+         // console.log('Video element is Loaded')
          videoElement?.play()
       }
 

@@ -1,7 +1,5 @@
-import {AnimatedClientBanner} from '@/components/atom/AnimatedClientBanner'
-import StaticClientBanner from '@/components/atom/StaticClientBanner'
 import {SectionTemplate} from '@/components/layout/SectionTemplate'
-import MainNavigation from '@/components/ui/MainNavigation'
+import MarqueeBanner from '@/components/organism/MarqueeBanner'
 import Icons from '@/lib/Icons'
 import Image from 'next/image'
 import React, {PropsWithChildren, Suspense} from 'react'
@@ -85,7 +83,7 @@ export default async function Home() {
                innerContainerStyles={'mt-16'}
                title={'Services'}>
                <article className="mx-auto my-12 grid w-fit grid-cols-2 place-content-center place-items-center gap-x-3 gap-y-5 xs:grid-cols-3 xs:gap-y-6 sm:grid-cols-4 sm:gap-x-8 sm:gap-y-8 md:grid-cols-5 ">
-                  {services.map((service, index) => (
+                  {services.map(service => (
                      <span
                         key={service.title}
                         className={twMerge(
@@ -122,6 +120,7 @@ export default async function Home() {
              * **/}
             <SectionTemplate
                id="about"
+               imgClassName={'bg-gray-100/20'}
                sectionTitleStyles="hidden"
                title="">
                <div
@@ -160,8 +159,7 @@ export default async function Home() {
                innerContainerStyles={'w-screen'}
                ariaLabel={'Nos Clients'}>
                <Suspense fallback={<p>Loading...</p>}>
-                  <AnimatedClientBanner />
-                  <StaticClientBanner />
+                  <MarqueeBanner />
                </Suspense>
                <ScrollButton
                   svgUp
