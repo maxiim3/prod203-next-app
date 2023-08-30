@@ -1,6 +1,6 @@
 'use client'
 
-import {inView, motion} from 'framer-motion'
+import {motion} from 'framer-motion'
 import {twMerge} from 'tailwind-merge'
 
 export const ScrollButton = ({
