@@ -1,20 +1,25 @@
 'use client'
 
-import {inView, motion} from 'framer-motion'
+import {motion} from 'framer-motion'
 import {twMerge} from 'tailwind-merge'
 
 export const ScrollButton = ({
    sectionID,
-   className,
+   anchorClassName,
+   containerClassName,
    svgUp,
 }: {
    sectionID: '#services' | '#about' | '#references' | '#'
-   className?: string
+   anchorClassName?: string
+   containerClassName?: string
    svgUp?: boolean
 }) => {
    return (
       <div
-         className={`absolute bottom-0 z-30 flex w-full items-center justify-end pb-8 pr-4 sm:justify-center sm:pb-[5vw] sm:pr-0 2xl:pb-40 landscape:justify-end landscape:pb-8 landscape:pr-4 landscape:md:justify-center  landscape:md:pb-[5vw] landscape:md:pr-0 landscape:2xl:pb-40`}>
+         className={twMerge(
+            `absolute bottom-0 z-30 flex w-full items-center justify-end pb-8 pr-4 sm:justify-center sm:pb-[5vw] sm:pr-0 2xl:pb-40 landscape:justify-end landscape:pb-8 landscape:pr-4 md:landscape:justify-center md:landscape:pb-[5vw] md:landscape:pr-0 2xl:landscape:pb-20`,
+            containerClassName
+         )}>
          <motion.a
             initial={{scale: 0.9, translateY: -25, opacity: 0.2}}
             whileInView={{
@@ -32,7 +37,7 @@ export const ScrollButton = ({
             href={sectionID}
             className={twMerge(
                'flex h-12 w-12 items-center justify-center rounded-md border-none bg-base-100/5 p-1  text-xl font-bold uppercase text-primary opacity-70 backdrop-blur-md backdrop:opacity-0 xs:h-16 xs:w-16 sm:h-16 sm:w-16 lg:h-24 lg:w-24',
-               className
+               anchorClassName
             )}>
             <svg
                width="48"

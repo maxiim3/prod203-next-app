@@ -1,6 +1,7 @@
 import {AnimatedClientBanner} from '@/components/atom/AnimatedClientBanner'
-import {TitleH2} from '@/components/atom/SectionH2'
 import StaticClientBanner from '@/components/atom/StaticClientBanner'
+import {SectionTemplate} from '@/components/layout/SectionTemplate'
+import MainNavigation from '@/components/ui/MainNavigation'
 import Icons from '@/lib/Icons'
 import Image from 'next/image'
 import React, {PropsWithChildren, Suspense} from 'react'
@@ -71,7 +72,7 @@ export default async function Home() {
             </section>
          </header>
 
-         <div className="relative snap-y snap-mandatory">
+         <div className="snap-mandat relative snap-y overflow-y-auto">
             {/**
              * ==========================
              *      TOP SECTION 1/3
@@ -81,6 +82,7 @@ export default async function Home() {
             <SectionTemplate
                id={'services'}
                ariaLabel={'Services'}
+               innerContainerStyles={'mt-16'}
                title={'Services'}>
                <article className="mx-auto my-12 grid w-fit grid-cols-2 place-content-center place-items-center gap-x-3 gap-y-5 xs:grid-cols-3 xs:gap-y-6 sm:grid-cols-4 sm:gap-x-8 sm:gap-y-8 md:grid-cols-5 ">
                   {services.map((service, index) => (
@@ -124,7 +126,7 @@ export default async function Home() {
                title="">
                <div
                   className={
-                     'relative m-12 mx-auto flex flex-col gap-4 border-b border-t px-4 py-12 xs:px-8 md:grid md:grid-cols-2 md:gap-x-12'
+                     'relative mx-auto flex flex-col gap-4 border-y px-4 py-12 xs:px-8 sm:m-12 md:grid md:grid-cols-2 md:gap-x-12'
                   }>
                   <Text>
                      Fondée en 2021 par Jérôme Kuhn, Nathan Stornetta et Samuel Briand,{' '}
@@ -164,53 +166,13 @@ export default async function Home() {
                <ScrollButton
                   svgUp
                   sectionID={'#'}
-                  className={'-rotate-180'}
+                  anchorClassName={'-rotate-180'}
                />
             </SectionTemplate>
          </div>
       </main>
    )
 }
-
-const SectionTemplate = ({
-   children,
-   outerContainerStyles,
-   innerContainerStyles,
-   sectionTitleStyles,
-   ariaLabel,
-   title,
-   id,
-}: PropsWithChildren<{
-   title: string
-   id: string
-   outerContainerStyles?: string
-   innerContainerStyles?: string
-   sectionTitleStyles?: string
-   ariaLabel?: string
-}>) => (
-   <section
-      aria-label={ariaLabel}
-      className={twMerge(
-         ' relative mx-auto flex h-full min-h-screen w-screen max-w-[980px] snap-center items-center py-2',
-         outerContainerStyles
-      )}
-      id={id}>
-      <main
-         className={twMerge(
-            'min-h-xl flex w-full flex-col gap-12 overflow-hidden pt-16',
-            innerContainerStyles
-         )}>
-         <TitleH2
-            className={twMerge(
-               'w-content mx-auto text-center text-4xl font-thin uppercase sm:text-5xl ',
-               sectionTitleStyles
-            )}>
-            {title}
-         </TitleH2>
-         {children}
-      </main>
-   </section>
-)
 
 // service : Musiques Originales, Production Executive, Édition, Mixage, Mastering, Mixage Immersif Atoms, Design Sonore, Gestion de Projet
 const services = [
