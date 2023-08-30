@@ -13,6 +13,7 @@ export const SectionTemplate = ({
    ariaLabel,
    title,
    id,
+   imgClassName,
 }: PropsWithChildren<{
    title: string
    id: string
@@ -20,12 +21,13 @@ export const SectionTemplate = ({
    innerContainerStyles?: string
    sectionTitleStyles?: string
    ariaLabel?: string
+   imgClassName?: string
 }>) => {
    return (
       <section
          aria-label={ariaLabel}
          className={twMerge(
-            ' relative mx-auto flex h-full min-h-screen w-screen max-w-[980px] snap-start items-center py-2 md:min-h-[75vh]',
+            ' relative mx-auto flex h-full min-h-screen w-screen max-w-[980px] snap-start items-center py-2 ',
             outerContainerStyles
          )}
          id={id}>
@@ -42,7 +44,7 @@ export const SectionTemplate = ({
                staggerDirection: -1,
             }}
             className={twMerge(
-               'min-h-xl flex w-full flex-col  gap-12 overflow-hidden',
+               'min-h-xl flex w-full flex-col  gap-12 overflow-hidden md:overflow-visible',
                innerContainerStyles
             )}>
             <TitleH2
