@@ -1,7 +1,6 @@
 'use client'
 
 import {Client, clients, reversedClients} from '@/lib/clients'
-import {motion} from 'framer-motion'
 import Image from 'next/image'
 import React, {memo} from 'react'
 import Marquee from 'react-fast-marquee'

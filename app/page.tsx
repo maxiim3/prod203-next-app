@@ -140,9 +140,8 @@ export default async function Home() {
                      production de <Accent>bandes sonores pour les spectacles</Accent> en direct,
                      ainsi que l{"'"}
                      <Accent>édition musicale</Accent> et la production pour divers supports tels
-                     que les <Accent>concerts</Accent>
-                     de <Accent>musique classique</Accent>, les <Accent>cérémonies</Accent>, et bien
-                     plus encore.
+                     que les <Accent>concerts</Accent> de <Accent>musique classique</Accent>, les{' '}
+                     <Accent>cérémonies</Accent>, et bien plus encore.
                   </Text>
                </div>
                <ScrollButton sectionID={'#references'} />
