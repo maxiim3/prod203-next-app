@@ -4,7 +4,7 @@ import {CldVideoPlayer} from 'next-cloudinary'
 import 'next-cloudinary/dist/cld-video-player.css'
 import React, {Suspense, useEffect, useRef, useState} from 'react'
 
-import useVideoSource, {VideoSource} from '@/hooks/useVideoSource'
+import {useVideoSource, VideoSource} from '@/hooks/useVideoSource'
 import {twMerge} from 'tailwind-merge'
 
 export function VideoBanner() {

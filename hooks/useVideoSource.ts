@@ -37,12 +37,11 @@ export type DeviceScreens = {
  *
  * @param {VideoSource} source - Object containing video source URLs for different resolutions.
  * @param {MutableRefObject<HTMLVideoElement | null>} videoRef - React ref for the video element.
- * @return {Object} - Object containing a function to set the video source.
  */
-export default function useVideoSource(
+export function useVideoSource(
    source: VideoSource,
    videoRef: MutableRefObject<HTMLVideoElement | null>
-): object {
+) {
    // Screen size definitions
    const DEVICE: DeviceScreens = Object.freeze({
       SIZE_SMALL: 479,
