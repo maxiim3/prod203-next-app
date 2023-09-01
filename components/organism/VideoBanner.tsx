@@ -1,6 +1,7 @@
 'use client'
 
 import React, {Suspense} from 'react'
+import {twMerge} from 'tailwind-merge'
 
 export function VideoBanner() {
    // const VIDEO_SOURCE: VideoSource = Object.freeze({
@@ -25,7 +26,8 @@ export function VideoBanner() {
    //
    // useEffect(() => {
    //    setVideoSource()
-   }, [isMounted])
+   // }, [isMounted])
+
    return (
       <Suspense fallback={<p>Loading Video..</p>}>
          {/*<video*/}
