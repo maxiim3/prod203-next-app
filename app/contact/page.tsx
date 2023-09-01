@@ -1,13 +1,15 @@
-import {BuildingPage} from "@/components/ui/BuildingPage"
-import React from "react"
+
+import ContactFormComponent from '@/app/contact/ContactFormComponent'
+import React from 'react'
 
 // ? Adresse mail de contact : contact@prod203.com
 const Contact = () => {
-	return (
-		<main className={"h-screen w-screen pt-24"}>
-			<BuildingPage title={"Contact Page"} />
-		</main>
-	)
+   return (
+      <main className={'flex h-screen w-screen items-center justify-center pt-24'}>
+         <ContactFormComponent />
+      </main>
+   )
+
 }
 
 export default Contact

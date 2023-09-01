@@ -4,8 +4,9 @@ import Icons from '@/lib/Icons'
 import Image from 'next/image'
 import React, {PropsWithChildren, Suspense} from 'react'
 import {twMerge} from 'tailwind-merge'
+
+import {VideoBanner} from '../components/organism/VideoBanner'
 import {ScrollButton} from './ScrollButton'
-import {VideoBanner} from './VideoBanner'
 
 export default async function Home() {
    return (
@@ -66,9 +67,14 @@ export default async function Home() {
                      Façonnons l’Art du son
                   </p>
                </article>
-               <ScrollButton sectionID={'#services'} />
+
+               <ScrollButton
+                  containerClassName={'opacity-75 animate-scroll'}
+                  sectionID={'#services'}
+               />
             </section>
          </header>
+         <div className="relative flex snap-y snap-mandatory flex-col gap-32 overflow-y-auto ">
 
          <div className="snap-mandat relative snap-y overflow-y-auto">
             {/**
@@ -80,34 +86,7 @@ export default async function Home() {
             <SectionTemplate
                id={'services'}
                ariaLabel={'Services'}
-               innerContainerStyles={'mt-16'}
-               title={'Services'}>
-               <article className="mx-auto my-12 grid w-fit grid-cols-2 place-content-center place-items-center gap-x-3 gap-y-5 xs:grid-cols-3 xs:gap-y-6 sm:grid-cols-4 sm:gap-x-8 sm:gap-y-8 md:grid-cols-5 ">
-                  {services.map(service => (
-                     <span
-                        key={service.title}
-                        className={twMerge(
-                           'flex flex-col items-center justify-center gap-2 place-self-center',
-                           'h-fit w-fit px-0.5 sm:p-1 md:px-2'
-                        )}>
-                        {service.Icon ? (
-                           <service.Icon className="text-2xl text-primary" />
-                        ) : (
-                           <Image
-                              width={64}
-                              height={64}
-                              src={service.source!}
-                              className={'h-8 w-8 object-contain object-center'}
-                              alt="error loading"
-                           />
-                        )}
-                        <h3 className="w-32 text-center text-sm font-light tracking-[1.4px] text-primary text-balance">
-                           {service.title}
-                        </h3>
-                        {/*<p className="text-base text-center">{service.content}</p>*/}
-                     </span>
-                  ))}
-               </article>
+               outerContainerStyles={'mt-16'}
 
                <ScrollButton sectionID={'#about'} />
             </SectionTemplate>
@@ -120,6 +99,8 @@ export default async function Home() {
              * **/}
             <SectionTemplate
                id="about"
+
+               outerContainerStyles={'mb-20'}
                imgClassName={'bg-gray-100/20'}
                sectionTitleStyles="hidden"
                title="">
@@ -140,12 +121,11 @@ export default async function Home() {
                      production de <Accent>bandes sonores pour les spectacles</Accent> en direct,
                      ainsi que l{"'"}
                      <Accent>édition musicale</Accent> et la production pour divers supports tels
-                     que les <Accent>concerts</Accent>
-                     de <Accent>musique classique</Accent>, les <Accent>cérémonies</Accent>, et bien
-                     plus encore.
+
+                     que les <Accent>concerts</Accent> de <Accent>musique classique</Accent>, les{' '}
+                     <Accent>cérémonies</Accent>, et bien plus encore.
                   </Text>
                </div>
-               <ScrollButton sectionID={'#references'} />
             </SectionTemplate>
             {/**
              * ==========================
@@ -156,6 +136,8 @@ export default async function Home() {
             <SectionTemplate
                title={'Références'}
                id={'references'}
+
+               outerContainerStyles={'mb-64'}
                innerContainerStyles={'w-screen'}
                ariaLabel={'Nos Clients'}>
                <Suspense fallback={<p>Loading...</p>}>
@@ -167,6 +149,11 @@ export default async function Home() {
                   anchorClassName={'-rotate-180'}
                />
             </SectionTemplate>
+            <ScrollButton
+               svgUp
+               sectionID={'#'}
+               anchorClassName={'-rotate-180'}
+            />
          </div>
       </main>
    )

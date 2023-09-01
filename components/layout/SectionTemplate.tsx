@@ -27,7 +27,8 @@ export const SectionTemplate = ({
       <section
          aria-label={ariaLabel}
          className={twMerge(
-            ' relative mx-auto flex h-full min-h-screen w-screen max-w-[980px] snap-start items-center py-2 ',
+
+            ' relative mx-auto flex h-full w-screen max-w-[980px] snap-start items-center py-2 ',
             outerContainerStyles
          )}
          id={id}>
