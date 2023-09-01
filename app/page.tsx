@@ -1,6 +1,6 @@
-import {VideoBanner} from '@/app/VideoBanner'
 import {SectionTemplate} from '@/components/layout/SectionTemplate'
 import MarqueeBanner from '@/components/organism/MarqueeBanner'
+import {VideoBanner} from '@/components/organism/VideoBanner'
 import Icons from '@/lib/Icons'
 import Image from 'next/image'
 import React, {PropsWithChildren, Suspense} from 'react'

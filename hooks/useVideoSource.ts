@@ -42,7 +42,7 @@ export type DeviceScreens = {
 export default function useVideoSource(
    source: VideoSource,
    videoRef: MutableRefObject<HTMLVideoElement | null>
-) {
+): object {
    // Screen size definitions
    const DEVICE: DeviceScreens = Object.freeze({
       SIZE_SMALL: 479,

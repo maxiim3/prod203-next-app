@@ -42,8 +42,8 @@ export function VideoBanner() {
          {/*   playsInline*/}
          {/*/>*/}
          <CldVideoPlayer
-            width="1920"
             videoRef={videoRef}
+            width="1920"
             height="1080"
             src="https://res.cloudinary.com/dumtd7dhj/video/upload/v1693588665/prod203/prod203_capsule_herobanner_720p.webm"
             className={twMerge(
