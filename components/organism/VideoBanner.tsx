@@ -26,21 +26,32 @@ export function VideoBanner() {
 
    useEffect(() => {
       setVideoSource()
-   }, [isMounted])
+   }, [isMounted])git
 
    return (
       <Suspense fallback={<p>Loading Video..</p>}>
-         <video
-            ref={videoRef}
-            autoPlay={true}
-            muted={true}
-            loop={true}
-            playsInline
+         {/*<video*/}
+         {/*   ref={videoRef}*/}
+         {/*   autoPlay={true}*/}
+         {/*   muted={true}*/}
+         {/*   loop={true}*/}
+         {/*   playsInline*/}
+         {/*   className={twMerge(*/}
+         {/*      'h-[100vh] w-[100%] object-cover object-center',*/}
+         {/*      'motion-safe:animate-[scaleAndFade_50ms_ease-out_both]'*/}
+         {/*   )}*/}
+         {/*/>*/}
+         <iframe
+            src="https://player.cloudinary.com/embed/?public_id=prod203%2Fprod203_capsule_herobanner_720p&cloud_name=dumtd7dhj&player[controls]=false&player[muted]=false&player[colors][accent]=%23000000&player[hideContextMenu]=true&player[autoplay]=true&player[loop]=true&source[autoplayOnScroll]=false"
+            width="640"
+            height="360"
+            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
             className={twMerge(
                'h-[100vh] w-[100%] object-cover object-center',
                'motion-safe:animate-[scaleAndFade_50ms_ease-out_both]'
             )}
-         />
+            allowFullScreen
+            frameBorder="0"></iframe>
       </Suspense>
    )
 }
