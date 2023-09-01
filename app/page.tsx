@@ -73,7 +73,7 @@ export default async function Home() {
             </section>
          </header>
 
-         <div className="snap-mandat relative snap-y overflow-y-auto">
+         <div className="relative flex snap-y snap-mandatory flex-col gap-32 overflow-y-auto ">
             {/**
              * ==========================
              *      TOP SECTION 1/3
@@ -83,6 +83,7 @@ export default async function Home() {
             <SectionTemplate
                id={'services'}
                ariaLabel={'Services'}
+               outerContainerStyles={'mt-16'}
                innerContainerStyles={'mt-16'}
                title={'Services'}>
                <article className="mx-auto my-12 grid w-fit grid-cols-2 place-content-center place-items-center gap-x-3 gap-y-5 xs:grid-cols-3 xs:gap-y-6 sm:grid-cols-4 sm:gap-x-8 sm:gap-y-8 md:grid-cols-5 ">
@@ -123,6 +124,7 @@ export default async function Home() {
              * **/}
             <SectionTemplate
                id="about"
+               outerContainerStyles={'mb-20'}
                imgClassName={'bg-gray-100/20'}
                sectionTitleStyles="hidden"
                title="">
@@ -158,17 +160,18 @@ export default async function Home() {
             <SectionTemplate
                title={'Références'}
                id={'references'}
+               outerContainerStyles={'mb-64'}
                innerContainerStyles={'w-screen'}
                ariaLabel={'Nos Clients'}>
                <Suspense fallback={<p>Loading...</p>}>
                   <MarqueeBanner />
                </Suspense>
-               <ScrollButton
-                  svgUp
-                  sectionID={'#'}
-                  anchorClassName={'-rotate-180'}
-               />
             </SectionTemplate>
+            <ScrollButton
+               svgUp
+               sectionID={'#'}
+               anchorClassName={'-rotate-180'}
+            />
          </div>
       </main>
    )

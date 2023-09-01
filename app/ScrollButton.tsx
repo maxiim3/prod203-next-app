@@ -42,7 +42,7 @@ export const ScrollButton = ({
             <svg
                width="512"
                className={twMerge(
-                  'h-8 w-8 text-primary [text-shadow:10px_10px_100px_black] xs:h-12 xs:w-12 sm:h-12 sm:w-12 lg:h-16 lg:w-16',
+                  'h-8 w-8 text-primary xs:h-12 xs:w-12 sm:h-12 sm:w-12 lg:h-16 lg:w-16',
                   !svgUp && 'rotate-180 transform'
                )}
                height="512"
