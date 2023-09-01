@@ -66,7 +66,10 @@ export default async function Home() {
                      Façonnons l’Art du son
                   </p>
                </article>
-               <ScrollButton sectionID={'#services'} />
+               <ScrollButton
+                  containerClassName={'opacity-75 animate-scroll'}
+                  sectionID={'#services'}
+               />
             </section>
          </header>
 
@@ -109,7 +112,7 @@ export default async function Home() {
                   ))}
                </article>
 
-               <ScrollButton sectionID={'#about'} />
+               {/*<ScrollButton sectionID={'#about'} />*/}
             </SectionTemplate>
 
             {/**
@@ -144,7 +147,7 @@ export default async function Home() {
                      <Accent>cérémonies</Accent>, et bien plus encore.
                   </Text>
                </div>
-               <ScrollButton sectionID={'#references'} />
+               {/*<ScrollButton sectionID={'#references'} />*/}
             </SectionTemplate>
             {/**
              * ==========================

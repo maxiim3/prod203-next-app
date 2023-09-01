@@ -130,6 +130,7 @@ module.exports = {
             rotate: 'rotate 20s linear infinite',
             revealFromBottom: 'fadeAndSlideFromBottom 450ms ease-in-out 1.45s both',
             marquee: 'marquee 10s linear infinite',
+            scroll: 'scrollInvitation 1s ease-in-out 1s both infinite',
             ...defaultTheme.animation,
          },
          keyframes: {
@@ -137,7 +138,10 @@ module.exports = {
                '0%': {transform: 'translateX(-33%)'},
                '100%': {transform: 'translateX(-50%)'},
             },
-
+            scrollInvitation: {
+               '0%': {transform: 'translateY(-30px)', opacity: 0},
+               '100%': {transform: 'translateY(0%)', opacity: 1},
+            },
             fadeAndSlideFromBottom: {
                '0%': {opacity: '0', transform: 'translateY(100px)'},
                '100%': {opacity: '1', transform: 'translateY(0)'},

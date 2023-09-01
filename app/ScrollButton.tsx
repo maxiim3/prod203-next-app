@@ -36,21 +36,21 @@ export const ScrollButton = ({
             }}
             href={sectionID}
             className={twMerge(
-               'flex h-12 w-12 items-center justify-center rounded-md border-none bg-base-100/5 p-1  text-xl font-bold uppercase text-primary opacity-70 backdrop-blur-md backdrop:opacity-0 xs:h-16 xs:w-16 sm:h-16 sm:w-16 lg:h-24 lg:w-24',
+               'flex h-12 w-12 items-center justify-center rounded-full border-none p-1  text-xl font-bold uppercase text-primary opacity-70 backdrop-blur-md backdrop:opacity-0 xs:h-16 xs:w-16',
                anchorClassName
             )}>
             <svg
-               width="48"
-               height="48"
-               viewBox="0 0 256 256"
+               width="512"
                className={twMerge(
-                  'h-8 w-8 text-primary xs:h-12 xs:w-12 sm:h-12 sm:w-12 lg:h-16 lg:w-16',
+                  'h-8 w-8 text-primary [text-shadow:10px_10px_100px_black] xs:h-12 xs:w-12 sm:h-12 sm:w-12 lg:h-16 lg:w-16',
                   !svgUp && 'rotate-180 transform'
                )}
+               height="512"
+               viewBox="0 0 1024 1024"
                xmlns="http://www.w3.org/2000/svg">
                <path
                   fill="currentColor"
-                  d="M202.83 114.83a4 4 0 0 1-5.66 0L132 49.66V216a4 4 0 0 1-8 0V49.66l-65.17 65.17a4 4 0 0 1-5.66-5.66l72-72a4 4 0 0 1 5.66 0l72 72a4 4 0 0 1 0 5.66Z"
+                  d="m488.832 344.32l-339.84 356.672a32 32 0 0 0 0 44.16l.384.384a29.44 29.44 0 0 0 42.688 0l320-335.872l319.872 335.872a29.44 29.44 0 0 0 42.688 0l.384-.384a32 32 0 0 0 0-44.16L535.168 344.32a32 32 0 0 0-46.336 0z"
                />
             </svg>
          </motion.a>
