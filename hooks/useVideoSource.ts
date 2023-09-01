@@ -127,7 +127,7 @@ export default function useVideoSource(
          videoElement.loop = true
          videoElement.controls = false
          videoElement.load()
-         videoElement.play()
+         videoElement.play().then()
       }
    }, [])
 
