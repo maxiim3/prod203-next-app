@@ -20,7 +20,6 @@ export type VideoSource = {
    MEDIUM: string
    HIGH: string
    VERY_HIGH: string
-   ULTRA_HIGH: string
 }
 
 /**
@@ -90,10 +89,8 @@ export default function useVideoSource(
          return source.MEDIUM
       } else if (width <= DEVICE.SIZE_LARGE) {
          return source.HIGH
-      } else if (width <= DEVICE.SIZE_XLARGE) {
-         return source.VERY_HIGH
       } else {
-         return source.ULTRA_HIGH
+         return source.VERY_HIGH
       }
    }
 
@@ -120,7 +117,15 @@ export default function useVideoSource(
       // Apply the new source to the video element
       if (videoElement) {
          videoElement.pause()
+         videoElement.style.width = '100vw'
+         videoElement.style.height = '100vh'
+         videoElement.style.objectFit = 'cover'
+
          videoElement.src = newSrc
+         videoElement.autoplay = true
+         videoElement.muted = true
+         videoElement.loop = true
+         videoElement.controls = false
          videoElement.load()
          videoElement.play()
       }
