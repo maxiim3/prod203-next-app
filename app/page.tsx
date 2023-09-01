@@ -4,8 +4,8 @@ import Icons from '@/lib/Icons'
 import Image from 'next/image'
 import React, {PropsWithChildren, Suspense} from 'react'
 import {twMerge} from 'tailwind-merge'
+import {VideoBanner} from '../components/organism/VideoBanner'
 import {ScrollButton} from './ScrollButton'
-import {VideoBanner} from './VideoBanner'
 
 export default async function Home() {
    return (
