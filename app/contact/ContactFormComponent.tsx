@@ -81,7 +81,6 @@ export default function ContactFormComponent() {
             />
             <input
                id={'name'}
-               defaultValue={'test'}
                {...register('name', {required: true, maxLength: 80, minLength: 3})}
                placeholder={'Nom'}
                aria-invalid={errors.name ? 'true' : 'false'}
@@ -110,12 +109,11 @@ export default function ContactFormComponent() {
                   maxLength: 80,
                   pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                })}
-               defaultValue={'testEmail@mail.com'}
                id={'email'}
                aria-invalid={errors.email ? 'true' : 'false'}
-               aria-label={'Addresse Mail'}
+               aria-label={'Adresse email'}
                type={'email'}
-               placeholder={'Addresse Mail'}
+               placeholder={'Adresse email'}
                className="input input-bordered w-full bg-primary/70 font-normal tracking-wide text-base-100/70"
             />
             {errors.email && (
@@ -136,7 +134,6 @@ export default function ContactFormComponent() {
                label={'Entrez votre message'}
             />
             <textarea
-               defaultValue={'test message'}
                {...register('message', {required: true, maxLength: 500})}
                id={'message'}
                aria-invalid={errors.message ? 'true' : 'false'}
