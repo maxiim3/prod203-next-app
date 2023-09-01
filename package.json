@@ -23,6 +23,7 @@
     "i18next": "^23.4.4",
     "nanoid": "^4.0.2",
     "next": "13.4.13",
+    "next-cloudinary": "^4.20.0",
     "next-i18next": "^14.0.0",
     "next-sanity": "^5.4.4",
     "nextjs-toploader": "^1.4.2",
