@@ -1,3 +1,4 @@
+
 import ContactFormComponent from '@/app/contact/ContactFormComponent'
 import React from 'react'
 
@@ -8,6 +9,7 @@ const Contact = () => {
          <ContactFormComponent />
       </main>
    )
+
 }
 
 export default Contact

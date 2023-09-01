@@ -36,6 +36,7 @@ export const ScrollButton = ({
             }}
             href={sectionID}
             className={twMerge(
+
                'flex h-12 w-12 items-center justify-center rounded-full border-none p-1  text-xl font-bold uppercase text-primary opacity-70 backdrop-blur-md backdrop:opacity-0 xs:h-16 xs:w-16',
                anchorClassName
             )}>
@@ -45,6 +46,7 @@ export const ScrollButton = ({
                   'h-8 w-8 text-primary xs:h-12 xs:w-12 sm:h-12 sm:w-12 lg:h-16 lg:w-16',
                   !svgUp && 'rotate-180 transform'
                )}
+
                height="512"
                viewBox="0 0 1024 1024"
                xmlns="http://www.w3.org/2000/svg">
