@@ -1,5 +1,4 @@
-
-import ContactFormComponent from '@/app/contact/ContactFormComponent'
+import ContactFormComponent from '@/app/(pages)/contact/ContactFormComponent'
 import React from 'react'
 
 // ? Adresse mail de contact : contact@prod203.com
@@ -9,7 +8,6 @@ const Contact = () => {
          <ContactFormComponent />
       </main>
    )
-
 }
 
 export default Contact

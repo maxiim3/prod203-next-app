@@ -2,6 +2,7 @@ import Footer from '@/components/ui/Footer'
 import MainNavigation from '@/components/ui/MainNavigation'
 import {cormorant, manrope, poppins} from '@/styles/font'
 import type {Metadata} from 'next'
+import 'next-cloudinary/dist/cld-video-player.css'
 import React, {PropsWithChildren} from 'react'
 import './globals.css'
 

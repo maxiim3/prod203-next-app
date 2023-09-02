@@ -1,8 +1,7 @@
 'use client'
 
-import {CldVideoPlayer} from 'next-cloudinary'
-import 'next-cloudinary/dist/cld-video-player.css'
-import React, {Suspense, useEffect, useRef, useState} from 'react'
+import {CldVideoPlayer, CloudinaryVideoPlayer} from 'next-cloudinary'
+import React, {useEffect, useRef, useState} from 'react'
 
 import {useVideoSource, VideoSource} from '@/hooks/useVideoSource'
 import {twMerge} from 'tailwind-merge'
@@ -16,8 +15,8 @@ export function VideoBanner() {
       VERY_HIGH:
          'https://res.cloudinary.com/dumtd7dhj/video/upload/v1693588665/prod203/prod203_capsule_herobanner_1080p.webm',
    })
-
    const videoRef = useRef<HTMLVideoElement | null>(null)
+   const playerRef = useRef<CloudinaryVideoPlayer | null>(null)
    const [isMounted, setIsMounted] = useState(false)
    const {setVideoSource} = useVideoSource(VIDEO_SOURCE, videoRef)
 
@@ -29,32 +28,44 @@ export function VideoBanner() {
    }, [])
 
    useEffect(() => {
-      setVideoSource()
-   }, [isMounted])
+      isMounted && setVideoSource()
+   }, [isMounted, setVideoSource])
 
+   if (!isMounted) {
+      return (
+         <>
+            <h1>Waiting....</h1>
+         </>
+      )
+   }
    return (
-      <Suspense fallback={<p>Loading Video..</p>}>
-         {/*<video*/}
-         {/*   ref={videoRef}*/}
-         {/*   autoPlay={true}*/}
-         {/*   muted={true}*/}
-         {/*   loop={true}*/}
-         {/*   playsInline*/}
-         {/*/>*/}
-         <CldVideoPlayer
-            videoRef={videoRef}
-            width="1920"
-            height="1080"
-            src="https://res.cloudinary.com/dumtd7dhj/video/upload/v1693588665/prod203/prod203_capsule_herobanner_720p.webm"
-            className={twMerge(
-               'h-[100vh] w-[100%] object-contain object-center',
-               'motion-safe:animate-[scaleAndFade_50ms_ease-out_both]'
-            )}
-            muted={true}
-            loop={true}
-            controls={false}
-            quality={'auto'}
-         />
-      </Suspense>
+      <CldVideoPlayer
+         width={1920}
+         height={1080}
+         autoPlay={'always'}
+         loop={true}
+         muted={true}
+         onError={e => console.info('from onError, ', e)}
+         onMetadataLoad={({
+            player,
+            video,
+         }: {
+            player: CloudinaryVideoPlayer
+            video: HTMLVideoElement
+         }) => {
+            video.playsInline = true
+            video.style.height = `${window.innerHeight}px`
+            video.style.objectFit = 'cover'
+            video.style.objectPosition = 'center'
+         }}
+         playerRef={playerRef}
+         controls={false}
+         videoRef={videoRef}
+         src={VIDEO_SOURCE.VERY_HIGH}
+         className={twMerge(
+            'h-[100vh] w-[100%] object-contain object-center',
+            'motion-safe:animate-[scaleAndFade_50ms_ease-out_both]'
+         )}
+      />
    )
 }

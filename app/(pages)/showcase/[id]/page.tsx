@@ -1,4 +1,4 @@
-import {VideoPreview} from '@/app/showcase/[id]/VideoPreview'
+import {VideoPreview} from '@/app/(pages)/showcase/[id]/VideoPreview'
 import {TitleH2} from '@/components/atom/SectionH2'
 import {getImageSource, getProjectBySlug, getVideoSource} from '@/lib/sanityClient'
 import Project, {ProjectDescription} from '@/schemas/project.schema'

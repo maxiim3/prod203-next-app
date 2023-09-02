@@ -1,3 +1,4 @@
+import Loading from '@/app/loading'
 import {SectionTemplate} from '@/components/layout/SectionTemplate'
 import MarqueeBanner from '@/components/organism/MarqueeBanner'
 import {VideoBanner} from '@/components/organism/VideoBanner'
@@ -21,7 +22,9 @@ export default async function Home() {
                id={'hero'}
                aria-label={'Video hero banner'}
                className="absolute top-0 h-screen w-screen">
-               <VideoBanner />
+               <Suspense fallback={<Loading />}>
+                  <VideoBanner />
+               </Suspense>
             </section>
             {/**
              * ==========================
@@ -52,6 +55,7 @@ export default async function Home() {
                   <Image
                      src={'/assets/logo/prod203-white.webp'}
                      alt="Prod203"
+                     priority={true}
                      className={twMerge(
                         'max-h-32 w-full object-contain object-center',
                         'motion-safe:animate-[scaleAndFade_850ms_ease-out_450ms_both]'

@@ -1,36 +1,5 @@
+import {CloudinaryVideoPlayer} from 'next-cloudinary'
 import {MutableRefObject, useCallback} from 'react'
-
-/**
- * Interface for network information.
- */
-export interface NetworkInformation extends EventTarget {
-   downlink: number // Effective bandwidth estimate in Mbps
-   downlinkMax: number // Maximum downlink speed in Mbps
-   effectiveType: 'slow-2g' | '2g' | '3g' | '4g' // Effective type of the connection
-   rtt: number // Round-trip time in ms
-   saveData: boolean // Reduced data usage option
-   type: 'bluetooth' | 'cellular' | 'ethernet' | 'none' | 'wifi' | 'wimax' | 'other' | 'unknown' // Type of connection
-}
-
-/**
- * Type for video sources available for the hook.
- */
-export type VideoSource = {
-   LOW: string
-   MEDIUM: string
-   HIGH: string
-   VERY_HIGH: string
-}
-
-/**
- * Type for device screen sizes.
- */
-export type DeviceScreens = {
-   SIZE_SMALL: number
-   SIZE_MEDIUM: number
-   SIZE_LARGE: number
-   SIZE_XLARGE: number
-}
 
 /**
  * Custom hook to determine the most appropriate video source based on network and screen size.
@@ -100,10 +69,15 @@ export function useVideoSource(
    const setVideoSource = useCallback(() => {
       const width = window.innerWidth
       const videoElement = videoRef.current
+      // Get network information object
       const networkInfo: NetworkInformation | null = (navigator as any)?.connection || null
 
+      // Get the most suitable video source
       let newSrc = ''
 
+      if (!networkInfo) {
+         newSrc = source.MEDIUM
+      }
       // Low-res video for data saver or slow connection
       if (networkInfo?.saveData || !isFastConnection(networkInfo)) {
          newSrc = source.LOW
@@ -115,20 +89,55 @@ export function useVideoSource(
 
       // Apply the new source to the video element
       if (videoElement) {
-         videoElement.pause()
          videoElement.style.width = '100vw'
          videoElement.style.height = '100vh'
          videoElement.style.objectFit = 'cover'
 
-         videoElement.src = newSrc
-         videoElement.autoplay = true
-         videoElement.muted = true
-         videoElement.loop = true
-         videoElement.controls = false
-         videoElement.load()
-         videoElement.play().then()
+         // videoElement.src = newSrc
+         // videoElement.autoplay = true
+         // videoElement.muted = true
+         // videoElement.loop = true
+         // videoElement.controls = false
+         // videoElement.playsInline = true
+         // videoElement.load()
+         const playPromise = videoElement.play()
+         if (playPromise !== undefined) {
+            playPromise.then(e => console.log(e)).catch(error => console.error(error))
+         }
       }
    }, [])
 
    return {setVideoSource}
+}
+
+/**
+ * Interface for network information.
+ */
+export interface NetworkInformation extends EventTarget {
+   downlink: number // Effective bandwidth estimate in Mbps
+   downlinkMax: number // Maximum downlink speed in Mbps
+   effectiveType: 'slow-2g' | '2g' | '3g' | '4g' // Effective type of the connection
+   rtt: number // Round-trip time in ms
+   saveData: boolean // Reduced data usage option
+   type: 'bluetooth' | 'cellular' | 'ethernet' | 'none' | 'wifi' | 'wimax' | 'other' | 'unknown' // Type of connection
+}
+
+/**
+ * Type for video sources available for the hook.
+ */
+export type VideoSource = {
+   LOW: string
+   MEDIUM: string
+   HIGH: string
+   VERY_HIGH: string
+}
+
+/**
+ * Type for device screen sizes.
+ */
+export type DeviceScreens = {
+   SIZE_SMALL: number
+   SIZE_MEDIUM: number
+   SIZE_LARGE: number
+   SIZE_XLARGE: number
 }
