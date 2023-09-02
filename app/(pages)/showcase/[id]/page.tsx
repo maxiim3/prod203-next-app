@@ -2,6 +2,7 @@ import {VideoPreview} from '@/app/(pages)/showcase/[id]/VideoPreview'
 import {TitleH2} from '@/components/atom/SectionH2'
 import {getImageSource, getProjectBySlug, getVideoSource} from '@/lib/sanityClient'
 import Project, {ProjectDescription} from '@/schemas/project.schema'
+import Image from 'next/image'
 import Link from 'next/link'
 import React, {Suspense} from 'react'
 
@@ -17,7 +18,9 @@ const ProjectPage = async ({params}: {params: {id: string}}) => {
                {videoURL ? (
                   <VideoPreview videoURL={videoURL} />
                ) : (
-                  <img
+                  <Image
+                     width={1440}
+                     height={720}
                      className={
                         'h-[50vh] object-cover object-center motion-safe:transition-all motion-safe:duration-1000 motion-safe:group-hover/card:scale-110'
                      }
