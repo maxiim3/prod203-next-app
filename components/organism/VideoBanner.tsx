@@ -45,7 +45,6 @@ export function VideoBanner() {
          autoPlay={'always'}
          loop={true}
          muted={true}
-         onError={e => console.info('from onError, ', e)}
          onMetadataLoad={({
             player,
             video,
