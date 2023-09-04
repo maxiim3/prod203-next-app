@@ -1,6 +1,8 @@
 'use client'
 
+import {useMounted} from '@/hooks/useMounted'
 import {motion} from 'framer-motion'
+import {useCallback, useEffect, useRef} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export const ScrollButton = ({
@@ -14,10 +16,28 @@ export const ScrollButton = ({
    containerClassName?: string
    svgUp?: boolean
 }) => {
+   const isMounted = useMounted()
+   const isIPhoneSafari = useCallback(() => {
+      if (!isMounted) return false
+      const userAgent = navigator?.userAgent
+      const isIPhoneSafari = /iPhone.*Safari\/[\w.]+/.test(userAgent)
+
+      if (isIPhoneSafari) {
+         // Add your code for iPhone Safari
+         console.log('This is iPhone Safari')
+         return true
+      } else {
+         // Code for other browsers
+         console.log('This is not iPhone Safari')
+         return false
+      }
+   }, [isMounted])
+
    return (
       <div
          className={twMerge(
-            `absolute bottom-0 z-30 flex w-full items-center justify-end pb-8 pr-4 sm:justify-center sm:pb-[5vw] sm:pr-0 2xl:pb-40 landscape:justify-end landscape:pb-8 landscape:pr-4 md:landscape:justify-center md:landscape:pb-[5vw] md:landscape:pr-0 2xl:landscape:pb-20`,
+            `absolute bottom-0 z-30 flex w-full items-center justify-center  pb-8 sm:pb-[5vw]  2xl:pb-40  landscape:pb-8  md:landscape:pb-[5vw] 2xl:landscape:pb-20`,
+            isIPhoneSafari() && 'pb-24',
             containerClassName
          )}>
          <motion.a
@@ -36,7 +56,6 @@ export const ScrollButton = ({
             }}
             href={sectionID}
             className={twMerge(
-
                'flex h-12 w-12 items-center justify-center rounded-full border-none p-1  text-xl font-bold uppercase text-primary opacity-70 backdrop-blur-md backdrop:opacity-0 xs:h-16 xs:w-16',
                anchorClassName
             )}>
@@ -46,7 +65,6 @@ export const ScrollButton = ({
                   'h-8 w-8 text-primary xs:h-12 xs:w-12 sm:h-12 sm:w-12 lg:h-16 lg:w-16',
                   !svgUp && 'rotate-180 transform'
                )}
-
                height="512"
                viewBox="0 0 1024 1024"
                xmlns="http://www.w3.org/2000/svg">
