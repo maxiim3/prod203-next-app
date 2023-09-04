@@ -1,31 +1,26 @@
 'use client'
 
 import {CldVideoPlayer, CloudinaryVideoPlayer} from 'next-cloudinary'
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useRef} from 'react'
 
+import {useMounted} from '@/hooks/useMounted'
 import {useVideoSource, VideoSource} from '@/hooks/useVideoSource'
 import {twMerge} from 'tailwind-merge'
 
 export function VideoBanner() {
+   const BASE_URL = 'https://res.cloudinary.com'
+   const ENV_CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+
    const VIDEO_SOURCE: VideoSource = Object.freeze({
-      LOW: 'https://res.cloudinary.com/dumtd7dhj/video/upload/v1693588665/prod203/prod203_capsule_herobanner_360p.webm',
-      MEDIUM:
-         'https://res.cloudinary.com/dumtd7dhj/video/upload/v1693588665/prod203/prod203_capsule_herobanner_480p.webm',
-      HIGH: 'https://res.cloudinary.com/dumtd7dhj/video/upload/v1693588665/prod203/prod203_capsule_herobanner_720p.webm',
-      VERY_HIGH:
-         'https://res.cloudinary.com/dumtd7dhj/video/upload/v1693588665/prod203/prod203_capsule_herobanner_1080p.webm',
+      LOW: `${BASE_URL}/${ENV_CLOUD_NAME}/video/upload/v1693588665/prod203/prod203_capsule_herobanner_360p.webm`,
+      MEDIUM: `${BASE_URL}/${ENV_CLOUD_NAME}/video/upload/v1693588665/prod203/prod203_capsule_herobanner_480p.webm`,
+      HIGH: `${BASE_URL}/${ENV_CLOUD_NAME}/video/upload/v1693588665/prod203/prod203_capsule_herobanner_720p.webm`,
+      VERY_HIGH: `${BASE_URL}/${ENV_CLOUD_NAME}/video/upload/v1693588665/prod203/prod203_capsule_herobanner_1080p.webm`,
    })
    const videoRef = useRef<HTMLVideoElement | null>(null)
    const playerRef = useRef<CloudinaryVideoPlayer | null>(null)
-   const [isMounted, setIsMounted] = useState(false)
+   const isMounted = useMounted()
    const {setVideoSource} = useVideoSource(VIDEO_SOURCE, videoRef)
-
-   useEffect(() => {
-      setIsMounted(true)
-      return () => {
-         setIsMounted(false)
-      }
-   }, [])
 
    useEffect(() => {
       isMounted && setVideoSource()
