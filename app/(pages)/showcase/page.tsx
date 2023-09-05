@@ -4,13 +4,12 @@ import {TitleH2} from '@/components/atom/SectionH2'
 import {getCategories, getProjects} from '@/lib/sanityClient'
 import Category from '@/schemas/category.schema'
 import Project from '@/schemas/project.schema'
-import PageWithParams from '@/types/pageWithParams'
-import {classed} from '@tw-classed/react'
+import {PageSlugAndCategoryParams} from '@/types/types'
 import Link from 'next/link'
-import React, {Suspense} from 'react'
+import React, {PropsWithChildren, Suspense} from 'react'
 import {twMerge} from 'tailwind-merge'
 
-const Showcase = async ({params, searchParams}: PageWithParams) => {
+const Showcase = async ({params, searchParams}: PageSlugAndCategoryParams) => {
    const projects: Project[] = await getProjects()
 
    const categories: Category[] = await getCategories()
@@ -21,22 +20,22 @@ const Showcase = async ({params, searchParams}: PageWithParams) => {
 
          <section>
             <header>
-               <nav className={'mx-auto flex gap-4 px-2 py-8'}>
-                  <CategoryLink
-                     as={Link}
-                     href={'/showcase'}
-                     active={!searchParams || searchParams?.category === 'all'}>
-                     All
-                  </CategoryLink>
-                  {categories.map((c: Category) => (
-                     <CategoryLink
-                        key={c._id}
-                        as={Link}
-                        active={searchParams && searchParams?.category === c?.slug?.current}
-                        href={`/showcase?category=${c?.slug?.current}`}>
-                        {c.name}
-                     </CategoryLink>
-                  ))}
+               <nav>
+                  <ul className={'mx-auto flex gap-4 px-2 py-8'}>
+                     <SelectCategory
+                        href={'/showcase'}
+                        active={!searchParams || searchParams?.category === 'all'}>
+                        All
+                     </SelectCategory>
+                     {categories.map((c: Category) => (
+                        <SelectCategory
+                           key={c._id}
+                           active={searchParams && searchParams?.category === c?.slug?.current}
+                           href={`/showcase?category=${c?.slug?.current}`}>
+                           {c.name}
+                        </SelectCategory>
+                     ))}
+                  </ul>
                </nav>
             </header>
             <main>
@@ -54,10 +53,11 @@ const Showcase = async ({params, searchParams}: PageWithParams) => {
                            )?._id
                            return categories.find(c => activeCategoryReference === p.category._ref)
                         })
-                        .map(p => (
+                        .map((p, index) => (
                            <ProjectPreview
                               key={p._id}
                               project={p}
+                              index={index}
                            />
                         ))}
                   </ul>
@@ -77,11 +77,24 @@ const PageHeadingParticule = ({title}: {title: string}) => (
    </section>
 )
 
-const CategoryLink = classed('li', 'select-none', {
-   variants: {
-      active: {
-         true: 'text-primary font-semibold cursor-default',
-         false: 'text-primary/80 hover:text-primary cursor-pointer',
-      },
-   },
-})
+const SelectCategory = ({
+   active = false,
+   className,
+   href,
+   children,
+}: PropsWithChildren<{
+   className?: string
+   href: string
+   active: boolean
+}>) => (
+   <li
+      className={twMerge(
+         'select-none',
+         active
+            ? 'cursor-default font-semibold text-primary'
+            : 'cursor-pointer text-primary/80 hover:text-primary',
+         className
+      )}>
+      <Link href={href}>{children}</Link>
+   </li>
+)

@@ -61,7 +61,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 1',
       slug: {current: 'project-title-1', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date(new Date('2023-08-19T16:00:23.907295')),
       description: [
          {
@@ -97,7 +97,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 2',
       slug: {current: 'project-title-2', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-05-23T16:00:23.907308'),
       description: [
          {
@@ -147,7 +147,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 3',
       slug: {current: 'project-title-3', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2022-09-03T16:00:23.907335'),
       description: [
          {
@@ -183,7 +183,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 4',
       slug: {current: 'project-title-4', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-06-15T16:00:23.907356'),
       description: [
          {
@@ -219,7 +219,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 5',
       slug: {current: 'project-title-5', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-05-21T16:00:23.907376'),
       description: [
          {
@@ -283,7 +283,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 6',
       slug: {current: 'project-title-6', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-05-12T16:00:23.907402'),
       description: [
          {
@@ -319,7 +319,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 7',
       slug: {current: 'project-title-7', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2022-12-16T16:00:23.907421'),
       description: [
          {
@@ -383,7 +383,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 8',
       slug: {current: 'project-title-8', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-02-04T16:00:23.907447'),
       description: [
          {
@@ -447,7 +447,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 9',
       slug: {current: 'project-title-9', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-08-19T16:00:23.907474'),
       description: [
          {
@@ -497,7 +497,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 10',
       slug: {current: 'project-title-10', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-04-08T16:00:23.907497'),
       description: [
          {
@@ -561,7 +561,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 11',
       slug: {current: 'project-title-11', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-05-02T16:00:23.907523'),
       description: [
          {
@@ -597,7 +597,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 12',
       slug: {current: 'project-title-12', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-03-04T16:00:23.907541'),
       description: [
          {
@@ -633,7 +633,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 13',
       slug: {current: 'project-title-13', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2022-11-08T16:00:23.907560'),
       description: [
          {
@@ -669,7 +669,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 14',
       slug: {current: 'project-title-14', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-03-31T16:00:23.907706'),
       description: [
          {
@@ -719,7 +719,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 15',
       slug: {current: 'project-title-15', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-08-16T16:00:23.907731'),
       description: [
          {
@@ -783,7 +783,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 16',
       slug: {current: 'project-title-16', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2022-10-21T16:00:23.907769'),
       description: [
          {
@@ -847,7 +847,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 17',
       slug: {current: 'project-title-17', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-07-04T16:00:23.907811'),
       description: [
          {
@@ -883,7 +883,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 18',
       slug: {current: 'project-title-18', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-04-05T16:00:23.907834'),
       description: [
          {
@@ -933,7 +933,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 19',
       slug: {current: 'project-title-19', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-08-01T16:00:23.908267'),
       description: [
          {
@@ -983,7 +983,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 20',
       slug: {current: 'project-title-20', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-05-31T16:00:23.908315'),
       description: [
          {
@@ -1019,7 +1019,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 21',
       slug: {current: 'project-title-21', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-04-24T16:00:23.908352'),
       description: [
          {
@@ -1055,7 +1055,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 22',
       slug: {current: 'project-title-22', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2022-12-27T16:00:23.908387'),
       description: [
          {
@@ -1119,7 +1119,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 23',
       slug: {current: 'project-title-23', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-01-19T16:00:23.908457'),
       description: [
          {
@@ -1155,7 +1155,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 24',
       slug: {current: 'project-title-24', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-01-06T16:00:23.908491'),
       description: [
          {
@@ -1205,7 +1205,7 @@ export const mockedProjects: Project[] = [
    {
       title: 'Project Title 25',
       slug: {current: 'project-title-25', _type: 'slug'},
-      thumbnail: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      thumbnail: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       releaseDate: new Date('2023-01-27T16:00:23.908543'),
       description: [
          {
@@ -1272,7 +1272,7 @@ export const mockedBrands = [
    {
       name: 'Brand 1',
       slug: {_type: 'slug', current: 'brand-1'},
-      image: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      image: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       _createdAt: new Date('2023-06-25T16:16:46.495061'),
       _updatedAt: new Date('2023-07-12T16:16:46.495083'),
       _id: 'brand_1',
@@ -1282,7 +1282,7 @@ export const mockedBrands = [
    {
       name: 'Brand 2',
       slug: {_type: 'slug', current: 'brand-2'},
-      image: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      image: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       _createdAt: new Date('2022-09-25T16:16:46.495091'),
       _updatedAt: new Date('2023-05-30T16:16:46.495096'),
       _id: 'brand_2',
@@ -1292,7 +1292,7 @@ export const mockedBrands = [
    {
       name: 'Brand 3',
       slug: {_type: 'slug', current: 'brand-3'},
-      image: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      image: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       _createdAt: new Date('2023-03-31T16:16:46.495102'),
       _updatedAt: new Date('2023-07-29T16:16:46.495105'),
       _id: 'brand_3',
@@ -1302,7 +1302,7 @@ export const mockedBrands = [
    {
       name: 'Brand 4',
       slug: {_type: 'slug', current: 'brand-4'},
-      image: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      image: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       _createdAt: new Date('2022-10-21T16:16:46.495111'),
       _updatedAt: new Date('2023-07-23T16:16:46.495115'),
       _id: 'brand_4',
@@ -1312,7 +1312,7 @@ export const mockedBrands = [
    {
       name: 'Brand 5',
       slug: {_type: 'slug', current: 'brand-5'},
-      image: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      image: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       _createdAt: new Date('2022-11-28T16:16:46.495120'),
       _updatedAt: new Date('2023-07-05T16:16:46.495124'),
       _id: 'brand_5',
@@ -1322,7 +1322,7 @@ export const mockedBrands = [
    {
       name: 'Brand 6',
       slug: {_type: 'slug', current: 'brand-6'},
-      image: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      image: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       _createdAt: new Date('2023-03-07T16:16:46.495129'),
       _updatedAt: new Date('2023-08-20T16:16:46.495133'),
       _id: 'brand_6',
@@ -1332,7 +1332,7 @@ export const mockedBrands = [
    {
       name: 'Brand 7',
       slug: {_type: 'slug', current: 'brand-7'},
-      image: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      image: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       _createdAt: new Date('2023-03-13T16:16:46.495137'),
       _updatedAt: new Date('2023-07-22T16:16:46.495141'),
       _id: 'brand_7',
@@ -1342,7 +1342,7 @@ export const mockedBrands = [
    {
       name: 'Brand 8',
       slug: {_type: 'slug', current: 'brand-8'},
-      image: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      image: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       _createdAt: new Date('2022-12-06T16:16:46.495146'),
       _updatedAt: new Date('2023-07-15T16:16:46.495150'),
       _id: 'brand_8',
@@ -1352,7 +1352,7 @@ export const mockedBrands = [
    {
       name: 'Brand 9',
       slug: {_type: 'slug', current: 'brand-9'},
-      image: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      image: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       _createdAt: new Date('2022-09-28T16:16:46.495154'),
       _updatedAt: new Date('2023-07-30T16:16:46.495158'),
       _id: 'brand_9',
@@ -1362,7 +1362,7 @@ export const mockedBrands = [
    {
       name: 'Brand 10',
       slug: {_type: 'slug', current: 'brand-10'},
-      image: {_type: 'image', asset: {_ref: 'https://picsum.photos/200', _type: 'reference'}},
+      image: {_type: 'image', asset: {_ref: '/imaheholder-mid.jpg', _type: 'reference'}},
       _createdAt: new Date('2022-12-26T16:16:46.495163'),
       _updatedAt: new Date('2023-05-14T16:16:46.495166'),
       _id: 'brand_10',

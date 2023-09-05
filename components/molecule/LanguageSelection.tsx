@@ -21,16 +21,17 @@ export default function LanguageSelection({
          <Li
             onClick={onClick}
             isSelected={!pathname.includes('eng')}>
-            <Link href={'/'}>FR</Link>
+            <Link href={'/fr/home'}>FR</Link>
          </Li>
          <Li
             onClick={onClick}
             isSelected={pathname.includes('eng')}>
-            <Link href={'/eng/'}>ENG</Link>
+            <Link href={'/eng/home'}>ENG</Link>
          </Li>
       </ul>
    )
 }
+
 const Li = classed(
    'span',
    'font-poppins tracking-wider uppercase md:text-base lg:text-lg select-none',
