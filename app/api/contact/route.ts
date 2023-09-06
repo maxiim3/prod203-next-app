@@ -1,4 +1,4 @@
-import {EmailTemplate} from '@/app/(pages)/contact/EmailTemplate'
+import {EmailTemplate} from '@/app/(pages)/(singlePageLayout)/contact/EmailTemplate'
 import {NextResponse} from 'next/server'
 import {Resend} from 'resend'
 

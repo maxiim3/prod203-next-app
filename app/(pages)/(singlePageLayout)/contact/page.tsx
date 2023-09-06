@@ -1,12 +1,12 @@
-import ContactFormComponent from '@/app/(pages)/contact/ContactFormComponent'
+import ContactFormComponent from '@/app/(pages)/(singlePageLayout)/contact/ContactFormComponent'
 import React from 'react'
 
 // ? Adresse mail de contact : contact@prod203.com
 const Contact = () => {
    return (
-      <main className={'flex h-screen w-screen items-center justify-center pt-24'}>
+      <>
          <ContactFormComponent />
-      </main>
+      </>
    )
 }
 
