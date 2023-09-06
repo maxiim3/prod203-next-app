@@ -1,5 +1,5 @@
-import {ProjectPreview} from '@/app/(pages)/showcase/ProjectPreview'
-import {ShadowTitleAnimation} from '@/app/(pages)/showcase/ShadowTitleAnimation'
+import {ProjectPreview} from '@/app/(pages)/projects/ProjectPreview'
+import {ShadowTitleAnimation} from '@/app/(pages)/projects/ShadowTitleAnimation'
 import {TitleH2} from '@/components/atom/SectionH2'
 import {getCategories, getProjects} from '@/lib/sanityClient'
 import Category from '@/schemas/category.schema'
@@ -23,7 +23,7 @@ const Showcase = async ({params, searchParams}: PageSlugAndCategoryParams) => {
                <nav>
                   <ul
                      className={
-                        'mx-auto flex w-screen items-center justify-center gap-4 border border-red-500 px-2 py-8'
+                        'mx-auto flex w-screen items-center justify-center gap-4 px-2 py-8'
                      }>
                      <SelectCategory
                         href={'/showcase'}
