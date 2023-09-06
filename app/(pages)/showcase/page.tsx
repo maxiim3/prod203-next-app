@@ -16,7 +16,7 @@ const Showcase = async ({params, searchParams}: PageSlugAndCategoryParams) => {
 
    return (
       <main className={'min-h-screen w-screen py-24'}>
-         <PageHeadingParticule title={'Showcase'} />
+         {/*<PageHeadingParticule title={'Showcase'} />*/}
 
          <section>
             <header>
