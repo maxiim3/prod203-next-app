@@ -21,10 +21,17 @@ const Showcase = async ({params, searchParams}: PageSlugAndCategoryParams) => {
          <section>
             <header>
                <nav>
-                  <ul className={'mx-auto flex gap-4 px-2 py-8'}>
+                  <ul
+                     className={
+                        'mx-auto flex w-screen items-center justify-center gap-4 border border-red-500 px-2 py-8'
+                     }>
                      <SelectCategory
                         href={'/showcase'}
-                        active={!searchParams || searchParams?.category === 'all'}>
+                        active={
+                           !searchParams.category ||
+                           !searchParams ||
+                           searchParams?.category === 'all'
+                        }>
                         All
                      </SelectCategory>
                      {categories.map((c: Category) => (
