@@ -22,7 +22,7 @@ export default function ContactFormComponent() {
 
    if (isFormSubmitted)
       return (
-         <div className="flex max-h-[640px] w-full flex-col gap-4 bg-clrPrimary-100 px-9  py-12 text-base-100 sm:max-w-[540px] sm:rounded-lg">
+         <div className="flex max-h-[640px] w-full flex-col gap-4 bg-clrPrimary-100 px-9 py-12 text-base-100 sm:max-w-[540px] sm:rounded-lg">
             {isSubmittedWithSuccess ? (
                <>
                   <h1 className="text-center text-2xl font-bold">Merci pour votre message</h1>

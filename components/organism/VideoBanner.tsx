@@ -26,6 +26,7 @@ export function VideoBanner() {
       isMounted && setVideoSource()
    }, [isMounted, setVideoSource])
 
+   /*Handle Load Failed on no internet : Display an image placeholder instead of the video*/
    if (!isMounted) {
       return (
          <>
@@ -40,6 +41,7 @@ export function VideoBanner() {
          autoPlay={'always'}
          loop={true}
          muted={true}
+         onError={() => <p>Something went wrong</p>}
          onMetadataLoad={({
             player,
             video,

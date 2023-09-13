@@ -75,15 +75,24 @@ export const ProjectPreview = ({project, index}: {project: Project; index: numbe
                   'motion-safe:-translate-y-full motion-safe:opacity-10',
                   'motion-safe:group-hover/card:translate-y-0 motion-safe:group-hover/card:scale-105  motion-safe:group-hover/card:bg-base-100/90 motion-safe:group-hover/card:opacity-100 '
                )}>
-               <h3 className="card-title text-base">{project.title}</h3>
+               <h3
+                  className={twMerge(
+                     'card-title text-base',
+                     `transition-all duration-300  motion-safe:-translate-y-[50px] motion-safe:opacity-75 motion-safe:group-hover/card:translate-y-0 motion-safe:group-hover/card:opacity-100`
+                  )}
+                  style={{transitionDelay: '0.035s'}}>
+                  {project.title}
+               </h3>
                {project.description &&
                   project.description.map((d, index) => {
                      return (
                         <p
                            className={twMerge(
                               'font-regular font-poppins text-xs',
-                              index === project.description.length - 1 && 'line-clamp-1'
+                              index === project.description.length - 1 && 'line-clamp-1',
+                              `transition-all duration-300 motion-safe:-translate-y-[50px]  motion-safe:opacity-75 motion-safe:group-hover/card:translate-y-0 motion-safe:group-hover/card:opacity-100`
                            )}
+                           style={{transitionDelay: `calc(${index + 1.4}* 0.02s)`}}
                            key={d._key}>
                            {d.children[0].text}
                         </p>

@@ -19,7 +19,11 @@ export default function Error({
             className={
                'mx-auto flex h-full w-screen flex-col items-center justify-center gap-8 py-32'
             }>
-            <h2>Something went wrong!</h2>
+            <h1>Il semblerait que quelque chose ne ce soit pas passé comme prévu</h1>
+            <p>Vérifiez peut-être votre connexion internet.</p>
+            <p>Sinon réessayez plus tard.</p>
+            <p>En attendant vous pouvez écouter quelques-une de nos compositions sur Spotify</p>
+            {/*TODO mettre lien Spotify*/}
             <button
                className={'btn btn-outline'}
                onClick={

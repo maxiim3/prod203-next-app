@@ -19,11 +19,12 @@ const Showcase = async ({params, searchParams}: PageSlugAndCategoryParams) => {
          {/*<PageHeadingParticule title={'Showcase'} />*/}
 
          <section>
-            <header>
+            <header className={'w-screen overflow-hidden'}>
+               {/* TODO OVERFLOW Scroll on ul Nav container do not work*/}
                <nav>
                   <ul
                      className={
-                        'mx-auto flex w-screen items-center justify-center gap-4 px-2 py-8'
+                        'mx-auto flex w-max items-center justify-center gap-4 overflow-x-auto px-2 py-8'
                      }>
                      <SelectCategory
                         href={'/showcase'}

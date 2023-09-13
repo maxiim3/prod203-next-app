@@ -7,6 +7,7 @@ import Link from 'next/link'
 import React, {Suspense} from 'react'
 
 const ProjectPage = async ({params}: {params: {id: string}}) => {
+   console.log(params.id)
    const project: Project = await getProjectBySlug(params.id)
    const videoURL = getVideoSource(project)
    const thumbnailURL = getImageSource(project)!

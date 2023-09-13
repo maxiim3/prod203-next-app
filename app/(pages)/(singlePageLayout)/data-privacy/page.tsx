@@ -5,3 +5,6 @@ export default function DataPrivacy() {
       </>
    )
 }
+// # Traitement des données personnelles et utilisation des cookies
+// -> Informer l'internaute et demander son consentement
+//

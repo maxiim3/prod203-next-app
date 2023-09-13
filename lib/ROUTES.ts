@@ -9,12 +9,12 @@ const ROUTES: RouteType[] = [
       path: '/',
    },
    {
-      name: 'A propos',
-      path: '/about',
-   },
-   {
       name: 'Projects',
       path: '/projects',
+   },
+   {
+      name: 'A propos',
+      path: '/about',
    },
    {
       name: 'Contact',
