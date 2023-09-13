@@ -1,6 +1,6 @@
 'use client'
 
-import ROUTES from '@/lib/ROUTES'
+import routes from '@/static-content/route.static.content'
 import {classed} from '@tw-classed/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -47,7 +47,7 @@ export default function Footer() {
             <div className="grid grid-cols-1 gap-8 border-t border-primary/80 pt-8 sm:grid-cols-2 lg:grid-cols-4 lg:pt-16">
                <Section>
                   <SectionTitle>Liens rapides</SectionTitle>
-                  {ROUTES.map((route, index) => {
+                  {routes.map((route, index) => {
                      return (
                         <Item
                            className={twMerge(pathname === route.path && 'font-semibold')}

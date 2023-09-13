@@ -4,7 +4,7 @@ import NavLI from '@/components/atom/NavLI'
 import {NavUL} from '@/components/layout/NavUL'
 import LanguageSelection from '@/components/molecule/LanguageSelection'
 import {useMobileNavigation} from '@/components/organism/MobileNavigationProvider'
-import ROUTES from '@/lib/ROUTES'
+import routes from '@/static-content/route.static.content'
 import {motion} from 'framer-motion'
 import {nanoid} from 'nanoid'
 import Link from 'next/link'
@@ -25,7 +25,7 @@ const MenuPortal = () => {
                   'flex h-full w-full flex-col items-end justify-center gap-16 px-12 pt-12 landscape:items-center   '
                }>
                <NavUL className="flex-col items-end gap-8 xs:gap-12 landscape:flex-row landscape:items-center landscape:justify-center landscape:gap-4">
-                  {ROUTES.map(route => (
+                  {routes.map(route => (
                      <NavLI
                         key={nanoid()}
                         className={`duration-250 text-4xl motion-safe:transition-all xs:text-5xl  landscape:text-xl`}>

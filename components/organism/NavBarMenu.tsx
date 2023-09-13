@@ -3,7 +3,7 @@
 import NavLI from '@/components/atom/NavLI'
 import {NavUL} from '@/components/layout/NavUL'
 import LanguageSelection from '@/components/molecule/LanguageSelection'
-import ROUTES from '@/lib/ROUTES'
+import routes from '@/static-content/route.static.content'
 import {nanoid} from 'nanoid'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
@@ -15,7 +15,7 @@ export default function NavBarMenu() {
       <>
          <nav className={'hidden items-center md:flex'}>
             <NavUL>
-               {ROUTES.map(route => (
+               {routes.map(route => (
                   <NavLI
                      key={nanoid()}
                      active={route.path === pathname}>

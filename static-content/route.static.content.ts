@@ -1,9 +1,6 @@
-type RouteType = {
-   name: string
-   path: string
-}
+import {T_Route} from '@/schemas/route.schema'
 
-const ROUTES: RouteType[] = [
+const routes: T_Route[] = [
    {
       name: 'Accueil',
       path: '/',
@@ -22,4 +19,5 @@ const ROUTES: RouteType[] = [
    },
 ]
 
-export default ROUTES satisfies RouteType[]
+Object.freeze(routes)
+export default routes

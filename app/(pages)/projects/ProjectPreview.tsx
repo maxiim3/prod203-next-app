@@ -1,8 +1,7 @@
 'use client'
 
-import {getImageSource} from '@/lib/sanityClient'
-import Project from '@/schemas/project.schema'
-import {motion, stagger, useAnimate, useInView} from 'framer-motion'
+import {T_MarkdownElement} from '@/schemas/project.sanity.schema'
+import {motion, useAnimate, useInView} from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, {useEffect} from 'react'
@@ -30,9 +29,19 @@ function useProjectInView() {
    return containerRef // todo fix the animation with intersection observer
 }
 
-export const ProjectPreview = ({project, index}: {project: Project; index: number}) => {
+export const ProjectPreview = ({
+   slug,
+   description,
+   title,
+   index,
+}: {
+   slug: string
+   description: T_MarkdownElement[]
+   title: string
+   index: number
+}) => {
    const containerRef = useProjectInView()
-   const imageSource = getImageSource(project)
+   // const imageSource = getImageSource(project)
 
    return (
       <motion.li
@@ -51,22 +60,19 @@ export const ProjectPreview = ({project, index}: {project: Project; index: numbe
          }}
          ref={containerRef.current}
          className="group/card card relative h-full min-h-[260px] w-full min-w-[260px] overflow-hidden bg-base-100 shadow-xl">
-         <Link href={`/showcase/${project.slug.current}`}>
-            {imageSource && (
-               // eslint-disable-next-line @next/next/no-img-element
-               <Image
-                  fill={true}
-                  className={twMerge(
-                     'object-cover',
-                     'motion-safe:transition-all motion-safe:duration-[2s] motion-safe:group-hover/card:scale-110 motion-safe:group-hover/card:opacity-75'
-                  )}
-                  sizes={
-                     '(min-width: 1560px) 324px, (min-width: 1280px) calc(15.38vw + 87px), (min-width: 1040px) calc(33.18vw - 41px), (min-width: 780px) calc(50vw - 40px), (min-width: 640px) calc(50vw - 16px), calc(100vw - 16px)' /*Generated from https://ausi.github.io/respimagelint/*/
-                  }
-                  src={imageSource}
-                  alt="Image cannot be loaded"
-               />
-            )}
+         <Link href={`/projects/${slug}`}>
+            <Image
+               fill={true}
+               className={twMerge(
+                  'object-cover',
+                  'motion-safe:transition-all motion-safe:duration-[2s] motion-safe:group-hover/card:scale-110 motion-safe:group-hover/card:opacity-75'
+               )}
+               sizes={
+                  '(min-width: 1560px) 324px, (min-width: 1280px) calc(15.38vw + 87px), (min-width: 1040px) calc(33.18vw - 41px), (min-width: 780px) calc(50vw - 40px), (min-width: 640px) calc(50vw - 16px), calc(100vw - 16px)' /*Generated from https://ausi.github.io/respimagelint/*/
+               }
+               src={'/imaheholder-hi.jpg'}
+               alt="Image cannot be loaded"
+            />
             <div
                className={twMerge(
                   'card-body bg-base-100/60 motion-safe:scale-95 motion-safe:transition-all motion-safe:delay-75 motion-safe:duration-200',
@@ -81,22 +87,22 @@ export const ProjectPreview = ({project, index}: {project: Project; index: numbe
                      `transition-all duration-300  motion-safe:-translate-y-[50px] motion-safe:opacity-75 motion-safe:group-hover/card:translate-y-0 motion-safe:group-hover/card:opacity-100`
                   )}
                   style={{transitionDelay: '0.035s'}}>
-                  {project.title}
+                  {title}
                </h3>
-               {project.description &&
-                  project.description.map((d, index) => {
-                     return (
+               {description &&
+                  description.map((text, index) => {
+                     return text.children.map(text => (
                         <p
                            className={twMerge(
                               'font-regular font-poppins text-xs',
-                              index === project.description.length - 1 && 'line-clamp-1',
+                              index === description.length - 1 && 'line-clamp-1',
                               `transition-all duration-300 motion-safe:-translate-y-[50px]  motion-safe:opacity-75 motion-safe:group-hover/card:translate-y-0 motion-safe:group-hover/card:opacity-100`
                            )}
                            style={{transitionDelay: `calc(${index + 1.4}* 0.02s)`}}
-                           key={d._key}>
-                           {d.children[0].text}
+                           key={index}>
+                           {text.text}
                         </p>
-                     )
+                     ))
                   })}
             </div>
          </Link>

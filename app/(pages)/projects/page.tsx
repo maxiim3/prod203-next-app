@@ -1,23 +1,21 @@
 import {ProjectPreview} from '@/app/(pages)/projects/ProjectPreview'
 import {ShadowTitleAnimation} from '@/app/(pages)/projects/ShadowTitleAnimation'
 import {TitleH2} from '@/components/atom/SectionH2'
-import {getCategories, getProjects} from '@/lib/sanityClient'
-import Category from '@/schemas/category.schema'
-import Project from '@/schemas/project.schema'
-import {PageSlugAndCategoryParams} from '@/types/types'
+import mockedCategories from '@/mocked-content/categories.data.mocked'
+import mockedProjects from '@/mocked-content/projects.data.mocked'
+import {PageSlugAndCategoryParams} from '@/schemas/project.page.props.schema'
 import Link from 'next/link'
 import React, {PropsWithChildren, Suspense} from 'react'
 import {twMerge} from 'tailwind-merge'
 
-const Showcase = async ({params, searchParams}: PageSlugAndCategoryParams) => {
-   const projects: Project[] = await getProjects()
-
-   const categories: Category[] = await getCategories()
+const Showcase = async ({searchParams}: PageSlugAndCategoryParams) => {
+   // const projects = await getAllProjects()
+   // const categories = await getAllCategories()
+   const projects = mockedProjects
+   const categories = mockedCategories
 
    return (
       <main className={'min-h-screen w-screen py-24'}>
-         {/*<PageHeadingParticule title={'Showcase'} />*/}
-
          <section>
             <header className={'w-screen overflow-hidden'}>
                {/* TODO OVERFLOW Scroll on ul Nav container do not work*/}
@@ -27,7 +25,7 @@ const Showcase = async ({params, searchParams}: PageSlugAndCategoryParams) => {
                         'mx-auto flex w-max items-center justify-center gap-4 overflow-x-auto px-2 py-8'
                      }>
                      <SelectCategory
-                        href={'/showcase'}
+                        href={'/projects'}
                         active={
                            !searchParams.category ||
                            !searchParams ||
@@ -35,12 +33,12 @@ const Showcase = async ({params, searchParams}: PageSlugAndCategoryParams) => {
                         }>
                         All
                      </SelectCategory>
-                     {categories.map((c: Category) => (
+                     {categories.map(c => (
                         <SelectCategory
-                           key={c._id}
-                           active={searchParams && searchParams?.category === c?.slug?.current}
-                           href={`/showcase?category=${c?.slug?.current}`}>
-                           {c.name}
+                           key={c.id}
+                           active={searchParams && searchParams?.category === c?.slug}
+                           href={`/projects?category=${c?.slug}`}>
+                           {c.i18nValue.fr}
                         </SelectCategory>
                      ))}
                   </ul>
@@ -57,14 +55,16 @@ const Showcase = async ({params, searchParams}: PageSlugAndCategoryParams) => {
                            if (!searchParams.category || searchParams.category === 'all')
                               return true
                            const activeCategoryReference = categories.find(
-                              c => c.slug.current === searchParams.category
-                           )?._id
+                              c => c.slug === searchParams.category
+                           )?.id
                            return categories.find(c => activeCategoryReference === p.category._ref)
                         })
                         .map((p, index) => (
                            <ProjectPreview
-                              key={p._id}
-                              project={p}
+                              key={p.id}
+                              title={p.title}
+                              description={p.i18nDescription.fr}
+                              slug={p.slug}
                               index={index}
                            />
                         ))}

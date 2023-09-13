@@ -1,7 +1,7 @@
 'use client'
 
-import {Client, clients, reversedClients} from '@/lib/clients'
-
+import {ClientClassFactory} from '@/design-pattern/client.class-factory'
+import {clients, reversedClients} from '@/static-content/clients.static.content'
 import Image from 'next/image'
 import React, {memo} from 'react'
 import Marquee from 'react-fast-marquee'
@@ -61,7 +61,7 @@ const MarqueeContainerLeftDirection = ({children}: {children: React.ReactNode}) 
    </Marquee>
 )
 
-const ImageComponent = ({client, className}: {client: Client; className?: string}) => (
+const ImageComponent = ({client, className}: {client: ClientClassFactory; className?: string}) => (
    <Image
       width={200}
       height={200}
