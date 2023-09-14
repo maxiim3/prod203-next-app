@@ -3,7 +3,7 @@ import ky from 'ky'
 import {useCallback, useState} from 'react'
 import {useForm} from 'react-hook-form'
 
-export const useReactHookForm = () => {
+const useReactHookFormHook = () => {
    const {
       register,
       handleSubmit,
@@ -54,3 +54,5 @@ export const useReactHookForm = () => {
       onSubmit,
    }
 }
+
+export default useReactHookFormHook

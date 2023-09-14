@@ -12,14 +12,14 @@ import {
    Theme,
 } from '@radix-ui/themes'
 
-import {Label} from '@/app/(pages)/contact/form-label.atom'
-import {useReactHookForm} from '@/app/(pages)/contact/use-react-hook.form'
+import Label from '@/app/(pages)/contact/form-label.atom'
+import useReactHookFormHook from '@/app/(pages)/contact/use-react-hook-form.hook'
 import Link from 'next/link'
 import React from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export default function ContactForm() {
-   const {isMounted, formState, errors, reset, onSubmit, register} = useReactHookForm()
+   const {isMounted, formState, errors, reset, onSubmit, register} = useReactHookFormHook()
 
    if (!isMounted) return <Text size={'4'}>Loading Form...</Text>
 
