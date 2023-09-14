@@ -1,4 +1,4 @@
-import ProjectGallery from '@/app/(pages)/projects/project.gallery.client'
+import ProjectGallery from '@/app/(pages)/projects/project-gallery.client'
 import React from 'react'
 
 // const Projects = async ({searchParams}: PageSlugAndCategoryParams) => { /*Moved the logic in useSearchParams in projectGallery component*/

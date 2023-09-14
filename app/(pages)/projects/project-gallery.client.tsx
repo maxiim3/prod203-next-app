@@ -1,6 +1,6 @@
 'use client'
 
-import {ProjectCard} from '@/app/(pages)/projects/project.card'
+import {ProjectCard} from '@/app/(pages)/projects/project-card.client'
 import mockedCategories from '@/mocked-content/categories.data.mocked'
 import mockedProjects from '@/mocked-content/projects.data.mocked'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'

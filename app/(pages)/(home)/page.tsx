@@ -1,3 +1,4 @@
+import {ScrollButton} from '@/app/(pages)/(home)/scroll-button.client'
 import Loading from '@/app/loading'
 import {SectionTemplate} from '@/components/layout/SectionTemplate'
 import MarqueeBanner from '@/components/organism/MarqueeBanner'
@@ -6,7 +7,6 @@ import Icons from '@/lib/Icons'
 import Image from 'next/image'
 import React, {PropsWithChildren, Suspense} from 'react'
 import {twMerge} from 'tailwind-merge'
-import {ScrollButton} from './ScrollButton'
 
 export default async function Home() {
    return (
@@ -197,7 +197,12 @@ const services = [
 
 // clients: Canal+, M6, Balenciaga, Nike, DisneyLand Paris, Citroen, Le,Puy Du Fou, 24h Le Mans, Chateau Fort Sedan, Edith Piaf Symphonique, Mon PLus Beau Noel, Studio Canal, Coca Cola Credit Agricole,
 
-const Text = ({children, className}: PropsWithChildren<{className?: string}>) => (
+const Text = ({
+   children,
+   className,
+}: PropsWithChildren<{
+   className?: string
+}>) => (
    <p
       className={twMerge(
          'max-w-[60ch] font-extralight leading-relaxed tracking-wider text-primary text-balance',
@@ -206,6 +211,9 @@ const Text = ({children, className}: PropsWithChildren<{className?: string}>) =>
       {children}
    </p>
 )
-const Accent = ({children, className}: PropsWithChildren<{className?: string}>) => (
-   <strong className={twMerge('font-semibold', className)}>{children}</strong>
-)
+const Accent = ({
+   children,
+   className,
+}: PropsWithChildren<{
+   className?: string
+}>) => <strong className={twMerge('font-semibold', className)}>{children}</strong>

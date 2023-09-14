@@ -2,15 +2,14 @@
 
 import {useMounted} from '@/hooks/useMounted'
 import {ReloadIcon} from '@radix-ui/react-icons'
-import {Button} from '@radix-ui/themes'
+import {Button, Link as RadixLink, Text} from '@radix-ui/themes'
 import ky from 'ky'
 import Link from 'next/link'
-import {useRouter} from 'next/navigation'
 import React, {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {twMerge} from 'tailwind-merge'
-//region Organisms
-export default function ContactFormComponent() {
+
+export default function ContactForm() {
    const {
       register,
       handleSubmit,
@@ -21,7 +20,6 @@ export default function ContactFormComponent() {
    const [isFormSubmitted, setIsFormSubmitted] = useState(false)
    const [isSubmittedWithSuccess, setIsSubmittedWithSuccess] = useState(false)
    const isMounted = useMounted()
-   const router = useRouter()
 
    if (!isMounted) return <p>Loading Form...</p>
 
@@ -32,25 +30,29 @@ export default function ContactFormComponent() {
                <>
                   <h1 className="text-center text-2xl font-bold">Merci pour votre message</h1>
                   <p className="text-center">Nous vous répondrons dans les plus brefs délais</p>
-                  <Link
-                     href={'/'}
-                     className={'btn btn-primary'}>
-                     Retour à l{"'"}accueil
-                  </Link>
                   <Button
-                     size={{
-                        initial: '3',
-                        md: '4',
-                     }}
+                     highContrast
+                     size={'4'}
+                     variant={'outline'}
+                     className={'bg-base-200'}>
+                     <RadixLink
+                        asChild
+                        className={'font-poppins text-primary'}>
+                        <Link href={'/'}>Retour à l{"'"}accueil</Link>
+                     </RadixLink>
+                  </Button>
+                  <Button
+                     size={'4'}
                      onClick={() => {
                         reset()
                         setIsFormSubmitted(false)
                      }}
-                     color={'gray'}
-                     variant={'outline'}>
+                     variant={'outline'}
+                     className={'border-base-100 bg-primary'}>
                      <ReloadIcon
-                        width={18}
-                        height={18}
+                        className={'text-base-200'}
+                        width={24}
+                        height={24}
                      />
                   </Button>
                </>
@@ -79,9 +81,12 @@ export default function ContactFormComponent() {
             console.log(json)
 
             if ([200, 201, 203, 204].includes(response.status)) {
-               return setIsSubmittedWithSuccess(true)
+               setIsSubmittedWithSuccess(true)
             }
-            return setIsSubmittedWithSuccess(false)
+            if ([400, 401, 402, 404, 500].includes(response.status)) {
+               setIsSubmittedWithSuccess(false)
+            }
+            setIsFormSubmitted(true)
          })}
          className={
             'flex max-h-[640px] w-full flex-col gap-3 bg-clrPrimary-100 px-9  py-12 text-base-100 sm:max-w-[540px] sm:rounded-lg'
@@ -165,17 +170,18 @@ export default function ContactFormComponent() {
                </label>
             )}
          </div>
-
-         <button
+         <Button
+            highContrast
+            size={'4'}
             type={'submit'}
             disabled={false}
-            className="btn btn-md">
-            Submit
-         </button>
+            variant={'outline'}
+            className={'bg-base-200'}>
+            <Text className={'font-poppins text-primary'}>Submit</Text>
+         </Button>
       </form>
    )
 }
-//endregion
 
 const Label = ({id, label, className}: {label: string; id: string; className?: string}) => (
    <label

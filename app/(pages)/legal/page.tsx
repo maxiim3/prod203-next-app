@@ -1,8 +1,10 @@
+import SinglePageLayoutTemplate from '@/components/ui/single-page-layout.template'
+
 export default function Legal() {
    return (
-      <>
+      <SinglePageLayoutTemplate>
          <h1>Mentions Légales</h1>
-      </>
+      </SinglePageLayoutTemplate>
    )
 }
 // # Identification du professionnel :
