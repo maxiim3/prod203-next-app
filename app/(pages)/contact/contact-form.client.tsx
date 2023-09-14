@@ -22,6 +22,40 @@ export default function ContactForm() {
    const {isMounted, formState, errors, reset, onSubmit, register} = useReactHookFormHook()
 
    if (!isMounted) return <Text size={'4'}>Loading Form...</Text>
+   if (formState.isFormSubmitted && !formState.isSubmittedWithSuccess) {
+      return (
+         <Theme
+            appearance={'light'}
+            asChild>
+            <Flex
+               className={
+                  'max-h-[640px] w-full rounded-md  bg-clrPrimary-100 px-9 py-12 text-base-100 sm:max-w-[540px]'
+               }
+               direction={'column'}
+               gap={'3'}
+               mb={'5'}>
+               <Heading className="text-center font-bold">Une erreur est survenue</Heading>
+               <Button
+                  size={'3'}
+                  variant={'soft'}
+                  onClick={() => formState.setIsFormSubmitted(false)}>
+                  <ReloadIcon
+                     className={'text-base-200'}
+                     width={24}
+                     height={24}
+                  />
+                  <RadixLink asChild>
+                     <Link
+                        href={'/contact'}
+                        onClick={() => formState.setIsFormSubmitted(false)}>
+                        Réessayer
+                     </Link>
+                  </RadixLink>
+               </Button>
+            </Flex>
+         </Theme>
+      )
+   }
 
    if (formState.isFormSubmitted && formState.isSubmittedWithSuccess)
       return (
@@ -61,39 +95,6 @@ export default function ContactForm() {
                      width={24}
                      height={24}
                   />
-               </Button>
-            </Flex>
-         </Theme>
-      )
-   if (formState.isFormSubmitted && !formState.isSubmittedWithSuccess)
-      return (
-         <Theme
-            appearance={'light'}
-            asChild>
-            <Flex
-               className={
-                  'max-h-[640px] w-full rounded-md  bg-clrPrimary-100 px-9 py-12 text-base-100 sm:max-w-[540px]'
-               }
-               direction={'column'}
-               gap={'3'}
-               mb={'5'}>
-               <Heading className="text-center font-bold">Une erreur est survenue</Heading>
-               <Button
-                  size={'3'}
-                  variant={'soft'}
-                  onClick={() => formState.setIsFormSubmitted(false)}>
-                  <ReloadIcon
-                     className={'text-base-200'}
-                     width={24}
-                     height={24}
-                  />
-                  <RadixLink asChild>
-                     <Link
-                        href={'/contact'}
-                        onClick={() => formState.setIsFormSubmitted(false)}>
-                        Réessayer
-                     </Link>
-                  </RadixLink>
                </Button>
             </Flex>
          </Theme>
