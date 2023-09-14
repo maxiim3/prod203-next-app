@@ -1,6 +1,7 @@
 import Footer from '@/components/ui/Footer'
 import MainNavigation from '@/components/ui/MainNavigation'
 import {cormorant, manrope, poppins} from '@/styles/font'
+import {Theme} from '@radix-ui/themes'
 import type {Metadata} from 'next'
 import 'next-cloudinary/dist/cld-video-player.css'
 import React, {PropsWithChildren} from 'react'
@@ -16,7 +17,9 @@ export async function generateStaticParams() {
 }
 
 interface LayoutProps extends PropsWithChildren {
-   params: {lang: string}
+   params: {
+      lang: string
+   }
 }
 
 function RootLayout({children, params}: LayoutProps) {
@@ -26,9 +29,16 @@ function RootLayout({children, params}: LayoutProps) {
          data-theme={'customTheme'}>
          <body
             className={`${cormorant.variable} ${manrope.variable} ${poppins.variable} overflow-x-none font-poppins font-extralight`}>
-            <MainNavigation />
-            {children}
-            <Footer />
+            <Theme
+               appearance="dark"
+               accentColor="pink"
+               radius="large"
+               scaling="95%">
+               <MainNavigation />
+               {children}
+               <Footer />
+               {/*<ThemePanel />*/}
+            </Theme>
          </body>
       </html>
    )

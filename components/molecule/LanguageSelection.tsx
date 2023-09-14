@@ -1,9 +1,8 @@
 'use client'
 
-import {classed} from '@tw-classed/react'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
-import React from 'react'
+import React, {PropsWithChildren} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export default function LanguageSelection({
@@ -17,33 +16,46 @@ export default function LanguageSelection({
    const pathname = usePathname()
 
    return (
-      <ul className={twMerge('flex items-center space-x-2', className)}>
-         <Li
+      <List>
+         <Item
+            className={className}
             onClick={onClick}
             isSelected={!pathname.includes('eng')}>
             <Link href={'/fr/home'}>FR</Link>
-         </Li>
-         <Li
+         </Item>
+         <Item
+            className={className}
             onClick={onClick}
             isSelected={pathname.includes('eng')}>
             <Link href={'/eng/home'}>ENG</Link>
-         </Li>
-      </ul>
+         </Item>
+      </List>
    )
 }
 
-const Li = classed(
-   'span',
-   'font-poppins tracking-wider uppercase md:text-base lg:text-lg select-none',
-   {
-      variants: {
-         isSelected: {
-            true: 'font-semibold',
-            false: 'font-thin',
-         },
-      },
-      defaultVariants: {
-         isSelected: false,
-      },
-   }
+const List = ({
+   children,
+   className,
+}: PropsWithChildren<{
+   className?: string
+}>) => <ul className={twMerge('flex items-center space-x-2', className)}>{children}</ul>
+
+const Item = ({
+   children,
+   isSelected = false,
+   className,
+   onClick,
+}: PropsWithChildren<{
+   className?: string
+   isSelected?: boolean
+   onClick?: () => void
+}>) => (
+   <li
+      className={twMerge(
+         'select-none font-poppins uppercase tracking-wider md:text-base lg:text-lg',
+         isSelected ? 'font-semibold' : 'font-thin',
+         className
+      )}>
+      {children}
+   </li>
 )

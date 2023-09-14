@@ -3,7 +3,8 @@ import {MobileNavigationProvider} from '@/components/organism/MobileNavigationPr
 import NavBarMenu from '@/components/organism/NavBarMenu'
 import prod203 from '@/public/assets/logo/prod203-white.webp'
 import Image from 'next/image'
-import React from 'react'
+import React, {PropsWithChildren} from 'react'
+import {twMerge} from 'tailwind-merge'
 
 export default function MainNavigation() {
    return (

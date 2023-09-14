@@ -1,22 +1,26 @@
 'use client'
 
 import {useMounted} from '@/hooks/useMounted'
+import {ReloadIcon} from '@radix-ui/react-icons'
+import {Button} from '@radix-ui/themes'
 import Link from 'next/link'
+import {useRouter} from 'next/navigation'
 import React, {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {twMerge} from 'tailwind-merge'
-
 //region Organisms
 export default function ContactFormComponent() {
    const {
       register,
       handleSubmit,
       formState: {errors},
+      reset,
    } = useForm()
 
    const [isFormSubmitted, setIsFormSubmitted] = useState(false)
    const [isSubmittedWithSuccess, setIsSubmittedWithSuccess] = useState(false)
    const isMounted = useMounted()
+   const router = useRouter()
 
    if (!isMounted) return <p>Loading Form...</p>
 
@@ -32,6 +36,13 @@ export default function ContactFormComponent() {
                      className={'btn btn-primary'}>
                      Retour à l{"'"}accueil
                   </Link>
+                  <Button
+                     onClick={() => {
+                        reset()
+                        setIsFormSubmitted(false)
+                     }}>
+                     <ReloadIcon />
+                  </Button>
                </>
             ) : (
                <>

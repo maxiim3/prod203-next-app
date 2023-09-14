@@ -16,13 +16,12 @@ const Showcase = async ({searchParams}: PageSlugAndCategoryParams) => {
 
    return (
       <main className={'min-h-screen w-screen py-24'}>
-         <section>
-            <header className={'w-screen overflow-hidden'}>
-               {/* TODO OVERFLOW Scroll on ul Nav container do not work*/}
-               <nav>
+         <section className={'space-y-6'}>
+            <header className={'w-screen'}>
+               <nav className={'w-full overflow-scroll'}>
                   <ul
                      className={
-                        'mx-auto flex w-max items-center justify-center gap-4 overflow-x-auto px-2 py-8'
+                        'mx-auto flex w-max snap-x items-center justify-center gap-4 overflow-x-auto bg-red-400/40 px-4 pb-5 pt-2'
                      }>
                      <SelectCategory
                         href={'/projects'}
@@ -97,7 +96,7 @@ const SelectCategory = ({
 }>) => (
    <li
       className={twMerge(
-         'select-none',
+         'select-none snap-mandatory snap-center',
          active
             ? 'cursor-default font-semibold text-primary'
             : 'cursor-pointer text-primary/80 hover:text-primary',
