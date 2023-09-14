@@ -36,7 +36,7 @@ function RootLayout({children, params}: LayoutProps) {
                grayColor={'gray'}
                className={'bg-base-100'}
                panelBackground={'translucent'}
-               radius="small"
+               radius="medium"
                scaling="95%">
                {/*<ThemePanel />*/}
                <MainNavigation />
