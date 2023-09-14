@@ -1,4 +1,4 @@
-class ContactStaticContent {
+export default class ContactStaticContent {
    private static readonly _email = 'contact@prod203.com'
    private static readonly _domain = 'prod203.com'
    private static readonly _phone = '0778818583'

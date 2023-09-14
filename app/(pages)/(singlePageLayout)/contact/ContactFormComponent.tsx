@@ -3,6 +3,7 @@
 import {useMounted} from '@/hooks/useMounted'
 import {ReloadIcon} from '@radix-ui/react-icons'
 import {Button} from '@radix-ui/themes'
+import ky from 'ky'
 import Link from 'next/link'
 import {useRouter} from 'next/navigation'
 import React, {useState} from 'react'
@@ -37,11 +38,20 @@ export default function ContactFormComponent() {
                      Retour à l{"'"}accueil
                   </Link>
                   <Button
+                     size={{
+                        initial: '3',
+                        md: '4',
+                     }}
                      onClick={() => {
                         reset()
                         setIsFormSubmitted(false)
-                     }}>
-                     <ReloadIcon />
+                     }}
+                     color={'gray'}
+                     variant={'outline'}>
+                     <ReloadIcon
+                        width={18}
+                        height={18}
+                     />
                   </Button>
                </>
             ) : (
@@ -59,28 +69,19 @@ export default function ContactFormComponent() {
       )
    return (
       <form
-         onSubmit={handleSubmit(data => {
-            const submit = fetch(`/api/contact`, {
-               method: 'POST',
-               headers: {
-                  'Content-Type': 'application/json',
-               },
-               body: JSON.stringify(data),
+         onSubmit={handleSubmit(async data => {
+            const response = await ky.post('/api/contact', {
+               json: {data},
             })
 
-            submit.then(res => {
-               console.log(res)
-               if (res.status === 200 || res.status === 201 || res.status === 204) {
-                  setIsSubmittedWithSuccess(true)
-               }
-               if (res.status === 500) {
-                  setIsSubmittedWithSuccess(false)
-               }
-               if (res.status === 400) {
-                  setIsSubmittedWithSuccess(false)
-               }
-               setIsFormSubmitted(true)
-            })
+            const json = await response.json()
+
+            console.log(json)
+
+            if ([200, 201, 203, 204].includes(response.status)) {
+               return setIsSubmittedWithSuccess(true)
+            }
+            return setIsSubmittedWithSuccess(false)
          })}
          className={
             'flex max-h-[640px] w-full flex-col gap-3 bg-clrPrimary-100 px-9  py-12 text-base-100 sm:max-w-[540px] sm:rounded-lg'

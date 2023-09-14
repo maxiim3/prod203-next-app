@@ -3,6 +3,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
    optimizeFonts: true,
+   crossOrigin: 'anonymous',
    images: {
       remotePatterns: [
          {

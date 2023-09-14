@@ -2,6 +2,7 @@ import Footer from '@/components/ui/Footer'
 import MainNavigation from '@/components/ui/MainNavigation'
 import {cormorant, manrope, poppins} from '@/styles/font'
 import {Theme} from '@radix-ui/themes'
+import '@radix-ui/themes/styles.css'
 import type {Metadata} from 'next'
 import 'next-cloudinary/dist/cld-video-player.css'
 import React, {PropsWithChildren} from 'react'
@@ -28,16 +29,20 @@ function RootLayout({children, params}: LayoutProps) {
          lang={params.lang}
          data-theme={'customTheme'}>
          <body
-            className={`${cormorant.variable} ${manrope.variable} ${poppins.variable} overflow-x-none font-poppins font-extralight`}>
+            className={`${cormorant.variable} ${manrope.variable} ${poppins.variable} font-poppins font-extralight`}>
             <Theme
+               hasBackground={true}
                appearance="dark"
-               accentColor="pink"
+               accentColor="violet"
+               grayColor={'gray'}
+               className={'bg-base-100'}
+               panelBackground={'translucent'}
                radius="large"
                scaling="95%">
+               {/*<ThemePanel />*/}
                <MainNavigation />
                {children}
                <Footer />
-               {/*<ThemePanel />*/}
             </Theme>
          </body>
       </html>

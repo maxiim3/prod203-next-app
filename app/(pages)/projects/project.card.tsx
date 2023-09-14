@@ -1,35 +1,14 @@
 'use client'
 
+import useProjectInView from '@/app/(pages)/projects/use-project-preview.hook'
 import {T_MarkdownElement} from '@/schemas/project.sanity.schema'
-import {motion, useAnimate, useInView} from 'framer-motion'
+import {motion} from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, {useEffect} from 'react'
+import React from 'react'
 import {twMerge} from 'tailwind-merge'
 
-function useProjectInView() {
-   const [containerRef, animateContainer] = useAnimate()
-   const isInView = useInView(containerRef)
-
-   useEffect(() => {
-      console.log(isInView)
-      if (isInView) {
-         animateContainer(
-            containerRef.current,
-            {
-               opacity: [0, 0.4, 1],
-            },
-            {
-               duration: 0.5,
-               delay: 0.5,
-            }
-         )
-      }
-   }, [isInView, animateContainer, containerRef])
-   return containerRef // todo fix the animation with intersection observer
-}
-
-export const ProjectPreview = ({
+export const ProjectCard = ({
    slug,
    description,
    title,
