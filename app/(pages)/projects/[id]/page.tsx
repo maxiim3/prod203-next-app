@@ -1,3 +1,4 @@
+import ImagesGallery from '@/app/(pages)/projects/[id]/images-gallery.client'
 import generateArrayHelper from '@/helper/generate-array.helper-function'
 import mockedProjects from '@/mocked-content/projects.data.mocked'
 import {
@@ -49,7 +50,7 @@ const ProjectPage = async ({
    return (
       <main className={'sw-screen py-12 md:py-24'}>
          <Container
-            mt={{initial: '2', sm: '9'}}
+            mt={{initial: '2', sm: '4'}}
             px={'2'}
             width={'100%'}
             size={'3'}
@@ -153,31 +154,7 @@ const ProjectPage = async ({
                         </AspectRatio>
                      </Flex>
                   </Section>
-                  <Section
-                     aria-label={"Galerie d'images"}
-                     size={'1'}
-                     width={'100%'}>
-                     {/*Gallery*/}
-                     <Grid
-                        columns={{initial: '1', xs: '2', sm: '3', md: '4'}}
-                        gap={'3'}
-                        rows={'auto'}>
-                        <>
-                           {generateArrayHelper(24).map(i => (
-                              <AspectRatio
-                                 ratio={4 / 4}
-                                 key={i}>
-                                 <Image
-                                    fill={true}
-                                    className={'object-cover'}
-                                    src={'/image-placeholder.png'}
-                                    alt={'placeholder'}
-                                 />
-                              </AspectRatio>
-                           ))}
-                        </>
-                     </Grid>
-                  </Section>
+                  <ImagesGallery />
                </Flex>
             </Section>
          </Container>
