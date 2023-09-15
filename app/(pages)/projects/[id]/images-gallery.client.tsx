@@ -66,6 +66,7 @@ export default function ImagesGallery() {
             </>
          </Grid>
          {/*MODAL*/}
+         {/*Todo Add Accessibility to navigate between images*/}
          <Box
             className={twMerge(
                'fixed left-0 top-0 z-50 h-[100vh] w-[100vw] bg-black/90 backdrop-blur-sm',

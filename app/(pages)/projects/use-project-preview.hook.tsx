@@ -1,7 +1,7 @@
 import {useAnimate, useInView} from 'framer-motion'
 import {useEffect} from 'react'
 
-export default function useProjectInView() {
+export default function useAnimateProjectCards() {
    const [containerRef, animateContainer] = useAnimate()
    const isInView = useInView(containerRef)
 

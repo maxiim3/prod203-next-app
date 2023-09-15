@@ -1,6 +1,6 @@
 'use client'
 
-import useProjectInView from '@/app/(pages)/projects/use-project-preview.hook'
+import useAnimateProjectCards from '@/app/(pages)/projects/use-project-preview.hook'
 import {T_MarkdownElement} from '@/schemas/project.sanity.schema'
 import {motion} from 'framer-motion'
 import Image from 'next/image'
@@ -8,7 +8,7 @@ import Link from 'next/link'
 import React from 'react'
 import {twMerge} from 'tailwind-merge'
 
-export const ProjectCard = ({
+export const ProjectCardPreview = ({
    slug,
    description,
    title,
@@ -19,7 +19,7 @@ export const ProjectCard = ({
    title: string
    index: number
 }) => {
-   const containerRef = useProjectInView()
+   const containerRef = useAnimateProjectCards()
    // const imageSource = getImageSource(project)
 
    return (

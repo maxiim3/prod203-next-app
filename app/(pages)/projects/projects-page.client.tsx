@@ -1,6 +1,6 @@
 'use client'
 
-import {ProjectCard} from '@/app/(pages)/projects/project-card.client'
+import {ProjectCardPreview} from '@/app/(pages)/projects/project-card-preview.client'
 import mockedCategories from '@/mocked-content/categories.data.mocked'
 import mockedProjects from '@/mocked-content/projects.data.mocked'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
@@ -10,7 +10,7 @@ import {useSearchParams} from 'next/navigation'
 import React, {Suspense} from 'react'
 import {twMerge} from 'tailwind-merge'
 
-export default function ProjectGallery() {
+export default function ProjectsPage() {
    // const projects = await getAllProjects()
    // const categories = await getAllCategories()
    const projects = mockedProjects
@@ -45,8 +45,8 @@ export default function ProjectGallery() {
                   {categories.map(c => (
                      <NavigationMenu.Item key={c.id}>
                         <RadixLink
-                           aria-selected={!activeCategory || activeCategory === c.slug}
-                           data-active={!activeCategory || activeCategory === c.slug}
+                           aria-selected={activeCategory === c.slug}
+                           data-active={activeCategory === c.slug}
                            className={twMerge(
                               'select-none snap-mandatory snap-center font-poppins font-light visited:text-primary',
                               'cursor-pointer text-primary/90 hover:text-primary',
@@ -75,7 +75,7 @@ export default function ProjectGallery() {
                         return categories.find(c => activeCategoryReference === p.category._ref)
                      })
                      .map((p, index) => (
-                        <ProjectCard
+                        <ProjectCardPreview
                            key={p.id}
                            title={p.title}
                            description={p.i18nDescription.fr}
