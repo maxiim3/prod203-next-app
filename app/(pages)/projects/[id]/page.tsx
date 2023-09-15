@@ -1,7 +1,37 @@
-import {TitleH2} from '@/components/atom/SectionH2'
+import generateArrayHelper from '@/helper/generate-array.helper-function'
 import mockedProjects from '@/mocked-content/projects.data.mocked'
+import {
+   AspectRatio,
+   Box,
+   Container,
+   Flex,
+   Grid,
+   Heading,
+   Link as RadixLink,
+   Section,
+   Separator,
+   Text,
+} from '@radix-ui/themes'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import {twMerge} from 'tailwind-merge'
+
+type ClassName = {
+   className?: string
+}
+const BoxPlaceHolder = ({
+   className,
+   children,
+}: ClassName & {
+   children?: React.ReactElement
+}) => (
+   <Box
+      width={'100%'}
+      className={twMerge('h-96 bg-gray-800/40', className)}>
+      {children}
+   </Box>
+)
 
 const ProjectPage = async ({
    params,
@@ -17,47 +47,140 @@ const ProjectPage = async ({
    // const thumbnailURL = getImageSource(project)!
 
    return (
-      <main className={'flex h-screen w-screen flex-col items-center justify-between gap-16'}>
-         <section className={'flex items-center bg-green-500/5'}>
-            {/* eslint-disable-next-line react/jsx-no-undef */}
-            {/*<Suspense fallback={<p>Loading....</p>}>*/}
-            {/*   <VideoCloudinary*/}
-            {/*      height={`${window.innerHeight / 3}px`}*/}
-            {/*      videoSource={{*/}
-            {/*         low: 'prod203_capsule_herobanner_360p',*/}
-            {/*         medium: 'prod203_capsule_herobanner_480p',*/}
-            {/*         high: 'prod203_capsule_herobanner_720p',*/}
-            {/*         veryHigh: 'prod203_capsule_herobanner_1080p',*/}
-            {/*      }}*/}
-            {/*   />*/}
-            {/*) : (*/}
-            {/*   <Image*/}
-            {/*      width={1440}*/}
-            {/*      height={720}*/}
-            {/*      className={*/}
-            {/*         'h-[50vh] object-cover object-center motion-safe:transition-all motion-safe:duration-1000 motion-safe:group-hover/card:scale-110'*/}
-            {/*      }*/}
-            {/*      src={thumbnailURL}*/}
-            {/*      alt={'Image cannot be loaded'}*/}
-            {/*   />*/}
-            {/*)}*/}
-            {/*</Suspense>*/}
-         </section>
-         <section
-            className={'flex min-h-[50vh] flex-grow flex-col items-center justify-center gap-1 '}>
-            <TitleH2>Product Page</TitleH2>
+      <main className={'sw-screen py-12 md:py-24'}>
+         <Container
+            mt={{initial: '2', sm: '9'}}
+            px={'2'}
+            width={'100%'}
+            size={'3'}
+            className={'h-full'}>
+            <Section
+               size={'1'}
+               width={'100%'}>
+               <Flex
+                  className={'w-full'}
+                  gap={'2'}
+                  justify={'start'}
+                  align={'center'}>
+                  <RadixLink asChild>
+                     <Link href={'/projects'}>Project</Link>
+                  </RadixLink>
+                  <Text className={'event-none select-none font-poppins font-normal'}>/</Text>
+                  <Heading
+                     as={'h2'}
+                     size={'3'}
+                     className={'py-8 text-center font-poppins font-normal'}>
+                     {project.title}
+                  </Heading>
+               </Flex>
+            </Section>
 
-            <h2 className={'text-4xl'}>{project.title}</h2>
-            {project.i18nDescription &&
-               project.i18nDescription.fr.map(d => {
-                  return <p key={d._key}>{d.children[0].text}</p>
-               })}
-            <Link
-               href={'/projects'}
-               className={'btn-outlined btn'}>
-               All Projects
-            </Link>
-         </section>
+            <Separator
+               size={'4'}
+               orientation="horizontal"
+            />
+
+            <Section size={'1'}>
+               <Flex
+                  direction={'row'}
+                  wrap={'wrap'}
+                  gap={'4'}
+                  role={'list'}
+                  align={'center'}
+                  justify={{initial: 'center', sm: 'between'}}>
+                  {/* column*/}
+                  <>
+                     {generateArrayHelper(4).map(i => (
+                        <Flex
+                           key={i}
+                           role={'listitem'}
+                           direction={'column'}>
+                           <Heading as={'h3'}>Category {i}</Heading>
+                           <Text>Lorem ipsum</Text>
+                           <Text>Lorem ipsum</Text>
+                           <Text>Lorem ipsum</Text>
+                           <Text>Lorem ipsum</Text>
+                        </Flex>
+                     ))}
+                  </>
+               </Flex>
+            </Section>
+
+            <Separator
+               size={'4'}
+               orientation="horizontal"
+            />
+
+            <Section
+               role={'main'}
+               size={'1'}>
+               <Flex direction={'column'}>
+                  <Section
+                     aria-label={'project description'}
+                     width={'100%'}
+                     size={'1'}>
+                     <Flex
+                        direction={{
+                           initial: 'column',
+                           sm: 'row',
+                        }}
+                        gap={{initial: '6', xs: '9', sm: '2', md: '4'}}
+                        className={'w-full'}>
+                        <AspectRatio ratio={16 / 9}>
+                           <Flex
+                              align={{initial: 'end', sm: 'center'}}
+                              height={'100%'}
+                              justify={'center'}>
+                              <iframe
+                                 className={'aspect-video w-full object-contain object-center'}
+                                 src="https://www.youtube.com/embed/TKmeWdaPYuA?si=E-jBV9-PsRvbWzIT"
+                                 title="YouTube video player"
+                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                 allowFullScreen></iframe>
+                           </Flex>
+                        </AspectRatio>
+
+                        <AspectRatio ratio={16 / 9}>
+                           <Flex
+                              align={{initial: 'start', sm: 'center'}}
+                              height={'100%'}
+                              justify={'center'}>
+                              {project.i18nDescription &&
+                                 project.i18nDescription.fr.map(d => {
+                                    return <Text key={d._key}>{d.children[0].text}</Text>
+                                 })}
+                           </Flex>
+                        </AspectRatio>
+                     </Flex>
+                  </Section>
+                  <Section
+                     aria-label={"Galerie d'images"}
+                     size={'1'}
+                     width={'100%'}>
+                     {/*Gallery*/}
+                     <Grid
+                        columns={{initial: '1', xs: '2', sm: '3', md: '4'}}
+                        gap={'3'}
+                        rows={'auto'}>
+                        <>
+                           {generateArrayHelper(24).map(i => (
+                              <AspectRatio
+                                 ratio={4 / 4}
+                                 key={i}>
+                                 <Image
+                                    fill={true}
+                                    className={'object-cover'}
+                                    src={'/image-placeholder.png'}
+                                    alt={'placeholder'}
+                                 />
+                              </AspectRatio>
+                           ))}
+                        </>
+                     </Grid>
+                  </Section>
+               </Flex>
+            </Section>
+         </Container>
       </main>
    )
 }
