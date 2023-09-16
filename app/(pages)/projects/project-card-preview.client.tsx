@@ -5,7 +5,7 @@ import {T_MarkdownElement} from '@/schemas/project.sanity.schema'
 import {motion} from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, {useEffect} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export const ProjectCardPreview = ({
@@ -21,7 +21,6 @@ export const ProjectCardPreview = ({
 }) => {
    const containerRef = useAnimateProjectCards()
    // const imageSource = getImageSource(project)
-
    return (
       <motion.li
          initial={{
@@ -65,7 +64,8 @@ export const ProjectCardPreview = ({
                      'card-title text-base',
                      `transition-all duration-300  motion-safe:-translate-y-[50px] motion-safe:opacity-75 motion-safe:group-hover/card:translate-y-0 motion-safe:group-hover/card:opacity-100`
                   )}
-                  style={{transitionDelay: '0.035s'}}>
+                  // style={{transitionDelay: '0.035s'}}
+               >
                   {title}
                </h3>
                {description &&
@@ -77,7 +77,7 @@ export const ProjectCardPreview = ({
                               index === description.length - 1 && 'line-clamp-1',
                               `transition-all duration-300 motion-safe:-translate-y-[50px]  motion-safe:opacity-75 motion-safe:group-hover/card:translate-y-0 motion-safe:group-hover/card:opacity-100`
                            )}
-                           style={{transitionDelay: `calc(${index + 1.4}* 0.02s)`}}
+                           // style={{transitionDelay: `calc(${index + 1.4}* 0.02s)`}}
                            key={index}>
                            {text.text}
                         </p>

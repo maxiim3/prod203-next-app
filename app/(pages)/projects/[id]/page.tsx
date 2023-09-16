@@ -6,14 +6,12 @@ import {
    Box,
    Container,
    Flex,
-   Grid,
    Heading,
    Link as RadixLink,
    Section,
    Separator,
    Text,
 } from '@radix-ui/themes'
-import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import {twMerge} from 'tailwind-merge'
@@ -154,6 +152,7 @@ const ProjectPage = async ({
                         </AspectRatio>
                      </Flex>
                   </Section>
+
                   <ImagesGallery />
                </Flex>
             </Section>

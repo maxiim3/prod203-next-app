@@ -1,7 +1,7 @@
 import Footer from '@/components/ui/Footer'
 import MainNavigation from '@/components/ui/MainNavigation'
 import {cormorant, manrope, poppins} from '@/styles/font'
-import {Theme, ThemePanel} from '@radix-ui/themes'
+import {Theme} from '@radix-ui/themes'
 import '@radix-ui/themes/styles.css'
 import type {Metadata} from 'next'
 import 'next-cloudinary/dist/cld-video-player.css'

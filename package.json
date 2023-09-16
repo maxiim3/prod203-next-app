@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@radix-ui/colors": "^3.0.0-rc.3",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-navigation-menu": "^1.1.3",
     "@radix-ui/react-toggle": "^1.0.3",
