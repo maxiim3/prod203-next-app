@@ -5,7 +5,9 @@ import React, {useState} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export function AboutTabsSection() {
-   const [activeTab, setActiveTab] = useState<string>('soundDesign')
+   const defaultTab = Tabs[Object.keys(Tabs)[0]].title // first tab
+
+   const [activeTab, setActiveTab] = useState<string>(defaultTab)
 
    return (
       <>
