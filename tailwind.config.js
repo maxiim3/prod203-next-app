@@ -3,6 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
    content: [
+      './node_modules/flowbite-react/**/*.js',
       './pages/**/*.{js,ts,jsx,tsx,mdx}',
       './components/**/*.{js,ts,jsx,tsx,mdx}',
       './app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -167,7 +168,7 @@ module.exports = {
          },
       },
    },
-   plugins: [require('tailwindcss-text-balance'), require('daisyui')],
+   plugins: [require('tailwindcss-text-balance'), require('flowbite/plugin'), require('daisyui')],
 
    // daisyUI config (optional - here are the default values)
    daisyui: {
