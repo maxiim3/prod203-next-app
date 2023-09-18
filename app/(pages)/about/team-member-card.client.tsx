@@ -29,12 +29,13 @@ export default function TeamMemberCard({
          <figure className={'h-full w-full overflow-hidden'}>
             <Image
                className={twMerge(
-                  'h-full w-full object-cover transition group-hover:scale-125 motion-safe:duration-700'
+                  'h-full w-full object-cover saturate-50 transition group-hover:scale-110 motion-safe:duration-700',
+                  isSelected && 'scale-110 saturate-100'
                )}
                width={'187'}
                height={'404'}
-               src={imageSrc} // 👈 add this
-               alt={''} // 👈 add this
+               src={imageSrc}
+               alt={''}
             />
             <figcaption>Some text</figcaption>
          </figure>
@@ -44,7 +45,8 @@ export default function TeamMemberCard({
                'w-fit min-w-[128px] max-w-[160px]',
                'rounded-sm bg-base-200/90',
                'py-2',
-               'text-balance'
+               'text-balance',
+               isSelected && 'bg-base-300'
             )}>
             <h3 className={'flex flex-col items-center  text-sm tracking-wide xs:text-base'}>
                <span>{firstName}</span>

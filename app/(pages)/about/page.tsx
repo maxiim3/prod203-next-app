@@ -1,188 +1,37 @@
 import ScrollingAreaFeature from '@/app/(pages)/about/scrolling-area-feature.client'
-import {Heading} from '@/components/atom/heading.atom'
-import {Alert} from 'flowbite-react'
+import {AboutTabsSection} from '@/app/(pages)/about/tab-section.client'
+import {classed} from '@tw-classed/react'
 import React from 'react'
 
 const About = () => {
    return (
       <main className={'w-screen py-24'}>
+         <StyledHeading
+            as={'h1'}
+            className={'sr-only'}>
+            À propos
+         </StyledHeading>
          <section
             id={'about-section-header'}
-            className={'flex flex-col items-center gap-2 px-12 py-12 text-balance'}>
-            <Heading className={'text-center'}>À propos de nous</Heading>
-            <div
-               id="accordion-collapse"
-               data-accordion="collapse">
-               <h2 id="accordion-collapse-heading-1">
-                  <button
-                     type="button"
-                     className="flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-gray-800"
-                     data-accordion-target="#accordion-collapse-body-1"
-                     aria-expanded="true"
-                     aria-controls="accordion-collapse-body-1">
-                     <span>What is Flowbite?</span>
-                     <svg
-                        data-accordion-icon=""
-                        className="h-3 w-3 shrink-0 rotate-180"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 10 6">
-                        <path
-                           stroke="currentColor"
-                           strokeLinecap="round"
-                           strokeLinejoin="round"
-                           strokeWidth={2}
-                           d="M9 5 5 1 1 5"
-                        />
-                     </svg>
-                  </button>
-               </h2>
-               <div
-                  id="accordion-collapse-body-1"
-                  className="hidden"
-                  aria-labelledby="accordion-collapse-heading-1">
-                  <div className="border border-b-0 border-gray-200 p-5 dark:border-gray-700 dark:bg-gray-900">
-                     <p className="mb-2 text-gray-500 dark:text-gray-400">
-                        Flowbite is an open-source library of interactive components built on top of
-                        Tailwind CSS including buttons, dropdowns, modals, navbars, and more.
-                     </p>
-                     <p className="text-gray-500 dark:text-gray-400">
-                        Check out this guide to learn how to{' '}
-                        <a
-                           href="/docs/getting-started/introduction/"
-                           className="text-blue-600 hover:underline dark:text-blue-500">
-                           get started
-                        </a>{' '}
-                        and start developing websites even faster with components on top of Tailwind
-                        CSS.
-                     </p>
-                  </div>
-               </div>
-               <h2 id="accordion-collapse-heading-2">
-                  <button
-                     type="button"
-                     className="flex w-full items-center justify-between border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-gray-800"
-                     data-accordion-target="#accordion-collapse-body-2"
-                     aria-expanded="false"
-                     aria-controls="accordion-collapse-body-2">
-                     <span>Is there a Figma file available?</span>
-                     <svg
-                        data-accordion-icon=""
-                        className="h-3 w-3 shrink-0 rotate-180"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 10 6">
-                        <path
-                           stroke="currentColor"
-                           strokeLinecap="round"
-                           strokeLinejoin="round"
-                           strokeWidth={2}
-                           d="M9 5 5 1 1 5"
-                        />
-                     </svg>
-                  </button>
-               </h2>
-               <div
-                  id="accordion-collapse-body-2"
-                  className="hidden"
-                  aria-labelledby="accordion-collapse-heading-2">
-                  <div className="border border-b-0 border-gray-200 p-5 dark:border-gray-700">
-                     <p className="mb-2 text-gray-500 dark:text-gray-400">
-                        Flowbite is first conceptualized and designed using the Figma software so
-                        everything you see in the library has a design equivalent in our Figma file.
-                     </p>
-                     <p className="text-gray-500 dark:text-gray-400">
-                        Check out the{' '}
-                        <a
-                           href="https://flowbite.com/figma/"
-                           className="text-blue-600 hover:underline dark:text-blue-500">
-                           Figma design system
-                        </a>{' '}
-                        based on the utility classes from Tailwind CSS and components from Flowbite.
-                     </p>
-                  </div>
-               </div>
-               <h2 id="accordion-collapse-heading-3">
-                  <button
-                     type="button"
-                     className="flex w-full items-center justify-between border border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-gray-800"
-                     data-accordion-target="#accordion-collapse-body-3"
-                     aria-expanded="false"
-                     aria-controls="accordion-collapse-body-3">
-                     <span>What are the differences between Flowbite and Tailwind UI?</span>
-                     <svg
-                        data-accordion-icon=""
-                        className="h-3 w-3 shrink-0 rotate-180"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 10 6">
-                        <path
-                           stroke="currentColor"
-                           strokeLinecap="round"
-                           strokeLinejoin="round"
-                           strokeWidth={2}
-                           d="M9 5 5 1 1 5"
-                        />
-                     </svg>
-                  </button>
-               </h2>
-               <div
-                  id="accordion-collapse-body-3"
-                  className="hidden"
-                  aria-labelledby="accordion-collapse-heading-3">
-                  <div className="border border-t-0 border-gray-200 p-5 dark:border-gray-700">
-                     <p className="mb-2 text-gray-500 dark:text-gray-400">
-                        The main difference is that the core components from Flowbite are open
-                        source under the MIT license, whereas Tailwind UI is a paid product. Another
-                        difference is that Flowbite relies on smaller and standalone components,
-                        whereas Tailwind UI offers sections of pages.
-                     </p>
-                     <p className="mb-2 text-gray-500 dark:text-gray-400">
-                        However, we actually recommend using both Flowbite, Flowbite Pro, and even
-                        Tailwind UI as there is no technical reason stopping you from using the best
-                        of two worlds.
-                     </p>
-                     <p className="mb-2 text-gray-500 dark:text-gray-400">
-                        Learn more about these technologies:
-                     </p>
-                     <ul className="list-disc pl-5 text-gray-500 dark:text-gray-400">
-                        <li>
-                           <a
-                              href="https://flowbite.com/pro/"
-                              className="text-blue-600 hover:underline dark:text-blue-500">
-                              Flowbite Pro
-                           </a>
-                        </li>
-                        <li>
-                           <a
-                              href="https://tailwindui.com/"
-                              rel="nofollow"
-                              className="text-blue-600 hover:underline dark:text-blue-500">
-                              Tailwind UI
-                           </a>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-
-            <div>
-               <p className="mb-3 text-center text-gray-300 dark:text-gray-400">
-                  {/*<p className={'mx-auto lg:w-[65ch]'}>*/}
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci cupiditate
-                  libero maxime molestiae nam nisi perspiciatis temporibus totam voluptates
-                  voluptatibus. Aspernatur assumenda dignissimos esse est illo magnam magni minima
-                  necessitatibus nobis pariatur placeat, quibusdam recusandae sed sequi, temporibus?
-                  Natus, nesciunt, sequi. Alias blanditiis commodi dolor fugit in nam, quis sequi.
-               </p>
-            </div>
+            className={'flex flex-col items-center gap-12 px-12 py-12 text-balance'}>
+            <StyledHeading className={'text-center'}>Activit&eacute;</StyledHeading>
+            <AboutTabsSection />
          </section>
-         <ScrollingAreaFeature />
+         <hr className={'my-20 h-px w-full border-0 bg-gray-700'} />
+         <section
+            id={'about-section-header'}
+            className={'flex flex-col items-center gap-12 px-12 py-12 text-balance'}>
+            <StyledHeading className={'text-center'}>Fondateurs</StyledHeading>
+            <ScrollingAreaFeature />
+         </section>
       </main>
    )
 }
+
+const StyledHeading = classed(
+   'h2',
+   'mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white md:text-5xl lg:text-6xl',
+   'uppercase text-balance'
+)
 
 export default About
