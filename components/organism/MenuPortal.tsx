@@ -1,7 +1,7 @@
 'use client'
 
-import NavLI from '@/components/atom/NavLI'
-import {NavUL} from '@/components/layout/NavUL'
+import NavigationItem from '@/components/atom/navigation.item.atom'
+import {NavigationList} from '@/components/layout/navigation.list.atom'
 import LanguageSelection from '@/components/molecule/LanguageSelection'
 import {useMobileNavigation} from '@/components/organism/MobileNavigationProvider'
 import routes from '@/static-content/route.static.content'
@@ -24,9 +24,9 @@ const MenuPortal = () => {
                className={
                   'flex h-full w-full flex-col items-end justify-center gap-16 px-12 pt-12 landscape:items-center   '
                }>
-               <NavUL className="flex-col items-end gap-8 xs:gap-12 landscape:flex-row landscape:items-center landscape:justify-center landscape:gap-4">
+               <NavigationList className="flex-col items-end gap-8 xs:gap-12 landscape:flex-row landscape:items-center landscape:justify-center landscape:gap-4">
                   {routes.map(route => (
-                     <NavLI
+                     <NavigationItem
                         key={nanoid()}
                         className={`duration-250 text-4xl motion-safe:transition-all xs:text-5xl  landscape:text-xl`}>
                         <Link
@@ -34,9 +34,9 @@ const MenuPortal = () => {
                            href={route.path}>
                            {route.name}
                         </Link>
-                     </NavLI>
+                     </NavigationItem>
                   ))}
-               </NavUL>
+               </NavigationList>
                <LanguageSelection
                   className={'self-end text-2xl text-primary sm:text-4xl landscape:text-xl'}
                   onClick={handleCloseMenu}

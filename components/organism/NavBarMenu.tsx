@@ -1,7 +1,7 @@
 'use client'
 
-import NavLI from '@/components/atom/NavLI'
-import {NavUL} from '@/components/layout/NavUL'
+import Item from '@/components/atom/navigation.item.atom'
+import {NavigationList} from '@/components/layout/navigation.list.atom'
 import LanguageSelection from '@/components/molecule/LanguageSelection'
 import routes from '@/static-content/route.static.content'
 import {nanoid} from 'nanoid'
@@ -14,15 +14,15 @@ export default function NavBarMenu() {
    return (
       <>
          <nav className={'hidden items-center md:flex'}>
-            <NavUL>
+            <NavigationList>
                {routes.map(route => (
-                  <NavLI
+                  <Item
                      key={nanoid()}
                      active={route.path === pathname}>
                      <Link href={route.path}>{route.name}</Link>
-                  </NavLI>
+                  </Item>
                ))}
-            </NavUL>
+            </NavigationList>
          </nav>
          <LanguageSelection className={'hidden md:flex'} />
       </>

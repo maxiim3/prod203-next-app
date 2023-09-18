@@ -6,7 +6,7 @@ interface NavListStackProps extends PropsWithChildren {
    props?: any
 }
 
-export const NavUL = ({children, className, ...props}: NavListStackProps) => (
+export const NavigationList = ({children, className, ...props}: NavListStackProps) => (
    <ul
       className={twMerge('max-w-144 flex select-none flex-row justify-center gap-4', className)}
       {...props}>
