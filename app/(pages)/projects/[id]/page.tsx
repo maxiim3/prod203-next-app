@@ -17,6 +17,8 @@ import Link from 'next/link'
 import React from 'react'
 import {twMerge} from 'tailwind-merge'
 
+export const revalidate = 2
+
 type ClassName = {
    className?: string
 }

@@ -3,6 +3,7 @@ import {CategoryFactory} from '@/lib/sanity/category'
 import {ProjectFactory} from '@/lib/sanity/project'
 import {getAllCategories, getAllProjects} from '@/lib/sanity/service'
 import React, {Suspense} from 'react'
+export const revalidate = 2
 
 const getContentLakeData = async () => {
    const projects = await getAllProjects()
