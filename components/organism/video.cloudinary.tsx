@@ -5,16 +5,9 @@ import React, {useEffect, useRef} from 'react'
 
 import {useMounted} from '@/hooks/useMounted'
 import {useVideoSource, VideoSource} from '@/hooks/useVideoSource'
-import {T_CloudinaryVideo} from '@/lib/sanity/project.sanity.schema'
 import {twMerge} from 'tailwind-merge'
 
-export default function VideoCloudinary({
-   videoSource,
-   height,
-}: {
-   videoSource: T_CloudinaryVideo
-   height: string
-}) {
+export default function VideoCloudinary({videoSource, height}: {videoSource: any; height: string}) {
    const ENV_CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
    const PATH = `https://res.cloudinary.com/${ENV_CLOUD_NAME}/video/upload/v1693588665/prod203`
 
