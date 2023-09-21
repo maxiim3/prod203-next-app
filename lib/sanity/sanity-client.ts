@@ -14,10 +14,10 @@ class SingletonSanityClient {
    public static getInstance(): SanityClient {
       if (!SingletonSanityClient.instance) {
          SingletonSanityClient.instance = createClient({
-            projectId: 'lo6ab3qt',
+            projectId: process.env.SANITY_PROJECT_ID,
             dataset: 'production',
-            useCdn: false,
-            apiVersion: '2023-08-19',
+            apiVersion: '2023-09-25',
+            useCdn: false, // Update this for instant updates
          })
       }
       return SingletonSanityClient.instance

@@ -1,24 +1,21 @@
 'use client'
 
 import useAnimateProjectCards from '@/app/(pages)/projects/use-project-preview.hook'
-import {T_MarkdownElement} from '@/schemas/project.sanity.schema'
+import {ProjectFactory} from '@/lib/sanity/project'
 import {motion} from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, {useEffect} from 'react'
+import React from 'react'
 import {twMerge} from 'tailwind-merge'
 
-export const ProjectCardPreview = ({
-   slug,
-   description,
-   title,
-   index,
-}: {
-   slug: string
-   description: T_MarkdownElement[]
-   title: string
+type T_ProjectFactory = ReturnType<typeof ProjectFactory>
+type ComponentProps = {
    index: number
-}) => {
+   title: T_ProjectFactory['title']['fr']
+   description?: T_ProjectFactory['description']['fr']
+   slug: T_ProjectFactory['slug']['current']
+}
+export const ProjectCardPreview = ({slug, description, title, index}: ComponentProps) => {
    const containerRef = useAnimateProjectCards()
    // const imageSource = getImageSource(project)
    return (
@@ -69,8 +66,8 @@ export const ProjectCardPreview = ({
                   {title}
                </h3>
                {description &&
-                  description.map((text, index) => {
-                     return text.children.map(text => (
+                  description.map((block, index) => {
+                     return block.children.map(content => (
                         <p
                            className={twMerge(
                               'font-regular font-poppins text-xs',
@@ -79,7 +76,7 @@ export const ProjectCardPreview = ({
                            )}
                            // style={{transitionDelay: `calc(${index + 1.4}* 0.02s)`}}
                            key={index}>
-                           {text.text}
+                           {content.text}
                         </p>
                      ))
                   })}

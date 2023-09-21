@@ -5,7 +5,7 @@ import React, {useEffect, useRef} from 'react'
 
 import {useMounted} from '@/hooks/useMounted'
 import {useVideoSource, VideoSource} from '@/hooks/useVideoSource'
-import {T_CloudinaryVideo} from '@/schemas/project.sanity.schema'
+import {T_CloudinaryVideo} from '@/lib/sanity/project.sanity.schema'
 import {twMerge} from 'tailwind-merge'
 
 export default function VideoCloudinary({

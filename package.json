@@ -33,7 +33,7 @@
     "next": "^13.5.1",
     "next-cloudinary": "^4.20.0",
     "next-i18next": "^14.0.0",
-    "next-sanity": "^5.4.4",
+    "next-sanity": "^5.5.4",
     "nextjs-toploader": "^1.4.2",
     "npm": "^9.8.1",
     "postcss": "8.4.27",

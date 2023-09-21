@@ -1,11 +1,10 @@
 // Mocked Projects
-import ProjectClassFactory from '@/design-pattern/project.class-factory'
-import mockedCategories from '@/mocked-content/categories.data.mocked'
-import {T_MarkdownElement, T_Project} from '@/schemas/project.sanity.schema'
+import mockedCategories from '@/lib/sanity/categories.data.mocked'
+import {ProjectFactory, T_Block, T_Project} from '@/lib/sanity/project'
 
 const mockedProjects = Array.from({length: 12}, (_, i) => {
    const randomCategoryIndex = Math.floor(Math.random() * 6)
-   const mockMarkdownElement: T_MarkdownElement = {
+   const mockMarkdownElement: T_Block = {
       _key: `key-${i}`,
       _type: 'block',
       markDefs: [], // populate as needed
@@ -25,40 +24,30 @@ const mockedProjects = Array.from({length: 12}, (_, i) => {
       _rev: `rev-${i}`,
       _type: 'project',
       _updatedAt: new Date().toISOString(),
-      title: `Project-${i}`,
+      title: {
+         fr: `Project-${i}`,
+         en: `Project-${i}`,
+      },
       description: {
          _key: `desc-key-${i}`,
          _type: 'localizedBlock',
          en: [mockMarkdownElement],
          fr: [mockMarkdownElement],
       },
+      awards: '',
+      gallery: [],
+      services: [],
+      youtubeVideoURL: '',
       slug: {
          _type: 'slug',
          current: `proj-slug-${i}`,
       },
-      cloudinaryVideo: {
-         // 👈 add this
-         high: `high-url-${i}`,
-         low: `low-url-${i}`,
-         medium: `medium-url-${i}`,
-         veryHigh: `veryHigh-url-${i}`,
-      },
-      category: {
-         _ref: mockedCategories[randomCategoryIndex].id,
-         _type: 'reference',
-      },
-      client: `Client-${i}`,
+      category: [{_key: '', _ref: mockedCategories[randomCategoryIndex]._id!, _type: 'reference'}],
+      client: [`Client-${i}`],
       marque: `Marque-${i}`,
       releaseDate: new Date().toISOString(),
-      thumbnail: {
-         _type: 'image', // 👈 add this
-         asset: {
-            _ref: `asset-ref-${i}`,
-            _type: 'reference', // 👈 add this
-         },
-      },
    }
-   return new ProjectClassFactory(projectData)
+   return ProjectFactory(projectData)
 })
 
 export default mockedProjects

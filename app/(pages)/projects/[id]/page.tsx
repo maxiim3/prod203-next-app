@@ -1,6 +1,7 @@
 import ImagesGallery from '@/app/(pages)/projects/[id]/images-gallery.client'
 import generateArrayHelper from '@/helper/generate-array.helper-function'
-import mockedProjects from '@/mocked-content/projects.data.mocked'
+import {ProjectFactory} from '@/lib/sanity/project'
+import {getProjectBySlug} from '@/lib/sanity/service'
 import {
    AspectRatio,
    Box,
@@ -40,7 +41,10 @@ const ProjectPage = async ({
    }
 }) => {
    console.log(params.id)
+   /*
    const project = mockedProjects.find(project => project.slug === params.id)!
+*/
+   const project: Awaited<ReturnType<typeof ProjectFactory>> = await getProjectBySlug(params.id)
    // const project: Project = await getProjectBySlug()
    // const videoURL = getVideoSource(project)
    // const thumbnailURL = getImageSource(project)!
@@ -69,7 +73,7 @@ const ProjectPage = async ({
                      as={'h2'}
                      size={'3'}
                      className={'py-8 text-center font-poppins font-normal'}>
-                     {project.title}
+                     {project.title.fr}
                   </Heading>
                </Flex>
             </Section>
@@ -144,8 +148,8 @@ const ProjectPage = async ({
                               align={{initial: 'start', sm: 'center'}}
                               height={'100%'}
                               justify={'center'}>
-                              {project.i18nDescription &&
-                                 project.i18nDescription.fr.map(d => {
+                              {project?.description &&
+                                 project?.description?.fr?.map(d => {
                                     return <Text key={d._key}>{d.children[0].text}</Text>
                                  })}
                            </Flex>

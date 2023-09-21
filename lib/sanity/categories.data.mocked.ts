@@ -1,6 +1,6 @@
 // Mocked Categories
-import CategoryClassFactory from '@/design-pattern/category.class-factory'
-import {T_Category} from '@/schemas/category.sanity.schema'
+
+import {CategoryFactory, T_Category} from '@/lib/sanity/category'
 
 const mockedCategories = Array.from({length: 6}, (_, i) => {
    const categoryId = `id-${i}`
@@ -22,7 +22,7 @@ const mockedCategories = Array.from({length: 6}, (_, i) => {
          current: `slug-${i}`,
       },
    }
-   return new CategoryClassFactory(categoryData)
+   return CategoryFactory(categoryData)
 })
 
 export default mockedCategories

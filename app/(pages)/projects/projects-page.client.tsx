@@ -1,8 +1,8 @@
 'use client'
 
 import {ProjectCardPreview} from '@/app/(pages)/projects/project-card-preview.client'
-import mockedCategories from '@/mocked-content/categories.data.mocked'
-import mockedProjects from '@/mocked-content/projects.data.mocked'
+import {CategoryFactory} from '@/lib/sanity/category'
+import {ProjectFactory} from '@/lib/sanity/project'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import {Flex, Link as RadixLink} from '@radix-ui/themes'
 import Link from 'next/link'
@@ -10,13 +10,21 @@ import {useSearchParams} from 'next/navigation'
 import React, {Suspense} from 'react'
 import {twMerge} from 'tailwind-merge'
 
-export default function ProjectsPage() {
+type ProjectsPageProps = {
+   data: {
+      projects: ReturnType<typeof ProjectFactory>[]
+      categories: ReturnType<typeof CategoryFactory>[]
+   }
+}
+export default function ProjectsPage({data}: ProjectsPageProps) {
    // const projects = await getAllProjects()
    // const categories = await getAllCategories()
-   const projects = mockedProjects
-   const categories = mockedCategories
+   /*   const projects = mockedProjects
+   const categories = mockedCategories*/
    const searchParams = useSearchParams()
    const activeCategory = searchParams.get('category')
+
+   console.log(data.projects.at(1))
 
    console.log(!activeCategory || activeCategory === 'all')
    // TODO set that we retrieve category reference from Projects. then we use the array of corresponding category to avoid categories that have no project
@@ -43,8 +51,8 @@ export default function ProjectsPage() {
                         <Link href={`/projects?category=all`}>Toutes</Link>
                      </RadixLink>
                   </NavigationMenu.Item>
-                  {categories.map(c => (
-                     <NavigationMenu.Item key={c.id}>
+                  {data.categories.map(c => (
+                     <NavigationMenu.Item key={c._id}>
                         <RadixLink
                            aria-selected={activeCategory === c.slug}
                            data-active={activeCategory === c.slug}
@@ -54,7 +62,9 @@ export default function ProjectsPage() {
                               'data-[active=true]:cursor-default data-[active=true]:font-semibold data-[active=true]:text-primary'
                            )}
                            asChild>
-                           <Link href={`/projects?category=${c?.slug}`}>{c?.i18nValue?.fr}</Link>
+                           <Link href={`/projects?category=${c?.slug}`}>
+                              {c?.displayedValue?.fr}
+                           </Link>
                         </RadixLink>
                      </NavigationMenu.Item>
                   ))}
@@ -67,23 +77,15 @@ export default function ProjectsPage() {
                   className={
                      'mx-auto grid max-w-[1440px] grid-cols-1 gap-4 px-2 sm:grid-cols-2 md:px-8 lg:grid-cols-3 lg:px-12 2xl:grid-cols-4'
                   }>
-                  {projects
-                     .filter(p => {
-                        if (!activeCategory || activeCategory === 'all') return true
-                        const activeCategoryReference = categories.find(
-                           c => c.slug === activeCategory
-                        )?.id
-                        return categories.find(c => activeCategoryReference === p.category._ref)
-                     })
-                     .map((p, index) => (
-                        <ProjectCardPreview
-                           key={p.id}
-                           title={p.title}
-                           description={p.i18nDescription.fr}
-                           slug={p.slug}
-                           index={index}
-                        />
-                     ))}
+                  {data.projects.map((p, index) => (
+                     <ProjectCardPreview
+                        key={p._id}
+                        title={p.title.fr}
+                        description={p.description?.fr}
+                        slug={p.slug.current}
+                        index={index}
+                     />
+                  ))}
                </ul>
             </Suspense>
          </main>
