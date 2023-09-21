@@ -17,6 +17,7 @@ export default function ProjectsPage() {
    const categories = mockedCategories
    const searchParams = useSearchParams()
    const activeCategory = searchParams.get('category')
+
    console.log(!activeCategory || activeCategory === 'all')
    // TODO set that we retrieve category reference from Projects. then we use the array of corresponding category to avoid categories that have no project
    return (
