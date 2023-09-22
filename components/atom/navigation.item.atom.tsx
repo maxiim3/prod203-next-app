@@ -15,7 +15,7 @@ const NavigationItem = ({children, active, className, ...props}: NavItemProps) =
          'hover:text-primary/40',
          'delay-[25ms] duration-200 before:duration-700 motion-safe:transition-all ',
          // 'before:delay-75 hover:before:scale-100 motion-safe:before:transition-all',
-         active && 'cursor-default select-none underline underline-offset-8',
+         active && 'select-none font-bold text-opacity-80 ',
          className
       )}
       {...props}>
