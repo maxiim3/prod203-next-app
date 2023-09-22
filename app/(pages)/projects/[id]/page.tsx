@@ -18,23 +18,6 @@ import React from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export const revalidate = 2
-
-type ClassName = {
-   className?: string
-}
-const BoxPlaceHolder = ({
-   className,
-   children,
-}: ClassName & {
-   children?: React.ReactElement
-}) => (
-   <Box
-      width={'100%'}
-      className={twMerge('h-96 bg-gray-800/40', className)}>
-      {children}
-   </Box>
-)
-
 const ProjectPage = async ({
    params,
 }: {
@@ -50,7 +33,7 @@ const ProjectPage = async ({
    // const project: Project = await getProjectBySlug()
    // const videoURL = getVideoSource(project)
    // const thumbnailURL = getImageSource(project)!
-
+   console.log(project.youtubeVideoURL)
    return (
       <main className={'sw-screen py-12 md:py-24'}>
          <Container
@@ -136,12 +119,7 @@ const ProjectPage = async ({
                               align={{initial: 'end', sm: 'center'}}
                               height={'100%'}
                               justify={'center'}>
-                              <iframe
-                                 className={'aspect-video w-full object-contain object-center'}
-                                 src="https://www.youtube.com/embed/TKmeWdaPYuA?si=E-jBV9-PsRvbWzIT"
-                                 title="YouTube video player"
-                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                 allowFullScreen></iframe>
+                              <YoutubeEmbeded url={project.youtubeVideoURL} />
                            </Flex>
                         </AspectRatio>
 
@@ -166,5 +144,30 @@ const ProjectPage = async ({
       </main>
    )
 }
+
+const YoutubeEmbeded = ({url}: {url: string}) => (
+   <iframe
+      className={'aspect-video w-full object-contain object-center'}
+      src={`https://www.youtube.com/embed/${url}`}
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowFullScreen></iframe>
+)
+
+type ClassName = {
+   className?: string
+}
+const BoxPlaceHolder = ({
+   className,
+   children,
+}: ClassName & {
+   children?: React.ReactElement
+}) => (
+   <Box
+      width={'100%'}
+      className={twMerge('h-96 bg-gray-800/40', className)}>
+      {children}
+   </Box>
+)
 
 export default ProjectPage
