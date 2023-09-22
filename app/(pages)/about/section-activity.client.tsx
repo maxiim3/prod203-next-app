@@ -1,22 +1,18 @@
 'use client'
 
+import {TabItem} from '@/app/(pages)/about/tab-item'
+import {TabType, useTabs} from '@/app/(pages)/about/useTabs.hook'
 import Icons from '@/lib/icons'
-import {T_Children, T_ClassName} from '@/lib/types'
 import Image from 'next/image'
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import {twMerge} from 'tailwind-merge'
 
-export function SectionActivity() {
-   const defaultTab = Object.keys(Tabs)[0] // first tab
-   const [activeTab, setActiveTab] = useState<keyof typeof Tabs>(defaultTab)
-   useEffect(() => {
-      console.log(Tabs)
-      setActiveTab(defaultTab)
-   }, [defaultTab])
+export default function SectionActivity() {
+   const {activeTab, setActiveTab} = useTabs(Tabs)
 
    /*todo Fix Nav on mobile view -> Add a drawer !!*/
    return (
-      <section className={'relative w-full border-4 border-dashed border-pink-400'}>
+      <section className={'relative w-full'}>
          <Image
             alt={''}
             src={'/assets/section-activity.png'}
@@ -24,20 +20,23 @@ export function SectionActivity() {
             fill={true}
             className={'absolute left-0 top-0 object-cover object-center'}
          />
-         <div className={'relative z-50 space-y-8 bg-base-100/90 md:m-12 md:rounded-lg md:p-8'}>
-            <div className="border-b border-gray-700 pb-4 text-center text-sm font-medium text-gray-400 ">
-               <ul className="-mb-px flex flex-wrap items-center justify-center xs:flex-row xs:justify-center md:items-end md:gap-2 ">
+         <div
+            className={
+               'relative z-50 max-h-[700px] min-h-fit space-y-8 bg-base-100/90 md:m-12 md:h-[65vh] md:rounded-lg md:p-8 '
+            }>
+            <div className="pb-4 text-center text-sm font-medium text-gray-400   ">
+               <ul className="-mb-px flex flex-wrap items-center justify-between gap-0.5 border-b border-gray-700 xs:flex-row xs:gap-1 md:items-end md:justify-center md:gap-1.5 ">
                   {Object.entries(Tabs).map(([key, value], index) => (
                      <TabItem
                         key={`tab=${index}=${key}`}
                         active={key === activeTab}
                         onClick={() => setActiveTab(key)}
                         className={twMerge(
-                           'flex aspect-square w-24 scale-90 flex-col items-center justify-center gap-2 py-3 text-xs',
-                           'xs:scale-100 xs:p-2 xs:text-sm',
-                           'sm:p-4 ',
-                           'md:aspect-auto md:rounded-t-lg md:border-b-2 ',
-                           'lg:w-auto lg:flex-row lg:text-lg'
+                           'flex flex-1 scale-90 flex-col items-center justify-center px-2 text-xs tracking-wide text-balance',
+                           'xs:w-20 xs:scale-100 xs:text-sm',
+                           'sm:w-24 sm:p-4',
+                           'md:aspect-video md:gap-1 md:rounded-t-lg md:border-b-2 md:px-1 md:pb-1 md:pt-3',
+                           'lg:flex-row'
                         )}>
                         {value.Icon ? (
                            <value.Icon className="h-4 w-4 text-primary " />
@@ -57,7 +56,7 @@ export function SectionActivity() {
             </div>
 
             <div>
-               <p className="mx-auto mb-3 max-w-[75ch] text-center leading-relaxed tracking-wide text-gray-400 text-balance">
+               <p className="mx-auto mb-3 max-w-[75ch] px-2 pb-4 text-justify leading-relaxed tracking-wide text-gray-400 text-balance sm:px-4 sm:pb-8 md:text-lg">
                   {Tabs[activeTab]?.description}
                </p>
             </div>
@@ -66,41 +65,7 @@ export function SectionActivity() {
    )
 }
 
-type T_TabItemProps = {
-   active?: boolean
-   disabled?: boolean
-   onClick?: () => void
-} & T_ClassName &
-   T_Children
-
-const TabItem = ({className, children, active, disabled, onClick}: T_TabItemProps) => {
-   return (
-      <li
-         aria-current={active ? 'page' : undefined}
-         onClick={disabled ? undefined : onClick}
-         tabIndex={0}
-         onKeyDown={e => {
-            if (e.key === 'Enter' && !disabled) onClick?.()
-         }}
-         className={twMerge(
-            active
-               ? 'active rounded-lg border-gray-50 bg-primary/20 text-gray-50 md:rounded-none md:bg-transparent '
-               : 'border-transparent hover:cursor-pointer hover:opacity-75',
-            disabled && 'cursor-not-allowed text-gray-400 ',
-            className
-         )}>
-         {children}
-      </li>
-   )
-}
-
-type TabType = {
-   title: string
-   description: string
-   Icon?: any
-   source?: string
-}
-const Tabs: Record<string, TabType> = {
+const Tabs: TabType = {
    music: {
       Icon: Icons.Piano,
       title: 'Musiques originales',

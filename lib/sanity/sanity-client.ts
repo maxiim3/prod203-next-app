@@ -17,7 +17,7 @@ class SingletonSanityClient {
             projectId: process.env.SANITY_PROJECT_ID,
             dataset: 'production',
             apiVersion: '2023-09-25',
-            useCdn: false, // Update this for instant updates
+            useCdn: false, // If you set this to true the client will fetch content from our cache delivery network. Set to True to instant updates
          })
       }
       return SingletonSanityClient.instance

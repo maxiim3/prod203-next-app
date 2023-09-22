@@ -7,7 +7,7 @@ import Image from 'next/image'
 import React from 'react'
 import {twMerge} from 'tailwind-merge'
 
-export default function SectionFounders({className}: T_ClassName) {
+export default function SectionRoaster({className}: T_ClassName) {
    const {activeTab, setActiveTab} = useTabs(Tabs)
    return (
       <>
@@ -105,7 +105,10 @@ const Paragraph = ({
    children,
    className,
    withFirstLetter,
-}: T_Children & T_ClassName & {withFirstLetter?: boolean}) => (
+}: T_Children &
+   T_ClassName & {
+      withFirstLetter?: boolean
+   }) => (
    <p
       className={twMerge(
          'text-gray-400',
@@ -118,18 +121,18 @@ const Paragraph = ({
 )
 const Tabs: TabType = {
    Jerome: {
-      title: 'Jérôme Kuhn',
+      title: 'Nathan Stornetta',
       description:
-         "Jérôme Kuhn est directeur artistique du NOF Nouvel Opéra Fribourg, du Prague Symphonic Ensemble et de l'Ensemble Vocal de Villars-sur-Glâne. Jérôme Kuhn a collaboré en Suisse, en France, en Angleterre, en Allemagne et en République Tchèque avec de nombreux ensembles, comme l'Academy of Ancient Music, l'Orchestre de Chambre fribourgeois, le Nouvel Ensemble Contemporain NEC de la Chaux-de- Fonds et l'Orchestre philharmonique de Prague, l'Estonian Philharmonic Chamber Choir. Actif dans le domaine de l'enregistrement, il collabore pour des productions de Netflix et HBO dans les studios de la Seine Musicale à Paris, AIR Studios à Londres et Smecky Music Studios à Prague. I1 collabore également avec de nombreux artistes de renom comme Mireille Mathieu (Mes Classiques).",
+         'Né en Suisse, Nathan Stornetta est un compositeur, producteur et arrangeur. Il débute sa carrière professionnelle à Londres en travaillant pour Lorne Balfe (Remote Control Productions). Ce dernier l’implique dans le blockbuster “Fast and Furious 6” et la série épique “The Bible”. 2014 et 2015, Nathan vit à Los Angeles, où il travaille comme compositeur additionnel du célèbre Hans Zimmer, collaborant sur des films tels que “Chappie” (Neil Blomkamp), “Premiere Boxing Champions” (NBC) ainsi que “Le Petit Prince” de Mark Osbourne. Une collaboration toujours actuelle puisque Zimmer l’invite à intégrer son groupe de musicien en tant que percussionniste pour partir en tournée avec le “Hans Zimmer Live” (2016-2017) et enregistrer la musique du film “Le Roi Lion” (2019). En 2018, Nathan arrange trois pistes à l’album hommage de Sony Classical “James Horner - The Classics” et participe au projet “Rock the Pops”, mettant en scène Alfie Boe et le Boston Pops Philharmonic. Le court-métrage promotionnel “Éternels” (2019) de Bruno Aveillan, commandé par le Puy du Fou est sa composition la plus récente dans le domaine de la publicité. Depuis 2013, il est le principal compositeur du Puy du Fou, s’exprimant musicalement dans un éventail de genres, travaillant ainsi en étroite collaboration avec les équipes artistiques du Grand Parc. On lui doit notamment la musique des spectacles “Le Dernier Panache”, “Le Ballet des Sapeurs” et “El Sueño de Toledo” (Puy du Fou España), créées depuis son studio de Zurich.',
    },
    Nathan: {
-      title: 'Nathan Sornetta',
+      title: 'Martin Batchelar',
       description:
-         'Né en Suisse, Nathan Stornetta est un compositeur, producteur et arrangeur. Il débute sa carrière professionnelle à Londres en travaillant pour Lorne Balfe (Remote Control Productions). Ce dernier l’implique dans le blockbuster “Fast and Furious 6” et la série épique “The Bible”. 2014 et 2015, Nathan vit à Los Angeles, où il travaille comme compositeur additionnel du célèbre Hans Zimmer, collaborant sur des films tels que “Chappie” (Neil Blomkamp), “Premiere Boxing Champions” (NBC) ainsi que “Le Petit Prince” de Mark Osbourne. Une collaboration toujours actuelle puisque Zimmer l’invite à intégrer son groupe de musicien en tant que percussionniste pour partir en tournée avec le “Hans Zimmer Live” (2016-2017) et enregistrer la musique du film “Le Roi Lion” (2019). En 2018, Nathan arrange trois pistes à l’album hommage de Sony Classical “James Horner - The Classics” et participe au projet “Rock the Pops”, mettant en scène Alfie Boe et le Boston Pops Philharmonic. Le court-métrage promotionnel “Éternels” (2019) de Bruno Aveillan, commandé par le Puy du Fou est sa composition la plus récente dans le domaine de la publicité. Depuis 2013, il est le principal compositeur du Puy du Fou, s’exprimant musicalement dans un éventail de genres, travaillant ainsi en étroite collaboration avec les équipes artistiques du Grand Parc. On lui doit notamment la musique des spectacles “Le Dernier Panache”, “Le Ballet des Sapeurs” et “El Sueño de Toledo” (Puy du Fou España), créées depuis son studio de Zurich.\n',
+         'Martin Batchelar est un compositeur et arrangeur établi à Londres. On retrouve ses arrangements musicaux sur des projets récents avec The Who, Sir Cliff Richard, Sir Paul McCartney, Sir Elton John, Alfie Boe OBE et Sheridan Smith OBE. Sa musique a été synchronisée à l’image pour des publicités telles que ‘‘Heineken Formula 1’’, ‘‘Virgin Trains’’ et ‘‘Disney World Resort’’. Il est responsable de la musique de la comédie enregistrée ‘‘My Dad Wrote A Porno’’, qui cumule à ce jour 250 millions de téléchargement, 2 tournées mondiales du show à guichets fermés ainsi qu’une version télévisée spéciale commandée par HBO. Martin a récemment orchestré la musique du long-métrage allemand ‘‘Narcissus und Goldmund’’ et des séries documentaires de la BBC ‘‘Mexico’’ et ‘Wild West’’ et a participé à la création de la musique de nombreux jeux vidéos, dont ‘‘Rush’’ de Disney Pixar. Il travaille régulièrement pour le Puy du Fou, en parallèle à ses projets pour le cinéma, la télévision, le théâtre, la publicité et la musique au mètre.',
    },
    Sam: {
-      title: 'Samuel Briand',
+      title: 'Samuel Pegg',
       description:
-         'Samuel Briand est ingénieur du son, superviseur musical et réalisateur artistique. Depuis une dizaine d’année, il travaille comme ingénieur du son au Puy du Fou où il réalise les bandes-sonores des spectacles et enregistre les orchestres les plus prestigieux d’Europe. En parallèle, il se forme au mixage de la musique de film auprès d’ingénieurs du son du cinéma, côtoyant des professionnels hollywoodiens tel qu’Alan Meyerson, ingénieur du son de Hans Zimmer (Gladiator, Pirates des Caraïbes, Inception...) et Nick Wollage (Solo: A Star Wars Story, V for Vendetta, Harry Potter...). Plus récemment, il se lance dans le domaine de la publicité et collabore à la production musicale de films publicitaires pour Coca-Cola, Disneyland Paris et, dernièrement, Canal+.',
+         'Samuel Pegg présente une grande polyvalence musicale, développée à travers ses expériences de compositeur de musique pour le cinéma, la télévision et la publicité. Il a orchestré la musique de films tels que ‘‘Johnny English contre-attaque’’, ‘‘Sang froid’’, ‘‘The Lady in the Van’’, ‘‘Moi, Daniel Blake’’ et ‘‘Zero Theorem’’. Il a aussi participé à des films tels que ‘‘Red Joan’’, ‘‘Dream Horse’’, et ‘‘Grizzly’’ (Disney) en tant que monteur musique. Collaborant avec George Fenton, Samuel a rendu possible la série de concerts de ‘‘Blue Pla- net’’, ‘‘Planet Earth’’ et ‘‘Frozen Planet’’. En parallèle à son travail pour Puy du Fou, Samuel Pegg travaille sur des projets variés incluant la radio, les audiobooks, la danse ou encore la composition pour choeur mixte et de mu- sique au mètre. Il a composé la bande son de la campagne politique de Ken Loach #WeDemand 2017, ainsi que pour des marques telles que Currys/PC World, Disney Store et Intu. Sa musique est également régulièrement synchronisée à des bandes annonces internationales. Il est actuellement membre de la société BAFTA..',
    },
 }
