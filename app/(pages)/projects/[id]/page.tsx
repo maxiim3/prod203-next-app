@@ -159,7 +159,7 @@ const ProjectPage = async ({
                      </Flex>
                   </Section>
 
-                  <ImagesGallery />
+                  <ImagesGallery pictures={project.gallery} />
                </Flex>
             </Section>
          </Container>

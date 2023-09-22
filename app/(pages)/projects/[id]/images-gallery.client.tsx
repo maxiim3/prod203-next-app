@@ -1,14 +1,23 @@
 'use client'
 
 import generateArrayHelper from '@/helper/generate-array.helper-function'
+import ImageBuilder from '@/lib/sanity/image.builder'
+import {ProjectFactory} from '@/lib/sanity/project'
 import {ChevronLeftIcon, ChevronRightIcon, Cross1Icon} from '@radix-ui/react-icons'
 import {AspectRatio, Box, Button, Flex, Grid, Section} from '@radix-ui/themes'
 import Image from 'next/image'
 import React, {useRef, useState} from 'react'
 import {twMerge} from 'tailwind-merge'
 
-export default function ImagesGallery() {
-   const arrayOfPictures = generateArrayHelper(24)
+type T_ProjectFactory = ReturnType<typeof ProjectFactory>
+export default function ImagesGallery({pictures}: {pictures?: T_ProjectFactory['gallery']}) {
+   const arrayOfPictures = pictures
+      ? pictures.map(img => {
+           const builder = ImageBuilder(img)
+           console.log(builder)
+           return builder.url()
+        })
+      : generateArrayHelper(24).map(i => '/image-placeholder.png')
 
    const modalRef = useRef(null)
    const [isModalOpen, setIsModalOpen] = useState(false)
@@ -24,7 +33,7 @@ export default function ImagesGallery() {
    }
 
    function nextImage() {
-      setCurrentImage(i => (i === arrayOfPictures.length ? i : i + 1))
+      setCurrentImage(i => (i === arrayOfPictures.length - 1 ? i : i + 1))
    }
 
    function previousImage() {
@@ -44,7 +53,7 @@ export default function ImagesGallery() {
             gap={'3'}
             rows={'auto'}>
             <>
-               {arrayOfPictures.map(i => (
+               {arrayOfPictures.map((item, i) => (
                   <AspectRatio
                      ratio={1}
                      onClick={() => handleOnClick(i)}
@@ -58,7 +67,7 @@ export default function ImagesGallery() {
                            i % 2 === 0 && 'sepia',
                            i % 3 === 0 && 'invert'
                         )}
-                        src={'/image-placeholder.png'}
+                        src={item || '/image-placeholder.png'}
                         alt={'placeholder'}
                      />
                   </AspectRatio>
@@ -89,7 +98,7 @@ export default function ImagesGallery() {
                            currentImage % 2 === 0 && 'sepia',
                            currentImage % 3 === 0 && 'invert'
                         )}
-                        src={'/image-placeholder.png'}
+                        src={arrayOfPictures[currentImage]}
                         alt={'placeholder'}
                      />
                   </AspectRatio>
