@@ -77,7 +77,7 @@ export default async function Home() {
                />
             </section>
          </header>
-         <div className="relative flex snap-y snap-mandatory flex-col gap-32 overflow-y-auto ">
+         <div className="relative flex snap-y snap-mandatory flex-col overflow-y-auto ">
             {/**
              * ==========================
              *      TOP SECTION 1/3
@@ -119,7 +119,43 @@ export default async function Home() {
 
                {/*<ScrollButton sectionID={'#about'} />*/}
             </SectionTemplate>
-
+            <SectionTemplate
+               id="gallery"
+               outerContainerStyles={'mt-32 h-fit '}
+               imgClassName={'bg-gray-100/20'}
+               sectionTitleStyles="hidden"
+               innerContainerStyles={'rounded-lg overflow-hidden  min-h-2 h-fit'}
+               title="">
+               <div className={'grid grid-cols-2 grid-rows-2 gap-1'}>
+                  <div className={'col-span-2'}>
+                     <Image
+                        alt={''}
+                        src={'/assets/orchestra.webp'}
+                        width={600}
+                        height={340}
+                        className={'aspect-video w-full object-contain object-center'}
+                     />
+                  </div>
+                  <div className={'col-start-1 col-end-2 row-start-2'}>
+                     <Image
+                        alt={''}
+                        src={'/assets/on-air.webp'}
+                        width={600}
+                        height={340}
+                        className={'aspect-video w-full object-cover object-center'}
+                     />
+                  </div>
+                  <div className={'col-start-2 row-start-2'}>
+                     <Image
+                        alt={''}
+                        src={'/assets/recording.webp'}
+                        width={600}
+                        height={340}
+                        className={'aspect-video w-full object-contain object-center'}
+                     />
+                  </div>
+               </div>
+            </SectionTemplate>
             {/**
              * ==========================
              *      MIDDLE SECTION 2/3
@@ -155,6 +191,7 @@ export default async function Home() {
                </div>
                {/*<ScrollButton sectionID={'#references'} />*/}
             </SectionTemplate>
+
             {/**
              * ==========================
              *      BOTTOM SECTION 3/3

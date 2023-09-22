@@ -15,7 +15,7 @@ export const SectionTemplate = ({
    id,
    imgClassName,
 }: PropsWithChildren<{
-   title: string
+   title?: string
    id: string
    outerContainerStyles?: string
    innerContainerStyles?: string
@@ -44,7 +44,7 @@ export const SectionTemplate = ({
                staggerDirection: -1,
             }}
             className={twMerge(
-               'min-h-xl flex w-full flex-col  gap-12 overflow-hidden md:overflow-visible',
+               'min-h-xl flex w-full flex-col gap-12 overflow-hidden md:overflow-visible',
                innerContainerStyles
             )}>
             <TitleH2
