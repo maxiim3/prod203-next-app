@@ -34,7 +34,14 @@ const mockedProjects = Array.from({length: 12}, (_, i) => {
          en: [mockMarkdownElement],
          fr: [mockMarkdownElement],
       },
-      awards: '',
+      thumbnail: {
+         _type: 'image',
+         asset: {
+            _type: 'reference',
+            _ref: 'ds',
+         },
+      },
+      awards: [''],
       gallery: [],
       services: [],
       youtubeVideoURL: '',

@@ -27,63 +27,83 @@ export const Z_ProjectDescription = z.object({
    fr: z.array(Z_Block), // 👈 using Z_Lang here
 })
 
-export const Z_Project = z.object({
-   title: z.object({
-      _type: z
-         .string()
-         .refine(val => val === 'localizedString', {
-            message: 'Title type must be of type `localizedString`',
-         })
-         .optional(),
-      en: z.string(),
-      fr: z.string(),
-   }),
-   youtubeVideoURL: z.string(),
-   _updatedAt: z.string(),
-   services: z.array(
-      z.object({
-         _key: z.string(),
-         _type: z.string(),
-         en: z.array(Z_Block),
-         fr: z.array(Z_Block),
-      })
-   ),
-   gallery: z.array(
-      z.object({
-         _key: z.string(),
-         _type: z.string(),
-         asset: z.object({
-            _ref: z.string(),
-            _type: z.string(),
-         }),
-         credits: z.string().optional(),
-         description: z.string().optional(),
-      })
-   ),
-   awards: z.string(),
-   client: z.array(z.string()),
-   category: z.array(
-      z.object({
-         _key: z.string(),
-         _ref: z.string(),
-         _type: z.string(),
-      })
-   ),
-   _createdAt: z.string(),
-   _id: z.string(),
-   _rev: z.string(),
+const Zod_Title = z.object({
    _type: z
       .string()
-      .refine(val => val === 'project', {message: 'Project type must be of type `project`'}),
+      .refine(val => val === 'localizedString', {
+         message: 'Title type must be of type `localizedString`',
+      })
+      .optional(),
+   en: z.string(),
+   fr: z.string(),
+})
+
+const Zod_Services = z.array(
+   z.object({
+      _key: z.string(),
+      _type: z.string(),
+      en: z.array(z.string()),
+      fr: z.array(z.string()),
+   })
+)
+
+const Zod_Gallery = z.array(
+   z.object({
+      _key: z.string(),
+      _type: z.string(),
+      asset: z.object({
+         _ref: z.string(),
+         _type: z.string(),
+      }),
+      credits: z.string().optional(),
+      description: z.string().optional(),
+   })
+)
+const Zod_Category = z.array(
+   z.object({
+      _key: z.string(),
+      _ref: z.string(),
+      _type: z.string(),
+   })
+)
+
+const Zod_Slug = z.object({
+   _type: z
+      .string()
+      .refine(val => val === 'slug', {message: 'Project slug must be of type `slug`'}),
+   current: z.string(),
+})
+const Zod_ArrayOfString = z.array(z.string())
+const Zod_Type = z
+   .string()
+   .refine(val => val === 'project', {message: 'Project type must be of type `project`'})
+const Zod_Thumbnail = z.object({
+   _type: z
+      .string()
+      .refine(value => value === 'image', {message: 'Block element must be of type `image`'}),
+   asset: z.object({
+      _ref: z.string(),
+      _type: z.string(),
+   }),
+})
+export const Z_Project = z.object({
+   title: Zod_Title,
+   youtubeVideoURL: z.string(),
+   _updatedAt: z.string(),
+   services: Zod_Services,
+   gallery: Zod_Gallery,
+   awards: Zod_ArrayOfString,
+   client: Zod_ArrayOfString,
+   category: Zod_Category,
    description: Z_ProjectDescription,
+   thumbnail: Zod_Thumbnail,
    marque: z.string(),
    releaseDate: z.string(),
-   slug: z.object({
-      _type: z
-         .string()
-         .refine(val => val === 'slug', {message: 'Project slug must be of type `slug`'}),
-      current: z.string(),
-   }),
+   slug: Zod_Slug,
+   _id: z.string(),
+   _createdAt: z.string(),
+   _rev: z.string(),
+   _type: Zod_Type,
 })
 //endregion
 
@@ -108,6 +128,7 @@ export const ProjectFactory = (props: T_Project) => {
       slug,
       title,
       youtubeVideoURL,
+      thumbnail,
    } = props
 
    return {
@@ -123,5 +144,6 @@ export const ProjectFactory = (props: T_Project) => {
       slug,
       title,
       youtubeVideoURL,
+      thumbnail,
    } as Omit<T_Project, '_createdAt' & '_rev' & '_updatedAt' & '_type'>
 }

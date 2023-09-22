@@ -1,6 +1,7 @@
 'use client'
 
 import useAnimateProjectCards from '@/app/(pages)/projects/use-project-preview.hook'
+import ImageBuilder from '@/lib/sanity/image.builder'
 import {ProjectFactory} from '@/lib/sanity/project'
 import {motion} from 'framer-motion'
 import Image from 'next/image'
@@ -14,10 +15,21 @@ type ComponentProps = {
    title: T_ProjectFactory['title']['fr']
    description?: T_ProjectFactory['description']['fr']
    slug: T_ProjectFactory['slug']['current']
+   thumbnail: T_ProjectFactory['thumbnail']
 }
-export const ProjectCardPreview = ({slug, description, title, index}: ComponentProps) => {
+
+export const ProjectCardPreview = ({
+   slug,
+   description,
+   title,
+   index,
+   thumbnail,
+}: ComponentProps) => {
    const containerRef = useAnimateProjectCards()
    // const imageSource = getImageSource(project)
+
+   const thumbnailURL = thumbnail ? ImageBuilder(thumbnail).url() : '/imaheholder-hi.jpg'
+
    return (
       <motion.li
          initial={{
@@ -45,7 +57,7 @@ export const ProjectCardPreview = ({slug, description, title, index}: ComponentP
                sizes={
                   '(min-width: 1560px) 324px, (min-width: 1280px) calc(15.38vw + 87px), (min-width: 1040px) calc(33.18vw - 41px), (min-width: 780px) calc(50vw - 40px), (min-width: 640px) calc(50vw - 16px), calc(100vw - 16px)' /*Generated from https://ausi.github.io/respimagelint/*/
                }
-               src={'/imaheholder-hi.jpg'}
+               src={thumbnailURL}
                alt="Image cannot be loaded"
             />
             <div

@@ -83,6 +83,7 @@ export default function ProjectsPage({data}: ProjectsPageProps) {
                         title={p.title.fr}
                         description={p.description?.fr}
                         slug={p.slug.current}
+                        thumbnail={p.thumbnail}
                         index={index}
                      />
                   ))}

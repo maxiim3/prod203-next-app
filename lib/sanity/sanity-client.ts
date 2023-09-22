@@ -14,7 +14,7 @@ class SingletonSanityClient {
    public static getInstance(): SanityClient {
       if (!SingletonSanityClient.instance) {
          SingletonSanityClient.instance = createClient({
-            projectId: process.env.SANITY_PROJECT_ID,
+            projectId: 'lo6ab3qt',
             dataset: 'production',
             apiVersion: '2023-09-25',
             useCdn: false, // If you set this to true the client will fetch content from our cache delivery network. Set to True to instant updates

@@ -12,6 +12,12 @@ const nextConfig = {
             port: '',
             pathname: 'photos/**',
          },
+         {
+            protocol: 'https',
+            hostname: 'cdn.sanity.io',
+            port: '',
+            pathname: '**/**',
+         },
       ],
    },
 }
