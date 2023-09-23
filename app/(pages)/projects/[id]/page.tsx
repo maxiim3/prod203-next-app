@@ -136,8 +136,7 @@ const ProjectPage = async ({
                         </AspectRatio>
                      </Flex>
                   </Section>
-
-                  <ImagesGallery pictures={project.gallery} />
+                  {project.gallery && <ImagesGallery pictures={project.gallery} />}
                </Flex>
             </Section>
          </Container>

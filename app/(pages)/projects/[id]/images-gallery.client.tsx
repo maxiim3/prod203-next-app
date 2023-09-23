@@ -1,23 +1,24 @@
 'use client'
 
-import generateArrayHelper from '@/helper/generate-array.helper-function'
 import ImageBuilder from '@/lib/sanity/image.builder'
 import {ProjectFactory} from '@/lib/sanity/project'
 import {ChevronLeftIcon, ChevronRightIcon, Cross1Icon} from '@radix-ui/react-icons'
 import {AspectRatio, Box, Button, Flex, Grid, Section} from '@radix-ui/themes'
 import Image from 'next/image'
-import React, {useRef, useState} from 'react'
+import React, {useMemo, useRef, useState} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 type T_ProjectFactory = ReturnType<typeof ProjectFactory>
-export default function ImagesGallery({pictures}: {pictures?: T_ProjectFactory['gallery']}) {
-   const arrayOfPictures = pictures
-      ? pictures.map(img => {
-           const builder = ImageBuilder(img)
-           console.log(builder)
-           return builder.url()
-        })
-      : generateArrayHelper(24).map(i => '/image-placeholder.png')
+export default function ImagesGallery({pictures}: {pictures: T_ProjectFactory['gallery']}) {
+   const arrayOfPictures = useMemo(
+      () =>
+         pictures.map(img => {
+            const builder = ImageBuilder(img)
+            console.log(builder)
+            return builder.url()
+         }),
+      [pictures]
+   )
 
    const modalRef = useRef(null)
    const [isModalOpen, setIsModalOpen] = useState(false)
@@ -33,11 +34,15 @@ export default function ImagesGallery({pictures}: {pictures?: T_ProjectFactory['
    }
 
    function nextImage() {
-      setCurrentImage(i => (i === arrayOfPictures.length - 1 ? i : i + 1))
+      if (currentImage === arrayOfPictures.length - 1) return setCurrentImage(0)
+
+      return setCurrentImage(i => i + 1)
    }
 
    function previousImage() {
-      setCurrentImage(i => (i === 1 ? i : i - 1))
+      if (currentImage === 0) return setCurrentImage(arrayOfPictures.length - 1)
+
+      return setCurrentImage(i => i - 1)
    }
 
    console.log(isModalOpen, currentImage)
@@ -63,9 +68,7 @@ export default function ImagesGallery({pictures}: {pictures?: T_ProjectFactory['
                         fill={true}
                         className={twMerge(
                            'object-cover opacity-80 transition motion-safe:duration-700',
-                           'group-hover:scale-125 group-hover:opacity-100',
-                           i % 2 === 0 && 'sepia',
-                           i % 3 === 0 && 'invert'
+                           'group-hover:scale-125 group-hover:opacity-100'
                         )}
                         src={item || '/image-placeholder.png'}
                         alt={'placeholder'}
@@ -93,11 +96,7 @@ export default function ImagesGallery({pictures}: {pictures?: T_ProjectFactory['
                   <AspectRatio ratio={1}>
                      <Image
                         fill={true}
-                        className={twMerge(
-                           'h-full w-full object-cover object-center',
-                           currentImage % 2 === 0 && 'sepia',
-                           currentImage % 3 === 0 && 'invert'
-                        )}
+                        className={twMerge('h-full w-full object-cover object-center')}
                         src={arrayOfPictures[currentImage]}
                         alt={'placeholder'}
                      />
