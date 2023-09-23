@@ -6,7 +6,7 @@ export default function useAnimateProjectCards() {
    const isInView = useInView(containerRef)
 
    useEffect(() => {
-      console.log(isInView)
+      // console.log(isInView)
       if (isInView) {
          animateContainer(
             containerRef.current,

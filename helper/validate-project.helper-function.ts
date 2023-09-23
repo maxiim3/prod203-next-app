@@ -1,9 +1,9 @@
 import {ZodObject} from 'zod'
 
 /**
- * @description Using zod to validate if data is conform to Object
- * @param Object : ZodObject Object that validates the data
- * @param data : any data to validate
+ * @description Using zod to validate if store is conform to Object
+ * @param Object : ZodObject Object that validates the store
+ * @param data : any store to validate
  */
 export default function validateProjectHelperFunction(Object: ZodObject<any>, data: any) {
    const safeResponse = Object.safeParse(data)

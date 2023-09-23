@@ -1,18 +1,7 @@
 import ImagesGallery from '@/app/(pages)/projects/[id]/images-gallery.client'
-import generateArrayHelper from '@/helper/generate-array.helper-function'
 import {ProjectFactory} from '@/lib/sanity/project'
-import {getProjectBySlug} from '@/lib/sanity/service'
-import {
-   AspectRatio,
-   Box,
-   Container,
-   Flex,
-   Heading,
-   Link as RadixLink,
-   Section,
-   Separator,
-   Text,
-} from '@radix-ui/themes'
+import {getAllCategories, getProjectBySlug} from '@/lib/sanity/service'
+import {Box, Container, Flex, Heading, Link as RadixLink, Section, Text} from '@radix-ui/themes'
 import Link from 'next/link'
 import React from 'react'
 import {twMerge} from 'tailwind-merge'
@@ -25,17 +14,10 @@ const ProjectPage = async ({
       id: string
    }
 }) => {
-   console.log(params.id)
-   /*
-   const project = mockedProjects.find(project => project.slug === params.id)!
-*/
    const project: Awaited<ReturnType<typeof ProjectFactory>> = await getProjectBySlug(params.id)
-   // const project: Project = await getProjectBySlug()
-   // const videoURL = getVideoSource(project)
-   // const thumbnailURL = getImageSource(project)!
-   console.log(project.youtubeVideoURL)
+   const categories: Awaited<ReturnType<typeof getAllCategories>> = await getAllCategories()
    return (
-      <main className={'sw-screen py-12 md:py-24'}>
+      <main className={'w-screen py-12 md:py-24'}>
          <Container
             mt={{initial: '2', sm: '4'}}
             px={'2'}
@@ -55,90 +37,68 @@ const ProjectPage = async ({
                   </RadixLink>
                   <Text className={'event-none select-none font-poppins font-normal'}>/</Text>
                   <Heading
-                     as={'h2'}
+                     as={'h1'}
                      size={'3'}
                      className={'py-8 text-center font-poppins font-normal'}>
                      {project.title.fr}
                   </Heading>
                </Flex>
             </Section>
+            <header className={'flex flex-col justify-between gap-2'}>
+               <span
+                  role={'separator'}
+                  className={'divider w-full'}
+               />
 
-            <Separator
-               size={'4'}
-               orientation="horizontal"
-            />
+               <ul className={'flex justify-between px-8'}>
+                  <li className={'flex flex-col items-center gap-3'}>
+                     <h2 className={'text-lg font-semibold uppercase'}>Services</h2>
+                     <ul>
+                        {project?.services.map((service, i) => {
+                           return <li key={i}>{service.fr}</li>
+                        })}
+                     </ul>
+                  </li>
+                  <li className={'flex flex-col items-center gap-3'}>
+                     <h2 className={'text-lg font-semibold uppercase'}>Category</h2>
+                     <ul>
+                        {project?.category.map((category, i) => {
+                           const retrieveCat = categories.find(cat => {
+                              console.log(cat._id === category._ref)
+                              return cat._id === category._ref
+                           })!
+                           console.log(retrieveCat)
+                           return <li key={i}>{retrieveCat?.displayedValue?.fr}</li>
+                        })}
+                     </ul>
+                  </li>
+               </ul>
 
-            <Section size={'1'}>
-               <Flex
-                  direction={'row'}
-                  wrap={'wrap'}
-                  gap={'4'}
-                  role={'list'}
-                  align={'center'}
-                  justify={{initial: 'center', sm: 'between'}}>
-                  {/* column*/}
-                  <>
-                     {generateArrayHelper(4).map(i => (
-                        <Flex
-                           key={i}
-                           role={'listitem'}
-                           direction={'column'}>
-                           <Heading as={'h3'}>Category {i}</Heading>
-                           <Text>Lorem ipsum</Text>
-                           <Text>Lorem ipsum</Text>
-                           <Text>Lorem ipsum</Text>
-                           <Text>Lorem ipsum</Text>
-                        </Flex>
-                     ))}
-                  </>
-               </Flex>
-            </Section>
+               <span
+                  role={'separator'}
+                  className={'divider w-full'}
+               />
+            </header>
+            <div className={'flex flex-col items-center justify-center px-2 py-12 '}>
+               <div
+                  className={
+                     'prose flex w-full max-w-[70ch] flex-col items-center justify-center gap-3 text-center text-sm leading-relaxed text-balance sm:text-base md:text-lg'
+                  }>
+                  {project?.description &&
+                     project?.description?.fr?.map(block => {
+                        return block.children.map(text => {
+                           return <p key={text._key}>{text.text}</p>
+                        })
+                     })}
+               </div>
+            </div>
 
-            <Separator
-               size={'4'}
-               orientation="horizontal"
-            />
-
-            <Section
-               role={'main'}
-               size={'1'}>
-               <Flex direction={'column'}>
-                  <Section
-                     aria-label={'project description'}
-                     width={'100%'}
-                     size={'1'}>
-                     <Flex
-                        direction={{
-                           initial: 'column',
-                           sm: 'row',
-                        }}
-                        gap={{initial: '6', xs: '9', sm: '2', md: '4'}}
-                        className={'w-full'}>
-                        <AspectRatio ratio={16 / 9}>
-                           <Flex
-                              align={{initial: 'end', sm: 'center'}}
-                              height={'100%'}
-                              justify={'center'}>
-                              <YoutubeEmbeded url={project.youtubeVideoURL} />
-                           </Flex>
-                        </AspectRatio>
-
-                        <AspectRatio ratio={16 / 9}>
-                           <Flex
-                              align={{initial: 'start', sm: 'center'}}
-                              height={'100%'}
-                              justify={'center'}>
-                              {project?.description &&
-                                 project?.description?.fr?.map(d => {
-                                    return <Text key={d._key}>{d.children[0].text}</Text>
-                                 })}
-                           </Flex>
-                        </AspectRatio>
-                     </Flex>
-                  </Section>
-                  {project.gallery && <ImagesGallery pictures={project.gallery} />}
-               </Flex>
-            </Section>
+            <section className={'flex w-full flex-col'}>
+               <figcaption className={'aspect-video w-full'}>
+                  <YoutubeEmbeded url={project.youtubeVideoURL} />
+               </figcaption>
+            </section>
+            {project.gallery && <ImagesGallery pictures={project.gallery} />}
          </Container>
       </main>
    )

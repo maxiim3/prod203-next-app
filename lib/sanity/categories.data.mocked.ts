@@ -10,9 +10,7 @@ const mockedCategories = Array.from({length: 6}, (_, i) => {
       _rev: 'rev-' + categoryId,
       _type: 'category',
       _updatedAt: new Date().toISOString(),
-      name: `Category-${i}`,
-      displayedValue: {
-         _key: `key-${i}`,
+      name: {
          _type: 'localizedString', // 👈 add this
          en: `English Name ${i}`,
          fr: `French Name ${i}`,

@@ -63,7 +63,7 @@ export default function Footer() {
                      <Link href={'/legal'}>Mentions Légales</Link>
                   </Item>
                   <Item>
-                     <Link href={'/data-privacy'}>Données Personnelles</Link>
+                     <Link href={'/store-privacy'}>Données Personnelles</Link>
                   </Item>
                </Section>
             </div>

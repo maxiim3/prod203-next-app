@@ -1,7 +1,6 @@
 'use client'
 
-import {ClientClassFactory} from '@/design-pattern/client.class-factory'
-import {clients, reversedClients} from '@/static-content/clients.static.content'
+import {ClientClassFactory, clients, reversedClients} from '@/static-content/clients.static.content'
 import Image from 'next/image'
 import React, {memo} from 'react'
 import Marquee from 'react-fast-marquee'

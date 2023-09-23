@@ -1,4 +1,20 @@
-import {ClientClassFactory} from '@/design-pattern/client.class-factory'
+interface I_ClientInterface {
+   title: string
+   content: string
+   source: string
+}
+
+export class ClientClassFactory implements I_ClientInterface {
+   readonly content: string
+   readonly source: string
+   readonly title: string
+
+   constructor(title: string, content: string, source: string) {
+      this.title = title
+      this.content = content
+      this.source = source
+   }
+}
 
 export const clients: ClientClassFactory[] = [
    new ClientClassFactory('24h Le Mans', '24h Le Mans', '/assets/clients/24h-white.webp'),

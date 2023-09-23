@@ -1,22 +1,21 @@
 'use client'
 
 import {ProjectCardPreview} from '@/app/(pages)/projects/project-card-preview.client'
-import {CategoryFactory} from '@/lib/sanity/category'
-import {ProjectFactory} from '@/lib/sanity/project'
+import {CategoryFactoryType, ProjectWithMappedCategory} from '@/lib/sanity/sanity-store.factory'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import {Flex, Link as RadixLink} from '@radix-ui/themes'
 import Link from 'next/link'
 import {useSearchParams} from 'next/navigation'
-import React, {Suspense} from 'react'
+import React, {Suspense, useMemo} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 type ProjectsPageProps = {
-   data: {
-      projects: ReturnType<typeof ProjectFactory>[]
-      categories: ReturnType<typeof CategoryFactory>[]
+   store: {
+      projects: ProjectWithMappedCategory[]
+      categories: CategoryFactoryType[]
    }
 }
-export default function ProjectsPage({data}: ProjectsPageProps) {
+export default function ProjectsPage({store}: ProjectsPageProps) {
    // const projects = await getAllProjects()
    // const categories = await getAllCategories()
    /*   const projects = mockedProjects
@@ -24,9 +23,36 @@ export default function ProjectsPage({data}: ProjectsPageProps) {
    const searchParams = useSearchParams()
    const activeCategory = searchParams.get('category')
 
-   console.log(data.projects.at(1))
+   // console.log(store.projects.at(1))
+   const existingCategories = useMemo(() => {
+      let activeCat: CategoryFactoryType[] = []
 
-   console.log(!activeCategory || activeCategory === 'all')
+      store.projects.forEach(project => {
+         project.categories.forEach(cat => {
+            activeCat.every(active => active._id !== cat._id) && activeCat.push(cat)
+         })
+      })
+
+      console.log(activeCat)
+      return activeCat
+   }, [store])
+
+   const filterProjects = useMemo(() => {
+      if (!activeCategory || activeCategory === 'all') return store.projects
+
+      const projects: ProjectWithMappedCategory[] = []
+      for (let project of store.projects) {
+         for (let category of project.categories) {
+            if (category.slug.current === activeCategory) {
+               projects.push(project)
+            }
+         }
+      }
+
+      return projects
+   }, [activeCategory, store])
+
+   // console.log(!activeCategory || activeCategory === 'all')
    // TODO set that we retrieve category reference from Projects. then we use the array of corresponding category to avoid categories that have no project
    return (
       <Flex
@@ -45,29 +71,32 @@ export default function ProjectsPage({data}: ProjectsPageProps) {
                         className={twMerge(
                            'select-none snap-mandatory snap-center font-poppins font-light visited:text-primary',
                            'cursor-pointer text-primary/90 hover:text-primary',
-                           'data-[active=true]:cursor-default data-[active=true]:font-semibold data-[active=true]:text-primary'
+                           'store-[active=true]:cursor-default store-[active=true]:font-semibold store-[active=true]:text-primary'
                         )}
                         asChild>
                         <Link href={`/projects?category=all`}>Toutes</Link>
                      </RadixLink>
                   </NavigationMenu.Item>
-                  {data.categories.map(c => (
-                     <NavigationMenu.Item key={c._id}>
-                        <RadixLink
-                           aria-selected={activeCategory === c.slug}
-                           data-active={activeCategory === c.slug}
-                           className={twMerge(
-                              'select-none snap-mandatory snap-center font-poppins font-light visited:text-primary',
-                              'cursor-pointer text-primary/90 hover:text-primary',
-                              'data-[active=true]:cursor-default data-[active=true]:font-semibold data-[active=true]:text-primary'
-                           )}
-                           asChild>
-                           <Link href={`/projects?category=${c?.slug}`}>
-                              {c?.displayedValue?.fr}
-                           </Link>
-                        </RadixLink>
-                     </NavigationMenu.Item>
-                  ))}
+                  <ul className={'flex gap-3'}>
+                     {existingCategories.map(category => {
+                        console.log(category)
+                        return (
+                           <li key={category._id}>
+                              <Link
+                                 aria-selected={activeCategory === category.slug}
+                                 className={twMerge(
+                                    'font-light visited:text-primary hover:text-primary',
+                                    activeCategory === category.slug
+                                       ? 'cursor-default font-semibold opacity-100'
+                                       : 'cursor-pointer opacity-90'
+                                 )}
+                                 href={`/projects?category=${category?.slug.current}`}>
+                                 {category.name.fr}
+                              </Link>
+                           </li>
+                        )
+                     })}
+                  </ul>
                </NavigationMenu.List>
             </NavigationMenu.Root>
          </header>
@@ -77,7 +106,7 @@ export default function ProjectsPage({data}: ProjectsPageProps) {
                   className={
                      'mx-auto grid max-w-[1440px] grid-cols-1 gap-4 px-2 sm:grid-cols-2 md:px-8 lg:grid-cols-3 lg:px-12 2xl:grid-cols-4'
                   }>
-                  {data.projects.map((p, index) => (
+                  {filterProjects.map((p, index) => (
                      <ProjectCardPreview
                         key={p._id}
                         title={p.title.fr}
