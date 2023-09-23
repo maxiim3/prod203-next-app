@@ -68,7 +68,7 @@ const ProjectPage = async ({
                               return cat._id === category._ref
                            })!
                            console.log(retrieveCat)
-                           return <li key={i}>{retrieveCat?.displayedValue?.fr}</li>
+                           return <li key={i}>{retrieveCat?.name.fr}</li>
                         })}
                      </ul>
                   </li>
