@@ -36,12 +36,15 @@ export default function ImagesGallery({pictures}: {pictures: T_ProjectFactory['g
    function nextImage() {
       if (currentImage === arrayOfPictures.length - 1) return setCurrentImage(0)
 
-      return setCurrentImage(i => i + 1)
+      // @ts-ignore
+      return document.startViewTransition(() => setCurrentImage(i => i + 1))
    }
 
    function previousImage() {
       if (currentImage === 0) return setCurrentImage(arrayOfPictures.length - 1)
 
+      // @ts-ignore
+      // return document.startViewTransition(() => setCurrentImage(i => i - 1))
       return setCurrentImage(i => i - 1)
    }
 
@@ -58,19 +61,19 @@ export default function ImagesGallery({pictures}: {pictures: T_ProjectFactory['g
             gap={'3'}
             rows={'auto'}>
             <>
-               {arrayOfPictures.map((item, i) => (
+               {arrayOfPictures.map((imgSrc, index) => (
                   <AspectRatio
                      ratio={1}
-                     onClick={() => handleOnClick(i)}
+                     onClick={() => handleOnClick(index)}
                      className={'group cursor-pointer overflow-hidden'}
-                     key={i}>
+                     key={index}>
                      <Image
                         fill={true}
                         className={twMerge(
                            'object-cover opacity-80 transition motion-safe:duration-700',
                            'group-hover:scale-125 group-hover:opacity-100'
                         )}
-                        src={item || '/image-placeholder.png'}
+                        src={imgSrc || '/image-placeholder.png'}
                         alt={'placeholder'}
                      />
                   </AspectRatio>
@@ -111,7 +114,6 @@ export default function ImagesGallery({pictures}: {pictures: T_ProjectFactory['g
                   px={'1'}>
                   <Button
                      variant={'ghost'}
-                     disabled={currentImage === 1}
                      onClick={previousImage}
                      size={'4'}>
                      <ChevronLeftIcon
@@ -122,7 +124,6 @@ export default function ImagesGallery({pictures}: {pictures: T_ProjectFactory['g
                   <Button
                      variant={'ghost'}
                      onClick={nextImage}
-                     disabled={currentImage === arrayOfPictures.length}
                      size={'4'}>
                      <ChevronRightIcon
                         width={'64'}

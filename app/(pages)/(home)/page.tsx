@@ -126,34 +126,40 @@ export default async function Home() {
                sectionTitleStyles="hidden"
                innerContainerStyles={'rounded-lg overflow-hidden  min-h-2 h-fit'}
                title="">
-               <div className={'grid grid-cols-2 grid-rows-2 gap-1'}>
+               <div className={'flex flex-col gap-1'}>
                   <div className={'col-span-2'}>
                      <Image
                         alt={''}
                         src={'/assets/orchestra.webp'}
                         width={600}
                         height={340}
-                        className={'aspect-video w-full object-contain object-center'}
+                        className={
+                           'mask mask-parallelogram aspect-video w-full object-contain object-center'
+                        }
                      />
                   </div>
                   <div className={'col-start-1 col-end-2 row-start-2'}>
                      <Image
                         alt={''}
-                        src={'/assets/on-air.webp'}
-                        width={600}
-                        height={340}
-                        className={'aspect-video w-full object-cover object-center'}
-                     />
-                  </div>
-                  <div className={'col-start-2 row-start-2'}>
-                     <Image
-                        alt={''}
                         src={'/assets/recording.webp'}
                         width={600}
                         height={340}
-                        className={'aspect-video w-full object-contain object-center'}
+                        className={
+                           'mask mask-parallelogram-2 aspect-video w-full object-contain object-center'
+                        }
                      />
                   </div>
+                  {/*<div className={'col-start-2 row-start-2'}>*/}
+                  {/*   <Image*/}
+                  {/*      alt={''}*/}
+                  {/*      src={'/assets/on-air.webp'}*/}
+                  {/*      width={600}*/}
+                  {/*      height={340}*/}
+                  {/*      className={*/}
+                  {/*         'mask mask-parallelogram-2 aspect-video w-full object-cover object-center'*/}
+                  {/*      }*/}
+                  {/*   />*/}
+                  {/*</div>*/}
                </div>
             </SectionTemplate>
             {/**
@@ -192,6 +198,49 @@ export default async function Home() {
                {/*<ScrollButton sectionID={'#references'} />*/}
             </SectionTemplate>
 
+            <SectionTemplate
+               id="gallery"
+               outerContainerStyles={'h-fit pb-32'}
+               imgClassName={'bg-gray-100/20'}
+               sectionTitleStyles="hidden"
+               innerContainerStyles={'rounded-lg overflow-hidden  min-h-2 h-fit'}
+               title="">
+               <div className={'flex flex-col gap-1'}>
+                  {/*<div className={'col-span-2'}>*/}
+                  {/*   <Image*/}
+                  {/*      alt={''}*/}
+                  {/*      src={'/assets/orchestra.webp'}*/}
+                  {/*      width={600}*/}
+                  {/*      height={340}*/}
+                  {/*      className={*/}
+                  {/*         'mask mask-parallelogram aspect-video w-full object-contain object-center'*/}
+                  {/*      }*/}
+                  {/*   />*/}
+                  {/*</div>*/}
+                  {/*<div className={'col-start-1 col-end-2 row-start-2'}>*/}
+                  {/*   <Image*/}
+                  {/*      alt={''}*/}
+                  {/*      src={'/assets/recording.webp'}*/}
+                  {/*      width={600}*/}
+                  {/*      height={340}*/}
+                  {/*      className={*/}
+                  {/*         'mask mask-parallelogram-2 aspect-video w-full object-contain object-center'*/}
+                  {/*      }*/}
+                  {/*   />*/}
+                  {/*</div>*/}
+                  <div>
+                     <Image
+                        alt={''}
+                        src={'/assets/on-air.webp'}
+                        width={600}
+                        height={340}
+                        className={
+                           'mask mask-circle aspect-video w-full object-cover object-center'
+                        }
+                     />
+                  </div>
+               </div>
+            </SectionTemplate>
             {/**
              * ==========================
              *      BOTTOM SECTION 3/3

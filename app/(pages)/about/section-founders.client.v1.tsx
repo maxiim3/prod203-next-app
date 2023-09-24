@@ -32,8 +32,6 @@ export default function SectionFoundersV1() {
       'flex md:min-h-[600px] w-full flex-col gap-4',
       'p-8 text-balance'
    )
-   /*todo Fix bug on mobile view : Can see the text in between the images while scrolling.*/
-   /*todo set the sticky to stop at the container - to dont see the image*/
 
    return (
       <section className={'flex w-screen flex-col lg:flex-row'}>

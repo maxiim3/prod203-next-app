@@ -52,8 +52,6 @@ export default function ProjectsPage({store}: ProjectsPageProps) {
       return projects
    }, [activeCategory, store])
 
-   // console.log(!activeCategory || activeCategory === 'all')
-   // TODO set that we retrieve category reference from Projects. then we use the array of corresponding category to avoid categories that have no project
    return (
       <Flex
          className={'space-y-6'}

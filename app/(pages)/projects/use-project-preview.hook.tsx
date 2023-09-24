@@ -20,5 +20,5 @@ export default function useAnimateProjectCards() {
          )
       }
    }, [isInView, animateContainer, containerRef])
-   return containerRef // todo fix the animation with intersection observer
+   return containerRef
 }

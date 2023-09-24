@@ -12,100 +12,61 @@ import {
    Theme,
 } from '@radix-ui/themes'
 
-import Label from '@/app/(pages)/contact/form-label.atom'
-import useReactHookFormHook from '@/app/(pages)/contact/use-react-hook-form.hook'
+import useContactFormStore, {ContactFormStore} from '@/app/(pages)/contact/contact-form.store'
+import ky from 'ky'
 import Link from 'next/link'
 import React from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export default function ContactForm() {
-   const {isMounted, formState, errors, reset, onSubmit, register} = useReactHookFormHook()
+   const {
+      isMounted,
+      handleSubmit,
+      errors,
+      register,
+      formStore,
+   }: ReturnType<typeof useContactFormStore> = useContactFormStore()
+   const {
+      isFormSubmitted,
+      isSubmittedWithSuccess,
+      setIsFormSubmitted,
+      setIsSubmittedWithSuccess,
+   }: ContactFormStore = formStore
+   const onSubmit = async (data: any) => {
+      const response = await ky.post('/api/contact', {
+         json: {data},
+      })
 
-   if (!isMounted) return <Text size={'4'}>Loading Form...</Text>
-   if (formState.isFormSubmitted && !formState.isSubmittedWithSuccess) {
-      return (
-         <Theme
-            appearance={'light'}
-            asChild>
-            <Flex
-               className={
-                  'max-h-[640px] w-full rounded-md  bg-clrPrimary-100 px-9 py-12 text-base-100 sm:max-w-[540px]'
-               }
-               direction={'column'}
-               gap={'3'}
-               mb={'5'}>
-               <Heading className="text-center font-bold">Une erreur est survenue</Heading>
-               <Button
-                  size={'3'}
-                  variant={'soft'}
-                  onClick={() => formState.setIsFormSubmitted(false)}>
-                  <ReloadIcon
-                     className={'text-base-200'}
-                     width={24}
-                     height={24}
-                  />
-                  <RadixLink asChild>
-                     <Link
-                        href={'/contact'}
-                        onClick={() => formState.setIsFormSubmitted(false)}>
-                        Réessayer
-                     </Link>
-                  </RadixLink>
-               </Button>
-            </Flex>
-         </Theme>
-      )
+      const json = await response.json()
+
+      console.log(response)
+
+      if ([200, 201, 203, 204].includes(response.status)) {
+         setIsSubmittedWithSuccess(true)
+      }
+      if ([400, 401, 402, 404, 500].includes(response.status)) {
+         setIsSubmittedWithSuccess(false)
+      }
+
+      console.log(data)
+
+      setIsFormSubmitted(true)
+
+      return json
    }
 
-   if (formState.isFormSubmitted && formState.isSubmittedWithSuccess)
-      return (
-         <Theme
-            appearance={'light'}
-            asChild>
-            <Flex
-               className={
-                  'max-h-[640px] w-full rounded-md  bg-clrPrimary-100 px-9 py-12 text-base-100 sm:max-w-[540px]'
-               }
-               direction={'column'}
-               gap={'3'}
-               mb={'5'}>
-               <Heading className="text-center font-bold">Merci pour votre message</Heading>
-               <p className="text-center">Nous vous répondrons dans les plus brefs délais</p>
-               <Button
-                  highContrast
-                  size={'3'}
-                  variant={'outline'}
-                  className={'bg-base-200'}>
-                  <RadixLink
-                     asChild
-                     className={'font-poppins text-primary'}>
-                     <Link href={'/'}>Retour à l{"'"}accueil</Link>
-                  </RadixLink>
-               </Button>
-               <Button
-                  size={'3'}
-                  onClick={() => {
-                     reset()
-                     formState.setIsFormSubmitted(false)
-                  }}
-                  variant={'outline'}
-                  className={'border-base-100 bg-primary'}>
-                  <ReloadIcon
-                     className={'text-base-200'}
-                     width={24}
-                     height={24}
-                  />
-               </Button>
-            </Flex>
-         </Theme>
-      )
+   console.log('component rerender', isFormSubmitted, isSubmittedWithSuccess)
+   if (!isMounted) return <Text size={'4'}>Loading Form...</Text>
+
+   if (isFormSubmitted) return <UserFeedback />
 
    return (
       <Theme
          appearance={'light'}
          asChild>
          <form
-            onSubmit={onSubmit()}
+            // @ts-ignore
+            onSubmit={handleSubmit(onSubmit)}
             className={
                'max-h-[640px] w-full rounded-md  bg-clrPrimary-100 px-9 py-12 text-base-100 sm:max-w-[540px]'
             }>
@@ -196,16 +157,100 @@ export default function ContactForm() {
                      </label>
                   )}
                </div>
-               <Button
-                  highContrast
-                  size={'3'}
+               <button
                   type={'submit'}
-                  color={'gray'}
+                  className={'btn-outlined btn rounded-md'}
                   disabled={false}>
-                  <Text className={'font-poppins'}>Submit</Text>
-               </Button>
+                  Submit
+               </button>
             </Flex>
          </form>
       </Theme>
    )
 }
+
+function UserFeedback() {
+   const {reset, formStore}: ReturnType<typeof useContactFormStore> = useContactFormStore()
+   const {setIsFormSubmitted, isSubmittedWithSuccess}: ContactFormStore = formStore
+
+   if (!isSubmittedWithSuccess) {
+      return (
+         <Theme
+            appearance={'light'}
+            asChild>
+            <Flex
+               className={
+                  'max-h-[640px] w-full rounded-md  bg-clrPrimary-100 px-9 py-12 text-base-100 sm:max-w-[540px]'
+               }
+               direction={'column'}
+               gap={'3'}
+               mb={'5'}>
+               <Heading className="text-center font-bold">Une erreur est survenue</Heading>
+               <Button
+                  size={'3'}
+                  variant={'soft'}
+                  onClick={() => setIsFormSubmitted(false)}>
+                  <ReloadIcon
+                     className={'text-base-200'}
+                     width={24}
+                     height={24}
+                  />
+                  <RadixLink asChild>
+                     <Link
+                        href={'/contact'}
+                        onClick={() => setIsFormSubmitted(false)}>
+                        Réessayer
+                     </Link>
+                  </RadixLink>
+               </Button>
+            </Flex>
+         </Theme>
+      )
+   }
+
+   return (
+      <Theme
+         appearance={'light'}
+         asChild>
+         <Flex
+            className={
+               'max-h-[640px] w-full rounded-md  bg-clrPrimary-100 px-9 py-12 text-base-100 sm:max-w-[540px]'
+            }
+            direction={'column'}
+            gap={'3'}
+            mb={'5'}>
+            <Heading className="text-center font-bold">Merci pour votre message</Heading>
+            <p className="text-center">Nous vous répondrons dans les plus brefs délais</p>
+
+            <Link
+               className={'btn-outlined btn rounded-md'}
+               href={'/'}>
+               Retour à l{"'"}accueil
+            </Link>
+            <button
+               onClick={() => {
+                  reset()
+                  setIsFormSubmitted(false)
+               }}
+               className={'btn btn-primary '}>
+               <ReloadIcon
+                  className={'text-base-200'}
+                  width={24}
+                  height={24}
+               />
+            </button>
+         </Flex>
+      </Theme>
+   )
+}
+
+const Label = ({id, label, className}: {label: string; id: string; className?: string}) => (
+   <label
+      htmlFor={id}
+      className={twMerge(
+         'font-base label label-text font-normal text-base-100/70 hover:cursor-pointer',
+         className
+      )}>
+      {label}
+   </label>
+)
