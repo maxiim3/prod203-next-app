@@ -1,6 +1,6 @@
 'use client'
 
-import useAnimateProjectCards from '@/app/(pages)/projects/use-canimate-project-cards.hook'
+import useAnimateProjectCards from '@/components/_archive/(pages)/projects/use-canimate-project-cards.hook'
 import ImageBuilder from '@/lib/sanity/image.builder'
 import {ProjectFactory} from '@/lib/sanity/project'
 import {motion} from 'framer-motion'

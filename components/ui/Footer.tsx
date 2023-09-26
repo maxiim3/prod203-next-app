@@ -1,17 +1,22 @@
 'use client'
 
+import {Z_PageI18nParam} from '@/schemas/i18n.page.props.schema'
 import routes from '@/static-content/route.static.content'
 import {classed} from '@tw-classed/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import {usePathname} from 'next/navigation'
+import {useParams, usePathname} from 'next/navigation'
 import React, {PropsWithChildren} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export default function Footer() {
    const pathname = usePathname()
+   const params = useParams()
+   let safeParams = Z_PageI18nParam.safeParse(params)
+   let currentLang = safeParams.success ? safeParams.data.lang : 'fr'
+
    return (
-      <footer className={'relative bg-base-200/60'}>
+      <footer className={'relative bg-base-200'}>
          <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
             <div className="sm:flex sm:justify-between">
                <Image
@@ -52,7 +57,9 @@ export default function Footer() {
                         <Item
                            className={twMerge(pathname === route.path && 'font-semibold')}
                            key={`footer-nav-${index}`}>
-                           <Link href={route.path}>{route.name}</Link>
+                           <Link href={`/${currentLang}${route.path}`}>
+                              {route.name[currentLang]}
+                           </Link>
                         </Item>
                      )
                   })}
@@ -60,10 +67,9 @@ export default function Footer() {
                <Section>
                   <SectionTitle>Légal</SectionTitle>
                   <Item>
-                     <Link href={'/legal'}>Mentions Légales</Link>
-                  </Item>
-                  <Item>
-                     <Link href={'/store-privacy'}>Données Personnelles</Link>
+                     <Link href={`/${currentLang}/legal`}>
+                        ${currentLang === 'en' ? 'Legal Notice' : 'Mentions Légales'}
+                     </Link>
                   </Item>
                </Section>
             </div>

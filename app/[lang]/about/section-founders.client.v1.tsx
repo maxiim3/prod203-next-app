@@ -1,6 +1,6 @@
 'use client'
 
-import TeamMemberCard from '@/app/(pages)/about/team-member-card.client'
+import TeamMemberCard from '@/components/_archive/(pages)/about/team-member-card.client'
 import {T_Children, T_ClassName} from '@/lib/types'
 import React, {useEffect, useRef, useState} from 'react'
 import {ClassNameValue, twMerge} from 'tailwind-merge'

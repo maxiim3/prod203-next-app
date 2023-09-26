@@ -1,5 +1,5 @@
-import ImagesGallery from '@/app/(pages)/projects/[id]/images-gallery.client'
-import LoadingProjectPage from '@/app/(pages)/projects/[id]/loading'
+import ImagesGallery from '@/components/_archive/(pages)/projects/[id]/images-gallery.client'
+import LoadingProjectPage from '@/components/_archive/(pages)/projects/[id]/loading'
 import {ProjectFactory} from '@/lib/sanity/project'
 import {SanityStoreFactory} from '@/lib/sanity/sanity-store.factory'
 import {getAllCategories, getProjectBySlug} from '@/lib/sanity/service'

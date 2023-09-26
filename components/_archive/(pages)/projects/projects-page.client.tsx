@@ -1,6 +1,6 @@
 'use client'
 
-import {ProjectThumbnail} from '@/app/(pages)/projects/project-thumbnail.client'
+import {ProjectThumbnail} from '@/components/_archive/(pages)/projects/project-thumbnail.client'
 import {CategoryFactoryType, ProjectWithMappedCategory} from '@/lib/sanity/sanity-store.factory'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import {Flex, Link as RadixLink} from '@radix-ui/themes'

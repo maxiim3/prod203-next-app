@@ -1,5 +1,5 @@
-import Loading from '@/app/(pages)/projects/loading'
-import ProjectsPage from '@/app/(pages)/projects/projects-page.client'
+import Loading from '@/components/_archive/(pages)/projects/loading'
+import ProjectsPage from '@/components/_archive/(pages)/projects/projects-page.client'
 import {SanityStoreFactory} from '@/lib/sanity/sanity-store.factory'
 import {getAllCategories, getAllProjects} from '@/lib/sanity/service'
 import React, {Suspense} from 'react'

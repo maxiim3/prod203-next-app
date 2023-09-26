@@ -1,7 +1,10 @@
 import {z} from 'zod'
 
 export const Z_Route = z.object({
-   name: z.string(),
+   name: z.object({
+      fr: z.string(),
+      en: z.string(),
+   }),
    path: z.string(),
 })
 

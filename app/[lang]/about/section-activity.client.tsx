@@ -1,7 +1,7 @@
 'use client'
 
-import {TabItem} from '@/app/(pages)/about/tab-item'
-import {TabType, useTabs} from '@/app/(pages)/about/useTabs.hook'
+import {TabItem} from '@/components/_archive/(pages)/about/tab-item'
+import {TabType, useTabs} from '@/components/_archive/(pages)/about/useTabs.hook'
 import Icons from '@/lib/icons'
 import Image from 'next/image'
 import React from 'react'

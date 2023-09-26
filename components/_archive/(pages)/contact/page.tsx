@@ -1,4 +1,4 @@
-import ContactForm from '@/app/(pages)/contact/contact-form.client'
+import ContactForm from '@/components/_archive/(pages)/contact/contact-form.client'
 import SinglePageLayoutTemplate from '@/components/ui/single-page-layout.template'
 import React from 'react'
 

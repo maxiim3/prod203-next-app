@@ -1,5 +1,5 @@
-import {ScrollButton} from '@/app/(pages)/(home)/scroll-button.client'
 import Loading from '@/app/loading'
+import {ScrollButton} from '@/components/_archive/(pages)/(home)/scroll-button.client'
 import {SectionTemplate} from '@/components/layout/SectionTemplate'
 import MarqueeBanner from '@/components/organism/MarqueeBanner'
 import {VideoBanner} from '@/components/organism/VideoBanner'
@@ -10,7 +10,6 @@ import React, {PropsWithChildren, Suspense} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export default async function Home({params}: I_PageI18nParams) {
-   console.log(params)
    return (
       <main className={'relative'}>
          <header>

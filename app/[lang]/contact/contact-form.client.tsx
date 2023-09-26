@@ -12,7 +12,9 @@ import {
    Theme,
 } from '@radix-ui/themes'
 
-import useContactFormStore, {ContactFormStore} from '@/app/(pages)/contact/contact-form.store'
+import useContactFormStore, {
+   ContactFormStore,
+} from '@/components/_archive/(pages)/contact/contact-form.store'
 import ky from 'ky'
 import Link from 'next/link'
 import React from 'react'

@@ -1,6 +1,6 @@
-import SectionActivity from '@/app/(pages)/about/section-activity.client'
-import SectionFounders from '@/app/(pages)/about/section-founders.client'
-import SectionRoaster from '@/app/(pages)/about/section-roaster.client'
+import SectionActivity from '@/components/_archive/(pages)/about/section-activity.client'
+import SectionFounders from '@/components/_archive/(pages)/about/section-founders.client'
+import SectionRoaster from '@/components/_archive/(pages)/about/section-roaster.client'
 import {classed} from '@tw-classed/react'
 import React from 'react'
 

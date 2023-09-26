@@ -2,19 +2,19 @@ import {T_Route} from '@/schemas/route.schema'
 
 const routes: T_Route[] = [
    {
-      name: 'Accueil',
+      name: {en: 'Home', fr: 'Accueil'},
       path: '/',
    },
    {
-      name: 'Projects',
+      name: {en: 'Projects', fr: 'Projets'},
       path: '/projects',
    },
    {
-      name: 'A propos',
+      name: {en: 'About', fr: 'À propos'},
       path: '/about',
    },
    {
-      name: 'Contact',
+      name: {en: 'Contact', fr: 'Contact'},
       path: '/contact',
    },
 ]
