@@ -191,6 +191,7 @@ module.exports = {
       require('tailwindcss-animate'),
       require('tailwindcss-text-balance'),
       require('flowbite/plugin'),
+      require('@tailwindcss/typography'),
       require('daisyui'),
    ],
 
