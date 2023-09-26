@@ -14,20 +14,20 @@ export default function LanguageSelection({
    className?: string
 }) {
    const pathname = usePathname()
-
+   console.log(pathname)
    return (
       <List>
          <Item
             className={className}
             onClick={onClick}
-            isSelected={!pathname.includes('eng')}>
-            <Link href={'/fr/home'}>FR</Link>
+            isSelected={pathname.includes('fr')}>
+            <Link href={'/fr'}>FR</Link>
          </Item>
          <Item
             className={className}
             onClick={onClick}
-            isSelected={pathname.includes('eng')}>
-            <Link href={'/eng/home'}>ENG</Link>
+            isSelected={pathname.includes('en')}>
+            <Link href={'/en'}>EN</Link>
          </Item>
       </List>
    )
