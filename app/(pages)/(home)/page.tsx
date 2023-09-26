@@ -124,42 +124,23 @@ export default async function Home() {
                outerContainerStyles={'mt-32 h-fit '}
                imgClassName={'bg-gray-100/20'}
                sectionTitleStyles="hidden"
-               innerContainerStyles={'rounded-lg overflow-hidden  min-h-2 h-fit'}
+               innerContainerStyles={'rounded-lg overflow-hidden min-h-[400px]'}
                title="">
-               <div className={'flex flex-col gap-1'}>
-                  <div className={'col-span-2'}>
-                     <Image
-                        alt={''}
-                        src={'/assets/orchestra.webp'}
-                        width={600}
-                        height={340}
-                        className={
-                           'mask mask-parallelogram aspect-video w-full object-contain object-center'
-                        }
-                     />
-                  </div>
-                  <div className={'col-start-1 col-end-2 row-start-2'}>
-                     <Image
-                        alt={''}
-                        src={'/assets/recording.webp'}
-                        width={600}
-                        height={340}
-                        className={
-                           'mask mask-parallelogram-2 aspect-video w-full object-contain object-center'
-                        }
-                     />
-                  </div>
-                  {/*<div className={'col-start-2 row-start-2'}>*/}
-                  {/*   <Image*/}
-                  {/*      alt={''}*/}
-                  {/*      src={'/assets/on-air.webp'}*/}
-                  {/*      width={600}*/}
-                  {/*      height={340}*/}
-                  {/*      className={*/}
-                  {/*         'mask mask-parallelogram-2 aspect-video w-full object-cover object-center'*/}
-                  {/*      }*/}
-                  {/*   />*/}
-                  {/*</div>*/}
+               <div className={'flex w-full items-center justify-center'}>
+                  <Image
+                     alt={''}
+                     src={'/assets/orchestra.webp'}
+                     fill={true}
+                     placeholder={'empty'}
+                     priority={false}
+                     quality={90}
+                     sizes={
+                        '(min-width: 768px) clamp(600px, 80vw, 980px), (min-width: 1200px) 1024px, clamp(200px, 100vw, 600px'
+                     }
+                     className={
+                        'aspect-portrait mask mask-parallelogram w-full object-contain object-center md:aspect-video'
+                     }
+                  />
                </div>
             </SectionTemplate>
             {/**
@@ -170,7 +151,6 @@ export default async function Home() {
              * **/}
             <SectionTemplate
                id="about"
-               outerContainerStyles={'mb-20'}
                imgClassName={'bg-gray-100/20'}
                sectionTitleStyles="hidden"
                title="">
@@ -200,45 +180,26 @@ export default async function Home() {
 
             <SectionTemplate
                id="gallery"
-               outerContainerStyles={'h-fit pb-32'}
+               outerContainerStyles={'h-fit mb-32'}
                imgClassName={'bg-gray-100/20'}
                sectionTitleStyles="hidden"
-               innerContainerStyles={'rounded-lg overflow-hidden  min-h-2 h-fit'}
+               innerContainerStyles={'rounded-lg overflow-hidden min-h-[400px]'}
                title="">
-               <div className={'flex flex-col gap-1'}>
-                  {/*<div className={'col-span-2'}>*/}
-                  {/*   <Image*/}
-                  {/*      alt={''}*/}
-                  {/*      src={'/assets/orchestra.webp'}*/}
-                  {/*      width={600}*/}
-                  {/*      height={340}*/}
-                  {/*      className={*/}
-                  {/*         'mask mask-parallelogram aspect-video w-full object-contain object-center'*/}
-                  {/*      }*/}
-                  {/*   />*/}
-                  {/*</div>*/}
-                  {/*<div className={'col-start-1 col-end-2 row-start-2'}>*/}
-                  {/*   <Image*/}
-                  {/*      alt={''}*/}
-                  {/*      src={'/assets/recording.webp'}*/}
-                  {/*      width={600}*/}
-                  {/*      height={340}*/}
-                  {/*      className={*/}
-                  {/*         'mask mask-parallelogram-2 aspect-video w-full object-contain object-center'*/}
-                  {/*      }*/}
-                  {/*   />*/}
-                  {/*</div>*/}
-                  <div>
-                     <Image
-                        alt={''}
-                        src={'/assets/on-air.webp'}
-                        width={600}
-                        height={340}
-                        className={
-                           'mask mask-circle aspect-video w-full object-cover object-center'
-                        }
-                     />
-                  </div>
+               <div className={'flex w-full items-center justify-center'}>
+                  <Image
+                     alt={''}
+                     src={'/assets/recording.webp'}
+                     fill={true}
+                     placeholder={'empty'}
+                     priority={false}
+                     quality={90}
+                     sizes={
+                        '(min-width: 768px) clamp(600px, 80vw, 980px), (min-width: 1200px) 1024px, clamp(200px, 100vw, 600px'
+                     }
+                     className={
+                        'aspect-portrait mask mask-parallelogram-2 w-full object-contain object-center md:aspect-video'
+                     }
+                  />
                </div>
             </SectionTemplate>
             {/**

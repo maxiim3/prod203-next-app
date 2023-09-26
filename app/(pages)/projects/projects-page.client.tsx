@@ -1,6 +1,6 @@
 'use client'
 
-import {ProjectCardPreview} from '@/app/(pages)/projects/project-card-preview.client'
+import {ProjectThumbnail} from '@/app/(pages)/projects/project-thumbnail.client'
 import {CategoryFactoryType, ProjectWithMappedCategory} from '@/lib/sanity/sanity-store.factory'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import {Flex, Link as RadixLink} from '@radix-ui/themes'
@@ -33,7 +33,6 @@ export default function ProjectsPage({store}: ProjectsPageProps) {
          })
       })
 
-      console.log(activeCat)
       return activeCat
    }, [store])
 
@@ -65,35 +64,36 @@ export default function ProjectsPage({store}: ProjectsPageProps) {
                   <NavigationMenu.Item>
                      <RadixLink
                         aria-selected={!activeCategory || activeCategory === 'all'}
-                        data-active={!activeCategory || activeCategory === 'all'}
                         className={twMerge(
                            'select-none snap-mandatory snap-center font-poppins font-light visited:text-primary',
                            'cursor-pointer text-primary/90 hover:text-primary',
-                           'store-[active=true]:cursor-default store-[active=true]:font-semibold store-[active=true]:text-primary'
+                           !activeCategory || activeCategory === 'all'
+                              ? 'cursor-default font-semibold opacity-100'
+                              : 'cursor-pointer opacity-90'
                         )}
                         asChild>
                         <Link href={`/projects?category=all`}>Toutes</Link>
                      </RadixLink>
                   </NavigationMenu.Item>
                   <ul className={'flex gap-3'}>
-                     {existingCategories.map(category => {
-                        console.log(category)
-                        return (
-                           <li key={category._id}>
-                              <Link
-                                 aria-selected={activeCategory === category.slug}
-                                 className={twMerge(
-                                    'font-light visited:text-primary hover:text-primary',
-                                    activeCategory === category.slug
-                                       ? 'cursor-default font-semibold opacity-100'
-                                       : 'cursor-pointer opacity-90'
-                                 )}
-                                 href={`/projects?category=${category?.slug.current}`}>
+                     {existingCategories.map(category => (
+                        <li key={category._id}>
+                           <RadixLink
+                              aria-selected={activeCategory === category.slug.current}
+                              className={twMerge(
+                                 'select-none snap-mandatory snap-center font-poppins font-light visited:text-primary',
+                                 'cursor-pointer text-primary/90 hover:text-primary',
+                                 activeCategory === category.slug.current
+                                    ? 'cursor-default font-semibold opacity-100'
+                                    : 'cursor-pointer opacity-90'
+                              )}
+                              asChild>
+                              <Link href={`/projects?category=${category?.slug.current}`}>
                                  {category.name.fr}
                               </Link>
-                           </li>
-                        )
-                     })}
+                           </RadixLink>
+                        </li>
+                     ))}
                   </ul>
                </NavigationMenu.List>
             </NavigationMenu.Root>
@@ -105,7 +105,7 @@ export default function ProjectsPage({store}: ProjectsPageProps) {
                      'mx-auto grid max-w-[1440px] grid-cols-1 gap-4 px-2 sm:grid-cols-2 md:px-8 lg:grid-cols-3 lg:px-12 2xl:grid-cols-4'
                   }>
                   {filterProjects.map((p, index) => (
-                     <ProjectCardPreview
+                     <ProjectThumbnail
                         key={p._id}
                         title={p.title.fr}
                         description={p.description?.fr}

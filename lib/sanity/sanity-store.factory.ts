@@ -30,8 +30,4 @@ export class SanityStoreFactory {
          return mappedProject
       })
    }
-
-   getProjectById(id: string) {
-      return this.projects.find(project => project._id === id)
-   }
 }

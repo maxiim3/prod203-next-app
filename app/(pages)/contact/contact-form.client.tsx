@@ -55,7 +55,6 @@ export default function ContactForm() {
       return json
    }
 
-   console.log('component rerender', isFormSubmitted, isSubmittedWithSuccess)
    if (!isMounted) return <Text size={'4'}>Loading Form...</Text>
 
    if (isFormSubmitted) return <UserFeedback />

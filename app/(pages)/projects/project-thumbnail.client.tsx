@@ -1,6 +1,6 @@
 'use client'
 
-import useAnimateProjectCards from '@/app/(pages)/projects/use-project-preview.hook'
+import useAnimateProjectCards from '@/app/(pages)/projects/use-canimate-project-cards.hook'
 import ImageBuilder from '@/lib/sanity/image.builder'
 import {ProjectFactory} from '@/lib/sanity/project'
 import {motion} from 'framer-motion'
@@ -18,13 +18,7 @@ type ComponentProps = {
    thumbnail: T_ProjectFactory['thumbnail']
 }
 
-export const ProjectCardPreview = ({
-   slug,
-   description,
-   title,
-   index,
-   thumbnail,
-}: ComponentProps) => {
+export const ProjectThumbnail = ({slug, description, title, index, thumbnail}: ComponentProps) => {
    const containerRef = useAnimateProjectCards()
    // const imageSource = getImageSource(project)
 
@@ -52,10 +46,10 @@ export const ProjectCardPreview = ({
                fill={true}
                className={twMerge(
                   'object-cover',
-                  'motion-safe:transition-all motion-safe:duration-[2s] motion-safe:group-hover/card:scale-110 motion-safe:group-hover/card:opacity-75'
+                  'motion-safe:transition motion-safe:duration-1000 motion-safe:group-hover/card:scale-110 motion-safe:group-hover/card:opacity-75'
                )}
                sizes={
-                  '(min-width: 1560px) 324px, (min-width: 1280px) calc(15.38vw + 87px), (min-width: 1040px) calc(33.18vw - 41px), (min-width: 780px) calc(50vw - 40px), (min-width: 640px) calc(50vw - 16px), calc(100vw - 16px)' /*Generated from https://ausi.github.io/respimagelint/*/
+                  '(min-width: 1560px) 324px, (min-width: 1280px) calc(15.38vw + 87px), (min-width: 1040px) calc(33.18vw - 41px), (min-width: 780px) calc(50vw - 40px), (min-width: 640px) calc(50vw - 16px), calc(100vw - 16px)'
                }
                src={thumbnailURL}
                alt="Image cannot be loaded"
@@ -72,9 +66,7 @@ export const ProjectCardPreview = ({
                   className={twMerge(
                      'card-title text-base',
                      `transition-all duration-300  motion-safe:-translate-y-[50px] motion-safe:opacity-75 motion-safe:group-hover/card:translate-y-0 motion-safe:group-hover/card:opacity-100`
-                  )}
-                  // style={{transitionDelay: '0.035s'}}
-               >
+                  )}>
                   {title}
                </h3>
                {description &&
@@ -86,7 +78,6 @@ export const ProjectCardPreview = ({
                               index === description.length - 1 && 'line-clamp-1',
                               `transition-all duration-300 motion-safe:-translate-y-[50px]  motion-safe:opacity-75 motion-safe:group-hover/card:translate-y-0 motion-safe:group-hover/card:opacity-100`
                            )}
-                           // style={{transitionDelay: `calc(${index + 1.4}* 0.02s)`}}
                            key={index}>
                            {content.text}
                         </p>
