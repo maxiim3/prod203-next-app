@@ -1,19 +1,25 @@
 // noinspection GrazieInspection
 
-/** @type {import("next").NextConfig} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
    optimizeFonts: true,
-   crossOrigin: 'use-credentials',
-
-   // i18n: {
-   //    // These are all the locales you want to support in
-   //    // your application
-   //    locales: [ "fr"],
-   //    // This is the default locale you want to be used when visiting
-   //    // a non-locale prefixed path e.g. `/hello`
-   //    defaultLocale: "fr",
-   //
-   // },
+   crossOrigin: 'anonymous',
+   images: {
+      remotePatterns: [
+         {
+            protocol: 'https',
+            hostname: 'images.pexels.com',
+            port: '',
+            pathname: 'photos/**',
+         },
+         {
+            protocol: 'https',
+            hostname: 'cdn.sanity.io',
+            port: '',
+            pathname: '**/**',
+         },
+      ],
+   },
 }
 
 module.exports = nextConfig

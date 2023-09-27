@@ -1,13 +1,23 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
-
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
    content: [
-      './pages/**/*.{js,ts,jsx,tsx,mdx}',
-      './components/**/*.{js,ts,jsx,tsx,mdx}',
-      './app/**/*.{js,ts,jsx,tsx,mdx}',
+      './node_modules/flowbite-react/**/*.js',
+      './pages/**/*.{ts,tsx}',
+      './components/**/*.{ts,tsx}',
+      './app/**/*.{ts,tsx}',
+      './src/**/*.{ts,tsx}',
    ],
+   darkMode: ['class'],
    theme: {
+      container: {
+         center: true,
+         padding: '2rem',
+         screens: {
+            '2xl': '1400px',
+         },
+      },
       extend: {
          colors: {
             clrPrimary: {
@@ -131,6 +141,8 @@ module.exports = {
             revealFromBottom: 'fadeAndSlideFromBottom 450ms ease-in-out 1.45s both',
             marquee: 'marquee 10s linear infinite',
             scroll: 'scrollInvitation 1s ease-in-out 1s both infinite',
+            'accordion-down': 'accordion-down 0.2s ease-out',
+            'accordion-up': 'accordion-up 0.2s ease-out',
             ...defaultTheme.animation,
          },
          keyframes: {
@@ -158,6 +170,14 @@ module.exports = {
                '0%': {transform: 'rotate(0deg)'},
                '100%': {transform: 'rotate(360deg)'},
             },
+            'accordion-down': {
+               from: {height: 0},
+               to: {height: 'var(--radix-accordion-content-height)'},
+            },
+            'accordion-up': {
+               from: {height: 'var(--radix-accordion-content-height)'},
+               to: {height: 0},
+            },
          },
          fontFamily: {
             cormorant: ['var(--font-cormorant)'],
@@ -167,7 +187,13 @@ module.exports = {
          },
       },
    },
-   plugins: [require('tailwindcss-text-balance'), require('daisyui')],
+   plugins: [
+      require('tailwindcss-animate'),
+      require('tailwindcss-text-balance'),
+      require('flowbite/plugin'),
+      require('@tailwindcss/typography'),
+      require('daisyui'),
+   ],
 
    // daisyUI config (optional - here are the default values)
    daisyui: {

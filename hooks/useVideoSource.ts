@@ -78,7 +78,7 @@ export function useVideoSource(
       if (!networkInfo) {
          newSrc = source.MEDIUM
       }
-      // Low-res video for data saver or slow connection
+      // Low-res video for store saver or slow connection
       if (networkInfo?.saveData || !isFastConnection(networkInfo)) {
          newSrc = source.LOW
       }
@@ -118,7 +118,7 @@ export interface NetworkInformation extends EventTarget {
    downlinkMax: number // Maximum downlink speed in Mbps
    effectiveType: 'slow-2g' | '2g' | '3g' | '4g' // Effective type of the connection
    rtt: number // Round-trip time in ms
-   saveData: boolean // Reduced data usage option
+   saveData: boolean // Reduced store usage option
    type: 'bluetooth' | 'cellular' | 'ethernet' | 'none' | 'wifi' | 'wimax' | 'other' | 'unknown' // Type of connection
 }
 
