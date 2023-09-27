@@ -1,11 +1,11 @@
 'use client'
 
 import useLangParamsHook from '@/hooks/useLangParams.hook'
+import {cn} from '@/lib/utils'
 import routes from '@/static-content/route.static.content'
-import {classed} from '@tw-classed/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, {PropsWithChildren} from 'react'
+import React, {ComponentPropsWithoutRef, PropsWithChildren} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export default function Footer() {
@@ -38,10 +38,15 @@ export default function Footer() {
          </h3>
       )
    }
-   const Item = classed(
-      'li',
-      'list-none text-base text-primary text-base leading-loose tracking-wider font-regular',
-      'hover:text-primary'
+   const Item = ({className, children}: ComponentPropsWithoutRef<'li'>) => (
+      <li
+         className={cn(
+            'font-regular list-none text-base leading-loose tracking-wider text-primary',
+            'hover:text-primary',
+            className
+         )}>
+         {children}
+      </li>
    )
 
    return (
@@ -84,7 +89,7 @@ export default function Footer() {
                   {routes.map((route, index) => {
                      return (
                         <Item
-                           className={twMerge(pathname === route.path && 'font-semibold')}
+                           className={cn(pathname === route.path && 'font-semibold')}
                            key={`footer-nav-${index}`}>
                            <Link href={`/${lang}${route.path}`}>{route.name[lang]}</Link>
                         </Item>

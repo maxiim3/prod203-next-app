@@ -41,13 +41,7 @@ export default function VideoBanner() {
          loop={true}
          muted={true}
          onError={() => <p>Something went wrong</p>}
-         onMetadataLoad={({
-            player,
-            video,
-         }: {
-            player: CloudinaryVideoPlayer
-            video: HTMLVideoElement
-         }) => {
+         onMetadataLoad={({video}: {player: CloudinaryVideoPlayer; video: HTMLVideoElement}) => {
             video.playsInline = true
             video.style.height = `${window.innerHeight}px`
             video.style.objectFit = 'cover'

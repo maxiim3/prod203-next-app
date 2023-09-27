@@ -1,3 +1,5 @@
+// noinspection SpellCheckingInspection
+
 interface I_ClientInterface {
    title: string
    content: string

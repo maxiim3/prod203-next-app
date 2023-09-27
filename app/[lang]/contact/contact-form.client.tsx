@@ -55,6 +55,7 @@ export default function ContactForm() {
 
    if (isFormSubmitted) return <UserFeedback />
 
+   // noinspection SpellCheckingInspection
    return (
       <Theme
          appearance={'light'}
