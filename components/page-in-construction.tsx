@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-export function BuildingPage({title}: {title: string}) {
+export default function BuildingPage({title}: {title: string}) {
    return (
       <div className={'mx-auto flex flex-col items-center justify-center gap-8 '}>
          <h1 className={'text-center'}>{title} - En Construction...</h1>

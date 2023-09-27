@@ -12,9 +12,7 @@ import {
    Theme,
 } from '@radix-ui/themes'
 
-import useContactFormStore, {
-   ContactFormStore,
-} from '@/components/_archive/(pages)/contact/contact-form.store'
+import useContactFormStore, {ContactFormStore} from '@/app/[lang]/contact/contact-form.store'
 import ky from 'ky'
 import Link from 'next/link'
 import React from 'react'
@@ -28,12 +26,8 @@ export default function ContactForm() {
       register,
       formStore,
    }: ReturnType<typeof useContactFormStore> = useContactFormStore()
-   const {
-      isFormSubmitted,
-      isSubmittedWithSuccess,
-      setIsFormSubmitted,
-      setIsSubmittedWithSuccess,
-   }: ContactFormStore = formStore
+   const {isFormSubmitted, setIsFormSubmitted, setIsSubmittedWithSuccess}: ContactFormStore =
+      formStore
    const onSubmit = async (data: any) => {
       const response = await ky.post('/api/contact', {
          json: {data},

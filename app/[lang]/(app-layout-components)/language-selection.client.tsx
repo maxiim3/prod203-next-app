@@ -1,10 +1,10 @@
 'use client'
 
+import {cn} from '@/lib/utils'
 import {Z_PageI18nParam} from '@/schemas/i18n.page.props.schema'
 import Link from 'next/link'
 import {useParams, usePathname} from 'next/navigation'
 import React, {ComponentPropsWithRef, PropsWithChildren} from 'react'
-import {twMerge} from 'tailwind-merge'
 
 export default function LanguageSelection({
    onClick,
@@ -45,18 +45,16 @@ export default function LanguageSelection({
       </List>
    )
 }
-
 const List = ({children, className}: ComponentPropsWithRef<'ul'>) => (
-   <ul className={twMerge('flex items-center space-x-2', className)}>{children}</ul>
+   <ul className={cn('flex items-center space-x-2', className)}>{children}</ul>
 )
-
 const Item = ({
    children,
    className,
    isSelected = false,
 }: PropsWithChildren<ComponentPropsWithRef<'li'> & {isSelected?: boolean}>) => (
    <li
-      className={twMerge(
+      className={cn(
          'select-none font-poppins uppercase tracking-wider md:text-base lg:text-lg',
          isSelected ? 'font-semibold' : 'font-thin',
          className

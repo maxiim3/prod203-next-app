@@ -1,4 +1,4 @@
-import SinglePageLayoutTemplate from '@/components/ui/single-page-layout.template'
+import SinglePageLayoutTemplate from '@/components/single-page-layout.template'
 import {I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
 
 export default function Legal({params}: I_PageI18nParams) {

@@ -1,14 +1,13 @@
 'use client'
 
-import {CldVideoPlayer, CloudinaryVideoPlayer} from 'next-cloudinary'
-import React, {useEffect, useRef} from 'react'
-
 import {useMounted} from '@/hooks/useMounted'
 import {useVideoSource, VideoSource} from '@/hooks/useVideoSource'
 import secretsEnv from '@/lib/secrets.env'
+import {CldVideoPlayer, CloudinaryVideoPlayer} from 'next-cloudinary'
+import React, {useEffect, useRef} from 'react'
 import {twMerge} from 'tailwind-merge'
 
-export function VideoBanner() {
+export default function VideoBanner() {
    const BASE_URL = 'https://res.cloudinary.com'
 
    const VIDEO_SOURCE: VideoSource = Object.freeze({

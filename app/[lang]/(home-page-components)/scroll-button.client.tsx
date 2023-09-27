@@ -11,7 +11,7 @@ interface ScrollButtonComposedProps {
    svg?: ComponentPropsWithoutRef<'svg'>
 }
 
-export const ScrollButton = ({svg, container, anchor}: ScrollButtonComposedProps) => {
+const ScrollButton = ({svg, container, anchor}: ScrollButtonComposedProps) => {
    const isMounted = useMounted()
    const isIPhoneSafari = useCallback(() => {
       if (!isMounted) return false
@@ -75,3 +75,4 @@ export const ScrollButton = ({svg, container, anchor}: ScrollButtonComposedProps
       </div>
    )
 }
+export default ScrollButton

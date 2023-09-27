@@ -1,15 +1,13 @@
+import MarqueeBanner from '@/app/[lang]/(home-page-components)/marquee-clients-banner.client'
 import MotionContent from '@/app/[lang]/(home-page-components)/motion-content.client'
-import {ScrollButton} from '@/app/[lang]/(home-page-components)/scroll-button.client'
+import ScrollButton from '@/app/[lang]/(home-page-components)/scroll-button.client'
+import VideoBanner from '@/app/[lang]/(home-page-components)/video-banner.client'
 import Loading from '@/app/[lang]/loading'
-import {TitleH2} from '@/components/atom/SectionH2'
-import MarqueeBanner from '@/components/organism/MarqueeBanner'
-import {VideoBanner} from '@/components/organism/VideoBanner'
 import Icons from '@/lib/icons'
 import {cn} from '@/lib/utils'
 import {I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
 import Image from 'next/image'
 import React, {ComponentPropsWithoutRef, Suspense} from 'react'
-import {twMerge} from 'tailwind-merge'
 
 export default async function Home({params}: I_PageI18nParams) {
    return (
@@ -33,7 +31,7 @@ export default async function Home({params}: I_PageI18nParams) {
                      src={'/assets/logo/prod203-white.webp'}
                      alt="Prod203"
                      priority={true}
-                     className={twMerge(
+                     className={cn(
                         'max-h-32 w-full object-contain object-center',
                         'motion-safe:animate-[scaleAndFade_850ms_ease-out_450ms_both]'
                      )}
@@ -59,7 +57,7 @@ export default async function Home({params}: I_PageI18nParams) {
                      {services.map(service => (
                         <span
                            key={service[params.lang]}
-                           className={twMerge(
+                           className={cn(
                               'flex flex-col items-center justify-center gap-2 place-self-center',
                               'h-fit w-fit px-0.5 sm:p-1 md:px-2'
                            )}>
@@ -252,11 +250,13 @@ const Section = ({
    </section>
 )
 const SectionTitle = ({children, className}: ComponentPropsWithoutRef<'h2'>) => (
-   <TitleH2
+   <h2
       className={cn(
+         'text-center font-poppins uppercase tracking-wider text-primary text-balance',
+         ' max-w-[25ch]',
          'w-content mx-auto text-center text-4xl font-thin uppercase sm:text-5xl ',
          className
       )}>
       {children}
-   </TitleH2>
+   </h2>
 )

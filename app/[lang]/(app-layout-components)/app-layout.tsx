@@ -1,4 +1,4 @@
-import Footer from '@/app/[lang]/(app-layout-components)/Footer'
+import Footer from '@/app/[lang]/(app-layout-components)/footer.client'
 import MainNavigation from '@/app/[lang]/(app-layout-components)/main-navigation'
 import {T_Children} from '@/lib/types'
 

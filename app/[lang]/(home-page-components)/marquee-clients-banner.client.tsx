@@ -1,12 +1,12 @@
 'use client'
 
+import {cn} from '@/lib/utils'
 import {ClientClassFactory, clients, reversedClients} from '@/static-content/clients.static.content'
 import Image from 'next/image'
 import React, {memo} from 'react'
 import Marquee from 'react-fast-marquee'
-import {twMerge} from 'tailwind-merge'
 
-function MarqueeBanner() {
+function MarqueeClientsBanner() {
    return (
       <>
          <div className={'md:hidden'}>
@@ -66,11 +66,11 @@ const ImageComponent = ({client, className}: {client: ClientClassFactory; classN
       height={200}
       alt={client.title}
       src={client.source}
-      className={twMerge(
+      className={cn(
          'mx-3 h-24 w-36 select-none object-contain object-center opacity-70',
          className
       )}
    />
 )
 
-export default memo(MarqueeBanner)
+export default memo(MarqueeClientsBanner)

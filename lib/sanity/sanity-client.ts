@@ -1,8 +1,5 @@
 import {createClient, SanityClient} from '@sanity/client'
 
-export type DATASOURCE_TYPE = 'sanity' | 'mocked'
-export const DATA_SOURCE: DATASOURCE_TYPE = 'mocked'
-
 class SingletonSanityClient {
    private static instance: SanityClient
 

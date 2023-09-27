@@ -1,4 +1,4 @@
-import {ReactNode} from 'react'
+import {ComponentPropsWithoutRef, ReactNode} from 'react'
 
 export type T_ClassName = {
    className?: string

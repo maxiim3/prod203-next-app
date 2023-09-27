@@ -1,7 +1,7 @@
 'use client'
 
+import LanguageSelection from '@/app/[lang]/(app-layout-components)/language-selection.client'
 import {NavigationItem, NavigationList} from '@/app/[lang]/(app-layout-components)/navigation.ui'
-import LanguageSelection from '@/components/molecule/LanguageSelection'
 import {Z_PageI18nParam} from '@/schemas/i18n.page.props.schema'
 import routes from '@/static-content/route.static.content'
 import {nanoid} from 'nanoid'
