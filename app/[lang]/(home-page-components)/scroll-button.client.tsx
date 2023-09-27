@@ -1,21 +1,17 @@
 'use client'
 
 import {useMounted} from '@/hooks/useMounted'
+import {cn} from '@/lib/utils'
 import {motion} from 'framer-motion'
-import {useCallback, useEffect, useRef} from 'react'
-import {twMerge} from 'tailwind-merge'
+import {ComponentPropsWithoutRef, useCallback} from 'react'
 
-export const ScrollButton = ({
-   sectionID,
-   anchorClassName,
-   containerClassName,
-   svgUp,
-}: {
-   sectionID: '#services' | '#about' | '#references' | '#'
-   anchorClassName?: string
-   containerClassName?: string
-   svgUp?: boolean
-}) => {
+interface ScrollButtonComposedProps {
+   container?: ComponentPropsWithoutRef<'div'>
+   anchor?: ComponentPropsWithoutRef<'a'>
+   svg?: ComponentPropsWithoutRef<'svg'>
+}
+
+export const ScrollButton = ({svg, container, anchor}: ScrollButtonComposedProps) => {
    const isMounted = useMounted()
    const isIPhoneSafari = useCallback(() => {
       if (!isMounted) return false
@@ -35,10 +31,12 @@ export const ScrollButton = ({
 
    return (
       <div
-         className={twMerge(
+         className={cn(
             `absolute bottom-0 z-30 flex w-full items-center justify-center  pb-8 sm:pb-[5vw]  2xl:pb-40  landscape:pb-8  md:landscape:pb-[5vw] 2xl:landscape:pb-20`,
-            isIPhoneSafari() && 'pb-24',
-            containerClassName
+            {
+               'pb-24': isIPhoneSafari(),
+            },
+            container?.className
          )}>
          <motion.a
             initial={{scale: 0.9, translateY: -25, opacity: 0.2}}
@@ -54,16 +52,16 @@ export const ScrollButton = ({
                duration: 0.25,
                delay: 0.075,
             }}
-            href={sectionID}
-            className={twMerge(
+            href={anchor?.href}
+            className={cn(
                'flex h-12 w-12 items-center justify-center rounded-full border-none p-1  text-xl font-bold uppercase text-primary opacity-70 backdrop-blur-md backdrop:opacity-0 xs:h-16 xs:w-16',
-               anchorClassName
+               anchor?.className
             )}>
             <svg
                width="512"
-               className={twMerge(
+               className={cn(
                   'h-8 w-8 text-primary xs:h-12 xs:w-12 sm:h-12 sm:w-12 lg:h-16 lg:w-16',
-                  !svgUp && 'rotate-180 transform'
+                  svg?.className
                )}
                height="512"
                viewBox="0 0 1024 1024"

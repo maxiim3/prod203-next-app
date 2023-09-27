@@ -1,0 +1,123 @@
+{
+   "activity": {
+      "music": {
+         "Icon": "Icons.Piano",
+         "title": {
+            "fr": "Musiques originales",
+            "en": "Original Music"
+         },
+         "description": {
+            "fr": "Jamais 203 Productions se démarque en offrant des compositions musicales sur mesure qui éveillent les émotions, racontent des histoires et renforcent l'impact de vos projets. Que vous soyez réalisateur de films, créateur de contenu, professionnel du marketing ou tout simplement à la recherche de la bande-son parfaite pour votre événement, nous sommes là pour répondre à vos besoins musicaux uniques. Nos compositeurs sont spécialisés dans une variété de genres musicaux, de l'orchestration épique, en passant par les ambiances acoustiques et bien plus encore. Chaque composition est créée en fonction de vos exigences spécifiques, garantissant ainsi une expérience sonore exceptionnelle qui correspond parfaitement à votre vision. Nous sommes dévoués à la qualité et à la créativité.",
+            "en": "Jamais 203 Productions stands out by offering tailor-made musical compositions that evoke emotions, tell stories, and enhance the impact of your projects. Whether you are a filmmaker, content creator, marketing professional, or simply looking for the perfect soundtrack for your event, we are here to meet your unique musical needs. Our composers specialize in a variety of musical genres, from epic orchestration to acoustic atmospheres and much more. Each composition is created according to your specific requirements, ensuring an exceptional sonic experience that aligns perfectly with your vision. We are dedicated to quality and creativity."
+         }
+      },
+      "production": {
+         "Icon": "Icons.Music",
+         "title": {
+            "fr": "Production",
+            "en": "Production"
+         },
+         "description": {
+            "fr": "La musique, c'est l'émotion transformée en son. Nos compositeurs internes excellent à convertir votre vision créative en une œuvre musicale. Des partitions orchestrales envoutantes aux tubes pop dynamiques, nous couvrons un large éventail de genres et de styles. Chaque composition est adaptée aux besoins de votre projet, conçue pour soutenir votre histoire et captiver votre audience. Transformez votre œuvre créative avec de la musique qui en dit long et résonne longtemps après la dernière note.",
+            "en": "Music is emotion transformed into sound. Our in-house composers excel at turning your creative vision into a musical work. From enchanting orchestral scores to dynamic pop hits, we cover a wide range of genres and styles. Each composition is tailored to the needs of your project, designed to support your story and captivate your audience. Elevate your creative work with music that speaks volumes and resonates long after the final note."
+         }
+      },
+      "edit": {
+         "source": "/assets/services/piano-white.png",
+         "title": {
+            "fr": "Édition",
+            "en": "Editing"
+         },
+         "description": {
+            "fr": "Apporter la magie de la musique et du son à un public en direct est une forme d'art en soi. Notre expertise dans les événements en direct va de l'ingénierie du son à la mise en place de la scène jusqu'au mixage en temps réel. Avec des équipements de premier ordre et des professionnels expérimentés, nous nous assurons que votre événement se déroule sans accroc, laissant à votre public une expérience inoubliable. Que ce soit pour un concert, un événement d'entreprise ou une réunion intime, nous proposons des solutions sur mesure qui font de vos événements en direct quelque chose de remarquable.",
+            "en": "Bringing the magic of music and sound to a live audience is an art form in itself. Our expertise in live events ranges from sound engineering to stage setup and real-time mixing. With top-notch equipment and experienced professionals, we ensure that your event runs smoothly, leaving your audience with an unforgettable experience. Whether it's a concert, a corporate event, or an intimate gathering, we offer customized solutions that make your live events truly remarkable."
+         }
+      },
+      "soundDesign": {
+         "Icon": "Icons.SoundWave",
+         "title": {
+            "fr": "Design Sonore",
+            "en": "Sound Design"
+         },
+         "description": {
+            "fr": "La touche finale d'un chef-d'œuvre audio, le sound design est l'étape où nous créons des paysages sonores uniques qui améliorent l'expérience de votre projet. Nos concepteurs sonores expérimentés utilisent des techniques innovantes pour donner vie à votre vision sonore, que ce soit pour un film, un jeu vidéo, ou tout autre média. Nous nous efforçons de capturer l'essence de votre histoire à travers le son, ajoutant une dimension immersive à votre création.",
+            "en": "The final touch to an audio masterpiece, sound design is the stage where we create unique soundscapes that enhance the experience of your project. Our experienced sound designers use innovative techniques to bring your sonic vision to life, whether it's for a film, a video game, or any other media. We strive to capture the essence of your story through sound, adding an immersive dimension to your creation."
+         }
+      },
+      "live": {
+         "source": "/assets/services/micro-white.png",
+         "title": {
+            "fr": "Concert",
+            "en": "Concert"
+         },
+         "description": {
+            "fr": "La magie d'un concert en direct est inégalable, et nous sommes là pour en faire une expérience inoubliable. Notre équipe de production travaille en coulisses pour s'assurer que chaque note, chaque instrument et chaque moment soient parfaits. Que ce soit pour un concert en salle, un festival en plein air ou un événement spécial, nous mettons tout en œuvre pour que votre musique résonne de manière exceptionnelle et que votre public en redemande.",
+            "en": "The magic of a live concert is unparalleled, and we're here to make it an unforgettable experience. Our production team works behind the scenes to ensure that every note, every instrument, and every moment is perfect. Whether it's an indoor concert, an outdoor festival, or a special event, we go the extra mile to make your music sound exceptional and leave your audience wanting more."
+         }
+      }
+   },
+   "founders": {
+      "Jerome": {
+         "title": {
+            "fr": "Jérôme Kuhn",
+            "en": "Jérôme Kuhn"
+         },
+         "description": {
+            "fr": "Jérôme Kuhn est directeur artistique du NOF Nouvel Opéra Fribourg, du Prague Symphonic Ensemble et de l'Ensemble Vocal de Villars-sur-Glâne. Jérôme Kuhn a collaboré en Suisse, en France, en Angleterre, en Allemagne et en République Tchèque avec de nombreux ensembles, comme l'Academy of Ancient Music, l'Orchestre de Chambre fribourgeois, le Nouvel Ensemble Contemporain NEC de la Chaux-de- Fonds et l'Orchestre philharmonique de Prague, l'Estonian Philharmonic Chamber Choir. Actif dans le domaine de l'enregistrement, il collabore pour des productions de Netflix et HBO dans les studios de la Seine Musicale à Paris, AIR Studios à Londres et Smecky Music Studios à Prague. I1 collabore également avec de nombreux artistes de renom comme Mireille Mathieu (Mes Classiques).",
+            "en": "Jérôme Kuhn is the artistic director of NOF Nouvel Opéra Fribourg, the Prague Symphonic Ensemble, and the Ensemble Vocal de Villars-sur-Glâne. Jérôme Kuhn has collaborated in Switzerland, France, England, Germany, and the Czech Republic with numerous ensembles, including the Academy of Ancient Music, the Fribourg Chamber Orchestra, the Nouvel Ensemble Contemporain NEC de la Chaux-de-Fonds, and the Prague Philharmonic Orchestra, the Estonian Philharmonic Chamber Choir. Active in the field of recording, he collaborates on productions for Netflix and HBO in studios such as Seine Musicale in Paris, AIR Studios in London, and Smecky Music Studios in Prague. He also collaborates with renowned artists like Mireille Mathieu (Mes Classiques)."
+         }
+      },
+      "Nathan": {
+         "title": {
+            "fr": "Nathan Sornetta",
+            "en": "Nathan Sornetta"
+         },
+         "description": {
+            "fr": "Né en Suisse, Nathan Stornetta est un compositeur, producteur et arrangeur. Il débute sa carrière professionnelle à Londres en travaillant pour Lorne Balfe (Remote Control Productions). Ce dernier l’implique dans le blockbuster “Fast and Furious 6” et la série épique “The Bible”. 2014 et 2015, Nathan vit à Los Angeles, où il travaille comme compositeur additionnel du célèbre Hans Zimmer, collaborant sur des films tels que “Chappie” (Neil Blomkamp), “Premiere Boxing Champions” (NBC) ainsi que “Le Petit Prince” de Mark Osbourne. Une collaboration toujours actuelle puisque Zimmer l’invite à intégrer son groupe de musicien en tant que percussionniste pour partir en tournée avec le “Hans Zimmer Live” (2016-2017) et enregistrer la musique du film “Le Roi Lion” (2019). En 2018, Nathan arrange trois pistes à l’album hommage de Sony Classical “James Horner - The Classics” et participe au projet “Rock the Pops”, mettant en scène Alfie Boe et le Boston Pops Philharmonic. Le court-métrage promotionnel “Éternels” (2019) de Bruno Aveillan, commandé par le Puy du Fou est sa composition la plus récente dans le domaine de la publicité. Depuis 2013, il est le principal compositeur du Puy du Fou, s’exprimant musicalement dans un éventail de genres, travaillant ainsi en étroite collaboration avec les équipes artistiques du Grand Parc. On lui doit notamment la musique des spectacles “Le Dernier Panache”, “Le Ballet des Sapeurs” et “El Sueño de Toledo” (Puy du Fou España), créées depuis son studio de Zurich.",
+            "en": "Born in Switzerland, Nathan Stornetta is a composer, producer, and arranger. He began his professional career in London, working for Lorne Balfe (Remote Control Productions). Balfe involved him in the blockbuster \"Fast and Furious 6\" and the epic series \"The Bible\". In 2014 and 2015, Nathan lived in Los Angeles, where he worked as an additional composer for the renowned Hans Zimmer, collaborating on films such as \"Chappie\" (Neil Blomkamp), \"Premiere Boxing Champions\" (NBC), and Mark Osbourne's \"Le Petit Prince.\" This collaboration continues as Zimmer invites him to join his group of musicians as a percussionist for the \"Hans Zimmer Live\" tour (2016-2017) and to record the music for \"The Lion King\" (2019). In 2018, Nathan arranged three tracks for Sony Classical's tribute album \"James Horner - The Classics\" and participated in the \"Rock the Pops\" project featuring Alfie Boe and the Boston Pops Philharmonic. His most recent composition in the advertising field is the promotional short film \"Éternels\" (2019) directed by Bruno Aveillan and commissioned by Puy du Fou. Since 2013, he has been the principal composer for Puy du Fou, expressing himself musically in a range of genres and working closely with the artistic teams of the Grand Parc. He is responsible for the music of shows such as \"Le Dernier Panache,\" \"Le Ballet des Sapeurs,\" and \"El Sueño de Toledo\" (Puy du Fou España), created from his studio in Zurich."
+         }
+      },
+      "Sam": {
+         "title": {
+            "fr": "Samuel Briand",
+            "en": "Samuel Briand"
+         },
+         "description": {
+            "fr": "Samuel Briand est ingénieur du son, superviseur musical et réalisateur artistique. Depuis une dizaine d’année, il travaille comme ingénieur du son au Puy du Fou où il réalise les bandes-sonores des spectacles et enregistre les orchestres les plus prestigieux d’Europe. En parallèle, il se forme au mixage de la musique de film auprès d’ingénieurs du son du cinéma, côtoyant des professionnels hollywoodiens tel qu’Alan Meyerson, ingénieur du son de Hans Zimmer (Gladiator, Pirates des Caraïbes, Inception...) et Nick Wollage (Solo: A Star Wars Story, V for Vendetta, Harry Potter...). Plus récemment, il se lance dans le domaine de la publicité et collabore à la production musicale de films publicitaires pour Coca-Cola, Disneyland Paris et, dernièrement, Canal+.",
+            "en": "Samuel Briand is a sound engineer, music supervisor, and artistic director. For the past decade, he has worked as a sound engineer at Puy du Fou, where he creates soundtracks for shows and records the most prestigious orchestras in Europe. In parallel, he has been training in film music mixing with cinema sound engineers, rubbing shoulders with Hollywood professionals like Alan Meyerson, sound engineer for Hans Zimmer (Gladiator, Pirates of the Caribbean, Inception...), and Nick Wollage (Solo: A Star Wars Story, V for Vendetta, Harry Potter...). More recently, he has ventured into the field of advertising and has collaborated on the music production of advertising films for Coca-Cola, Disneyland Paris, and, most recently, Canal+."
+         }
+      }
+   },
+   "roasters": {
+      "Jerome": {
+         "title": {
+            "fr": "Nathan Stornetta",
+            "en": "Nathan Stornetta"
+         },
+         "description": {
+            "fr": "Né en Suisse, Nathan Stornetta est un compositeur, producteur et arrangeur. Il débute sa carrière professionnelle à Londres en travaillant pour Lorne Balfe (Remote Control Productions). Ce dernier l’implique dans le blockbuster “Fast and Furious 6” et la série épique “The Bible”. 2014 et 2015, Nathan vit à Los Angeles, où il travaille comme compositeur additionnel du célèbre Hans Zimmer, collaborant sur des films tels que “Chappie” (Neil Blomkamp), “Premiere Boxing Champions” (NBC) ainsi que “Le Petit Prince” de Mark Osbourne. Une collaboration toujours actuelle puisque Zimmer l’invite à intégrer son groupe de musicien en tant que percussionniste pour partir en tournée avec le “Hans Zimmer Live” (2016-2017) et enregistrer la musique du film “Le Roi Lion” (2019). En 2018, Nathan arrange trois pistes à l’album hommage de Sony Classical “James Horner - The Classics” et participe au projet “Rock the Pops”, mettant en scène Alfie Boe et le Boston Pops Philharmonic. Le court-métrage promotionnel “Éternels” (2019) de Bruno Aveillan, commandé par le Puy du Fou est sa composition la plus récente dans le domaine de la publicité. Depuis 2013, il est le principal compositeur du Puy du Fou, s’exprimant musicalement dans un éventail de genres, travaillant ainsi en étroite collaboration avec les équipes artistiques du Grand Parc. On lui doit notamment la musique des spectacles “Le Dernier Panache”, “Le Ballet des Sapeurs” et “El Sueño de Toledo” (Puy du Fou España), créées depuis son studio de Zurich.",
+            "en": "Born in Switzerland, Nathan Stornetta is a composer, producer, and arranger. He began his professional career in London, working for Lorne Balfe (Remote Control Productions). Balfe involved him in the blockbuster \"Fast and Furious 6\" and the epic series \"The Bible\". In 2014 and 2015, Nathan lived in Los Angeles, where he worked as an additional composer for the renowned Hans Zimmer, collaborating on films such as \"Chappie\" (Neil Blomkamp), \"Premiere Boxing Champions\" (NBC), and Mark Osbourne's \"Le Petit Prince.\" This collaboration continues as Zimmer invites him to join his group of musicians as a percussionist for the \"Hans Zimmer Live\" tour (2016-2017) and to record the music for \"The Lion King\" (2019). In 2018, Nathan arranged three tracks for Sony Classical's tribute album \"James Horner - The Classics\" and participated in the \"Rock the Pops\" project featuring Alfie Boe and the Boston Pops Philharmonic. His most recent composition in the advertising field is the promotional short film \"Éternels\" (2019) directed by Bruno Aveillan and commissioned by Puy du Fou. Since 2013, he has been the principal composer for Puy du Fou, expressing himself musically in a range of genres and working closely with the artistic teams of the Grand Parc. He is responsible for the music of shows such as \"Le Dernier Panache,\" \"Le Ballet des Sapeurs,\" and \"El Sueño de Toledo\" (Puy du Fou España), created from his studio in Zurich."
+         }
+      },
+      "Nathan": {
+         "title": {
+            "fr": "Martin Batchelar",
+            "en": "Martin Batchelar"
+         },
+         "description": {
+            "fr": "Martin Batchelar est un compositeur et arrangeur établi à Londres. On retrouve ses arrangements musicaux sur des projets récents avec The Who, Sir Cliff Richard, Sir Paul McCartney, Sir Elton John, Alfie Boe OBE et Sheridan Smith OBE. Sa musique a été synchronisée à l’image pour des publicités telles que ‘‘Heineken Formula 1’’, ‘‘Virgin Trains’’ et ‘‘Disney World Resort’’. Il est responsable de la musique de la comédie enregistrée ‘‘My Dad Wrote A Porno’’, qui cumule à ce jour 250 millions de téléchargement, 2 tournées mondiales du show à guichets fermés ainsi qu’une version télévisée spéciale commandée par HBO. Martin a récemment orchestré la musique du long-métrage allemand ‘‘Narcissus und Goldmund’’ et des séries documentaires de la BBC ‘‘Mexico’’ et ‘Wild West’’ et a participé à la création de la musique de nombreux jeux vidéos, dont ‘‘Rush’’ de Disney Pixar. Il travaille régulièrement pour le Puy du Fou, en parallèle à ses projets pour le cinéma, la télévision, le théâtre, la publicité et la musique au mètre.",
+            "en": "Martin Batchelar is a composer and arranger based in London. His musical arrangements can be heard on recent projects with The Who, Sir Cliff Richard, Sir Paul McCartney, Sir Elton John, Alfie Boe OBE, and Sheridan Smith OBE. His music has been synced to visuals for commercials such as 'Heineken Formula 1,' 'Virgin Trains,' and 'Disney World Resort.' He is responsible for the music of the recorded comedy 'My Dad Wrote A Porno,' which has garnered 250 million downloads to date, along with two sold-out global tours of the show and a special television version commissioned by HBO. Martin recently orchestrated the music for the German feature film 'Narcissus und Goldmund' and BBC documentary series 'Mexico' and 'Wild West.' He has also been involved in creating music for numerous video games, including Disney Pixar's 'Rush.' He regularly works for Puy du Fou alongside his projects in film, television, theater, advertising, and production music."
+         }
+      },
+      "Sam": {
+         "title": {
+            "fr": "Samuel Pegg",
+            "en": "Samuel Pegg"
+         },
+         "description": {
+            "fr": "Samuel Pegg présente une grande polyvalence musicale, développée à travers ses expériences de compositeur de musique pour le cinéma, la télévision et la publicité. Il a orchestré la musique de films tels que ‘‘Johnny English contre-attaque’’, ‘‘Sang froid’’, ‘‘The Lady in the Van’’, ‘‘Moi, Daniel Blake’’ et ‘‘Zero Theorem’’. Il a aussi participé à des films tels que ‘‘Red Joan’’, ‘‘Dream Horse’’, et ‘‘Grizzly’’ (Disney) en tant que monteur musique. Collaborant avec George Fenton, Samuel a rendu possible la série de concerts de ‘‘Blue Planet’’, ‘‘Planet Earth’’ et ‘‘Frozen Planet’’. En parallèle à son travail pour Puy du Fou, Samuel Pegg travaille sur des projets variés incluant la radio, les audiobooks, la danse ou encore la composition pour choeur mixte et de musique au mètre. Il a composé la bande son de la campagne politique de Ken Loach #WeDemand 2017, ainsi que pour des marques telles que Currys/PC World, Disney Store et Intu. Sa musique est également régulièrement synchronisée à des bandes annonces internationales. Il est actuellement membre de la société BAFTA.",
+            "en": "Samuel Pegg possesses great musical versatility, developed through his experiences as a composer of music for film, television, and advertising. He has orchestrated the music for films such as 'Johnny English Strikes Again,' 'Cold Pursuit,' 'The Lady in the Van,' 'I, Daniel Blake,' and 'The Zero Theorem.' He has also contributed to films like 'Red Joan,' 'Dream Horse,' and 'Grizzly' (Disney) as a music editor. Collaborating with George Fenton, Samuel made the concert series of 'Blue Planet,' 'Planet Earth,' and 'Frozen Planet' possible. In addition to his work for Puy du Fou, Samuel Pegg is involved in diverse projects, including radio, audiobooks, dance, and composition for mixed choir and production music. He composed the soundtrack for Ken Loach's 2017 #WeDemand political campaign, as well as for brands such as Currys/PC World, Disney Store, and Intu. His music is regularly synchronized with international trailers, and he is currently a member of the BAFTA society."
+         }
+      }
+   }
+}

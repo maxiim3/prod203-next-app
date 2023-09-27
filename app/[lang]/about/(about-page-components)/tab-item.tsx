@@ -1,13 +1,11 @@
-import {T_Children, T_ClassName} from '@/lib/types'
-import React from 'react'
-import {twMerge} from 'tailwind-merge'
+import {cn} from '@/lib/utils'
+import React, {ComponentPropsWithoutRef} from 'react'
 
 type T_TabItemProps = {
    active?: boolean
    disabled?: boolean
    onClick?: () => void
-} & T_ClassName &
-   T_Children
+} & ComponentPropsWithoutRef<'li'>
 export const TabItem = ({className, children, active, disabled, onClick}: T_TabItemProps) => {
    return (
       <li
@@ -17,11 +15,13 @@ export const TabItem = ({className, children, active, disabled, onClick}: T_TabI
          onKeyDown={e => {
             if (e.key === 'Enter' && !disabled) onClick?.()
          }}
-         className={twMerge(
-            active
-               ? 'active rounded-lg border-gray-50 bg-primary/20 text-gray-50 md:rounded-none md:bg-transparent '
-               : 'border-transparent hover:cursor-pointer hover:opacity-75',
-            disabled && 'cursor-not-allowed text-gray-400 ',
+         className={cn(
+            {
+               'active rounded-lg border-gray-50 bg-primary/20 text-gray-50 md:rounded-none md:bg-transparent ':
+                  active,
+               'border-transparent hover:cursor-pointer hover:opacity-75': !active,
+               'cursor-not-allowed text-gray-400 ': disabled,
+            },
             className
          )}>
          {children}

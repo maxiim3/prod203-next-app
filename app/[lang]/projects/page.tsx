@@ -1,5 +1,5 @@
+import Loading from '@/app/[lang]/projects/loading'
 import ProjectsPage from '@/app/[lang]/projects/projects-page.client'
-import Loading from '@/components/_archive/(pages)/projects/loading'
 import {SanityStoreFactory} from '@/lib/sanity/sanity-store.factory'
 import {getAllCategories, getAllProjects} from '@/lib/sanity/service'
 import {I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
