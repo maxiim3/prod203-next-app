@@ -1,5 +1,4 @@
-import Footer from '@/components/ui/Footer'
-import MainNavigation from '@/components/ui/MainNavigation'
+import AppLayout from '@/app/[lang]/(app-layout-components)/app-layout'
 import {cormorant, manrope, poppins} from '@/styles/font'
 import '@radix-ui/themes/styles.css'
 import type {Metadata} from 'next'
@@ -25,9 +24,7 @@ function RootLayout({children, params}: LayoutProps) {
          data-theme={'customTheme'}>
          <body
             className={`${cormorant.variable} ${manrope.variable} ${poppins.variable} font-poppins font-extralight`}>
-            <MainNavigation />
-            {children}
-            <Footer />
+            <AppLayout>{children}</AppLayout>
          </body>
       </html>
    )

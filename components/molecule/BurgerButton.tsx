@@ -1,6 +1,6 @@
 'use client'
 
-import {useMobileNavigation} from '@/components/organism/MobileNavigationProvider'
+import {useMobileNavigation} from '@/app/[lang]/(app-layout-components)/mobile-navigation.context'
 import React from 'react'
 
 const BurgerButton = () => {

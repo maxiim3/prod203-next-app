@@ -1,9 +1,9 @@
 'use client'
 
-import NavigationItem from '@/components/atom/navigation.item.atom'
-import {NavigationList} from '@/components/layout/navigation.list.atom'
+import {useMobileNavigation} from '@/app/[lang]/(app-layout-components)/mobile-navigation.context'
+import {NavigationItem, NavigationList} from '@/app/[lang]/(app-layout-components)/navigation.ui'
+import BurgerButton from '@/components/molecule/BurgerButton'
 import LanguageSelection from '@/components/molecule/LanguageSelection'
-import {useMobileNavigation} from '@/components/organism/MobileNavigationProvider'
 import {Z_PageI18nParam} from '@/schemas/i18n.page.props.schema'
 import routes from '@/static-content/route.static.content'
 import {motion} from 'framer-motion'
@@ -11,6 +11,19 @@ import {nanoid} from 'nanoid'
 import Link from 'next/link'
 import {useParams, usePathname} from 'next/navigation'
 import React from 'react'
+import {createPortal} from 'react-dom'
+
+export default function MobileNavigation() {
+   const {modalIsOpen} = useMobileNavigation()
+
+   return (
+      <div className="flex items-center md:hidden">
+         {/*Burger Button Trigger*/}
+         <BurgerButton />
+         {modalIsOpen && createPortal(<MenuPortal />, document.body!)}
+      </div>
+   )
+}
 
 const MenuPortal = () => {
    const {handleCloseMenu, modalIsOpen} = useMobileNavigation()
@@ -18,7 +31,6 @@ const MenuPortal = () => {
    const params = useParams()
    let parsed = Z_PageI18nParam.parse(params)
    let currentLang = parsed.lang || 'fr'
-
    return (
       <dialog
          className={'fixed left-0 top-0 z-40 h-screen w-screen md:hidden'}
@@ -51,4 +63,3 @@ const MenuPortal = () => {
       </dialog>
    )
 }
-export default MenuPortal

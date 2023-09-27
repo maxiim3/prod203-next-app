@@ -1,19 +1,48 @@
 'use client'
 
-import {Z_PageI18nParam} from '@/schemas/i18n.page.props.schema'
+import useLangParamsHook from '@/hooks/useLangParams.hook'
 import routes from '@/static-content/route.static.content'
 import {classed} from '@tw-classed/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import {useParams, usePathname} from 'next/navigation'
 import React, {PropsWithChildren} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export default function Footer() {
-   const pathname = usePathname()
-   const params = useParams()
-   let safeParams = Z_PageI18nParam.safeParse(params)
-   let currentLang = safeParams.success ? safeParams.data.lang : 'fr'
+   const {
+      lang,
+      options: {pathname},
+   } = useLangParamsHook()
+   const Section = (
+      props: PropsWithChildren<{
+         className?: string
+      }>
+   ) => (
+      <section className={twMerge('w-41 flex flex-col  items-start text-left', props.className)}>
+         {props.children}
+      </section>
+   )
+
+   const SectionTitle = (
+      props: PropsWithChildren<{
+         className?: string
+      }>
+   ) => {
+      return (
+         <h3
+            className={twMerge(
+               'font-regular w-full text-base font-semibold uppercase tracking-widest text-primary',
+               props.className
+            )}>
+            {props.children}
+         </h3>
+      )
+   }
+   const Item = classed(
+      'li',
+      'list-none text-base text-primary text-base leading-loose tracking-wider font-regular',
+      'hover:text-primary'
+   )
 
    return (
       <footer className={'relative bg-base-200'}>
@@ -57,9 +86,7 @@ export default function Footer() {
                         <Item
                            className={twMerge(pathname === route.path && 'font-semibold')}
                            key={`footer-nav-${index}`}>
-                           <Link href={`/${currentLang}${route.path}`}>
-                              {route.name[currentLang]}
-                           </Link>
+                           <Link href={`/${lang}${route.path}`}>{route.name[lang]}</Link>
                         </Item>
                      )
                   })}
@@ -67,8 +94,8 @@ export default function Footer() {
                <Section>
                   <SectionTitle>Légal</SectionTitle>
                   <Item>
-                     <Link href={`/${currentLang}/legal`}>
-                        ${currentLang === 'en' ? 'Legal Notice' : 'Mentions Légales'}
+                     <Link href={`/${lang}/legal`}>
+                        ${lang === 'en' ? 'Legal Notice' : 'Mentions Légales'}
                      </Link>
                   </Item>
                </Section>
@@ -81,25 +108,3 @@ export default function Footer() {
       </footer>
    )
 }
-const Section = (props: PropsWithChildren<{className?: string}>) => (
-   <section className={twMerge('w-41 flex flex-col  items-start text-left', props.className)}>
-      {props.children}
-   </section>
-)
-
-const SectionTitle = (props: PropsWithChildren<{className?: string}>) => {
-   return (
-      <h3
-         className={twMerge(
-            'font-regular w-full text-base font-semibold uppercase tracking-widest text-primary',
-            props.className
-         )}>
-         {props.children}
-      </h3>
-   )
-}
-const Item = classed(
-   'li',
-   'list-none text-base text-primary text-base leading-loose tracking-wider font-regular',
-   'hover:text-primary'
-)

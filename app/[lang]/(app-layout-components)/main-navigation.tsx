@@ -1,10 +1,9 @@
-import DropDownMenu from '@/components/organism/DropDownMenu'
-import {MobileNavigationProvider} from '@/components/organism/MobileNavigationProvider'
-import NavBarMenu from '@/components/organism/NavBarMenu'
+import DesktopNavigation from '@/app/[lang]/(app-layout-components)/desktop-navigation.client'
+import MobileNavigation from '@/app/[lang]/(app-layout-components)/mobile-navigation.client'
+import {MobileNavigationContext} from '@/app/[lang]/(app-layout-components)/mobile-navigation.context'
 import prod203 from '@/public/assets/logo/prod203-white.webp'
 import Image from 'next/image'
-import React, {PropsWithChildren} from 'react'
-import {twMerge} from 'tailwind-merge'
+import React from 'react'
 
 export default function MainNavigation() {
    return (
@@ -20,10 +19,10 @@ export default function MainNavigation() {
             src={prod203.src}
             alt="Prod203"
          />
-         <NavBarMenu />
-         <MobileNavigationProvider>
-            <DropDownMenu />
-         </MobileNavigationProvider>
+         <DesktopNavigation />
+         <MobileNavigationContext>
+            <MobileNavigation />
+         </MobileNavigationContext>
       </header>
    )
 }

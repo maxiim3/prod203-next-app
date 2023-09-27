@@ -1,4 +1,4 @@
-import {PropsWithChildren} from 'react'
+import React, {PropsWithChildren} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 interface NavItemProps extends PropsWithChildren {
@@ -7,7 +7,7 @@ interface NavItemProps extends PropsWithChildren {
    props?: any
 }
 
-const NavigationItem = ({children, active, className, ...props}: NavItemProps) => (
+export const NavigationItem = ({children, active, className, ...props}: NavItemProps) => (
    <li
       className={twMerge(
          'relative font-poppins text-xl font-extralight uppercase tracking-wide text-primary',
@@ -23,4 +23,15 @@ const NavigationItem = ({children, active, className, ...props}: NavItemProps) =
    </li>
 )
 
-export default NavigationItem
+interface NavListStackProps extends PropsWithChildren {
+   className?: string
+   props?: any
+}
+
+export const NavigationList = ({children, className, ...props}: NavListStackProps) => (
+   <ul
+      className={twMerge('max-w-144 flex select-none flex-row justify-center gap-4', className)}
+      {...props}>
+      {children}
+   </ul>
+)
