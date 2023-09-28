@@ -5,7 +5,7 @@ import {Resend} from 'resend'
 
 export async function POST(request: Request) {
    try {
-      const resend = new Resend(process.env.RESEND_API_KEY)
+      const resend = new Resend(process.env.NEXT_PRIVATE_RESEND_API_KEY)
       const {data: client} = await request.json()
 
       const responseFromResend = await resend.emails.send({
