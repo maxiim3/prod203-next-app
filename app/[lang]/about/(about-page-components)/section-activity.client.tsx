@@ -1,6 +1,6 @@
 'use client'
 
-import {TabItem} from '@/app/[lang]/about/(about-page-components)/tab-item'
+import {TabText, TabTitle} from '@/app/[lang]/about/(about-page-components)/tabs.ui'
 import {TabType, useTabs} from '@/app/[lang]/about/useTabs.hook'
 import useLangParams from '@/hooks/useLangParams.hook'
 import Image from 'next/image'
@@ -24,12 +24,12 @@ export default function SectionActivity() {
          />
          <div
             className={
-               'relative z-50 max-h-[700px] min-h-fit space-y-8 bg-base-100/90 md:m-12 md:h-[65vh] md:rounded-lg md:p-8 '
+               'md:rounded- relative z-50 max-h-[700px] min-h-fit space-y-8 bg-base-100/80 md:m-12 md:h-[65vh] md:p-8 '
             }>
             <div className="pb-4 text-center text-sm font-medium text-gray-400   ">
                <ul className="-mb-px flex flex-wrap items-center justify-between gap-0.5 border-b border-gray-700 xs:flex-row xs:gap-1 md:items-end md:justify-center md:gap-1.5 ">
                   {Object.entries(tabs).map(([tabKey, tabValue], index) => (
-                     <TabItem
+                     <TabTitle
                         key={`tab=${index}=${tabKey}`}
                         active={tabKey === activeTab}
                         onClick={() => setActiveTab(tabKey)}
@@ -52,15 +52,13 @@ export default function SectionActivity() {
                            />
                         )}
                         <p>{tabValue.title[lang]}</p>
-                     </TabItem>
+                     </TabTitle>
                   ))}
                </ul>
             </div>
 
             <div>
-               <p className="mx-auto mb-3 max-w-[75ch] px-2 pb-4 text-justify leading-relaxed tracking-wide text-gray-400 text-balance sm:px-4 sm:pb-8 md:text-lg">
-                  {tabs[activeTab]?.description[lang]}
-               </p>
+               <TabText>{tabs[activeTab]?.description[lang]}</TabText>
             </div>
          </div>
       </section>

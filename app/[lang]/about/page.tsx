@@ -1,6 +1,7 @@
 import SectionActivity from '@/app/[lang]/about/(about-page-components)/section-activity.client'
 import SectionFounders from '@/app/[lang]/about/(about-page-components)/section-founders.client'
 import SectionRoaster from '@/app/[lang]/about/(about-page-components)/section-roaster.client'
+import {SectionTitle} from '@/components/section-title'
 import {cn} from '@/lib/utils'
 import {I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
 import React, {ComponentPropsWithoutRef} from 'react'
@@ -9,9 +10,15 @@ const About = ({params}: I_PageI18nParams) => {
    const {lang} = params
    const staticContent_i18n = {
       en: ['Activity', 'Founders', 'Roasters'],
-      fr: ['Activité', 'Fondateurs', 'Compositeurs'],
+      fr: ['Activités', 'Fondateurs', 'Compositeurs'],
    }
-
+   /**
+    * todo :
+    *  - Titre des sections : Utiliser les meme typo que page accueil et reduire la taille
+    *  - Fond de chaque sestion plus transparent. + augmenter le border-radius
+    *  - texte des contenus plus petits en grand ecrans -> passer le texte en blanc
+    *  -
+    **/
    const Section = ({id, className, children}: ComponentPropsWithoutRef<'section'>) => (
       <section
          id={id}
@@ -20,19 +27,6 @@ const About = ({params}: I_PageI18nParams) => {
       </section>
    )
 
-   const SectionTitle = ({className, children}: ComponentPropsWithoutRef<'h2'>) => (
-      <h2
-         className={cn(
-            [
-               'w-content mb-4 text-center text-4xl font-extrabold leading-none tracking-tight text-primary',
-               'md:text-5xl',
-               'lg:text-6xl',
-            ],
-            className
-         )}>
-         {children}
-      </h2>
-   )
    return (
       <main className={'w-screen py-24'}>
          <h1 className="sr-only">À propos</h1>

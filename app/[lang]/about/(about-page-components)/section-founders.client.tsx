@@ -1,11 +1,12 @@
 'use client'
 
-import {TabItem} from '@/app/[lang]/about/(about-page-components)/tab-item'
+import {TabText, TabTitle} from '@/app/[lang]/about/(about-page-components)/tabs.ui'
 import {TabType, useTabs} from '@/app/[lang]/about/useTabs.hook'
 import useLangParams from '@/hooks/useLangParams.hook'
 import {T_ClassName} from '@/lib/types'
+import {cn} from '@/lib/utils'
 import Image from 'next/image'
-import React from 'react'
+import React, {ComponentPropsWithoutRef} from 'react'
 import {twMerge} from 'tailwind-merge'
 import sectionContent from './section-content.json'
 
@@ -13,6 +14,43 @@ export default function SectionFounders({className}: T_ClassName) {
    const tabs: TabType = sectionContent.founders
    const {activeTab, setActiveTab} = useTabs(tabs)
    const {lang} = useLangParams()
+
+   type ImageComponentProps = {
+      li?: ComponentPropsWithoutRef<'li'>
+      figure?: ComponentPropsWithoutRef<'figure'>
+      img: ComponentPropsWithoutRef<'img'>
+      name: string
+      tabIndex: number
+   }
+   const ImageComponent = ({li, tabIndex, img, name, figure}: ImageComponentProps) => {
+      console.log(tabIndex, activeTab === Object.keys(tabs)[tabIndex])
+      return (
+         <li
+            data-selected={activeTab === Object.keys(tabs)[tabIndex]}
+            onClick={() => setActiveTab(Object.keys(tabs)[tabIndex])}
+            {...li}>
+            <figure // todo Errot cn not working
+               className={cn('h-full w-full overflow-hidden', figure?.className)}
+               {...figure}>
+               <Image
+                  className={cn(
+                     'h-full w-full object-cover saturate-50 transition group-hover:scale-110 motion-safe:duration-700',
+                     // activeTab === Object.keys(tabs)[tabIndex] && 'scale-110 saturate-100',
+                     'data-[selected=true]:scale-110 data-[selected=true]:saturate-100',
+                     {'scale-120': activeTab === Object.keys(tabs)[tabIndex]},
+                     img.className
+                  )}
+                  width={'187'}
+                  height={'404'}
+                  src={img.src!}
+                  alt={img.alt!}
+               />
+               <figcaption>{name}</figcaption>
+            </figure>
+         </li>
+      )
+   }
+
    return (
       <>
          <section
@@ -25,51 +63,21 @@ export default function SectionFounders({className}: T_ClassName) {
                   'flex aspect-video w-full justify-center',
                   'lg:mt-8 lg:aspect-video lg:max-h-[700px] lg:min-h-[400px] lg:w-full'
                )}>
-               <li onClick={() => setActiveTab(Object.keys(tabs)[0])}>
-                  <figure className={'h-full w-full overflow-hidden'}>
-                     <Image
-                        className={twMerge(
-                           'h-full w-full object-cover saturate-50 transition group-hover:scale-110 motion-safe:duration-700',
-                           activeTab === Object.keys(tabs)[0] && 'scale-110 saturate-100'
-                        )}
-                        width={'187'}
-                        height={'404'}
-                        src={'/assets/fondateurs/fondateurs-01-min.webp'}
-                        alt={''}
-                     />
-                     <figcaption>Jérome</figcaption>
-                  </figure>
-               </li>
-               <li onClick={() => setActiveTab(Object.keys(tabs)[1])}>
-                  <figure className={'h-full w-full overflow-hidden'}>
-                     <Image
-                        className={twMerge(
-                           'h-full w-full object-cover saturate-50 transition group-hover:scale-110 motion-safe:duration-700',
-                           activeTab === Object.keys(tabs)[1] && 'scale-110 saturate-100'
-                        )}
-                        width={'187'}
-                        height={'404'}
-                        src={'/assets/fondateurs/fondateurs-02-min.webp'}
-                        alt={''}
-                     />
-                     <figcaption>Nathan</figcaption>
-                  </figure>
-               </li>
-               <li onClick={() => setActiveTab(Object.keys(tabs)[2])}>
-                  <figure className={'h-full w-full overflow-hidden'}>
-                     <Image
-                        className={twMerge(
-                           'h-full w-full object-cover saturate-50 transition group-hover:scale-110 motion-safe:duration-700',
-                           activeTab === Object.keys(tabs)[2] && 'scale-110 saturate-100'
-                        )}
-                        width={'187'}
-                        height={'404'}
-                        src={'/assets/fondateurs/fondateurs-03-min.webp'}
-                        alt={''}
-                     />
-                     <figcaption>Samuel</figcaption>
-                  </figure>
-               </li>
+               <ImageComponent
+                  name={'Jérome'}
+                  img={{src: '/assets/fondateurs/fondateurs-01-min.webp', alt: ''}}
+                  tabIndex={0}
+               />
+               <ImageComponent
+                  tabIndex={1}
+                  name={'Nathan'}
+                  img={{src: '/assets/fondateurs/fondateurs-02-min.webp', alt: ''}}
+               />
+               <ImageComponent
+                  tabIndex={2}
+                  name={'Sam'}
+                  img={{src: '/assets/fondateurs/fondateurs-03-min.webp', alt: ''}}
+               />
             </ul>
             <div
                className={
@@ -78,11 +86,11 @@ export default function SectionFounders({className}: T_ClassName) {
                <div className="pb-4 text-center text-sm font-medium text-gray-400 ">
                   <ul className="-mb-px flex flex-wrap items-center justify-between gap-0.5 border-b border-gray-700 xs:flex-row xs:gap-1 md:items-end md:justify-center md:gap-1.5 ">
                      {Object.entries(tabs).map(([key, value], index) => (
-                        <TabItem
+                        <TabTitle
                            key={`tab=${index}=${key}`}
                            active={key === activeTab}
                            onClick={() => setActiveTab(key)}
-                           className={twMerge(
+                           className={cn(
                               'flex h-8 flex-1 scale-90 flex-col items-center justify-center px-2 text-xs tracking-wide text-balance',
                               'xs:w-20 xs:scale-100 xs:text-sm',
                               'sm:w-24 sm:p-4',
@@ -90,15 +98,13 @@ export default function SectionFounders({className}: T_ClassName) {
                               'lg:flex-row'
                            )}>
                            <p>{value.title[lang]}</p>
-                        </TabItem>
+                        </TabTitle>
                      ))}
                   </ul>
                </div>
 
                <div>
-                  <p className="prose mx-auto mb-3 max-w-[75ch] px-2 pb-4 text-justify leading-relaxed tracking-wide text-gray-400 text-balance sm:px-4 sm:pb-8 md:text-lg">
-                     {tabs[activeTab]?.description[lang]}
-                  </p>
+                  <TabText>{tabs[activeTab]?.description[lang]}</TabText>
                </div>
             </div>
          </section>
