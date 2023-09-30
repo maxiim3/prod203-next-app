@@ -1,7 +1,7 @@
 {
    "activity": {
       "music": {
-         "Icon": "Icons.Piano",
+         "Icon": "Piano",
          "title": {
             "fr": "Musiques originales",
             "en": "Original Music"
@@ -12,7 +12,7 @@
          }
       },
       "production": {
-         "Icon": "Icons.Music",
+         "Icon": "Music",
          "title": {
             "fr": "Production",
             "en": "Production"
@@ -34,7 +34,7 @@
          }
       },
       "soundDesign": {
-         "Icon": "Icons.SoundWave",
+         "Icon": "SoundWave",
          "title": {
             "fr": "Design Sonore",
             "en": "Sound Design"

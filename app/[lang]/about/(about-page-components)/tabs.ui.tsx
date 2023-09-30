@@ -16,12 +16,9 @@ export const TabTitle = ({className, children, active, disabled, onClick}: T_Tab
             if (e.key === 'Enter' && !disabled) onClick?.()
          }}
          className={cn(
-            {
-               'active rounded-lg border-white/40 bg-primary/20 text-gray-50 md:rounded-none md:bg-transparent ':
-                  active,
-               'border-transparent hover:cursor-pointer hover:opacity-75': !active,
-               'cursor-not-allowed text-gray-400 ': disabled,
-            },
+            'border-b border-transparent text-primary hover:cursor-pointer hover:opacity-75',
+            active ? 'active border-primary/80 font-semibold text-white' : 'font-normal',
+            disabled && 'cursor-not-allowed opacity-75',
             className
          )}>
          {children}
@@ -31,11 +28,7 @@ export const TabTitle = ({className, children, active, disabled, onClick}: T_Tab
 
 export const TabText = ({className, children}: ComponentPropsWithoutRef<'p'>) => {
    return (
-      <p
-         className={cn(
-            'prose mx-auto mb-3 max-w-[80ch] px-2 pb-4 text-sm font-normal leading-loose tracking-wide  text-white text-balance sm:px-4 sm:pb-8 md:text-base',
-            className
-         )}>
+      <p className={cn(' text-sm font-normal tracking-wide  md:text-base', className)}>
          {children}
       </p>
    )

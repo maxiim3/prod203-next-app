@@ -3,13 +3,14 @@
 import LanguageSelection from '@/app/[lang]/(app-layout-components)/language-selection.client'
 import {useMobileNavigation} from '@/app/[lang]/(app-layout-components)/mobile-navigation.context'
 import {NavigationItem, NavigationList} from '@/app/[lang]/(app-layout-components)/navigation.ui'
+import {cn} from '@/lib/utils'
 import {Z_PageI18nParam} from '@/schemas/i18n.page.props.schema'
 import routes from '@/static-content/route.static.content'
 import {motion} from 'framer-motion'
 import {nanoid} from 'nanoid'
 import Link from 'next/link'
 import {useParams, usePathname} from 'next/navigation'
-import React from 'react'
+import React, {ComponentPropsWithoutRef} from 'react'
 import {createPortal} from 'react-dom'
 
 export default function MobileNavigation() {
@@ -39,6 +40,7 @@ const MenuPortal = () => {
                className={
                   'flex h-full w-full flex-col items-end justify-center gap-16 px-12 pt-12 landscape:items-center   '
                }>
+               <BurgerButton className={'fixed right-2 top-2'} />
                <NavigationList className="flex-col items-end gap-8 xs:gap-12 landscape:flex-row landscape:items-center landscape:justify-center landscape:gap-4">
                   {routes.map(route => (
                      <NavigationItem
@@ -62,18 +64,18 @@ const MenuPortal = () => {
       </dialog>
    )
 }
-const BurgerButton = () => {
+const BurgerButton = ({className}: ComponentPropsWithoutRef<'button'>) => {
    const {iconType, handleOpenMenu, handleCloseMenu, modalIsOpen} = useMobileNavigation()
 
    return (
       <button
-         className="btn btn-square btn-ghost"
+         className={cn('btn btn-square btn-ghost z-50', className)}
          onClick={() => (modalIsOpen ? handleCloseMenu() : handleOpenMenu())}>
          <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            className="inline-block h-6 w-6 stroke-current">
+            className="inline-block h-6 w-6 stroke-white">
             {(() => {
                switch (iconType) {
                   case 'burger':

@@ -19,31 +19,32 @@ const About = ({params}: I_PageI18nParams) => {
     *  - texte des contenus plus petits en grand ecrans -> passer le texte en blanc
     *  -
     **/
-   const Section = ({id, className, children}: ComponentPropsWithoutRef<'section'>) => (
+   const Container = ({id, className, children}: ComponentPropsWithoutRef<'section'>) => (
       <section
          id={id}
-         className={cn('flex flex-col items-center gap-12 py-12 text-balance sm:px-12', className)}>
+         className={cn('z-0 flex flex-col items-center gap-12 py-12 text-balance ', className)}>
          {children}
       </section>
    )
 
    return (
-      <main className={'w-screen py-24'}>
+      <main className={'z-0 w-screen py-24'}>
          <h1 className="sr-only">À propos</h1>
-         <Section id={'about-section-activity'}>
+         <Container id={'about-section-activity'}>
             <SectionTitle>{staticContent_i18n[lang][0]}</SectionTitle>
             <SectionActivity />
-         </Section>
+         </Container>
+
          <hr className={'my-20 h-px w-full border-0 bg-gray-700'} />
-         <Section id={'about-section-founders'}>
+         <Container id={'about-section-founders'}>
             <SectionTitle>{staticContent_i18n[lang][1]}</SectionTitle>
             <SectionFounders />
-         </Section>
-         <hr className={'my-20 h-px w-full border-0 bg-gray-700'} />
-         <Section id={'about-section-roasters'}>
-            <SectionTitle>{staticContent_i18n[lang][2]}</SectionTitle>
-            <SectionRoaster />
-         </Section>
+         </Container>
+         {/*<hr className={'my-20 h-px w-full border-0 bg-gray-700'} />*/}
+         {/*<Container id={'about-section-roasters'}>*/}
+         {/*   <SectionTitle>{staticContent_i18n[lang][2]}</SectionTitle>*/}
+         {/*   <SectionRoaster />*/}
+         {/*</Container>*/}
       </main>
    )
 }
