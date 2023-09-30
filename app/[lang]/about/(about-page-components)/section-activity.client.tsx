@@ -13,10 +13,35 @@ export default function SectionActivity() {
    const {activeTab, setActiveTab} = useTabs(tabs)
    const {lang} = useLangParams()
 
+   function Pictogram({value}: {value: TabType[0]}) {
+      return (
+         <div
+            className={
+               'absolute left-5 flex aspect-square w-7 items-center justify-center rounded-full bg-base-200/50'
+            }>
+            {(() => {
+               if (value?.Icon) {
+                  const Icon = Icons[value.Icon as keyof typeof Icons]
+                  return <Icon className="h-4 w-4 text-primary " />
+               }
+               return (
+                  <Image
+                     width={16}
+                     height={16}
+                     src={value.source!}
+                     className={'h-4 w-4 object-contain object-center'}
+                     alt="error loading"
+                  />
+               )
+            })()}
+         </div>
+      )
+   }
+
    return (
       <div
          className={
-            'aspect-portrait rounded-box relative w-screen overflow-hidden border-4 border-red-400/40 py-3 text-white md:aspect-square lg:aspect-video'
+            'aspect-portrait relative flex w-screen flex-col items-center justify-center overflow-hidden py-4 text-white md:aspect-square lg:aspect-video'
          }>
          <Image
             alt={''}
@@ -27,47 +52,37 @@ export default function SectionActivity() {
          />
          <div
             className={
-               'carousel-center prose carousel rounded-box relative mx-auto w-screen space-x-6  border-8 border-blue-500'
+               'carousel-center carousel relative w-screen space-x-4 p-4 sm:space-x-6 sm:p-6 md:space-x-8 md:p-8'
             }>
             {Object.entries(tabs).map(([tabKey, tabValue], index) => {
-               let Icon
-               if (tabValue?.Icon) {
-                  Icon = Icons[tabValue.Icon as keyof typeof Icons]
-               }
-
                return (
                   <article
                      id={String(index + 1)}
                      key={index + 1}
-                     className="carousel-item rounded-box  flex w-full flex-col gap-4 bg-base-100/70 px-4 py-3 pb-4 text-center text-sm font-medium text-gray-400 ">
-                     <header key={`tab-title-${index}-${tabKey}`}>
+                     className="carousel-item rounded-box relative flex aspect-auto h-auto w-[calc(100%-4rem)] max-w-[625px] flex-col gap-4 bg-base-100/50 px-4 py-3 pb-4 text-center text-sm font-medium text-gray-400 shadow-sm shadow-base-100/50 drop-shadow-lg sm:py-6 md:py-7">
+                     <header
+                        key={`tab-title-${index}-${tabKey}`}
+                        className={'relative border-b border-primary/60 pb-2'}>
+                        <Pictogram value={tabValue} />
                         <TabTitle
                            className={
                               'prose mx-auto flex w-fit items-center justify-center font-poppins text-white'
                            }>
-                           {tabValue.Icon ? (
-                              <Icon className="h-4 w-4 text-primary " />
-                           ) : (
-                              <Image
-                                 width={16}
-                                 height={16}
-                                 src={tabValue.source!}
-                                 className={'h-4 w-4 object-contain object-center'}
-                                 alt="error loading"
-                              />
-                           )}
                            {tabValue.title[lang]}
                         </TabTitle>
                      </header>
                      <main
                         className={
-                           'prose flex flex-col items-start  justify-start gap-1 overflow-x-auto overflow-y-scroll text-left text-balance'
+                           '  flex flex-col items-center justify-center gap-2 px-2 md:px-6'
                         }>
                         {tabValue.description[lang].split('. ').map((content, index) => (
                            <TabText
-                              className={'my-0 w-full bg-neutral/30 font-poppins text-white'}
+                              className={
+                                 'm-0 w-full max-w-[80ch] text-left font-poppins text-xs font-light !text-primary sm:text-sm'
+                              }
                               key={`tab-content-${tabKey}-${index}`}>
                               {content}
+                              {index !== Object.entries(tabs).length - 1 && '.'}
                            </TabText>
                         ))}
                      </main>
@@ -75,32 +90,32 @@ export default function SectionActivity() {
                )
             })}
          </div>
-         <div className="relative flex w-full justify-center gap-2 py-2">
-            {Object.entries(tabs).map(([tabKey, tabValue], index) => {
-               let Icon
-               if (tabValue?.Icon) {
-                  Icon = Icons[tabValue.Icon as keyof typeof Icons]
-               }
-               return (
-                  <a
-                     key={index + 1}
-                     href={`#${index + 1}`}
-                     className="btn btn-xs">
-                     {tabValue.Icon ? (
-                        <Icon className="h-4 w-4 text-primary " />
-                     ) : (
-                        <Image
-                           width={16}
-                           height={16}
-                           src={tabValue.source!}
-                           className={'h-4 w-4 object-contain object-center'}
-                           alt="error loading"
-                        />
-                     )}
-                  </a>
-               )
-            })}
-         </div>
+         {/*<footer className="relative flex w-full justify-center gap-2 py-2">*/}
+         {/*   {Object.entries(tabs).map(([tabKey, tabValue], index) => {*/}
+         {/*      let Icon*/}
+         {/*      if (tabValue?.Icon) {*/}
+         {/*         Icon = Icons[tabValue.Icon as keyof typeof Icons]*/}
+         {/*      }*/}
+         {/*      return (*/}
+         {/*         <a*/}
+         {/*            key={index + 1}*/}
+         {/*            href={`#${index + 1}`}*/}
+         {/*            className="btn btn-xs">*/}
+         {/*            {tabValue.Icon ? (*/}
+         {/*               <Icon className="h-4 w-4 text-primary " />*/}
+         {/*            ) : (*/}
+         {/*               <Image*/}
+         {/*                  width={16}*/}
+         {/*                  height={16}*/}
+         {/*                  src={tabValue.source!}*/}
+         {/*                  className={'h-4 w-4 object-contain object-center'}*/}
+         {/*                  alt="error loading"*/}
+         {/*               />*/}
+         {/*            )}*/}
+         {/*         </a>*/}
+         {/*      )*/}
+         {/*   })}*/}
+         {/*</footer>*/}
       </div>
    )
 }
