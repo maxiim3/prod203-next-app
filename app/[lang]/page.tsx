@@ -3,6 +3,7 @@ import MotionContent from '@/app/[lang]/(home-page-components)/motion-content.cl
 import ScrollButton from '@/app/[lang]/(home-page-components)/scroll-button.client'
 import VideoBanner from '@/app/[lang]/(home-page-components)/video-banner.client'
 import Loading from '@/app/[lang]/loading'
+import {SectionTitle} from '@/components/section-title'
 import Icons from '@/lib/icons'
 import {cn} from '@/lib/utils'
 import {I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
@@ -10,6 +11,20 @@ import Image from 'next/image'
 import React, {ComponentPropsWithoutRef, Suspense} from 'react'
 
 export default async function Home({params}: I_PageI18nParams) {
+   // service : Musiques Originales, Production Executive, Édition, Mixage, Mastering, Mixage Immersif Atoms, Design Sonore, Gestion de Projet
+
+   const services = [
+      {fr: 'Musiques Originales', en: 'Original Soundtrack', Icon: Icons.Piano},
+      {fr: 'Production Executive', en: 'Executive Production', Icon: Icons.Music},
+      {fr: 'Édition', en: 'Edition', source: '/assets/services/note-white.png'},
+      {fr: 'Enregistrement', en: 'Recording', source: '/assets/services/micro-white.png'},
+      {fr: 'Mixage', en: 'Mixing', Icon: Icons.Mixing},
+      {fr: 'Mastering', en: 'Mastering', Icon: Icons.SolidDisc},
+      {fr: 'Dolby Atmos', en: 'Dolby Atmos', Icon: Icons.Dolby},
+      {fr: 'Design Sonore', en: 'Sound Design', Icon: Icons.SoundWave},
+      {fr: 'Concert', en: 'Live Events', source: '/assets/services/piano-white.png'},
+      {fr: 'Gestion de Projet', en: 'Project Management', Icon: Icons.Calendar},
+   ]
    return (
       <main className={'relative'}>
          <header>
@@ -41,8 +56,9 @@ export default async function Home({params}: I_PageI18nParams) {
                </article>
 
                <ScrollButton
-                  container={{className: 'opacity-75 animate-scroll'}}
+                  container={{className: 'opacity-75 animate-scroll transform'}}
                   anchor={{href: '#services'}}
+                  svg={{className: 'rotate-180'}}
                />
             </section>
          </header>
@@ -50,10 +66,10 @@ export default async function Home({params}: I_PageI18nParams) {
             <Section
                id={'services'}
                ariaLabel={'Services'}
-               className={'mt-16'}>
+               className={'mt-4'}>
                <MotionContent className={'mt-16'}>
                   <SectionTitle>Services</SectionTitle>
-                  <article className="mx-auto my-12 grid w-fit grid-cols-2 place-content-center place-items-center gap-x-3 gap-y-5 xs:grid-cols-3 xs:gap-y-6 sm:grid-cols-4 sm:gap-x-8 sm:gap-y-8 md:grid-cols-5 ">
+                  <article className="mx-auto my-8 grid w-fit grid-cols-2 place-content-center place-items-center gap-x-3 gap-y-5 xs:grid-cols-3 xs:gap-y-6 sm:grid-cols-4 sm:gap-x-8 sm:gap-y-8 md:grid-cols-5 ">
                      {services.map(service => (
                         <span
                            key={service[params.lang]}
@@ -83,7 +99,7 @@ export default async function Home({params}: I_PageI18nParams) {
             <Section
                id="gallery-1"
                ariaLabel={'Gallery'}
-               className={'mt-32 h-fit'}>
+               className={'my-24 h-fit'}>
                <MotionContent className={'min-h-[400px] overflow-hidden rounded-lg'}>
                   <SectionTitle className={'hidden'} />
                   <div className={'flex w-full items-center justify-center'}>
@@ -159,7 +175,7 @@ export default async function Home({params}: I_PageI18nParams) {
             </Section>
             <Section
                id="gallery"
-               className={'mb-32 h-fit'}
+               className={'my-24 h-fit'}
                ariaLabel={'Gallery'}>
                <MotionContent className={'min-h-[400px] overflow-hidden rounded-lg'}>
                   <SectionTitle className={'hidden'} />
@@ -192,29 +208,11 @@ export default async function Home({params}: I_PageI18nParams) {
                   </Suspense>
                </MotionContent>
             </Section>
-            <ScrollButton
-               svg={{className: 'rotate-180 transform'}}
-               anchor={{href: '#', className: '-rotate-180'}}
-            />
+            <ScrollButton anchor={{href: '#'}} />
          </div>
       </main>
    )
 }
-
-// service : Musiques Originales, Production Executive, Édition, Mixage, Mastering, Mixage Immersif Atoms, Design Sonore, Gestion de Projet
-
-const services = [
-   {fr: 'Musiques Originales', en: 'Original Soundtrack', Icon: Icons.Piano},
-   {fr: 'Production Executive', en: 'Executive Production', Icon: Icons.Music},
-   {fr: 'Édition', en: 'Edition', source: '/assets/services/note-white.png'},
-   {fr: 'Enregistrement', en: 'Recording', source: '/assets/services/micro-white.png'},
-   {fr: 'Mixage', en: 'Mixing', Icon: Icons.Mixing},
-   {fr: 'Mastering', en: 'Mastering', Icon: Icons.SolidDisc},
-   {fr: 'Dolby Atmos', en: 'Dolby Atmos', Icon: Icons.Dolby},
-   {fr: 'Design Sonore', en: 'Sound Design', Icon: Icons.SoundWave},
-   {fr: 'Concert', en: 'Live Events', source: '/assets/services/piano-white.png'},
-   {fr: 'Gestion de Projet', en: 'Project Management', Icon: Icons.Calendar},
-]
 
 // clients: Canal+, M6, Balenciaga, Nike, DisneyLand Paris, Citroen, Le,Puy Du Fou, 24h Le Mans, Chateau Fort Sedan, Edith Piaf Symphonique, Mon PLus Beau Noel, Studio Canal, Coca Cola Credit Agricole,
 
@@ -248,15 +246,4 @@ const Section = ({
       )}>
       {children}
    </section>
-)
-const SectionTitle = ({children, className}: ComponentPropsWithoutRef<'h2'>) => (
-   <h2
-      className={cn(
-         'text-center font-poppins uppercase tracking-wider text-primary text-balance',
-         ' max-w-[25ch]',
-         'w-content mx-auto text-center text-4xl font-thin uppercase sm:text-5xl ',
-         className
-      )}>
-      {children}
-   </h2>
 )

@@ -6,7 +6,7 @@ type T_TabItemProps = {
    disabled?: boolean
    onClick?: () => void
 } & ComponentPropsWithoutRef<'li'>
-export const TabItem = ({className, children, active, disabled, onClick}: T_TabItemProps) => {
+export const TabTitle = ({className, children, active, disabled, onClick}: T_TabItemProps) => {
    return (
       <li
          aria-current={active ? 'page' : undefined}
@@ -16,15 +16,16 @@ export const TabItem = ({className, children, active, disabled, onClick}: T_TabI
             if (e.key === 'Enter' && !disabled) onClick?.()
          }}
          className={cn(
-            {
-               'active rounded-lg border-gray-50 bg-primary/20 text-gray-50 md:rounded-none md:bg-transparent ':
-                  active,
-               'border-transparent hover:cursor-pointer hover:opacity-75': !active,
-               'cursor-not-allowed text-gray-400 ': disabled,
-            },
+            'border-b border-transparent text-primary hover:cursor-pointer hover:opacity-75',
+            active ? 'active border-primary/80 font-semibold text-white' : 'font-normal',
+            disabled && 'cursor-not-allowed opacity-75',
             className
          )}>
          {children}
       </li>
    )
+}
+
+export const TabText = ({className, children}: ComponentPropsWithoutRef<'p'>) => {
+   return <p className={cn(' text-sm font-normal tracking-wide ', className)}>{children}</p>
 }

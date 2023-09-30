@@ -17,7 +17,7 @@ export default function DesktopNavigationClient() {
 
    return (
       <>
-         <nav className={'hidden items-center md:flex'}>
+         <nav className={'z-50 hidden items-center md:flex'}>
             <NavigationList>
                {routes.map(route => (
                   <NavigationItem

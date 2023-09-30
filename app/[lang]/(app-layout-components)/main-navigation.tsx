@@ -10,7 +10,7 @@ export default function MainNavigation() {
       <header
          id={'header'}
          className={
-            'align-center fixed left-0 top-0 z-50 flex w-screen justify-between bg-base-100/60 px-2 py-3 backdrop-blur-sm motion-safe:animate-[fadeIn_850ms_ease-out_950ms_both] md:px-4 lg:px-8'
+            'align-center fixed left-0 top-0 z-40 flex w-screen justify-between bg-base-100/60 px-2 py-3 backdrop-blur-sm motion-safe:animate-[fadeIn_850ms_ease-out_950ms_both] md:px-4 lg:px-8'
          }>
          <Image
             width={260}
