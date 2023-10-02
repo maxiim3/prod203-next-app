@@ -63,14 +63,16 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                      justify={'start'}
                      align={'center'}>
                      <RadixLink asChild>
-                        <Link href={'/projects'}>Project</Link>
+                        <Link href={'/projects'}>
+                           {params.lang === 'en' ? 'Project' : 'Projets'}
+                        </Link>
                      </RadixLink>
                      <Text className={'event-none select-none font-poppins font-normal'}>/</Text>
                      <Heading
                         as={'h1'}
                         size={'3'}
                         className={'py-8 text-center font-poppins font-normal'}>
-                        {project?.title.fr}
+                        {project?.title[params.lang]}
                      </Heading>
                   </Flex>
                </Section>
@@ -151,12 +153,18 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                <div className={'flex flex-col items-center justify-center px-2 py-12 '}>
                   <div
                      className={
-                        'prose flex w-full max-w-[85ch] flex-col items-center justify-center gap-3 px-3 !font-poppins text-sm !font-light leading-loose tracking-wide !text-primary text-balance sm:gap-4 sm:text-base'
+                        'prose flex w-full flex-col gap-2 px-3 !font-poppins text-sm !font-light leading-loose tracking-wide !text-primary sm:gap-3 sm:text-base'
                      }>
                      {project?.description &&
                         project?.description[params.lang]?.map(block => {
                            return block.children.map(text => {
-                              return <p key={text._key}>{text.text}</p>
+                              return (
+                                 <p
+                                    className={'m-0 max-w-[85ch] p-0 text-left md:max-w-[105ch]'}
+                                    key={text._key}>
+                                    {text.text}
+                                 </p>
+                              )
                            })
                         })}
                   </div>
