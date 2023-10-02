@@ -5,8 +5,8 @@ export default function Error({
    error,
    reset,
 }: {
-   error: Error & {digest?: string}
-   reset: () => void
+   error?: Error & {digest?: string}
+   reset?: () => void
 }) {
    useEffect(() => {
       // Log the error to an error reporting service
@@ -28,7 +28,7 @@ export default function Error({
                className={'btn btn-outline'}
                onClick={
                   // Attempt to recover by trying to re-render the segment
-                  () => reset()
+                  () => reset?.()
                }>
                Try again
             </button>

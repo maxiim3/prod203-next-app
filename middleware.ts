@@ -1,3 +1,4 @@
+import routes from '@/static-content/route.static.content'
 import {NextRequest} from 'next/server'
 
 // Get the preferred locale, similar to the above or using a library
@@ -7,6 +8,12 @@ export function middleware(request: NextRequest) {
       headers,
       nextUrl: {pathname},
    } = request
+
+   /*   const availablePaths = Object.values(routes).map(element => element.path)
+   if (!availablePaths.includes(pathname)) {
+      console.log('catched error')
+      return Response.error()
+   }*/
 
    // Check if there is any supported locale in the pathname
    let availableLanguages = ['fr', 'en']

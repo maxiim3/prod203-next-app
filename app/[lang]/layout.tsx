@@ -1,9 +1,12 @@
 import AppLayout from '@/app/[lang]/(app-layout-components)/app-layout'
+import Error from '@/app/[lang]/error'
+import Loading from '@/app/[lang]/loading'
 import {cormorant, manrope, poppins} from '@/styles/font'
 import '@radix-ui/themes/styles.css'
 import type {Metadata} from 'next'
 import 'next-cloudinary/dist/cld-video-player.css'
-import React, {PropsWithChildren} from 'react'
+import React, {PropsWithChildren, Suspense} from 'react'
+import {ErrorBoundary} from 'react-error-boundary'
 import '../globals.css'
 
 export const metadata: Metadata = {
@@ -23,8 +26,12 @@ function RootLayout({children, params}: LayoutProps) {
          lang={params.lang}
          data-theme={'customTheme'}>
          <body
-            className={`${cormorant.variable} ${manrope.variable} ${poppins.variable} font-poppins font-extralight`}>
-            <AppLayout>{children}</AppLayout>
+            className={`${cormorant.variable} ${manrope.variable} ${poppins.variable} flex min-h-[80vh] flex-col justify-between font-poppins font-extralight`}>
+            <ErrorBoundary fallback={<Error />}>
+               <Suspense fallback={<Loading />}>
+                  <AppLayout>{children}</AppLayout>
+               </Suspense>
+            </ErrorBoundary>
          </body>
       </html>
    )

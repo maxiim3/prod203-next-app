@@ -18,7 +18,7 @@ export class ClientClassFactory implements I_ClientInterface {
    }
 }
 
-export const clients: ClientClassFactory[] = [
+export const All_Clients: ClientClassFactory[] = [
    new ClientClassFactory('24h Le Mans', '24h Le Mans', '/assets/clients/24h-white.webp'),
    new ClientClassFactory('Balenciaga', 'Balenciaga', '/assets/clients/balenciaga-white.webp'),
    new ClientClassFactory('Credit Agricole', 'Credit Agricole', '/assets/clients/ca-white.webp'),
@@ -51,6 +51,11 @@ export const clients: ClientClassFactory[] = [
    new ClientClassFactory('Warner Classic', 'Warner Classic', '/assets/clients/wc-white.webp'),
    // Add new clients here
 ]
-export const reversedClients: ClientClassFactory[] = [...clients].reverse()
+
+const Half_Index = Math.floor(All_Clients.length / 2)
+export const clients = All_Clients.slice(0, Half_Index)
+export const clients_02 = All_Clients.slice(Half_Index)
+
+Object.freeze(All_Clients)
 Object.freeze(clients)
-Object.freeze(reversedClients)
+Object.freeze(clients_02)

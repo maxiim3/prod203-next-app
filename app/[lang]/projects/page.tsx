@@ -1,4 +1,4 @@
-import Loading from '@/app/[lang]/projects/loading'
+import ProjectPageLoader from '@/app/[lang]/projects/loading'
 import ProjectsPage from '@/app/[lang]/projects/projects-page.client'
 import {SanityStoreFactory} from '@/lib/sanity/sanity-store.factory'
 import {getAllCategories, getAllProjects} from '@/lib/sanity/service'
@@ -19,7 +19,7 @@ const Projects = async ({params}: I_PageI18nParams) => {
 
    return (
       <main className={'min-h-screen w-screen py-24'}>
-         <Suspense fallback={<Loading />}>
+         <Suspense fallback={<ProjectPageLoader />}>
             <ProjectsPage
                store={{projects: projects, categories: categories}}
                lang={params.lang}

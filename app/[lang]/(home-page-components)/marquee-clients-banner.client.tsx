@@ -1,7 +1,12 @@
 'use client'
 
 import {cn} from '@/lib/utils'
-import {ClientClassFactory, clients, reversedClients} from '@/static-content/clients.static.content'
+import {
+   All_Clients,
+   ClientClassFactory,
+   clients as clients_01,
+   clients_02,
+} from '@/static-content/clients.static.content'
 import Image from 'next/image'
 import React, {memo} from 'react'
 import Marquee from 'react-fast-marquee'
@@ -11,14 +16,14 @@ function MarqueeClientsBanner() {
       <>
          <div className={'md:hidden'}>
             <MarqueeContainerLeftDirection>
-               {clients.map((client, index) => (
+               {clients_01.map((client, index) => (
                   <figcaption key={`scrolling-client-coll-${index}`}>
                      <ImageComponent client={client} />
                   </figcaption>
                ))}
             </MarqueeContainerLeftDirection>
             <MarqueeContainerRightDirection>
-               {reversedClients.map((client, index) => (
+               {clients_02.map((client, index) => (
                   <figcaption key={`scrolling-client-coll-reversed-${index}`}>
                      <ImageComponent client={client} />
                   </figcaption>
@@ -29,7 +34,7 @@ function MarqueeClientsBanner() {
             className={
                'mx-auto hidden max-w-5xl items-center justify-center gap-x-4 gap-y-8 md:flex md:flex-wrap lg:gap-x-6  lg:gap-y-10'
             }>
-            {clients.map((client, index) => (
+            {All_Clients.map((client, index) => (
                <figcaption key={`desktop-client-coll-${index}`}>
                   <ImageComponent
                      className={'md:h-[56px] md:w-[124px] lg:h-[75px] lg:w-[164px]'}
