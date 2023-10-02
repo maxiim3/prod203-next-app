@@ -3,10 +3,11 @@ import LoadingProjectPage from '@/app/[lang]/projects/[id]/loading'
 import {ProjectFactory} from '@/lib/sanity/project'
 import {SanityStoreFactory} from '@/lib/sanity/sanity-store.factory'
 import {getAllCategories, getProjectBySlug} from '@/lib/sanity/service'
-import {Box, Container, Flex, Heading, Link as RadixLink, Section, Text} from '@radix-ui/themes'
+import {cn} from '@/lib/utils'
+import {I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
+import {Container, Flex, Heading, Link as RadixLink, Section, Text} from '@radix-ui/themes'
 import Link from 'next/link'
-import React, {Suspense} from 'react'
-import {twMerge} from 'tailwind-merge'
+import React, {ComponentPropsWithoutRef, Suspense} from 'react'
 
 export const revalidate = 2
 
@@ -16,15 +17,33 @@ const getContentLakeData = async (id: string) => {
    return new SanityStoreFactory([project], categories)
 }
 
-interface ProjectPageProps {
+type ProjectPageProps = {
    params: {
       id: string
    }
-}
+} & I_PageI18nParams
 
 const ProjectPage = async ({params}: ProjectPageProps) => {
    const store = await getContentLakeData(params.id)
    const project = store.projects[0]
+   const YoutubeEmbedded = ({url}: {url: string}) => (
+      <iframe
+         className={'aspect-video w-full object-contain object-center'}
+         src={`https://www.youtube.com/embed/${url}`}
+         title="YouTube video player"
+         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+         allowFullScreen></iframe>
+   )
+   const CategoryTitle = ({className, children}: ComponentPropsWithoutRef<'h2'>) => (
+      <h2 className={cn('text-base font-semibold uppercase', className)}>{children}</h2>
+   )
+   const CategoryContainer = ({className, children}: ComponentPropsWithoutRef<'li'>) => (
+      <li className={cn('flex flex-col items-center gap-1 px-1 py-0', className)}>{children}</li>
+   )
+   const CategoryContent = ({className, children}: ComponentPropsWithoutRef<'li'>) => (
+      <li className={cn('text-sm md:text-base', className)}>{children}</li>
+   )
+   const CategoryDivider = () => <div className={'divider px-0 py-0 sm:divider-horizontal'} />
 
    return (
       <main className={'w-screen py-12 md:py-24'}>
@@ -34,12 +53,12 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                px={'2'}
                width={'100%'}
                size={'3'}
-               className={'h-full'}>
+               className={'mx-auto h-full max-w-7xl'}>
                <Section
                   size={'1'}
                   width={'100%'}>
                   <Flex
-                     className={'w-full'}
+                     className={'w-full pl-4 text-sm sm:pl-2 md:text-base xl:pl-0'}
                      gap={'2'}
                      justify={'start'}
                      align={'center'}>
@@ -55,60 +74,72 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                      </Heading>
                   </Flex>
                </Section>
-               <header className={'flex flex-col justify-between gap-2'}>
+               <header className={'flex flex-col justify-between gap-2 sm:gap-1 md:gap-2'}>
                   <span
                      role={'separator'}
                      className={'divider w-full'}
                   />
 
-                  <ul className={'flex justify-between px-8'}>
-                     <li className={'flex flex-col items-center gap-3'}>
-                        <h2 className={'text-lg font-semibold uppercase'}>Services</h2>
-                        <ul>
+                  <ul
+                     className={
+                        'flex flex-col justify-between gap-0 px-2 text-center !font-poppins !font-light !text-primary text-balance sm:flex-row sm:gap-0 sm:px-1 md:px-8'
+                     }>
+                     <CategoryContainer>
+                        <CategoryTitle>Services</CategoryTitle>
+                        <ul className={' flex-col items-center justify-center '}>
                            {project?.services.map((service, i) => {
-                              return <li key={i}>{service.fr}</li>
+                              return <li key={i}>{service[params.lang]}</li>
                            })}
                         </ul>
-                     </li>
-                     <li className={'flex flex-col items-center gap-3'}>
-                        <h2 className={'text-lg font-semibold uppercase'}>Clients</h2>
+                     </CategoryContainer>
+                     <CategoryDivider />
+                     <CategoryContainer>
+                        <CategoryTitle>Clients</CategoryTitle>
                         <ul>
                            {project?.client.map((client, i) => {
                               return <li key={i}>{client}</li>
                            })}
                         </ul>
-                     </li>
-                     <li className={'flex flex-col items-center gap-3'}>
-                        <h2 className={'text-lg font-semibold uppercase'}>Clients</h2>
+                     </CategoryContainer>
+                     <CategoryDivider />
+                     <CategoryContainer>
+                        <CategoryTitle>{params.lang === 'en' ? 'Brand' : 'Marque'}</CategoryTitle>
                         <ul>
-                           <li key={project.marque}>{project.marque}</li>
+                           <CategoryContent key={project.marque}>{project.marque}</CategoryContent>
                         </ul>
-                     </li>
-                     <li className={'flex flex-col items-center gap-3'}>
-                        <h2 className={'text-lg font-semibold uppercase'}>Category</h2>
+                     </CategoryContainer>
+                     <CategoryDivider />
+                     <CategoryContainer>
+                        <CategoryTitle>Categories</CategoryTitle>
                         <ul>
                            {project?.categories.map((category, i) => {
-                              return <li key={i}>{category.name.fr}</li>
+                              return (
+                                 <CategoryContent key={i}>
+                                    {category.name[params.lang]}
+                                 </CategoryContent>
+                              )
                            })}
                         </ul>
-                     </li>
-                     <li className={'flex flex-col items-center gap-3'}>
-                        <h2 className={'text-lg font-semibold uppercase'}>Category</h2>
+                     </CategoryContainer>
+                     <CategoryDivider />
+                     <CategoryContainer>
+                        <CategoryTitle>Date</CategoryTitle>
                         <ul>
-                           <li key={`date${project.releaseDate}`}>
+                           <CategoryContent key={`date${project.releaseDate}`}>
                               {new Date(project.releaseDate).toLocaleDateString()}
-                           </li>
+                           </CategoryContent>
                         </ul>
-                     </li>
+                     </CategoryContainer>
+                     <CategoryDivider />
                      {project.awards && (
-                        <li className={'flex flex-col items-center gap-3'}>
-                           <h2 className={'text-lg font-semibold uppercase'}>Category</h2>
+                        <CategoryContainer>
+                           <CategoryTitle>{params.lang === 'en' ? 'Awards' : 'Prix'}</CategoryTitle>
                            <ul>
                               {project?.awards.map((award, i) => {
-                                 return <li key={i}>{award}</li>
+                                 return <CategoryContent key={i}>{award}</CategoryContent>
                               })}
                            </ul>
-                        </li>
+                        </CategoryContainer>
                      )}
                   </ul>
 
@@ -120,10 +151,10 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                <div className={'flex flex-col items-center justify-center px-2 py-12 '}>
                   <div
                      className={
-                        'prose flex w-full max-w-[70ch] flex-col items-center justify-center gap-3 text-center text-sm leading-relaxed text-balance sm:text-base md:text-lg'
+                        'prose flex w-full max-w-[85ch] flex-col items-center justify-center gap-3 px-3 !font-poppins text-sm !font-light leading-loose tracking-wide !text-primary text-balance sm:gap-4 sm:text-base'
                      }>
                      {project?.description &&
-                        project?.description?.fr?.map(block => {
+                        project?.description[params.lang]?.map(block => {
                            return block.children.map(text => {
                               return <p key={text._key}>{text.text}</p>
                            })
@@ -134,7 +165,7 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                <section className={'flex w-full flex-col'}>
                   {project?.youtubeVideoURL && (
                      <figcaption className={'aspect-video w-full'}>
-                        <YoutubeEmbeded url={project?.youtubeVideoURL} />
+                        <YoutubeEmbedded url={project?.youtubeVideoURL} />
                      </figcaption>
                   )}
                </section>
@@ -144,30 +175,5 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
       </main>
    )
 }
-
-const YoutubeEmbeded = ({url}: {url: string}) => (
-   <iframe
-      className={'aspect-video w-full object-contain object-center'}
-      src={`https://www.youtube.com/embed/${url}`}
-      title="YouTube video player"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowFullScreen></iframe>
-)
-
-type ClassName = {
-   className?: string
-}
-const BoxPlaceHolder = ({
-   className,
-   children,
-}: ClassName & {
-   children?: React.ReactElement
-}) => (
-   <Box
-      width={'100%'}
-      className={twMerge('h-96 bg-gray-800/40', className)}>
-      {children}
-   </Box>
-)
 
 export default ProjectPage

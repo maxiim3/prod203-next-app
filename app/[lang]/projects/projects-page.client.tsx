@@ -113,7 +113,7 @@ export default function ProjectsPage({store, lang}: ProjectsPageProps) {
                      <ProjectThumbnail
                         key={p._id}
                         title={p.title.fr}
-                        description={p.description?.fr}
+                        description={p.description[lang]}
                         slug={p.slug.current}
                         thumbnail={p.thumbnail}
                         index={index}

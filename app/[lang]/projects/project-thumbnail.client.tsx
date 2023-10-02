@@ -1,12 +1,14 @@
 'use client'
 
 import useAnimateProjectCards from '@/app/[lang]/projects/use-canimate-project-cards.hook'
+import useLangParamsHook from '@/hooks/useLangParams.hook'
 import ImageBuilder from '@/lib/sanity/image.builder'
 import {ProjectFactory} from '@/lib/sanity/project'
 import {motion} from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import {isArrayOfBlocksInputProps} from 'sanity'
 import {twMerge} from 'tailwind-merge'
 
 type T_ProjectFactory = ReturnType<typeof ProjectFactory>
@@ -21,7 +23,7 @@ type ComponentProps = {
 export const ProjectThumbnail = ({slug, description, title, index, thumbnail}: ComponentProps) => {
    const containerRef = useAnimateProjectCards()
    // const imageSource = getImageSource(project)
-
+   const {lang} = useLangParamsHook()
    const thumbnailURL = thumbnail ? ImageBuilder(thumbnail).url() : '/imaheholder-hi.jpg'
 
    return (
@@ -41,7 +43,7 @@ export const ProjectThumbnail = ({slug, description, title, index, thumbnail}: C
          }}
          ref={containerRef.current}
          className="group/card card relative h-full min-h-[260px] w-full min-w-[260px] overflow-hidden bg-base-100 shadow-xl">
-         <Link href={`/projects/${slug}`}>
+         <Link href={`/${lang}/projects/${slug}`}>
             <Image
                fill={true}
                className={twMerge(
@@ -56,33 +58,41 @@ export const ProjectThumbnail = ({slug, description, title, index, thumbnail}: C
             />
             <div
                className={twMerge(
-                  'card-body bg-base-100/60 motion-safe:scale-95 motion-safe:transition-all motion-safe:delay-75 motion-safe:duration-200',
+                  'card-body relative bg-base-100/90 shadow-md shadow-base-300/50 drop-shadow-lg motion-safe:scale-95 motion-safe:transition-all motion-safe:delay-75 motion-safe:duration-200 sm:bg-base-100/60',
                   'rounded-xl',
                   ' h-full w-full gap-1 px-12 py-8',
-                  'motion-safe:-translate-y-full motion-safe:opacity-10',
-                  'motion-safe:group-hover/card:translate-y-0 motion-safe:group-hover/card:scale-105  motion-safe:group-hover/card:bg-base-100/90 motion-safe:group-hover/card:opacity-100 '
+                  'motion-safe:sm:-translate-y-full motion-safe:sm:opacity-10',
+                  'motion-safe:sm:group-hover/card:translate-y-0 motion-safe:sm:group-hover/card:scale-105  motion-safe:sm:group-hover/card:bg-base-100/90 motion-safe:sm:group-hover/card:opacity-100 '
                )}>
                <h3
                   className={twMerge(
                      'card-title text-base',
-                     `transition-all duration-300  motion-safe:-translate-y-[50px] motion-safe:opacity-75 motion-safe:group-hover/card:translate-y-0 motion-safe:group-hover/card:opacity-100`
+                     `transition-all duration-300 motion-safe:sm:-translate-y-[50px] motion-safe:sm:opacity-75 motion-safe:sm:group-hover/card:sm:translate-y-0 motion-safe:sm:group-hover/card:opacity-100`
                   )}>
                   {title}
                </h3>
                {description &&
-                  description.map((block, index) => {
-                     return block.children.map(content => (
-                        <p
-                           className={twMerge(
-                              'font-regular font-poppins text-xs',
-                              index === description.length - 1 && 'line-clamp-1',
-                              `transition-all duration-300 motion-safe:-translate-y-[50px]  motion-safe:opacity-75 motion-safe:group-hover/card:translate-y-0 motion-safe:group-hover/card:opacity-100`
-                           )}
-                           key={index}>
-                           {content.text}
-                        </p>
-                     ))
-                  })}
+                  description
+                     .filter((_, blockIndex) => blockIndex < 2)
+                     .map((block, index) => {
+                        return (
+                           <p
+                              className={twMerge(
+                                 'font-regular font-poppins text-xs',
+                                 'line-clamp-2',
+                                 `transition-all duration-300 motion-safe:sm:-translate-y-[50px] motion-safe:sm:opacity-75 motion-safe:sm:group-hover/card:sm:translate-y-0 motion-safe:sm:group-hover/card:sm:opacity-100`
+                              )}
+                              key={index}>
+                              {block.children[0].text}
+                           </p>
+                        )
+                     })}
+               <button
+                  className={
+                     'relative -bottom-2 -left-2 w-fit  rounded-full bg-base-200/80 px-3 py-0.5 text-xs'
+                  }>
+                  {lang === 'en' ? 'See more' : 'Voir plus'}
+               </button>
             </div>
          </Link>
       </motion.li>
