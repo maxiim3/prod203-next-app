@@ -27,16 +27,19 @@ export default async function Home({params}: I_PageI18nParams) {
    ]
    return (
       <main className={'relative'}>
-         <header>
+         <header
+            className={
+               'relative mx-auto h-screen max-h-[980px] max-w-[1600px] lg:aspect-video lg:h-auto lg:w-screen'
+            }>
             <section
                id={'hero'}
                aria-label={'Video hero banner'}
-               className="absolute top-0 h-screen w-screen">
+               className="absolute top-0 mx-auto h-screen max-h-[980px] max-w-[1600px] overflow-hidden lg:aspect-video lg:h-auto lg:w-screen 2xl:rounded-bl-3xl 2xl:rounded-br-3xl">
                <Suspense fallback={<Loading />}>
                   <VideoBanner />
                </Suspense>
             </section>
-            <section className="relative h-screen text-center text-neutral-content">
+            <section className="relative h-full text-center text-neutral-content">
                <article
                   className={
                      'relative mx-auto flex h-full select-none flex-col items-center justify-center text-primary'
@@ -133,21 +136,20 @@ export default async function Home({params}: I_PageI18nParams) {
                      {params.lang === 'en' ? (
                         <>
                            <Text>
-                              Founded by Jérôme Kuhn, Nathan Stornetta, and Samuel Briand,{' '}
-                              <Accent className="uppercase">Jamais 203 Productions</Accent> is an{' '}
-                              <Accent>audiovisual production</Accent> agency.
+                              Founded by Jérôme Kuhn, Nathan Stornetta and Samuel Briand,
+                              <Accent className="uppercase">Jamais 203 Productions</Accent> is an
+                              audiovisual production agency.
                            </Text>
                            <Text>
-                              Our skill set encompasses <Accent>composition</Accent>,{' '}
-                              <Accent>music for visuals</Accent>, <Accent>recording</Accent>,{' '}
-                              <Accent>production</Accent>, and <Accent>mixing</Accent> of music;{' '}
-                              <Accent>Sound design</Accent> for immersive experiences, the creation
-                              of <Accent>custom soundtracks for live shows</Accent>, as well as{' '}
-                              <Accent>music publishing</Accent>, catalog management, and hosting of{' '}
-                              <Accent>
-                                 live events like movie-concerts, ceremonies, fashion shows
-                              </Accent>
-                              , and much more.
+                              Our expertise encompasses <Accent>composition</Accent>,
+                              <Accent>music scoring</Accent>, <Accent>recording</Accent>,
+                              <Accent>production</Accent> and <Accent>mixing</Accent> of music,
+                              <Accent>sound design</Accent> for immersive experiences, creation of
+                              <Accent>soundtracks</Accent> for live performances, as well as
+                              <Accent>music publishing</Accent>, catalog management and the
+                              execution of live events such as
+                              <Accent>cinema-concerts, ceremonies, fashion shows</Accent>, and much
+                              more.
                            </Text>
                         </>
                      ) : (
@@ -166,8 +168,9 @@ export default async function Home({params}: I_PageI18nParams) {
                               <Accent>bandes sonores</Accent> sur mesure pour les spectacles
                               vivants, ainsi que l&apos;
                               <Accent>édition musicale</Accent>, la gestion de catalogue et la
-                              réalisation d&apos;évènements en direct tels que ciné-concerts,
-                              cérémonies, défilés de mode , et bien plus encore.
+                              réalisation d&apos;évènements en direct tels que{' '}
+                              <Accent>ciné-concerts, cérémonies, défilés de mode </Accent>, et bien
+                              plus encore.
                            </Text>
                         </>
                      )}

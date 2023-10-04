@@ -6,6 +6,7 @@ import useLangParams from '@/hooks/useLangParams.hook'
 import Icons from '@/lib/icons'
 import Image from 'next/image'
 import React from 'react'
+import {twMerge} from 'tailwind-merge'
 import sectionContent from './section-content.json'
 
 export default function SectionActivity() {
@@ -40,9 +41,9 @@ export default function SectionActivity() {
 
    return (
       <div
-         className={
-            'aspect-portrait relative flex w-screen flex-col items-center justify-center overflow-hidden py-4 text-white md:aspect-square lg:aspect-video'
-         }>
+         className={twMerge(
+            'relative flex aspect-auto w-screen max-w-[1600px] flex-col items-center justify-center overflow-hidden py-4 text-white'
+         )}>
          <Image
             alt={''}
             src={'/assets/section-activity.png'}
@@ -52,7 +53,17 @@ export default function SectionActivity() {
          />
          <div
             className={
-               'carousel-center carousel relative w-screen space-x-4 p-4 sm:space-x-6 sm:p-6 md:space-x-8 md:p-8'
+               'absolute right-0 top-0 z-40 hidden h-full w-[10vw] max-w-[180px] bg-gradient-to-l from-base-100 from-20% to-80% xl:block'
+            }
+         />
+         <div
+            className={
+               'absolute left-0 top-0 z-40 hidden h-full w-[10vw] max-w-[180px] bg-gradient-to-r from-base-100 from-20% to-80% xl:block'
+            }
+         />
+         <div
+            className={
+               'carousel carousel-center relative w-screen space-x-4 p-4 sm:space-x-6 sm:p-6 md:space-x-8 md:p-8'
             }>
             {Object.entries(tabs).map(([tabKey, tabValue], index) => {
                return (
