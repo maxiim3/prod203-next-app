@@ -22,7 +22,7 @@ const About = ({params}: I_PageI18nParams) => {
    const Container = ({id, className, children}: ComponentPropsWithoutRef<'section'>) => (
       <section
          id={id}
-         className={cn('z-0 flex flex-col items-center gap-12 py-12 text-balance ', className)}>
+         className={cn('z-0 flex flex-col items-center gap-12 py-8 text-balance ', className)}>
          {children}
       </section>
    )
@@ -36,7 +36,7 @@ const About = ({params}: I_PageI18nParams) => {
                <SectionActivity />
             </Container>
 
-            <hr className={'my-20 h-px w-full border-0 bg-gray-700'} />
+            {/*<hr className={'my-20 h-px w-full border-0 bg-gray-700'} />*/}
             <Container id={'about-section-founders'}>
                <SectionTitle>{staticContent_i18n[lang][1]}</SectionTitle>
                <SectionFounders />

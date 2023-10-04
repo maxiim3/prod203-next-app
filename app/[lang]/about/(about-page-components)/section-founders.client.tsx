@@ -125,6 +125,7 @@ export default function SectionFounders({className}: T_ClassName) {
                         }
                         key={`tab-content-${index}`}>
                         {content}
+                        {tabs[activeTab]?.description[lang].length - 1 === index ? '' : '.'}
                      </TabText>
                   ))}
                </main>

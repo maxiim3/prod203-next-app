@@ -95,23 +95,35 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                         </ul>
                      </CategoryContainer>
                      <CategoryDivider />
-                     <CategoryContainer>
-                        <CategoryTitle>Clients</CategoryTitle>
-                        <ul>
-                           {project?.client.map((client, i) => {
-                              return <li key={i}>{client}</li>
-                           })}
-                        </ul>
-                     </CategoryContainer>
-                     <CategoryDivider />
-                     <CategoryContainer>
-                        <CategoryTitle>{params.lang === 'en' ? 'Brand' : 'Marque'}</CategoryTitle>
-                        <ul>
-                           <CategoryContent key={project.marque}>{project.marque}</CategoryContent>
-                        </ul>
-                     </CategoryContainer>
-                     <CategoryDivider />
-                     <CategoryContainer>
+                     {project?.client && (
+                        <>
+                           <CategoryContainer>
+                              <CategoryTitle>Clients</CategoryTitle>
+                              <ul>
+                                 {project?.client.map((client, i) => {
+                                    return <li key={i}>{client}</li>
+                                 })}
+                              </ul>
+                           </CategoryContainer>
+                           <CategoryDivider />{' '}
+                        </>
+                     )}
+                     {project?.marque && (
+                        <>
+                           <CategoryContainer>
+                              <CategoryTitle>
+                                 {params.lang === 'en' ? 'Brand' : 'Marque'}
+                              </CategoryTitle>
+                              <ul>
+                                 <CategoryContent key={project.marque}>
+                                    {project.marque}
+                                 </CategoryContent>
+                              </ul>
+                           </CategoryContainer>
+                           <CategoryDivider />
+                        </>
+                     )}
+                     {/*  <CategoryContainer>
                         <CategoryTitle>Categories</CategoryTitle>
                         <ul>
                            {project?.categories.map((category, i) => {
@@ -123,12 +135,12 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                            })}
                         </ul>
                      </CategoryContainer>
-                     <CategoryDivider />
+                     <CategoryDivider />*/}
                      <CategoryContainer>
-                        <CategoryTitle>Date</CategoryTitle>
+                        <CategoryTitle>{params.lang === 'en' ? 'Year' : 'Année'}</CategoryTitle>
                         <ul>
                            <CategoryContent key={`date${project.releaseDate}`}>
-                              {new Date(project.releaseDate).toLocaleDateString()}
+                              {new Date(project.releaseDate).getFullYear()}
                            </CategoryContent>
                         </ul>
                      </CategoryContainer>

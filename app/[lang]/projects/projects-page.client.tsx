@@ -109,16 +109,21 @@ export default function ProjectsPage({store, lang}: ProjectsPageProps) {
                   className={
                      'mx-auto grid max-w-[1440px] grid-cols-1 gap-4 px-2 sm:grid-cols-2 md:px-8 lg:grid-cols-3 lg:px-12 2xl:grid-cols-4'
                   }>
-                  {filterProjects.map((p, index) => (
-                     <ProjectThumbnail
-                        key={p._id}
-                        title={p.title.fr}
-                        description={p.description[lang]}
-                        slug={p.slug.current}
-                        thumbnail={p.thumbnail}
-                        index={index}
-                     />
-                  ))}
+                  {filterProjects
+                     .sort(
+                        (a, b) =>
+                           new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
+                     ) // 👈 add this sort function
+                     .map((p, index) => (
+                        <ProjectThumbnail
+                           key={p._id}
+                           title={p.title.fr}
+                           description={p.description[lang]}
+                           slug={p.slug.current}
+                           thumbnail={p.thumbnail}
+                           index={index}
+                        />
+                     ))}
                </ul>
             </Suspense>
          </main>
