@@ -6,7 +6,7 @@ import {Flex, Link as RadixLink} from '@radix-ui/themes'
 import React from 'react'
 import {twMerge} from 'tailwind-merge'
 
-export default function Loading() {
+export default function ProjectPageLoader() {
    return (
       <Flex
          className={'space-y-6'}

@@ -7,15 +7,16 @@ export default function Legal({params}: I_PageI18nParams) {
    return (
       <SinglePageLayoutTemplate
          className={
-            'text-poppins prose mx-auto flex h-auto w-screen flex-col items-center justify-center px-2 py-32 text-balance md:px-12'
+            'text-poppins text-prirmary prose mx-auto flex h-auto w-screen flex-col items-center justify-center px-2 py-32 font-light text-balance md:px-12'
          }>
          {lang === 'en' ? (
             <>
                <h1>LEGAL NOTICE</h1>
                <p>
-                  The company NEVER 203 PRODUCTIONS, active since 10/15/2021, with a capital of
-                  $CAPITAL$, registered with the RCS with the SIRET 90463232000019, whose head
-                  office is located at COURAUX, 85700 POUZAUGES.
+                  The company JAMAIS 203 PRODUCTIONS, in operation since 15/10/2021, with the
+                  capital of 3000€, registered at the RCS of La Roche-sur-Yon under the number 904
+                  632 320, with the SIRET 90463232000019, whose registered office is located at
+                  COURAUX, 85700 POUZAUGES.
                </p>
                <p>Hosting: Vercel, address and contact number of Vercel.</p>
                <h2>PERSONAL DATA</h2>
@@ -50,8 +51,8 @@ export default function Legal({params}: I_PageI18nParams) {
                <h1>MENTIONS LÉGALES</h1>
                <p>
                   La société JAMAIS 203 PRODUCTIONS, en activité depuis le 15/10/2021, au capital de
-                  $CAPITAL$, immatriculée au RCS avec le SIRET 90463232000019, dont le siège social
-                  est situé à COURAUX, 85700 POUZAUGES.
+                  3000€, immatriculée au RCS de La Roche-sur-Yon sous le numéro 904 632 320, avec le
+                  SIRET 90463232000019, dont le siège social est situé à COURAUX, 85700 POUZAUGES.
                </p>
                <p>Hébergeur: Vercel, adresse et numéro de contact de Vercel.</p>
                <h2>DONNÉES PERSONNELLES</h2>

@@ -1,9 +1,14 @@
 'use client'
 
 import {cn} from '@/lib/utils'
-import {ClientClassFactory, clients, reversedClients} from '@/static-content/clients.static.content'
+import {
+   All_Clients,
+   ClientClassFactory,
+   clients as clients_01,
+   clients_02,
+} from '@/static-content/clients.static.content'
 import Image from 'next/image'
-import React, {memo} from 'react'
+import React, {ComponentPropsWithoutRef, memo} from 'react'
 import Marquee from 'react-fast-marquee'
 
 function MarqueeClientsBanner() {
@@ -11,28 +16,52 @@ function MarqueeClientsBanner() {
       <>
          <div className={'md:hidden'}>
             <MarqueeContainerLeftDirection>
-               {clients.map((client, index) => (
+               {clients_01.map((client, index) => (
                   <figcaption key={`scrolling-client-coll-${index}`}>
-                     <ImageComponent client={client} />
+                     <ImageComponent
+                        className={cn(
+                           'md:h-[56px] md:w-[124px] lg:h-[75px] lg:w-[164px]',
+                           client.title.toLowerCase().includes('fribourg') && 'max-w-[105px]',
+                           client.title.toLowerCase().includes('24h') && 'max-w-[95px]',
+                           client.title.toLowerCase().includes('sedan') && 'max-w-[80px]',
+                           client.title.toLowerCase().includes('warner') && 'max-w-[124px]'
+                        )}
+                        client={client}
+                     />
                   </figcaption>
                ))}
             </MarqueeContainerLeftDirection>
             <MarqueeContainerRightDirection>
-               {reversedClients.map((client, index) => (
+               {clients_02.map((client, index) => (
                   <figcaption key={`scrolling-client-coll-reversed-${index}`}>
-                     <ImageComponent client={client} />
+                     <ImageComponent
+                        className={cn(
+                           'md:h-[56px] md:w-[124px] lg:h-[75px] lg:w-[164px]',
+                           client.title.toLowerCase().includes('fribourg') && 'max-w-[105px]',
+                           client.title.toLowerCase().includes('24h') && 'max-w-[95px]',
+                           client.title.toLowerCase().includes('gum') && 'max-w-[40px]',
+                           client.title.toLowerCase().includes('fff') && 'max-w-[70px]',
+                           client.title.toLowerCase().includes('warner') && 'max-w-[124px]'
+                        )}
+                        client={client}
+                     />
                   </figcaption>
                ))}
             </MarqueeContainerRightDirection>
          </div>
          <article
             className={
-               'mx-auto hidden max-w-5xl items-center justify-center gap-x-4 gap-y-8 md:flex md:flex-wrap lg:gap-x-6  lg:gap-y-10'
+               'mx-auto hidden max-w-5xl items-center justify-center gap-x-2 gap-y-8 md:flex md:flex-wrap'
             }>
-            {clients.map((client, index) => (
+            {All_Clients.map((client, index) => (
                <figcaption key={`desktop-client-coll-${index}`}>
                   <ImageComponent
-                     className={'md:h-[56px] md:w-[124px] lg:h-[75px] lg:w-[164px]'}
+                     className={cn(
+                        'md:h-[56px] md:w-[124px] lg:h-[75px] lg:w-[164px]',
+                        client.title.toLowerCase().includes('fribourg') && 'max-w-[105px]',
+                        client.title.toLowerCase().includes('24h') && 'max-w-[95px]',
+                        client.title.toLowerCase().includes('warner') && 'max-w-[124px]'
+                     )}
                      client={client}
                   />
                </figcaption>
@@ -60,7 +89,10 @@ const MarqueeContainerLeftDirection = ({children}: {children: React.ReactNode}) 
    </Marquee>
 )
 
-const ImageComponent = ({client, className}: {client: ClientClassFactory; className?: string}) => (
+const ImageComponent = ({
+   client,
+   className,
+}: ComponentPropsWithoutRef<'img'> & {client: ClientClassFactory}) => (
    <Image
       width={200}
       height={200}

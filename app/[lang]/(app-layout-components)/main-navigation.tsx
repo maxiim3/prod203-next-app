@@ -10,19 +10,24 @@ export default function MainNavigation() {
       <header
          id={'header'}
          className={
-            'align-center fixed left-0 top-0 z-40 flex w-screen justify-between bg-base-100/60 px-2 py-3 backdrop-blur-sm motion-safe:animate-[fadeIn_850ms_ease-out_950ms_both] md:px-4 lg:px-8'
+            'fixed left-0 top-0 z-40 w-screen bg-base-100/60 backdrop-blur-sm motion-safe:animate-[fadeIn_850ms_ease-out_950ms_both]'
          }>
-         <Image
-            width={260}
-            height={80}
-            className={'w-32 -translate-x-2 object-contain object-center sm:w-36'} // ! ADJUSTED THE TRANSLATE-X TO CENTER THE LOGO
-            src={prod203.src}
-            alt="Prod203"
-         />
-         <DesktopNavigation />
-         <MobileNavigationContext>
-            <MobileNavigation />
-         </MobileNavigationContext>
+         <div
+            className={
+               'align-center mx-auto flex max-w-[1600px] justify-between px-2 py-3 md:px-4 lg:px-8'
+            }>
+            <Image
+               width={260}
+               height={80}
+               className={'w-32 -translate-x-2 object-contain object-center sm:w-36'} // ! ADJUSTED THE TRANSLATE-X TO CENTER THE LOGO
+               src={prod203.src}
+               alt="Prod203"
+            />
+            <DesktopNavigation />
+            <MobileNavigationContext>
+               <MobileNavigation />
+            </MobileNavigationContext>
+         </div>
       </header>
    )
 }

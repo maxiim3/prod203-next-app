@@ -100,7 +100,7 @@ export default function Footer() {
                   <SectionTitle>Légal</SectionTitle>
                   <Item>
                      <Link href={`/${lang}/legal`}>
-                        ${lang === 'en' ? 'Legal Notice' : 'Mentions Légales'}
+                        {lang === 'en' ? 'Legal Notice' : 'Mentions Légales'}
                      </Link>
                   </Item>
                </Section>

@@ -52,7 +52,7 @@ export default function VideoBanner() {
          videoRef={videoRef}
          src={VIDEO_SOURCE.VERY_HIGH}
          className={twMerge(
-            'h-[100vh] w-[100%] object-contain object-center',
+            'mx-auto h-[100%] max-w-[1600px] object-contain object-center',
             'motion-safe:animate-[scaleAndFade_50ms_ease-out_both]'
          )}
       />

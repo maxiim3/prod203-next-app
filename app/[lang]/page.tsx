@@ -27,16 +27,19 @@ export default async function Home({params}: I_PageI18nParams) {
    ]
    return (
       <main className={'relative'}>
-         <header>
+         <header
+            className={
+               'relative mx-auto h-screen max-h-[980px] max-w-[1600px] lg:aspect-video lg:h-auto lg:w-screen'
+            }>
             <section
                id={'hero'}
                aria-label={'Video hero banner'}
-               className="absolute top-0 h-screen w-screen">
+               className="absolute top-0 mx-auto h-screen max-h-[980px] max-w-[1600px] overflow-hidden lg:aspect-video lg:h-auto lg:w-screen 2xl:rounded-bl-3xl 2xl:rounded-br-3xl">
                <Suspense fallback={<Loading />}>
                   <VideoBanner />
                </Suspense>
             </section>
-            <section className="relative h-screen text-center text-neutral-content">
+            <section className="relative h-full text-center text-neutral-content">
                <article
                   className={
                      'relative mx-auto flex h-full select-none flex-col items-center justify-center text-primary'
@@ -62,7 +65,7 @@ export default async function Home({params}: I_PageI18nParams) {
                />
             </section>
          </header>
-         <div className="relative flex snap-y snap-mandatory flex-col overflow-y-auto ">
+         <div className="relative flex snap-y snap-mandatory flex-col gap-4 overflow-y-auto ">
             <Section
                id={'services'}
                ariaLabel={'Services'}
@@ -96,32 +99,33 @@ export default async function Home({params}: I_PageI18nParams) {
                   </article>
                </MotionContent>
             </Section>
-            <Section
-               id="gallery-1"
-               ariaLabel={'Gallery'}
-               className={'my-24 h-fit'}>
-               <MotionContent className={'min-h-[400px] overflow-hidden rounded-lg'}>
-                  <SectionTitle className={'hidden'} />
-                  <div className={'flex w-full items-center justify-center'}>
-                     <Image
-                        alt={''}
-                        src={'/assets/orchestra.webp'}
-                        fill={true}
-                        placeholder={'empty'}
-                        priority={false}
-                        quality={90}
-                        sizes={
-                           '(min-width: 768px) clamp(600px, 80vw, 980px), (min-width: 1200px) 1024px, clamp(200px, 100vw, 600px'
-                        }
-                        className={
-                           'aspect-portrait mask mask-parallelogram w-full object-contain object-center md:aspect-video'
-                        }
-                     />
-                  </div>
-               </MotionContent>
-            </Section>
+            {/*<Section*/}
+            {/*   id="gallery-1"*/}
+            {/*   ariaLabel={'Gallery'}*/}
+            {/*   className={'my-24 h-fit'}>*/}
+            {/*   <MotionContent className={'min-h-[400px] overflow-hidden rounded-lg'}>*/}
+            {/*      <SectionTitle className={'hidden'} />*/}
+            {/*      <div className={'flex w-full items-center justify-center'}>*/}
+            {/*         <Image*/}
+            {/*            alt={''}*/}
+            {/*            src={'/assets/orchestra.webp'}*/}
+            {/*            fill={true}*/}
+            {/*            placeholder={'empty'}*/}
+            {/*            priority={false}*/}
+            {/*            quality={90}*/}
+            {/*            sizes={*/}
+            {/*               '(min-width: 768px) clamp(600px, 80vw, 980px), (min-width: 1200px) 1024px, clamp(200px, 100vw, 600px'*/}
+            {/*            }*/}
+            {/*            className={*/}
+            {/*               'aspect-portrait mask mask-parallelogram w-full object-contain object-center md:aspect-video'*/}
+            {/*            }*/}
+            {/*         />*/}
+            {/*      </div>*/}
+            {/*   </MotionContent>*/}
+            {/*</Section>*/}
             <Section
                id="about"
+               className={'my-12'}
                ariaLabel={'About'}>
                <MotionContent title="">
                   <SectionTitle className={'hidden'} />
@@ -132,74 +136,74 @@ export default async function Home({params}: I_PageI18nParams) {
                      {params.lang === 'en' ? (
                         <>
                            <Text>
-                              Founded in 2021 by Jérôme Kuhn, Nathan Stornetta, and Samuel Briand,{' '}
-                              <Accent className="uppercase">Jamais 203 Productions</Accent>{' '}
-                              specializes in the creation of high-quality audio content.
+                              Founded by Jérôme Kuhn, Nathan Stornetta and Samuel Briand,
+                              <Accent className="uppercase">Jamais 203 Productions</Accent> is an
+                              audiovisual production agency.
                            </Text>
                            <Text>
-                              Our expertise includes <Accent>musical composition</Accent>,{' '}
-                              <Accent>recording</Accent>, <Accent>production</Accent>, and mixing of
-                              symphonic and romantic music; <Accent>Sound design</Accent> for
-                              immersive experiences, the making of <Accent>podcasts</Accent>, the
-                              production of <Accent>soundtracks for live shows</Accent>, as well as{' '}
-                              <Accent>music publishing</Accent> and production for various formats
-                              such as <Accent>classical music concerts</Accent>,{' '}
-                              <Accent>ceremonies</Accent>, and much more.
+                              Our expertise encompasses <Accent>composition</Accent>,
+                              <Accent>music scoring</Accent>, <Accent>recording</Accent>,
+                              <Accent>production</Accent> and <Accent>mixing</Accent> of music,
+                              <Accent>sound design</Accent> for immersive experiences, creation of
+                              <Accent>soundtracks</Accent> for live performances, as well as
+                              <Accent>music publishing</Accent>, catalog management and the
+                              execution of live events such as
+                              <Accent>cinema-concerts, ceremonies, fashion shows</Accent>, and much
+                              more.
                            </Text>
                         </>
                      ) : (
                         <>
                            <Text>
-                              Fondée en 2021 par Jérôme Kuhn, Nathan Stornetta et Samuel Briand,{' '}
-                              <Accent className="uppercase">Jamais 203 Productions</Accent> est
-                              spécialisée dans la création de contenus sonores exigeants.
+                              Fondée par Jérôme Kuhn, Nathan Stornetta et Samuel Briand,{' '}
+                              <Accent className="uppercase">Jamais 203 Productions</Accent> est une
+                              agence de production audiovisuelle.
                            </Text>
                            <Text>
-                              Nos savoir-faire englobent la <Accent>composition musicale</Accent>,
-                              l&apos;
+                              Notre savoir-faire englobe la <Accent>composition</Accent>, la{' '}
+                              <Accent>musique à l&aps;image</Accent>, l&aps;
                               <Accent>enregistrement</Accent>, la <Accent>production</Accent> et le
-                              mixage de musiques symphoniques et romantiques; Le{' '}
-                              <Accent>design sonore</Accent> pour des expériences immersives, la
-                              réalisation de <Accent>podcasts</Accent>, la production de{' '}
-                              <Accent>bandes sonores pour les spectacles</Accent> en direct, ainsi
-                              que l&apos;
-                              <Accent>édition musicale</Accent> et la production pour divers
-                              supports tels que les <Accent>concerts</Accent> de{' '}
-                              <Accent>musique classique</Accent>, les <Accent>cérémonies</Accent>,
-                              et bien plus encore.
+                              <Accent>mixage</Accent> de musique, le <Accent>design sonore</Accent>{' '}
+                              pour des expériences immersives, la création de{' '}
+                              <Accent>bandes sonores</Accent> sur mesure pour les spectacles
+                              vivants, ainsi que l&apos;
+                              <Accent>édition musicale</Accent>, la gestion de catalogue et la
+                              réalisation d&apos;évènements en direct tels que{' '}
+                              <Accent>ciné-concerts, cérémonies, défilés de mode </Accent>, et bien
+                              plus encore.
                            </Text>
                         </>
                      )}
                   </div>
                </MotionContent>
             </Section>
-            <Section
-               id="gallery"
-               className={'my-24 h-fit'}
-               ariaLabel={'Gallery'}>
-               <MotionContent className={'min-h-[400px] overflow-hidden rounded-lg'}>
-                  <SectionTitle className={'hidden'} />
-                  <div className={'flex w-full items-center justify-center'}>
-                     <Image
-                        alt={''}
-                        src={'/assets/recording.webp'}
-                        fill={true}
-                        placeholder={'empty'}
-                        priority={false}
-                        quality={90}
-                        sizes={
-                           '(min-width: 768px) clamp(600px, 80vw, 980px), (min-width: 1200px) 1024px, clamp(200px, 100vw, 600px'
-                        }
-                        className={
-                           'aspect-portrait mask mask-parallelogram-2 w-full object-contain object-center md:aspect-video'
-                        }
-                     />
-                  </div>
-               </MotionContent>
-            </Section>
+            {/*<Section*/}
+            {/*   id="gallery"*/}
+            {/*   className={'my-24 h-fit'}*/}
+            {/*   ariaLabel={'Gallery'}>*/}
+            {/*   <MotionContent className={'min-h-[400px] overflow-hidden rounded-lg'}>*/}
+            {/*      <SectionTitle className={'hidden'} />*/}
+            {/*      <div className={'flex w-full items-center justify-center'}>*/}
+            {/*         <Image*/}
+            {/*            alt={''}*/}
+            {/*            src={'/assets/recording.webp'}*/}
+            {/*            fill={true}*/}
+            {/*            placeholder={'empty'}*/}
+            {/*            priority={false}*/}
+            {/*            quality={90}*/}
+            {/*            sizes={*/}
+            {/*               '(min-width: 768px) clamp(600px, 80vw, 980px), (min-width: 1200px) 1024px, clamp(200px, 100vw, 600px'*/}
+            {/*            }*/}
+            {/*            className={*/}
+            {/*               'aspect-portrait mask mask-parallelogram-2 w-full object-contain object-center md:aspect-video'*/}
+            {/*            }*/}
+            {/*         />*/}
+            {/*      </div>*/}
+            {/*   </MotionContent>*/}
+            {/*</Section>*/}
             <Section
                id={'references'}
-               className={'mb-64'}
+               className={'mb-36 md:mb-48'}
                ariaLabel={params.lang === 'en' ? 'References' : 'Références'}>
                <MotionContent className={'w-screen'}>
                   <SectionTitle>{params.lang === 'en' ? 'References' : 'Références'}</SectionTitle>
