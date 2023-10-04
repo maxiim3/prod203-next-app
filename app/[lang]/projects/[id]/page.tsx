@@ -144,16 +144,20 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                            </CategoryContent>
                         </ul>
                      </CategoryContainer>
-                     <CategoryDivider />
                      {project.awards && (
-                        <CategoryContainer>
-                           <CategoryTitle>{params.lang === 'en' ? 'Awards' : 'Prix'}</CategoryTitle>
-                           <ul>
-                              {project?.awards.map((award, i) => {
-                                 return <CategoryContent key={i}>{award}</CategoryContent>
-                              })}
-                           </ul>
-                        </CategoryContainer>
+                        <>
+                           <CategoryDivider />
+                           <CategoryContainer>
+                              <CategoryTitle>
+                                 {params.lang === 'en' ? 'Awards' : 'Prix'}
+                              </CategoryTitle>
+                              <ul>
+                                 {project?.awards.map((award, i) => {
+                                    return <CategoryContent key={i}>{award}</CategoryContent>
+                                 })}
+                              </ul>
+                           </CategoryContainer>
+                        </>
                      )}
                   </ul>
 
@@ -165,14 +169,16 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                <div className={'flex flex-col items-center justify-center px-2 py-12 '}>
                   <div
                      className={
-                        'prose flex w-full flex-col gap-2 px-3 !font-poppins text-sm !font-light leading-loose tracking-wide !text-primary sm:gap-3 sm:text-base'
+                        'prose flex w-full flex-col gap-1 px-3 !font-poppins text-sm !font-light leading-loose tracking-wide !text-primary sm:gap-3 sm:text-base'
                      }>
                      {project?.description &&
                         project?.description[params.lang]?.map(block => {
                            return block.children.map(text => {
                               return (
                                  <p
-                                    className={'m-0 max-w-[85ch] p-0 text-left md:max-w-[105ch]'}
+                                    className={
+                                       'm-0 max-w-[85ch] p-0 text-left md:max-w-[105ch] md:text-center'
+                                    }
                                     key={text._key}>
                                     {text.text}
                                  </p>

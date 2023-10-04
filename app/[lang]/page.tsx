@@ -155,23 +155,19 @@ export default async function Home({params}: I_PageI18nParams) {
                            <Text>
                               Fondée par Jérôme Kuhn, Nathan Stornetta et Samuel Briand,{' '}
                               <Accent className="uppercase">Jamais 203 Productions</Accent> est une
-                              agence de <Accent>production audiovisuelle</Accent>.
+                              agence de production audiovisuelle.
                            </Text>
                            <Text>
                               Notre savoir-faire englobe la <Accent>composition</Accent>, la{' '}
-                              <Accent>musique à l’image</Accent>, l’
+                              <Accent>musique à l&aps;image</Accent>, l&aps;
                               <Accent>enregistrement</Accent>, la <Accent>production</Accent> et le
                               <Accent>mixage</Accent> de musique, le <Accent>design sonore</Accent>{' '}
                               pour des expériences immersives, la création de{' '}
-                              <Accent>bandes sonores sur mesure pour les spectacles</Accent>{' '}
-                              vivants, ainsi que l'
+                              <Accent>bandes sonores</Accent> sur mesure pour les spectacles
+                              vivants, ainsi que l&apos;
                               <Accent>édition musicale</Accent>, la gestion de catalogue et la
-                              réalisation
-                              <Accent>
-                                 d’évènements en direct tels que ciné-concerts, cérémonies, défilés
-                                 de mode
-                              </Accent>
-                              , et bien plus encore.
+                              réalisation d&apos;évènements en direct tels que ciné-concerts,
+                              cérémonies, défilés de mode , et bien plus encore.
                            </Text>
                         </>
                      )}
