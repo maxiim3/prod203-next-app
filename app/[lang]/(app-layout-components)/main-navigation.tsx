@@ -14,7 +14,7 @@ export default function MainNavigation() {
          }>
          <div
             className={
-               'align-center mx-auto flex max-w-[1600px] justify-between px-2 py-3 md:px-4 lg:px-8'
+               'align-center mx-auto flex  justify-between px-2 py-3 md:px-4 lg:px-8 xl:px-24 2xl:px-32'
             }>
             <Image
                width={260}
