@@ -11,10 +11,10 @@ export default function VideoBanner() {
    const CLOUDINARY_ENV = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
 
    const VIDEO_SOURCE: VideoSource = Object.freeze({
-      LOW: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1693588665/prod203/prod203_capsule_herobanner_360p.webm`,
-      MEDIUM: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1693588665/prod203/prod203_capsule_herobanner_480p.webm`,
-      HIGH: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1693588665/prod203/prod203_capsule_herobanner_720p.webm`,
-      VERY_HIGH: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1693588665/prod203/prod203_capsule_herobanner_1080p.webm`,
+      LOW: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1693588665/prod203/231005_CAPSULE_WEB_SD.webp`,
+      MEDIUM: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1693588665/prod203/231005_CAPSULE_WEB_HD.webm`,
+      HIGH: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1693588665/prod203/231005_CAPSULE_WEB_FHD.webm`,
+      VERY_HIGH: `${BASE_URL}/${CLOUDINARY_ENV}/video/upload/v1693588665/prod203/231005_CAPSULE_WEB_UHD.webm`,
    })
    const videoRef = useRef<HTMLVideoElement | null>(null)
    const playerRef = useRef<CloudinaryVideoPlayer | null>(null)
