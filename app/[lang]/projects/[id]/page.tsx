@@ -54,28 +54,30 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                width={'100%'}
                size={'3'}
                className={'mx-auto h-full max-w-7xl'}>
-               <Section
-                  size={'1'}
-                  width={'100%'}>
-                  <Flex
-                     className={'w-full pl-4 text-sm sm:pl-2 md:text-base xl:pl-0'}
-                     gap={'2'}
-                     justify={'start'}
-                     align={'center'}>
-                     <RadixLink asChild>
-                        <Link href={'/projects'}>
-                           {params.lang === 'en' ? 'Project' : 'Projets'}
-                        </Link>
-                     </RadixLink>
-                     <Text className={'event-none select-none font-poppins font-normal'}>/</Text>
-                     <Heading
-                        as={'h1'}
-                        size={'3'}
-                        className={'py-8 text-center font-poppins font-normal'}>
-                        {project?.title[params.lang]}
-                     </Heading>
-                  </Flex>
-               </Section>
+               {project.title && (
+                  <Section
+                     size={'1'}
+                     width={'100%'}>
+                     <Flex
+                        className={'w-full pl-4 text-sm sm:pl-2 md:text-base xl:pl-0'}
+                        gap={'2'}
+                        justify={'start'}
+                        align={'center'}>
+                        <RadixLink asChild>
+                           <Link href={'/projects'}>
+                              {params.lang === 'en' ? 'Project' : 'Projets'}
+                           </Link>
+                        </RadixLink>
+                        <Text className={'event-none select-none font-poppins font-normal'}>/</Text>
+                        <Heading
+                           as={'h1'}
+                           size={'3'}
+                           className={'py-8 text-center font-poppins font-normal'}>
+                           {project?.title[params.lang]}
+                        </Heading>
+                     </Flex>
+                  </Section>
+               )}
                <header className={'flex flex-col justify-between gap-2 sm:gap-1 md:gap-2'}>
                   <span
                      role={'separator'}
@@ -86,15 +88,19 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                      className={
                         'flex flex-col justify-between gap-0 px-2 text-center !font-poppins !font-light !text-primary text-balance sm:flex-row sm:gap-0 sm:px-1 md:px-8'
                      }>
-                     <CategoryContainer>
-                        <CategoryTitle>Services</CategoryTitle>
-                        <ul className={' flex-col items-center justify-center '}>
-                           {project?.services.map((service, i) => {
-                              return <li key={i}>{service[params.lang]}</li>
-                           })}
-                        </ul>
-                     </CategoryContainer>
-                     <CategoryDivider />
+                     {project.services && (
+                        <>
+                           <CategoryContainer>
+                              <CategoryTitle>Services</CategoryTitle>
+                              <ul className={' flex-col items-center justify-center '}>
+                                 {project?.services.map((service, i) => {
+                                    return <li key={i}>{service[params.lang]}</li>
+                                 })}
+                              </ul>
+                           </CategoryContainer>
+                           <CategoryDivider />{' '}
+                        </>
+                     )}
                      {project?.client && (
                         <>
                            <CategoryContainer>
@@ -136,14 +142,20 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                         </ul>
                      </CategoryContainer>
                      <CategoryDivider />*/}
-                     <CategoryContainer>
-                        <CategoryTitle>{params.lang === 'en' ? 'Year' : 'Année'}</CategoryTitle>
-                        <ul>
-                           <CategoryContent key={`date${project.releaseDate}`}>
-                              {new Date(project.releaseDate).getFullYear()}
-                           </CategoryContent>
-                        </ul>
-                     </CategoryContainer>
+                     {project.releaseDate && (
+                        <>
+                           <CategoryContainer>
+                              <CategoryTitle>
+                                 {params.lang === 'en' ? 'Year' : 'Année'}
+                              </CategoryTitle>
+                              <ul>
+                                 <CategoryContent key={`date${project.releaseDate}`}>
+                                    {new Date(project.releaseDate).getFullYear()}
+                                 </CategoryContent>
+                              </ul>
+                           </CategoryContainer>
+                        </>
+                     )}
                      {project.awards && (
                         <>
                            <CategoryDivider />
