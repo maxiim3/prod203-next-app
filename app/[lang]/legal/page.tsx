@@ -44,11 +44,11 @@ export default function Legal({params}: I_PageI18nParams) {
                   the right to access, modify, and withdraw personal data concerning you. No
                   personal information is collected without your knowledge. No personal information
                   is given to third parties. You can exercise this right by providing your first
-                  name, last name, and full address, either: By email at the address:
+                  name, last name, and full address, either:{' '}
                   <Link
                      type={'mail'}
-                     href="mailto:contact@prod203.com">
-                     contact@prod203.com
+                     href="/contact">
+                     By email
                   </Link>
                   . By postal mail at the following address: COURAUX, 85700 POUZAUGES.
                </Text>
@@ -96,14 +96,13 @@ export default function Legal({params}: I_PageI18nParams) {
                disposez d’un droit d’accès, de rectification et de retrait des données personnelles
                vous concernant. Aucune information personnelle n&apos;est collectée à votre insu.
                Aucune information personnelle n&apos;est cédée à des tiers. Vous pouvez exercer ce
-               droit en indiquant vos nom, prénom et adresse complète, soit : Par courrier
-               électronique à l’adresse :{' '}
+               droit en indiquant vos nom, prénom et adresse complète, soit :{' '}
                <Link
                   type={'mail'}
-                  href="mailto:contact@prod203.com">
-                  contact@prod203.com
+                  href="/contact">
+                  Par courriel
                </Link>
-               {'. '}Par voie postale à l’adresse suivante : COURAUX, 85700 POUZAUGES.
+               {'. '}Ou par voie postale à l’adresse suivante : COURAUX, 85700 POUZAUGES.
             </Text>
             <Text>Aucun cookie ni données personnelles ne sont collectés sur ce site</Text>
          </Block>
