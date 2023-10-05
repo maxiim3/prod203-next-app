@@ -151,6 +151,11 @@ export default async function Home({params}: I_PageI18nParams) {
                               <Accent>cinema-concerts, ceremonies, fashion shows</Accent>, and much
                               more.
                            </Text>
+                           <Text>
+                              Taking on each challenge with passion, and driven by the enthusiasm
+                              and cohesion of our creative team, our ambition is to bring a personal
+                              and unique touch to each of the projects entrusted to us
+                           </Text>
                         </>
                      ) : (
                         <>
@@ -161,7 +166,7 @@ export default async function Home({params}: I_PageI18nParams) {
                            </Text>
                            <Text>
                               Notre savoir-faire englobe la <Accent>composition</Accent>, la{' '}
-                              <Accent>musique à l&aps;image</Accent>, l&aps;
+                              <Accent>musique à l&apos;image</Accent>, l&apos;
                               <Accent>enregistrement</Accent>, la <Accent>production</Accent> et le
                               <Accent>mixage</Accent> de musique, le <Accent>design sonore</Accent>{' '}
                               pour des expériences immersives, la création de{' '}
@@ -171,6 +176,12 @@ export default async function Home({params}: I_PageI18nParams) {
                               réalisation d&apos;évènements en direct tels que{' '}
                               <Accent>ciné-concerts, cérémonies, défilés de mode </Accent>, et bien
                               plus encore.
+                           </Text>
+                           <Text>
+                              Relevant chaque défis avec passion, et animés par l&apos;enthousiasme
+                              et la cohésion de notre équipe créative, notre ambition est
+                              d&apos;apporter une touche personnelle et unique à chacun des projets
+                              qui nous sont confiés
                            </Text>
                         </>
                      )}
