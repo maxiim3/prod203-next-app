@@ -56,7 +56,7 @@ export const ProjectThumbnail = ({project, index}: ComponentProps) => {
             />
             <div
                className={twMerge(
-                  'card-body relative bg-base-100/90 shadow-md shadow-base-300/50 drop-shadow-lg motion-safe:scale-95 motion-safe:transition-all motion-safe:delay-75 motion-safe:duration-200 sm:bg-base-100/60',
+                  'card-body relative bg-base-100/80 shadow-md shadow-base-300/50 drop-shadow-lg motion-safe:scale-95 motion-safe:transition-all motion-safe:delay-75 motion-safe:duration-200 sm:bg-base-100/60',
                   'rounded-xl',
                   ' h-full w-full gap-1 px-12 py-8',
                   'motion-safe:sm:-translate-y-full motion-safe:sm:opacity-10',
@@ -74,13 +74,13 @@ export const ProjectThumbnail = ({project, index}: ComponentProps) => {
                {description &&
                   description?.[lang] &&
                   description[lang]
-                     .filter((_, blockIndex) => blockIndex < 2)
+                     .filter((_, blockIndex) => blockIndex === 0)
                      .map((block, index) => {
                         return (
                            <p
                               className={twMerge(
-                                 'font-regular font-poppins text-xs',
-                                 'line-clamp-2',
+                                 'font-regular hidden font-poppins text-xs sm:block',
+                                 'line-clamp-2 text-balance',
                                  `transition-all duration-300 motion-safe:sm:-translate-y-[50px] motion-safe:sm:opacity-75 motion-safe:sm:group-hover/card:sm:translate-y-0 motion-safe:sm:group-hover/card:sm:opacity-100`
                               )}
                               key={index}>
