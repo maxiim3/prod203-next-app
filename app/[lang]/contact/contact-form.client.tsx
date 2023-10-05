@@ -78,6 +78,7 @@ export default function ContactForm() {
                      label={'Nom'}
                   />
                   <TextField.Input
+                     className={'input bg-primary focus:ring-2'}
                      id={'name'}
                      {...register('name', {required: true, maxLength: 80, minLength: 3})}
                      size={'3'}
@@ -102,6 +103,7 @@ export default function ContactForm() {
                      label={'Addresse Mail'}
                   />
                   <TextField.Input
+                     className={'input bg-primary'}
                      {...register('email', {
                         required: true,
                         maxLength: 80,
@@ -155,7 +157,9 @@ export default function ContactForm() {
                </div>
                <button
                   type={'submit'}
-                  className={'btn-outlined btn rounded-md'}
+                  className={
+                     'btn-outlined btn rounded-md hover:shadow-xl focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 focus:ring-offset-primary-focus'
+                  }
                   disabled={false}>
                   Submit
                </button>

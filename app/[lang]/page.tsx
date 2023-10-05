@@ -27,14 +27,11 @@ export default async function Home({params}: I_PageI18nParams) {
    ]
    return (
       <main className={'relative'}>
-         <header
-            className={
-               'relative mx-auto h-screen max-h-[980px] max-w-[1600px] lg:aspect-video lg:h-auto lg:w-screen'
-            }>
+         <header className={'relative mx-auto h-screen lg:aspect-video lg:h-auto lg:w-screen'}>
             <section
                id={'hero'}
                aria-label={'Video hero banner'}
-               className="absolute top-0 mx-auto h-screen max-h-[980px] max-w-[1600px] overflow-hidden lg:aspect-video lg:h-auto lg:w-screen 2xl:rounded-bl-3xl 2xl:rounded-br-3xl">
+               className="absolute top-0 mx-auto h-screen overflow-hidden lg:aspect-video lg:h-auto lg:w-screen">
                <Suspense fallback={<Loading />}>
                   <VideoBanner />
                </Suspense>
@@ -131,58 +128,73 @@ export default async function Home({params}: I_PageI18nParams) {
                   <SectionTitle className={'hidden'} />
                   <div
                      className={
-                        'relative mx-auto flex flex-col gap-4 border-y px-4 py-12 xs:px-8 sm:m-12 md:grid md:grid-cols-2 md:gap-x-12'
+                        'relative mx-auto grid gap-4 border-y px-4 py-12 xs:px-8 sm:m-12 md:grid-cols-2'
                      }>
                      {params.lang === 'en' ? (
                         <>
-                           <Text>
-                              Founded by Jérôme Kuhn, Nathan Stornetta and Samuel Briand,
-                              <Accent className="uppercase">Jamais 203 Productions</Accent> is an
-                              audiovisual production agency.
-                           </Text>
-                           <Text>
-                              Our expertise encompasses <Accent>composition</Accent>,
-                              <Accent>music scoring</Accent>, <Accent>recording</Accent>,
-                              <Accent>production</Accent> and <Accent>mixing</Accent> of music,
-                              <Accent>sound design</Accent> for immersive experiences, creation of
-                              <Accent>soundtracks</Accent> for live performances, as well as
-                              <Accent>music publishing</Accent>, catalog management and the
-                              execution of live events such as
-                              <Accent>cinema-concerts, ceremonies, fashion shows</Accent>, and much
-                              more.
-                           </Text>
-                           <Text>
-                              Taking on each challenge with passion, and driven by the enthusiasm
-                              and cohesion of our creative team, our ambition is to bring a personal
-                              and unique touch to each of the projects entrusted to us
-                           </Text>
+                           <span
+                              className={
+                                 'flex flex-col gap-3 md:border-r md:border-primary/20 md:pr-6 '
+                              }>
+                              <Text className={'row-start-1'}>
+                                 Founded by Jérôme Kuhn, Nathan Stornetta and Samuel Briand,{' '}
+                                 <Accent className="uppercase">Jamais 203 Productions</Accent> is an
+                                 audiovisual production agency.
+                              </Text>
+                              <Text className={''}>
+                                 Our expertise encompasses <Accent>composition</Accent>,
+                                 <Accent>music scoring</Accent>, <Accent>recording</Accent>,
+                                 <Accent>production</Accent> and <Accent>mixing</Accent> of music,
+                                 <Accent>sound design</Accent> for immersive experiences, creation
+                                 of
+                                 <Accent>soundtracks</Accent> for live performances, as well as
+                                 <Accent>music publishing</Accent>, catalog management and the
+                                 execution of live events such as
+                                 <Accent>cinema-concerts, ceremonies, fashion shows</Accent>, and
+                                 much more.
+                              </Text>
+                           </span>
+                           <span className={'flex flex-col gap-3 md:pl-6'}>
+                              <Text>
+                                 Taking on each challenge with passion, and driven by the enthusiasm
+                                 and cohesion of our creative team, our ambition is to bring a
+                                 personal and unique touch to each of the projects entrusted to us
+                              </Text>
+                           </span>
                         </>
                      ) : (
                         <>
-                           <Text>
-                              Fondée par Jérôme Kuhn, Nathan Stornetta et Samuel Briand,{' '}
-                              <Accent className="uppercase">Jamais 203 Productions</Accent> est une
-                              agence de production audiovisuelle.
-                           </Text>
-                           <Text>
-                              Notre savoir-faire englobe la <Accent>composition</Accent>, la{' '}
-                              <Accent>musique à l&apos;image</Accent>, l&apos;
-                              <Accent>enregistrement</Accent>, la <Accent>production</Accent> et le
-                              <Accent>mixage</Accent> de musique, le <Accent>design sonore</Accent>{' '}
-                              pour des expériences immersives, la création de{' '}
-                              <Accent>bandes sonores</Accent> sur mesure pour les spectacles
-                              vivants, ainsi que l&apos;
-                              <Accent>édition musicale</Accent>, la gestion de catalogue et la
-                              réalisation d&apos;évènements en direct tels que{' '}
-                              <Accent>ciné-concerts, cérémonies, défilés de mode </Accent>, et bien
-                              plus encore.
-                           </Text>
-                           <Text>
-                              Relevant chaque défis avec passion, et animés par l&apos;enthousiasme
-                              et la cohésion de notre équipe créative, notre ambition est
-                              d&apos;apporter une touche personnelle et unique à chacun des projets
-                              qui nous sont confiés
-                           </Text>
+                           <span
+                              className={
+                                 'flex flex-col gap-3 md:border-r md:border-primary/20 md:pr-6 '
+                              }>
+                              <Text className={'row-start-1'}>
+                                 Fondée par Jérôme Kuhn, Nathan Stornetta et Samuel Briand,{' '}
+                                 <Accent className="uppercase">Jamais 203 Productions</Accent> est
+                                 une agence de production audiovisuelle.
+                              </Text>
+                              <Text className={''}>
+                                 Notre savoir-faire englobe la <Accent>composition</Accent>, la{' '}
+                                 <Accent>musique à l&apos;image</Accent>, l&apos;
+                                 <Accent>enregistrement</Accent>, la <Accent>production</Accent> et
+                                 le <Accent>mixage</Accent> de musique, le{' '}
+                                 <Accent>design sonore</Accent> pour des expériences immersives, la
+                                 création de <Accent>bandes sonores</Accent> sur mesure pour les
+                                 spectacles vivants, ainsi que l&apos;
+                                 <Accent>édition musicale</Accent>, la gestion de catalogue et la
+                                 réalisation d&apos;évènements en direct tels que{' '}
+                                 <Accent>ciné-concerts, cérémonies, défilés de mode </Accent>, et
+                                 bien plus encore.
+                              </Text>
+                           </span>
+                           <span className={'flex flex-col gap-3 md:pl-6'}>
+                              <Text>
+                                 Relevant chaque défis avec passion, et animés par
+                                 l&apos;enthousiasme et la cohésion de notre équipe créative, notre
+                                 ambition est d&apos;apporter une touche personnelle et unique à
+                                 chacun des projets qui nous sont confiés
+                              </Text>
+                           </span>
                         </>
                      )}
                   </div>
@@ -234,14 +246,14 @@ export default async function Home({params}: I_PageI18nParams) {
 const Text = ({children, className}: ComponentPropsWithoutRef<'p'>) => (
    <p
       className={cn(
-         'max-w-[60ch] font-extralight leading-relaxed tracking-wider text-primary text-balance',
+         'max-w-[85ch] text-sm font-light leading-relaxed tracking-wider text-primary text-balance md:text-base',
          className
       )}>
       {children}
    </p>
 )
 const Accent = ({children, className}: ComponentPropsWithoutRef<'strong'>) => (
-   <strong className={cn('font-semibold', className)}>{children}</strong>
+   <strong className={cn('font-bold', className)}>{children}</strong>
 )
 
 const Section = ({
