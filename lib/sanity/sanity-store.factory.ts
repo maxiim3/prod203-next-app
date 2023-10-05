@@ -16,6 +16,12 @@ export class SanityStoreFactory {
       this.projects = projects.map(project => {
          const matchingCategories: CategoryFactoryType[] = []
 
+         if (!project.category)
+            return {
+               ...project,
+               categories: matchingCategories,
+            }
+
          for (const catRef of project.category) {
             const category = this.categories.find(c => c._id === catRef._ref)
             if (category) {

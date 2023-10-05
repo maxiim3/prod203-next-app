@@ -8,19 +8,17 @@ import {motion} from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import {isArrayOfBlocksInputProps} from 'sanity'
 import {twMerge} from 'tailwind-merge'
 
 type T_ProjectFactory = ReturnType<typeof ProjectFactory>
 type ComponentProps = {
    index: number
-   title: T_ProjectFactory['title']['fr']
-   description?: T_ProjectFactory['description']['fr']
-   slug: T_ProjectFactory['slug']['current']
-   thumbnail: T_ProjectFactory['thumbnail']
+   project: T_ProjectFactory
 }
 
-export const ProjectThumbnail = ({slug, description, title, index, thumbnail}: ComponentProps) => {
+export const ProjectThumbnail = ({project, index}: ComponentProps) => {
+   const {title, description, slug, thumbnail} = project
+
    const containerRef = useAnimateProjectCards()
    // const imageSource = getImageSource(project)
    const {lang} = useLangParamsHook()
@@ -43,7 +41,7 @@ export const ProjectThumbnail = ({slug, description, title, index, thumbnail}: C
          }}
          ref={containerRef.current}
          className="group/card card relative h-full min-h-[260px] w-full min-w-[260px] overflow-hidden bg-base-100 shadow-xl">
-         <Link href={`/${lang}/projects/${slug}`}>
+         <Link href={`/${lang}/projects/${slug?.current}`}>
             <Image
                fill={true}
                className={twMerge(
@@ -64,15 +62,18 @@ export const ProjectThumbnail = ({slug, description, title, index, thumbnail}: C
                   'motion-safe:sm:-translate-y-full motion-safe:sm:opacity-10',
                   'motion-safe:sm:group-hover/card:translate-y-0 motion-safe:sm:group-hover/card:scale-105  motion-safe:sm:group-hover/card:bg-base-100/90 motion-safe:sm:group-hover/card:opacity-100 '
                )}>
-               <h3
-                  className={twMerge(
-                     'card-title text-base',
-                     `transition-all duration-300 motion-safe:sm:-translate-y-[50px] motion-safe:sm:opacity-75 motion-safe:sm:group-hover/card:sm:translate-y-0 motion-safe:sm:group-hover/card:opacity-100`
-                  )}>
-                  {title}
-               </h3>
+               {title && (
+                  <h3
+                     className={twMerge(
+                        'card-title text-base',
+                        `transition-all duration-300 motion-safe:sm:-translate-y-[50px] motion-safe:sm:opacity-75 motion-safe:sm:group-hover/card:sm:translate-y-0 motion-safe:sm:group-hover/card:opacity-100`
+                     )}>
+                     {title[lang]}
+                  </h3>
+               )}
                {description &&
-                  description
+                  description?.[lang] &&
+                  description[lang]
                      .filter((_, blockIndex) => blockIndex < 2)
                      .map((block, index) => {
                         return (

@@ -12,7 +12,7 @@ type T_ProjectFactory = ReturnType<typeof ProjectFactory>
 export default function ImagesGallery({pictures}: {pictures: T_ProjectFactory['gallery']}) {
    const arrayOfPictures = useMemo(
       () =>
-         pictures.map(img => {
+         pictures!.map(img => {
             const builder = ImageBuilder(img)
             console.log(builder)
             return builder.url()
@@ -36,8 +36,9 @@ export default function ImagesGallery({pictures}: {pictures: T_ProjectFactory['g
    function nextImage() {
       if (currentImage === arrayOfPictures.length - 1) return setCurrentImage(0)
 
-      // @ts-ignore
-      return document.startViewTransition(() => setCurrentImage(i => i + 1))
+      // if( document.startViewTransition)
+      //   return  document.startViewTransition(() => setCurrentImage(i => i + 1))
+      return setCurrentImage(i => i + 1)
    }
 
    function previousImage() {

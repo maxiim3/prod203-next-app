@@ -32,7 +32,7 @@ export default function ProjectsPage({store, lang}: ProjectsPageProps) {
 
       store.projects.forEach(project => {
          project.categories.forEach(cat => {
-            activeCat.every(active => active._id !== cat._id) && activeCat.push(cat)
+            activeCat.every(active => active?._id !== cat?._id) && activeCat.push(cat)
          })
       })
 
@@ -44,8 +44,8 @@ export default function ProjectsPage({store, lang}: ProjectsPageProps) {
 
       const projects: ProjectWithMappedCategory[] = []
       for (let project of store.projects) {
-         for (let category of project.categories) {
-            if (category.slug.current === activeCategory) {
+         for (let category of project?.categories) {
+            if (category?.slug?.current === activeCategory) {
                projects.push(project)
             }
          }
@@ -81,24 +81,32 @@ export default function ProjectsPage({store, lang}: ProjectsPageProps) {
                      </RadixLink>
                   </NavigationMenu.Item>
                   <ul className={'flex gap-3'}>
-                     {existingCategories.map(category => (
-                        <li key={category._id}>
-                           <RadixLink
-                              aria-selected={activeCategory === category.slug.current}
-                              className={twMerge(
-                                 'select-none snap-mandatory snap-center font-poppins font-light visited:text-primary',
-                                 'cursor-pointer text-primary/90 hover:text-primary',
-                                 activeCategory === category.slug.current
-                                    ? 'cursor-default font-semibold opacity-100'
-                                    : 'cursor-pointer opacity-90'
-                              )}
-                              asChild>
-                              <Link href={`/projects?category=${category?.slug.current}`}>
-                                 {category.name[lang]}
-                              </Link>
-                           </RadixLink>
-                        </li>
-                     ))}
+                     {existingCategories.map(category => {
+                        if (!category) return null
+
+                        if (!category?.slug?.current) return null
+
+                        if (!category?.name?.[lang]) return null
+
+                        return (
+                           <li key={category._id}>
+                              <RadixLink
+                                 aria-selected={activeCategory === category.slug.current}
+                                 className={twMerge(
+                                    'select-none snap-mandatory snap-center font-poppins font-light visited:text-primary',
+                                    'cursor-pointer text-primary/90 hover:text-primary',
+                                    activeCategory === category.slug.current
+                                       ? 'cursor-default font-semibold opacity-100'
+                                       : 'cursor-pointer opacity-90'
+                                 )}
+                                 asChild>
+                                 <Link href={`/projects?category=${category?.slug.current}`}>
+                                    {category.name[lang]}
+                                 </Link>
+                              </RadixLink>
+                           </li>
+                        )
+                     })}
                   </ul>
                </NavigationMenu.List>
             </NavigationMenu.Root>
@@ -110,17 +118,18 @@ export default function ProjectsPage({store, lang}: ProjectsPageProps) {
                      'mx-auto grid max-w-[1440px] grid-cols-1 gap-4 px-2 sm:grid-cols-2 md:px-8 lg:grid-cols-3 lg:px-12 2xl:grid-cols-4'
                   }>
                   {filterProjects
-                     .sort(
-                        (a, b) =>
-                           new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
-                     ) // 👈 add this sort function
+                     .sort((a, b) => {
+                        if (!a?.releaseDate) return 1
+                        if (!b?.releaseDate) return -1
+
+                        return (
+                           new Date(b?.releaseDate)?.getTime() - new Date(a?.releaseDate)?.getTime()
+                        )
+                     })
                      .map((p, index) => (
                         <ProjectThumbnail
                            key={p._id}
-                           title={p.title.fr}
-                           description={p.description[lang]}
-                           slug={p.slug.current}
-                           thumbnail={p.thumbnail}
+                           project={p}
                            index={index}
                         />
                      ))}

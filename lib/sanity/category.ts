@@ -21,7 +21,7 @@ export const Z_Category = z.object({
       })
       .optional(),
    _updatedAt: z.string().optional(),
-   name: Z_LocalizedString,
+   name: Z_LocalizedString.optional(),
    slug: z.object({
       _type: z
          .string()

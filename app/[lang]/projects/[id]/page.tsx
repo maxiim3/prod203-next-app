@@ -195,7 +195,9 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                      </figcaption>
                   )}
                </section>
-               {project?.gallery && <ImagesGallery pictures={project.gallery} />}
+               {project?.gallery && project.gallery.length > 0 && (
+                  <ImagesGallery pictures={project.gallery} />
+               )}
             </Container>
          </Suspense>
       </main>
