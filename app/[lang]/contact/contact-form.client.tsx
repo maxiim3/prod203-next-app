@@ -4,7 +4,6 @@ import {ReloadIcon} from '@radix-ui/react-icons'
 import {Button, Flex, Heading, Link as RadixLink, Text, Theme} from '@radix-ui/themes'
 
 import useContactFormStore, {ContactFormStore} from '@/app/[lang]/contact/contact-form.store'
-import {SectionTitle} from '@/components/section-title'
 import useLangParams from '@/hooks/useLangParams.hook'
 import ky from 'ky'
 import Link from 'next/link'
@@ -56,7 +55,7 @@ export default function ContactForm() {
          // @ts-ignore
          onSubmit={handleSubmit(onSubmit)}
          className={
-            'prose max-h-[640px] w-full rounded-md bg-primary px-9 py-12 text-base-100 sm:max-w-[650px]'
+            'prose max-h-[640px] w-full bg-primary px-2 py-12 text-base-100 sm:max-w-[650px] sm:rounded-md sm:px-4 md:px-9'
          }>
          <div className={'mb-3 flex w-full flex-col gap-5'}>
             <section className="form-control flex w-full flex-col">
