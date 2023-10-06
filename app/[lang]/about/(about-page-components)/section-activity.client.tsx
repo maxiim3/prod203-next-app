@@ -20,8 +20,61 @@ export const useTabIndex = create<IndexType>(set => ({
    // SETTER
    setActiveIndex: (index: number) => set({activeIndex: index}),
 }))
+const useDragToScroll = () => {
+   const carouselRef = useRef<HTMLDivElement>(null)
+
+   useEffect(() => {
+      const slider = carouselRef.current
+      let isDown = false
+      let startX: number
+      let scrollLeft: number
+
+      const handleMouseDown = (e: MouseEvent) => {
+         isDown = true
+         startX = e.pageX - (slider?.offsetLeft || 0)
+         scrollLeft = slider?.scrollLeft || 0
+      }
+
+      const handleMouseLeave = () => {
+         isDown = false
+      }
+
+      const handleMouseUp = () => {
+         isDown = false
+      }
+
+      const handleMouseMove = (e: MouseEvent) => {
+         if (!isDown) return
+         e.preventDefault()
+         const x = e.pageX - (slider?.offsetLeft || 0)
+         const walk = (x - startX) * 3 // scroll-fast
+         if (slider) {
+            slider.scrollLeft = scrollLeft - walk
+         }
+      }
+
+      if (slider) {
+         slider.addEventListener('mousedown', handleMouseDown)
+         slider.addEventListener('mouseleave', handleMouseLeave)
+         slider.addEventListener('mouseup', handleMouseUp)
+         slider.addEventListener('mousemove', handleMouseMove)
+      }
+
+      return () => {
+         if (slider) {
+            slider.removeEventListener('mousedown', handleMouseDown)
+            slider.removeEventListener('mouseleave', handleMouseLeave)
+            slider.removeEventListener('mouseup', handleMouseUp)
+            slider.removeEventListener('mousemove', handleMouseMove)
+         }
+      }
+   }, [])
+
+   return carouselRef
+}
 
 export default function SectionActivity() {
+   const carouselRef = useDragToScroll()
    const tabs: TabType = sectionContent.activity
    const {activeIndex} = useTabIndex(props => props)
    const {lang} = useLangParams()
@@ -74,8 +127,9 @@ export default function SectionActivity() {
             }
          />*/}
          <div
+            ref={carouselRef}
             className={
-               'carousel carousel-center relative w-screen space-x-4 p-4 sm:space-x-6 sm:p-6 md:space-x-8 md:p-8 xl:w-full xl:px-24'
+               'carousel-center carousel relative w-screen cursor-grab space-x-4 p-4 active:cursor-grabbing sm:space-x-6 sm:p-6 md:space-x-8 md:p-8 xl:w-full xl:px-24'
             }>
             {Object.entries(tabs).map(([tabKey, tabValue], index) => {
                return (
