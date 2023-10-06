@@ -31,7 +31,7 @@ export default async function Home({params}: I_PageI18nParams) {
             <section
                id={'hero'}
                aria-label={'Video hero banner'}
-               className="absolute top-0 mx-auto h-screen overflow-hidden lg:aspect-video lg:h-auto lg:w-screen">
+               className="fixed top-0 mx-auto h-screen overflow-hidden lg:aspect-video lg:h-auto lg:w-screen">
                <Suspense fallback={<Loading />}>
                   <VideoBanner />
                </Suspense>
@@ -62,7 +62,7 @@ export default async function Home({params}: I_PageI18nParams) {
                />
             </section>
          </header>
-         <div className="relative flex snap-y snap-mandatory flex-col gap-4 overflow-y-auto ">
+         <div className="relative flex snap-y snap-mandatory flex-col gap-4 overflow-y-auto bg-base-100/80  backdrop-blur-xl ">
             <Section
                id={'services'}
                ariaLabel={'Services'}
@@ -235,7 +235,10 @@ export default async function Home({params}: I_PageI18nParams) {
                   </Suspense>
                </MotionContent>
             </Section>
-            <ScrollButton anchor={{href: '#'}} />
+            <ScrollButton
+               svg={{className: 'bg-transparent'}}
+               anchor={{href: '#', className: 'bg-base-100/10'}}
+            />
          </div>
       </main>
    )
