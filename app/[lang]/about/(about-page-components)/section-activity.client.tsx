@@ -12,15 +12,18 @@ import {twMerge} from 'tailwind-merge'
 import {create} from 'zustand'
 import sectionContent from './section-content.json'
 
-const useTabIndex = create<{activeIndex: number; setActiveIndex: (index: number) => void}>(set => ({
+type IndexType = {activeIndex: number; setActiveIndex: (index: number) => void}
+export const useTabIndex = create<IndexType>(set => ({
+   // GETTER
    activeIndex: 0,
+
+   // SETTER
    setActiveIndex: (index: number) => set({activeIndex: index}),
 }))
 
 export default function SectionActivity() {
    const tabs: TabType = sectionContent.activity
-   const {activeIndex, setActiveIndex} = useTabIndex(props => props)
-
+   const {activeIndex} = useTabIndex(props => props)
    const {lang} = useLangParams()
 
    function Pictogram({value}: {value: TabType[0]}) {

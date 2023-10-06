@@ -1,4 +1,5 @@
 import ContactForm from '@/app/[lang]/contact/contact-form.client'
+import {SectionTitle} from '@/components/section-title'
 import SinglePageLayoutTemplate from '@/components/single-page-layout.template'
 import React from 'react'
 
@@ -6,6 +7,7 @@ import React from 'react'
 const Contact = () => {
    return (
       <SinglePageLayoutTemplate>
+         <SectionTitle>Contact</SectionTitle>
          <ContactForm />
       </SinglePageLayoutTemplate>
    )

@@ -8,7 +8,7 @@ export default function SinglePageLayoutTemplate({
    return (
       <main
          className={cn(
-            'flex h-screen w-screen flex-col items-center justify-start bg-base-100 py-24',
+            'flex min-h-screen w-screen flex-col items-center justify-start bg-base-100 pb-24 pt-24',
             className
          )}>
          {children}
