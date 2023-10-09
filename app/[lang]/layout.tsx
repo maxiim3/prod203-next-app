@@ -1,4 +1,5 @@
 import AppLayout from '@/app/[lang]/(app-layout-components)/app-layout'
+import GoogleAnalytics from '@/app/[lang]/(app-layout-components)/googleAnalitycs.client'
 import Loading from '@/app/[lang]/loading'
 import {cormorant, manrope, poppins} from '@/styles/font'
 import '@radix-ui/themes/styles.css'
@@ -85,6 +86,9 @@ function RootLayout({children, params}: LayoutProps) {
          </head>
          <body
             className={`${cormorant.variable} ${manrope.variable} ${poppins.variable} flex min-h-[80vh] flex-col justify-between font-poppins font-extralight`}>
+            {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
+               <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+            ) : null}
             <Suspense fallback={<Loading />}>
                <AppLayout>{children}</AppLayout>
             </Suspense>

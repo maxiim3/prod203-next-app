@@ -45,12 +45,16 @@ const useDragToScroll = () => {
 
       const handleMouseMove = (e: MouseEvent) => {
          if (!isDown) return
+         console.log(window.devicePixelRatio)
          e.preventDefault()
-         const x = e.pageX - (slider?.offsetLeft || 0)
-         const walk = (x - startX) * 3 // scroll-fast
-         if (slider) {
-            slider.scrollLeft = scrollLeft - walk
-         }
+         requestAnimationFrame(() => {
+            const x = e.clientX - (slider?.offsetLeft || 0) // 👈 changed to clientX
+            const walk = (x - startX) * 2 // scroll-fast
+            console.log(x, walk)
+            if (slider) {
+               slider.scrollLeft = scrollLeft - walk
+            }
+         })
       }
 
       if (slider) {
@@ -154,7 +158,7 @@ export default function SectionActivity() {
                         {tabValue.description[lang].split('. ').map((content, index) => (
                            <TabText
                               className={
-                                 'm-0 w-full max-w-[80ch] text-left font-poppins text-xs font-light !text-primary sm:text-sm'
+                                 'm-0 w-full max-w-[80ch] text-center font-poppins text-xs font-light !text-primary text-balance sm:text-sm'
                               }
                               key={`tab-content-${tabKey}-${index}`}>
                               {content}
@@ -204,7 +208,7 @@ const Card = ({children, index}: ComponentPropsWithoutRef<'article'> & {index: n
          data-visible={isInView}
          id={String(index + 1)}
          key={index + 1}
-         className="carousel-item rounded-box relative flex aspect-auto h-auto w-[calc(100%-4rem)] max-w-[625px] flex-col gap-4 bg-base-100/50 px-4 py-3 pb-4 text-center text-sm font-medium text-gray-400 shadow-sm shadow-base-100/50 drop-shadow-lg sm:py-6 md:py-7">
+         className="carousel-item rounded-box relative flex aspect-auto h-auto w-[calc(100%-4rem)] max-w-[625px] flex-col gap-4 bg-base-100/70 px-4 py-3 pb-4 text-center text-sm font-medium text-gray-400 shadow-sm shadow-base-100/50 drop-shadow-xl sm:py-6 md:py-7">
          {children}
       </article>
    )
