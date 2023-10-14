@@ -10,7 +10,7 @@ import {motion} from 'framer-motion'
 import {nanoid} from 'nanoid'
 import Link from 'next/link'
 import {useParams, usePathname} from 'next/navigation'
-import React, {ComponentPropsWithoutRef} from 'react'
+import React, {type ComponentPropsWithoutRef} from 'react'
 import {createPortal} from 'react-dom'
 
 export default function MobileNavigation() {

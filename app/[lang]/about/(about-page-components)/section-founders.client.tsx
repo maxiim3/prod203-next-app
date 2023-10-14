@@ -1,13 +1,13 @@
 'use client'
 
 import {TabText, TabTitle, Tooltip} from '@/app/[lang]/about/(about-page-components)/tabs.ui'
-import {TabType, useTabs} from '@/app/[lang]/about/useTabs.hook'
+import {useTabs, type TabType} from '@/app/[lang]/about/useTabs.hook'
 import useLangParams from '@/hooks/useLangParams.hook'
-import {T_ClassName} from '@/lib/types'
+import {type T_ClassName} from '@/lib/types'
 import {cn} from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, {ComponentPropsWithoutRef} from 'react'
+import React, {type ComponentPropsWithoutRef} from 'react'
 import {twMerge} from 'tailwind-merge'
 import sectionContent from './section-content.json'
 

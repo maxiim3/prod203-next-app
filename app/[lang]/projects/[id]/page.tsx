@@ -4,10 +4,10 @@ import {ProjectFactory} from '@/lib/sanity/project'
 import {SanityStoreFactory} from '@/lib/sanity/sanity-store.factory'
 import {getAllCategories, getProjectBySlug} from '@/lib/sanity/service'
 import {cn} from '@/lib/utils'
-import {I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
+import {type I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
 import {Container, Flex, Heading, Link as RadixLink, Section, Text} from '@radix-ui/themes'
 import Link from 'next/link'
-import React, {ComponentPropsWithoutRef, Suspense} from 'react'
+import React, {Suspense, type ComponentPropsWithoutRef} from 'react'
 
 export const revalidate = 2
 

@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithoutRef} from 'react'
+import React, {type ComponentPropsWithoutRef} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 const MotionContent = ({children, className}: ComponentPropsWithoutRef<'main'>) => {

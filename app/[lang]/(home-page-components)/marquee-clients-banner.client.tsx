@@ -8,7 +8,7 @@ import {
    clients_02,
 } from '@/static-content/clients.static.content'
 import Image from 'next/image'
-import React, {ComponentPropsWithoutRef, memo} from 'react'
+import React, {memo, type ComponentPropsWithoutRef} from 'react'
 import Marquee from 'react-fast-marquee'
 
 function MarqueeClientsBanner() {

@@ -6,7 +6,7 @@ import routes from '@/static-content/route.static.content'
 import {Github} from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, {ComponentPropsWithoutRef, PropsWithChildren} from 'react'
+import React, {type ComponentPropsWithoutRef, type PropsWithChildren} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export default function Footer() {

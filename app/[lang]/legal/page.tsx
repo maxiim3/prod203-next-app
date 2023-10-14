@@ -1,7 +1,7 @@
 import {cn} from '@/lib/utils'
-import {I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
+import type {I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
 import Link from 'next/link'
-import React, {ComponentPropsWithoutRef, ComponentPropsWithRef} from 'react'
+import React, {type ComponentPropsWithoutRef, type ComponentPropsWithRef} from 'react'
 
 export default function Legal({params}: I_PageI18nParams) {
    const {lang} = params

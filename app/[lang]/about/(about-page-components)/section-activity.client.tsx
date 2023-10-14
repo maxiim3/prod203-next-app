@@ -1,13 +1,13 @@
 'use client'
 
 import {TabText, TabTitle} from '@/app/[lang]/about/(about-page-components)/tabs.ui'
-import {TabType} from '@/app/[lang]/about/useTabs.hook'
+import {type TabType} from '@/app/[lang]/about/useTabs.hook'
 import useLangParams from '@/hooks/useLangParams.hook'
 import Icons from '@/lib/icons'
 import {cn} from '@/lib/utils'
 import {useInView} from 'framer-motion'
 import Image from 'next/image'
-import React, {ComponentPropsWithoutRef, useEffect, useRef} from 'react'
+import React, {useEffect, useRef, type ComponentPropsWithoutRef} from 'react'
 import {twMerge} from 'tailwind-merge'
 import {create} from 'zustand'
 import sectionContent from './section-content.json'
@@ -133,7 +133,7 @@ export default function SectionActivity() {
          <div
             ref={carouselRef}
             className={
-               'carousel-center carousel relative w-screen cursor-grab space-x-4 p-4 active:cursor-grabbing sm:space-x-6 sm:p-6 md:space-x-8 md:p-8 xl:w-full xl:px-24'
+               'carousel carousel-center relative w-screen cursor-grab space-x-4 p-4 active:cursor-grabbing sm:space-x-6 sm:p-6 md:space-x-8 md:p-8 xl:w-full xl:px-24'
             }>
             {Object.entries(tabs).map(([tabKey, tabValue], index) => {
                return (

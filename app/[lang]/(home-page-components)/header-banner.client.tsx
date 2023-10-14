@@ -6,7 +6,7 @@ import {useMounted} from '@/hooks/useMounted'
 import {cn} from '@/lib/utils'
 import {motion, useScroll, useTransform} from 'framer-motion'
 import Image from 'next/image'
-import React, {Suspense, useCallback, type ComponentPropsWithoutRef} from 'react'
+import React, {Suspense, useCallback} from 'react'
 
 export function HeaderBanner() {
    let {scrollYProgress} = useScroll()
@@ -54,13 +54,7 @@ export function HeaderBanner() {
    )
 }
 
-interface ScrollButtonComposedProps {
-   container?: ComponentPropsWithoutRef<'div'>
-   anchor?: ComponentPropsWithoutRef<'a'>
-   svg?: ComponentPropsWithoutRef<'svg'>
-}
-
-const ButtonCTA = ({svg, container, anchor}: ScrollButtonComposedProps) => {
+const ButtonCTA = () => {
    const isMounted = useMounted()
    const isIPhoneSafari = useCallback(() => {
       if (!isMounted) return false

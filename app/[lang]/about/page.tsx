@@ -3,8 +3,8 @@ import SectionFounders from '@/app/[lang]/about/(about-page-components)/section-
 import AboutPageLoader from '@/app/[lang]/about/loading'
 import {SectionTitle} from '@/components/section-title'
 import {cn} from '@/lib/utils'
-import {I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
-import React, {ComponentPropsWithoutRef, Suspense} from 'react'
+import {type I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
+import React, {Suspense, type ComponentPropsWithoutRef} from 'react'
 
 const About = ({params}: I_PageI18nParams) => {
    const {lang} = params

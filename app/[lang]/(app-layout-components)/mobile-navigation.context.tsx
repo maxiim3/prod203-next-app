@@ -1,7 +1,14 @@
 'use client'
 
 import {usePathname} from 'next/navigation'
-import {createContext, PropsWithChildren, useCallback, useContext, useEffect, useState} from 'react'
+import {
+   createContext,
+   useCallback,
+   useContext,
+   useEffect,
+   useState,
+   type PropsWithChildren,
+} from 'react'
 
 const useProvideContext = () => {
    const pathname = usePathname()

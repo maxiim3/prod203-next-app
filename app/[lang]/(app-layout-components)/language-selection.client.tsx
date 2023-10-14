@@ -4,7 +4,7 @@ import {cn} from '@/lib/utils'
 import {Z_PageI18nParam} from '@/schemas/i18n.page.props.schema'
 import Link from 'next/link'
 import {useParams, usePathname} from 'next/navigation'
-import React, {ComponentPropsWithRef, PropsWithChildren} from 'react'
+import React, {type ComponentPropsWithRef, type PropsWithChildren} from 'react'
 
 export default function LanguageSelection({
    onClick,
