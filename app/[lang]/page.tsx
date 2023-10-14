@@ -5,9 +5,9 @@ import ScrollButton from '@/app/[lang]/(home-page-components)/scroll-button.clie
 import {SectionTitle} from '@/components/section-title'
 import Icons from '@/lib/icons'
 import {cn} from '@/lib/utils'
-import {I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
+import {type I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
 import Image from 'next/image'
-import React, {ComponentPropsWithoutRef, Suspense} from 'react'
+import React, {Suspense, type ComponentPropsWithoutRef} from 'react'
 
 export default async function Home({params}: I_PageI18nParams) {
    // service : Musiques Originales, Production Executive, Édition, Mixage, Mastering, Mixage Immersif Atoms, Design Sonore, Gestion de Projet

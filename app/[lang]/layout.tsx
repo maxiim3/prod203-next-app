@@ -5,7 +5,7 @@ import {cormorant, manrope, poppins} from '@/styles/font'
 import '@radix-ui/themes/styles.css'
 import type {Metadata} from 'next'
 import 'next-cloudinary/dist/cld-video-player.css'
-import React, {PropsWithChildren, Suspense} from 'react'
+import React, {type PropsWithChildren, Suspense} from 'react'
 import '../globals.css'
 
 export const metadata: Metadata = {
