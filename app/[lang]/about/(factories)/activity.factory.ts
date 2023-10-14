@@ -1,5 +1,5 @@
+import {TabContentWithIcons, Zod_TabsWithIcon} from '@/app/[lang]/about/(factories)/tabs.models'
 import content from '@/app/[lang]/about/section-content.json'
-import {TabContentWithIcons, Zod_TabsWithIcon} from '@/app/[lang]/about/tabs.models'
 import {z} from 'zod'
 
 export class Activity extends TabContentWithIcons {
@@ -8,6 +8,9 @@ export class Activity extends TabContentWithIcons {
    }
 }
 
+/**
+ @description use Zod_ActivityEnum.Values to get the enum values
+ **/
 export const Zod_ActivityEnum = z.enum(['edit', 'music', 'production', 'soundDesign', 'live'])
 export type T_ActivityEnum = z.infer<typeof Zod_ActivityEnum>
 

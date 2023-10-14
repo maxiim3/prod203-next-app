@@ -1,10 +1,10 @@
-import SectionActivity from '@/app/[lang]/about/(activities)/section-activity.ui.organism.client'
-import SectionFounders from '@/app/[lang]/about/(founders)/section-founders.ui.organism.client'
 import AboutPageLoader from '@/app/[lang]/about/loading'
 import {SectionTitle} from '@/components/section-title'
 import {cn} from '@/lib/utils'
 import React, {Suspense, type ComponentPropsWithoutRef} from 'react'
 
+import SectionActivity from '@/app/[lang]/about/(ui)/organisms/section-activity.client'
+import SectionFounders from '@/app/[lang]/about/(ui)/organisms/section-founders.client'
 import type {T_I18nPageParam} from '@/app/[lang]/page-params.schema'
 
 const About = ({params}: T_I18nPageParam) => {

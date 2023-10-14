@@ -1,25 +1,20 @@
 'use client'
 
-import {
-   Activities,
-   Activity,
-   type T_ActivityEnum,
-} from '@/app/[lang]/about/(activities)/activity.factory'
-import {Pictogram} from '@/app/[lang]/about/(activities)/pictogram.ui.atom'
-import {useActivityTabsStore} from '@/app/[lang]/about/(activities)/use-activity-tabs.store'
-import {useCarousel} from '@/app/[lang]/about/(activities)/use-carousel.hook'
-import {TabText} from '@/app/[lang]/about/(tabs)/tab-text.ui.atom'
-import {TabTitle} from '@/app/[lang]/about/(tabs)/tab-title.ui.molecule'
-import type {T_TabStore} from '@/app/[lang]/about/tab-store.generic.schema'
+import {Activities, Activity} from '@/app/[lang]/about/(factories)/activity.factory'
+import {useCarousel} from '@/app/[lang]/about/(hooks)/use-carousel.hook'
+import type {T_ActivityStore} from '@/app/[lang]/about/(store)/store.types'
+import {useActivityTabsStore} from '@/app/[lang]/about/(store)/use-activity-tabs.store'
+import {Pictogram} from '@/app/[lang]/about/(ui)/atoms/pictogram'
+import {TabText} from '@/app/[lang]/about/(ui)/atoms/tab-text'
+import {TabTitle} from '@/app/[lang]/about/(ui)/atoms/tab-title'
+import CarouselItemContainer from '@/app/[lang]/about/(ui)/molecules/carousel-item-container.client'
 import useLangParams from '@/app/[lang]/use-lang-params.hook'
 import {cn} from '@/lib/utils'
-import {useInView} from 'framer-motion'
 import Image from 'next/image'
-import React, {useEffect, useRef, type ComponentPropsWithoutRef} from 'react'
+import React from 'react'
 
-type TypeOfStore = T_TabStore<T_ActivityEnum, Activity>
 export default function SectionActivity() {
-   const activityStore: TypeOfStore = useActivityTabsStore((store: TypeOfStore) => store)
+   const activityStore: T_ActivityStore = useActivityTabsStore((store: T_ActivityStore) => store)
    const carouselRef = useCarousel()
    const {lang} = useLangParams()
 
@@ -101,36 +96,5 @@ export default function SectionActivity() {
             </div>
          </footer>
       </div>
-   )
-}
-const CarouselItemContainer = ({
-   children,
-   tab,
-}: ComponentPropsWithoutRef<'article'> & {tab: T_ActivityEnum}) => {
-   const ref = useRef<HTMLDivElement>(null)
-
-   // const {setActiveIndex} = useTabIndex(props => props)
-   const {setActiveTab}: TypeOfStore = useActivityTabsStore((store: TypeOfStore) => store)
-
-   const isInView = useInView(ref, {
-      amount: 'all',
-      margin: '200px',
-   })
-
-   useEffect(() => {
-      if (isInView) {
-         setActiveTab(tab)
-      }
-   }, [tab, isInView, setActiveTab])
-
-   return (
-      <article
-         ref={ref}
-         data-visible={isInView}
-         id={String(tab)}
-         key={tab}
-         className="carousel-item rounded-box relative flex aspect-auto h-auto w-[calc(100%-4rem)] max-w-[625px] flex-col gap-4 bg-base-100/70 px-4 py-3 pb-4 text-center text-sm font-medium text-gray-400 shadow-sm shadow-base-100/50 drop-shadow-xl sm:py-6 md:py-7">
-         {children}
-      </article>
    )
 }

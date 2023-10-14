@@ -1,14 +1,14 @@
 'use client'
 
-import ExternalLink from '@/app/[lang]/about/(founders)/external.link.ui.atom'
-import FounderImage from '@/app/[lang]/about/(founders)/founder-image.ui.molecule.client'
-import type {T_FounderEnum} from '@/app/[lang]/about/(founders)/founder.factory'
-import {Founder, Founders, Zod_FounderEnum} from '@/app/[lang]/about/(founders)/founder.factory'
-import {useFounderTabsStore} from '@/app/[lang]/about/(founders)/use-founder-tabs.store'
-import {TabText} from '@/app/[lang]/about/(tabs)/tab-text.ui.atom'
-import {TabTitle} from '@/app/[lang]/about/(tabs)/tab-title.ui.molecule'
-import {Tooltip} from '@/app/[lang]/about/(tabs)/tooltip.ui.atom'
-import {type T_TabStore} from '@/app/[lang]/about/tab-store.generic.schema'
+import type {T_FounderEnum} from '@/app/[lang]/about/(factories)/founder.factory'
+import {Founder, Founders, Zod_FounderEnum} from '@/app/[lang]/about/(factories)/founder.factory'
+import type {T_FounderStore} from '@/app/[lang]/about/(store)/store.types'
+import {useFounderTabsStore} from '@/app/[lang]/about/(store)/use-founder-tabs.store'
+import ExternalLink from '@/app/[lang]/about/(ui)/atoms/external-link'
+import {TabText} from '@/app/[lang]/about/(ui)/atoms/tab-text'
+import {TabTitle} from '@/app/[lang]/about/(ui)/atoms/tab-title'
+import {Tooltip} from '@/app/[lang]/about/(ui)/atoms/tooltip'
+import FounderImage from '@/app/[lang]/about/(ui)/molecules/founder-image.client'
 import useLangParams from '@/app/[lang]/use-lang-params.hook'
 import {type T_ClassName} from '@/lib/types'
 import {cn} from '@/lib/utils'
@@ -16,9 +16,8 @@ import {ExternalLinkIcon} from 'lucide-react'
 import React from 'react'
 import {twMerge} from 'tailwind-merge'
 
-type TypeOfStore = T_TabStore<T_FounderEnum, Founder>
 export default function SectionFounders({className}: T_ClassName) {
-   const founderStore: TypeOfStore = useFounderTabsStore((store: TypeOfStore) => store)
+   const founderStore: T_FounderStore = useFounderTabsStore((store: T_FounderStore) => store)
    const {lang} = useLangParams()
 
    const isActive = (key: T_FounderEnum) => founderStore.activeTab === key

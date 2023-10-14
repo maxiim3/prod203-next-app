@@ -1,6 +1,10 @@
 import {Zod_I18nContent} from '@/shared/i18n.ts/i18n.global.schema'
 import {z} from 'zod'
 
+/**
+ * @description Content from each tab data
+ * @see content
+ **/
 export const Zod_TabsSharedContent = z.object({
    title: Zod_I18nContent,
    description: Zod_I18nContent,
@@ -16,6 +20,7 @@ export abstract class Abstract_Class_TabContent {
    }
 }
 
+// Extends the base class with Icon and source
 export const Zod_TabsWithIcon = Zod_TabsSharedContent.extend({
    Icon: z.any().optional(),
    source: z.string().optional(),

@@ -1,4 +1,4 @@
-import type {Activity} from '@/app/[lang]/about/(activities)/activity.factory'
+import {Activity} from '@/app/[lang]/about/(factories)/activity.factory'
 import Icons from '@/lib/icons'
 import Image from 'next/image'
 import React from 'react'

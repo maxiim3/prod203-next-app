@@ -1,20 +1,23 @@
-import {Founder, Founders, type T_FounderEnum} from '@/app/[lang]/about/(founders)/founder.factory'
-import {useFounderTabsStore} from '@/app/[lang]/about/(founders)/use-founder-tabs.store'
-import {type T_TabStore} from '@/app/[lang]/about/tab-store.generic.schema'
+'use client'
+
+import {Founders, type T_FounderEnum} from '@/app/[lang]/about/(factories)/founder.factory'
+import {type T_FounderStore} from '@/app/[lang]/about/(store)/store.types'
+import {useFounderTabsStore} from '@/app/[lang]/about/(store)/use-founder-tabs.store'
 import useLangParams from '@/app/[lang]/use-lang-params.hook'
 import {cn} from '@/lib/utils'
 import Image from 'next/image'
 import React, {type ComponentPropsWithoutRef} from 'react'
 
-type ImageComponentProps = {
+export default function FounderImage({
+   img,
+   founderKey,
+}: {
    img: ComponentPropsWithoutRef<'img'>
    founderKey: T_FounderEnum
-}
-type TypeOfStore = T_TabStore<T_FounderEnum, Founder>
-export default function ImageComponent({img, founderKey}: ImageComponentProps) {
+}) {
    const {lang} = useLangParams()
 
-   const founderStore: TypeOfStore = useFounderTabsStore((store: TypeOfStore) => store)
+   const founderStore: T_FounderStore = useFounderTabsStore((store: T_FounderStore) => store)
 
    const setActive = () => founderStore.setActiveTab(founderKey)
    const isActive = founderStore.activeTab === founderKey

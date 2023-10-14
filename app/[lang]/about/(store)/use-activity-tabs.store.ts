@@ -3,8 +3,8 @@ import {
    Activity,
    Zod_ActivityEnum,
    type T_ActivityEnum,
-} from '@/app/[lang]/about/(activities)/activity.factory'
-import type {T_TabStore} from '@/app/[lang]/about/tab-store.generic.schema'
+} from '@/app/[lang]/about/(factories)/activity.factory'
+import type {T_GenericStore} from '@/app/[lang]/about/(store)/store.types'
 import {create} from 'zustand'
 
 /**
@@ -15,10 +15,10 @@ import {create} from 'zustand'
  * @example
  *    const {getAll, getById, activeTab, setActiveTab} = useActivityTabsStore()
  *
- * @see T_TabStore
+ * @see T_GenericStore
  * @requires zustand
  **/
-export const useActivityTabsStore = create<T_TabStore<T_ActivityEnum, Activity>>(set => ({
+export const useActivityTabsStore = create<T_GenericStore<T_ActivityEnum, Activity>>(set => ({
    // getter state
    getAll: () => Activities,
    getById: key => {

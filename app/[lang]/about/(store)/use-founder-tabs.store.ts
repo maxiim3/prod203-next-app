@@ -3,8 +3,8 @@ import {
    Founders,
    Zod_FounderEnum,
    type T_FounderEnum,
-} from '@/app/[lang]/about/(founders)/founder.factory'
-import {type T_TabStore} from '@/app/[lang]/about/tab-store.generic.schema'
+} from '@/app/[lang]/about/(factories)/founder.factory'
+import type {T_GenericStore} from '@/app/[lang]/about/(store)/store.types'
 import {create} from 'zustand'
 
 /**
@@ -15,10 +15,10 @@ import {create} from 'zustand'
  * @example
  *    const {getAll, getById, activeTab, setActiveTab} = useFounderTabsStore()
  *
- * @see T_TabStore
+ * @see T_GenericStore
  * @requires zustand
  **/
-export const useFounderTabsStore = create<T_TabStore<T_FounderEnum, Founder>>(set => ({
+export const useFounderTabsStore = create<T_GenericStore<T_FounderEnum, Founder>>(set => ({
    // getter state
    getAll: () => Founders,
    getById: key => {

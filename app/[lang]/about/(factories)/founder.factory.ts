@@ -1,5 +1,8 @@
+import {
+   Abstract_Class_TabContent,
+   Zod_TabsSharedContent,
+} from '@/app/[lang]/about/(factories)/tabs.models'
 import content from '@/app/[lang]/about/section-content.json'
-import {Abstract_Class_TabContent, Zod_TabsSharedContent} from '@/app/[lang]/about/tabs.models'
 import {z} from 'zod'
 
 export class Founder extends Abstract_Class_TabContent {
@@ -8,6 +11,9 @@ export class Founder extends Abstract_Class_TabContent {
    }
 }
 
+/**
+ * @description use Zod_FounderEnum.Values to get the enum values
+ */
 export const Zod_FounderEnum = z.enum(['Jerome', 'Nathan', 'Sam'])
 export type T_FounderEnum = z.infer<typeof Zod_FounderEnum>
 
