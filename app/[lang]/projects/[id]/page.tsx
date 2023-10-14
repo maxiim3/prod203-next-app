@@ -55,7 +55,7 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                width={'100%'}
                size={'3'}
                className={'mx-auto h-full max-w-7xl'}>
-               {project.title && (
+               {project?.title && (
                   <Section
                      size={'1'}
                      width={'100%'}>
@@ -89,7 +89,7 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                      className={
                         'flex flex-col justify-between gap-0 px-2 text-center !font-poppins !font-light !text-primary text-balance sm:flex-row sm:gap-0 sm:px-1 md:px-8'
                      }>
-                     {project.services && (
+                     {project?.services && (
                         <>
                            <CategoryContainer>
                               <CategoryTitle>Services</CategoryTitle>
@@ -143,7 +143,7 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                         </ul>
                      </CategoryContainer>
                      <CategoryDivider />*/}
-                     {project.releaseDate && (
+                     {project?.releaseDate && (
                         <>
                            <CategoryContainer>
                               <CategoryTitle>
@@ -157,7 +157,7 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                            </CategoryContainer>
                         </>
                      )}
-                     {project.awards && (
+                     {project?.awards && (
                         <>
                            <CategoryDivider />
                            <CategoryContainer>
