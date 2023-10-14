@@ -12,7 +12,7 @@ export function HeaderBanner() {
    let {scrollYProgress} = useScroll()
 
    let y = useTransform(scrollYProgress, [0, 2], ['0%', '200%'])
-   let scale = useTransform(scrollYProgress, [0, 1], ['100%', '150%'])
+   // let scale = useTransform(scrollYProgress, [0, 1], ['100%', '150%'])
    let opacity = useTransform(scrollYProgress, [0, 1], ['100%', '0%'])
    console.log()
    return (
@@ -26,7 +26,7 @@ export function HeaderBanner() {
             </Suspense>
          </motion.section>
          <motion.section
-            style={{y, scale, opacity}}
+            style={{y, opacity}}
             className="absolute flex h-full w-screen flex-col items-center text-center text-primary">
             <article
                className={
