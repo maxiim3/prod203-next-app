@@ -4,10 +4,11 @@ import {ProjectFactory} from '@/lib/sanity/project'
 import {SanityStoreFactory} from '@/lib/sanity/sanity-store.factory'
 import {getAllCategories, getProjectBySlug} from '@/lib/sanity/service'
 import {cn} from '@/lib/utils'
-import {I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
 import {Container, Flex, Heading, Link as RadixLink, Section, Text} from '@radix-ui/themes'
 import Link from 'next/link'
-import React, {ComponentPropsWithoutRef, Suspense} from 'react'
+import React, {Suspense, type ComponentPropsWithoutRef} from 'react'
+
+import type {T_I18nPageParam} from '@/app/[lang]/page-params.schema'
 
 export const revalidate = 2
 
@@ -21,7 +22,7 @@ type ProjectPageProps = {
    params: {
       id: string
    }
-} & I_PageI18nParams
+} & T_I18nPageParam
 
 const ProjectPage = async ({params}: ProjectPageProps) => {
    const store = await getContentLakeData(params.id)
@@ -54,7 +55,7 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                width={'100%'}
                size={'3'}
                className={'mx-auto h-full max-w-7xl'}>
-               {project.title && (
+               {project?.title && (
                   <Section
                      size={'1'}
                      width={'100%'}>
@@ -88,7 +89,7 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                      className={
                         'flex flex-col justify-between gap-0 px-2 text-center !font-poppins !font-light !text-primary text-balance sm:flex-row sm:gap-0 sm:px-1 md:px-8'
                      }>
-                     {project.services && (
+                     {project?.services && (
                         <>
                            <CategoryContainer>
                               <CategoryTitle>Services</CategoryTitle>
@@ -142,7 +143,7 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                         </ul>
                      </CategoryContainer>
                      <CategoryDivider />*/}
-                     {project.releaseDate && (
+                     {project?.releaseDate && (
                         <>
                            <CategoryContainer>
                               <CategoryTitle>
@@ -156,7 +157,7 @@ const ProjectPage = async ({params}: ProjectPageProps) => {
                            </CategoryContainer>
                         </>
                      )}
-                     {project.awards && (
+                     {project?.awards && (
                         <>
                            <CategoryDivider />
                            <CategoryContainer>

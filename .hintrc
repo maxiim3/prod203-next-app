@@ -4,7 +4,7 @@
   ],
   "hints": {
     "typescript-config/is-valid": "off",
-    "axe/name-role-value": [
+    "axe/name-role-activity": [
       "default",
       {
         "link-name": "off"

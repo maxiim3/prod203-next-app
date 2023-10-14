@@ -1,9 +1,11 @@
 'use client'
 
 import {ProjectThumbnail} from '@/app/[lang]/projects/project-thumbnail.client'
-import {CategoryFactoryType, ProjectWithMappedCategory} from '@/lib/sanity/sanity-store.factory'
+import {
+   type CategoryFactoryType,
+   type ProjectWithMappedCategory,
+} from '@/lib/sanity/sanity-store.factory'
 import {cn} from '@/lib/utils'
-import {I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import {Flex, Link as RadixLink} from '@radix-ui/themes'
 import Link from 'next/link'
@@ -12,19 +14,16 @@ import React, {Suspense, useMemo} from 'react'
 import {twMerge} from 'tailwind-merge'
 import scrollBar from './scrollBar.module.css'
 
+import type {T_I18nPageParam} from '@/app/[lang]/page-params.schema'
+
 type ProjectsPageProps = {
    store: {
       projects: ProjectWithMappedCategory[]
       categories: CategoryFactoryType[]
    }
-   lang: I_PageI18nParams['params']['lang']
+   lang: T_I18nPageParam['params']['lang']
 }
 export default function ProjectsPage({store, lang}: ProjectsPageProps) {
-   // const projects = await getAllProjects()
-   // const categories = await getAllCategories()
-   /*   const projects = mockedProjects
-   const categories = mockedCategories*/
-
    const searchParams = useSearchParams()
    const activeCategory = searchParams.get('category')
 
@@ -78,7 +77,7 @@ export default function ProjectsPage({store, lang}: ProjectsPageProps) {
                               : 'cursor-pointer opacity-90'
                         )}
                         asChild>
-                        <Link href={`/projects?category=all`}>
+                        <Link href={`/${lang}/projects?category=all`}>
                            {lang === 'en' ? 'All' : 'Toutes'}
                         </Link>
                      </RadixLink>
@@ -91,20 +90,23 @@ export default function ProjectsPage({store, lang}: ProjectsPageProps) {
 
                         if (!category?.name?.[lang]) return null
 
+                        const categoryTitle = category.name[lang]
+                        const categoryPath = category.slug.current
+
                         return (
                            <li key={category._id}>
                               <RadixLink
-                                 aria-selected={activeCategory === category.slug.current}
+                                 aria-selected={activeCategory === categoryPath}
                                  className={twMerge(
                                     'select-none snap-mandatory snap-center font-poppins font-light visited:text-primary',
                                     'cursor-pointer text-primary/90 hover:text-primary',
-                                    activeCategory === category.slug.current
+                                    activeCategory === categoryPath
                                        ? 'cursor-default font-semibold opacity-100'
                                        : 'cursor-pointer opacity-90'
                                  )}
                                  asChild>
-                                 <Link href={`/projects?category=${category?.slug.current}`}>
-                                    {category.name[lang]}
+                                 <Link href={`/${lang}/projects?category=${categoryPath}`}>
+                                    {categoryTitle}
                                  </Link>
                               </RadixLink>
                            </li>

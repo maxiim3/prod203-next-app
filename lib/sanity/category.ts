@@ -4,7 +4,7 @@ export const Z_LocalizedString = z.object({
    _type: z
       .string()
       .refine(value => value === 'localizedString', {
-         message: 'Category value must be type of `localizedString`',
+         message: 'Category activity must be type of `localizedString`',
       })
       .optional(),
    en: z.string(),

@@ -1,5 +1,4 @@
-import {CloudinaryVideoPlayer} from 'next-cloudinary'
-import {MutableRefObject, useCallback} from 'react'
+import {useCallback, type MutableRefObject} from 'react'
 
 /**
  * Custom hook to determine the most appropriate video source based on network and screen size.

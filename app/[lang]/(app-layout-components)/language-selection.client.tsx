@@ -1,10 +1,11 @@
 'use client'
 
 import {cn} from '@/lib/utils'
-import {Z_PageI18nParam} from '@/schemas/i18n.page.props.schema'
 import Link from 'next/link'
 import {useParams, usePathname} from 'next/navigation'
-import React, {ComponentPropsWithRef, PropsWithChildren} from 'react'
+import React, {type ComponentPropsWithRef, type PropsWithChildren} from 'react'
+
+import {Zod_I18nPageParam} from '@/app/[lang]/page-params.schema'
 
 export default function LanguageSelection({
    onClick,
@@ -16,7 +17,7 @@ export default function LanguageSelection({
 }) {
    const pathname = usePathname()
    const params = useParams()
-   let safeParams = Z_PageI18nParam.safeParse(params)
+   let safeParams = Zod_I18nPageParam.safeParse(params)
    let currentLang = safeParams.success ? safeParams.data.lang : 'fr'
 
    function buildURL(url: string, currentLang: 'fr' | 'en', replaceBy: 'fr' | 'en') {

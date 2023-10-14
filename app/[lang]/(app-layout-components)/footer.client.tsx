@@ -1,12 +1,12 @@
 'use client'
 
-import useLangParamsHook from '@/hooks/useLangParams.hook'
+import useLangParamsHook from '@/app/[lang]/use-lang-params.hook'
 import {cn} from '@/lib/utils'
-import routes from '@/static-content/route.static.content'
+import routes, {Route} from '@/static-content/route.static.content'
 import {Github} from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, {ComponentPropsWithoutRef, PropsWithChildren} from 'react'
+import React, {type ComponentPropsWithoutRef, type PropsWithChildren} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export default function Footer() {
@@ -52,7 +52,7 @@ export default function Footer() {
 
    return (
       <footer className={'relative bg-gradient-to-b from-base-100 from-40% to-base-200'}>
-         <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
+         <div className="space-opacity-8 lg:space-opacity-16 mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="sm:flex sm:justify-between">
                <Image
                   width={260}
@@ -87,12 +87,15 @@ export default function Footer() {
             <div className="grid grid-cols-1 gap-8 border-t border-primary/80 pt-8 sm:grid-cols-2 lg:grid-cols-4 lg:pt-16">
                <Section>
                   <SectionTitle>Liens rapides</SectionTitle>
-                  {routes.map((route, index) => {
+                  {routes.map(route => {
+                     const {name, path}: Route = route
+                     const title = name[lang]!
+
                      return (
                         <Item
-                           className={cn(pathname === route.path && 'font-semibold')}
-                           key={`footer-nav-${index}`}>
-                           <Link href={`/${lang}${route.path}`}>{route.name[lang]}</Link>
+                           className={cn(pathname === path && 'font-semibold')}
+                           key={`footer-nav${path}`}>
+                           <Link href={`/${lang}${path}`}>{title}</Link>
                         </Item>
                      )
                   })}

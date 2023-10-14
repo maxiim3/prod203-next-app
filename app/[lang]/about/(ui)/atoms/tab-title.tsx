@@ -1,5 +1,5 @@
 import {cn} from '@/lib/utils'
-import React, {ComponentPropsWithoutRef} from 'react'
+import React, {type ComponentPropsWithoutRef} from 'react'
 
 type T_TabItemProps = {
    active?: boolean
@@ -23,23 +23,5 @@ export const TabTitle = ({className, children, active, disabled, onClick}: T_Tab
          )}>
          {children}
       </li>
-   )
-}
-
-export const TabText = ({className, children}: ComponentPropsWithoutRef<'p'>) => {
-   return <p className={cn(' text-sm font-normal tracking-wide ', className)}>{children}</p>
-}
-
-export const Tooltip = ({
-   children,
-   className,
-   message,
-}: ComponentPropsWithoutRef<'span'> & {message: string}) => {
-   return (
-      <span
-         data-tip={message}
-         className={cn('tooltip', className)}>
-         {children}
-      </span>
    )
 }

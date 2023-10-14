@@ -1,7 +1,14 @@
 'use client'
 
 import {usePathname} from 'next/navigation'
-import {createContext, PropsWithChildren, useCallback, useContext, useEffect, useState} from 'react'
+import {
+   createContext,
+   useCallback,
+   useContext,
+   useEffect,
+   useState,
+   type PropsWithChildren,
+} from 'react'
 
 const useProvideContext = () => {
    const pathname = usePathname()
@@ -64,7 +71,7 @@ const useProvideContext = () => {
 const NavigationCtx = createContext<null | ReturnType<typeof useProvideContext>>(null)
 
 export function MobileNavigationContext({children}: PropsWithChildren<{}>) {
-   // Use your custom hook to provide the context value
+   // Use your custom hook to provide the context activity
    const contextValue = useProvideContext()
 
    return <NavigationCtx.Provider value={contextValue}>{children}</NavigationCtx.Provider>

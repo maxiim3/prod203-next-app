@@ -3,8 +3,8 @@
 import {ReloadIcon} from '@radix-ui/react-icons'
 import {Button, Flex, Heading, Link as RadixLink, Text, Theme} from '@radix-ui/themes'
 
-import useContactFormStore, {ContactFormStore} from '@/app/[lang]/contact/contact-form.store'
-import useLangParams from '@/hooks/useLangParams.hook'
+import useContactFormStore, {type ContactFormStore} from '@/app/[lang]/contact/contact-form.store'
+import useLangParams from '@/app/[lang]/use-lang-params.hook'
 import ky from 'ky'
 import Link from 'next/link'
 import React from 'react'
