@@ -1,7 +1,6 @@
 import {HeaderBanner} from '@/app/[lang]/(home-page-components)/header-banner.client'
 import MarqueeBanner from '@/app/[lang]/(home-page-components)/marquee-clients-banner.client'
 import MotionContent from '@/app/[lang]/(home-page-components)/motion-content.client'
-import ScrollButton from '@/app/[lang]/(home-page-components)/scroll-button.client'
 import {SectionTitle} from '@/components/section-title'
 import Icons from '@/lib/icons'
 import {cn} from '@/lib/utils'
@@ -200,10 +199,25 @@ export default async function Home({params}: I_PageI18nParams) {
                   </Suspense>
                </MotionContent>
             </Section>
-            <ScrollButton
-               svg={{className: 'bg-transparent'}}
-               anchor={{href: '#', className: 'bg-base-100/10'}}
-            />
+            <a
+               href="#"
+               className={
+                  'btn-base-100  btn mx-auto mb-24 flex h-24 w-12 items-center justify-center rounded-md border-none  p-1 text-xl font-bold uppercase text-primary opacity-70 backdrop-blur-md backdrop:opacity-0 xs:h-16 xs:w-16'
+               }>
+               <svg
+                  width="64"
+                  className={cn(
+                     'h-8 w-8 text-primary xs:h-12 xs:w-12 sm:h-12 sm:w-12 lg:h-16 lg:w-16'
+                  )}
+                  height="64"
+                  viewBox="0 0 1024 1024"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                     fill="currentColor"
+                     d="m488.832 344.32l-339.84 356.672a32 32 0 0 0 0 44.16l.384.384a29.44 29.44 0 0 0 42.688 0l320-335.872l319.872 335.872a29.44 29.44 0 0 0 42.688 0l.384-.384a32 32 0 0 0 0-44.16L535.168 344.32a32 32 0 0 0-46.336 0z"
+                  />
+               </svg>
+            </a>
          </div>
       </main>
    )

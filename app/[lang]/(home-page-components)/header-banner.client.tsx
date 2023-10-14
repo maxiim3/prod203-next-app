@@ -1,12 +1,12 @@
 'use client'
 
-import ScrollButton from '@/app/[lang]/(home-page-components)/scroll-button.client'
 import VideoBanner from '@/app/[lang]/(home-page-components)/video-banner.client'
 import Loading from '@/app/[lang]/loading'
+import {useMounted} from '@/hooks/useMounted'
 import {cn} from '@/lib/utils'
 import {motion, useScroll, useTransform} from 'framer-motion'
 import Image from 'next/image'
-import React, {Suspense} from 'react'
+import React, {Suspense, useCallback, type ComponentPropsWithoutRef} from 'react'
 
 export function HeaderBanner() {
    let {scrollYProgress} = useScroll()
@@ -47,13 +47,65 @@ export function HeaderBanner() {
             </article>
 
             <motion.div className={' bottom-2 flex h-auto w-auto justify-center'}>
-               <ScrollButton
-                  container={{className: 'opacity-75 animate-scroll transform'}}
-                  anchor={{href: '#services'}}
-                  svg={{className: 'rotate-180'}}
-               />
+               <ButtonCTA />
             </motion.div>
          </motion.section>
       </header>
+   )
+}
+
+interface ScrollButtonComposedProps {
+   container?: ComponentPropsWithoutRef<'div'>
+   anchor?: ComponentPropsWithoutRef<'a'>
+   svg?: ComponentPropsWithoutRef<'svg'>
+}
+
+const ButtonCTA = ({svg, container, anchor}: ScrollButtonComposedProps) => {
+   const isMounted = useMounted()
+   const isIPhoneSafari = useCallback(() => {
+      if (!isMounted) return false
+      const userAgent = navigator?.userAgent
+      const isIPhoneSafari = /iPhone.*Safari\/[\w.]+/.test(userAgent)
+
+      if (isIPhoneSafari) {
+         // Add your code for iPhone Safari
+         console.log('This is iPhone Safari')
+         return true
+      } else {
+         // Code for other browsers
+         console.log('This is not iPhone Safari')
+         return false
+      }
+   }, [isMounted])
+
+   return (
+      <div
+         className={cn(
+            `absolute bottom-0 z-30 flex w-full items-center justify-center pb-8 sm:pb-[5vw]  2xl:pb-40  landscape:pb-8  md:landscape:pb-[5vw] 2xl:landscape:pb-20`,
+            {
+               'pb-24': isIPhoneSafari(),
+            },
+            'transform opacity-75'
+         )}>
+         <a
+            href={'#services'}
+            className={
+               'relative mx-auto h-16 w-12 overflow-hidden rounded-lg border-none bg-base-100/40 backdrop-blur-md backdrop:opacity-0 hover:bg-base-100/90 md:h-24 md:w-16'
+            }>
+            <span className={'flex w-full animate-scroll items-center justify-center '}>
+               <svg
+                  width="64"
+                  height="64"
+                  viewBox="0 0 1024 1024"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={'h-8 w-8 !rotate-180 text-primary md:h-12   md:w-12'}>
+                  <path
+                     fill="currentColor"
+                     d="m488.832 344.32l-339.84 356.672a32 32 0 0 0 0 44.16l.384.384a29.44 29.44 0 0 0 42.688 0l320-335.872l319.872 335.872a29.44 29.44 0 0 0 42.688 0l.384-.384a32 32 0 0 0 0-44.16L535.168 344.32a32 32 0 0 0-46.336 0z"
+                  />
+               </svg>
+            </span>
+         </a>
+      </div>
    )
 }

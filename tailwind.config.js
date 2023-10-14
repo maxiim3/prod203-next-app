@@ -154,8 +154,8 @@ module.exports = {
                '100%': {transform: 'translateX(-50%)'},
             },
             scrollInvitation: {
-               '0%': {transform: 'translateY(-30px)', opacity: 0},
-               '100%': {transform: 'translateY(0%)', opacity: 1},
+               '0%': {transform: 'translateY(0)', opacity: 0.3},
+               '100%': {transform: 'translateY(90%)', opacity: 1},
             },
             fadeAndSlideFromBottom: {
                '0%': {opacity: '0', transform: 'translateY(100px)'},
