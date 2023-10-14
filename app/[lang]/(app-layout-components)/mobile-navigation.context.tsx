@@ -71,7 +71,7 @@ const useProvideContext = () => {
 const NavigationCtx = createContext<null | ReturnType<typeof useProvideContext>>(null)
 
 export function MobileNavigationContext({children}: PropsWithChildren<{}>) {
-   // Use your custom hook to provide the context value
+   // Use your custom hook to provide the context activity
    const contextValue = useProvideContext()
 
    return <NavigationCtx.Provider value={contextValue}>{children}</NavigationCtx.Provider>

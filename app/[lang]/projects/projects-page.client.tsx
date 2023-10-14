@@ -6,7 +6,6 @@ import {
    type ProjectWithMappedCategory,
 } from '@/lib/sanity/sanity-store.factory'
 import {cn} from '@/lib/utils'
-import {type I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import {Flex, Link as RadixLink} from '@radix-ui/themes'
 import Link from 'next/link'
@@ -15,12 +14,14 @@ import React, {Suspense, useMemo} from 'react'
 import {twMerge} from 'tailwind-merge'
 import scrollBar from './scrollBar.module.css'
 
+import type {T_I18nPageParam} from '@/app/[lang]/page-params.schema'
+
 type ProjectsPageProps = {
    store: {
       projects: ProjectWithMappedCategory[]
       categories: CategoryFactoryType[]
    }
-   lang: I_PageI18nParams['params']['lang']
+   lang: T_I18nPageParam['params']['lang']
 }
 export default function ProjectsPage({store, lang}: ProjectsPageProps) {
    // const projects = await getAllProjects()

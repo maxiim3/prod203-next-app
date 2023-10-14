@@ -4,10 +4,11 @@ import {ProjectFactory} from '@/lib/sanity/project'
 import {SanityStoreFactory} from '@/lib/sanity/sanity-store.factory'
 import {getAllCategories, getProjectBySlug} from '@/lib/sanity/service'
 import {cn} from '@/lib/utils'
-import {type I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
 import {Container, Flex, Heading, Link as RadixLink, Section, Text} from '@radix-ui/themes'
 import Link from 'next/link'
 import React, {Suspense, type ComponentPropsWithoutRef} from 'react'
+
+import type {T_I18nPageParam} from '@/app/[lang]/page-params.schema'
 
 export const revalidate = 2
 
@@ -21,7 +22,7 @@ type ProjectPageProps = {
    params: {
       id: string
    }
-} & I_PageI18nParams
+} & T_I18nPageParam
 
 const ProjectPage = async ({params}: ProjectPageProps) => {
    const store = await getContentLakeData(params.id)

@@ -4,7 +4,6 @@ import LanguageSelection from '@/app/[lang]/(app-layout-components)/language-sel
 import {useMobileNavigation} from '@/app/[lang]/(app-layout-components)/mobile-navigation.context'
 import {NavigationItem, NavigationList} from '@/app/[lang]/(app-layout-components)/navigation.ui'
 import {cn} from '@/lib/utils'
-import {Z_PageI18nParam} from '@/schemas/i18n.page.props.schema'
 import routes from '@/static-content/route.static.content'
 import {motion} from 'framer-motion'
 import {nanoid} from 'nanoid'
@@ -12,6 +11,8 @@ import Link from 'next/link'
 import {useParams, usePathname} from 'next/navigation'
 import React, {type ComponentPropsWithoutRef} from 'react'
 import {createPortal} from 'react-dom'
+
+import {Zod_I18nPageParam} from '@/app/[lang]/page-params.schema'
 
 export default function MobileNavigation() {
    const {modalIsOpen} = useMobileNavigation()
@@ -29,7 +30,7 @@ const MenuPortal = () => {
    const {handleCloseMenu, modalIsOpen} = useMobileNavigation()
    const pathName = usePathname()
    const params = useParams()
-   let parsed = Z_PageI18nParam.parse(params)
+   let parsed = Zod_I18nPageParam.parse(params)
    let currentLang = parsed.lang || 'fr'
    return (
       <dialog

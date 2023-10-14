@@ -2,8 +2,9 @@ import ProjectPageLoader from '@/app/[lang]/projects/loading'
 import ProjectsPage from '@/app/[lang]/projects/projects-page.client'
 import {SanityStoreFactory} from '@/lib/sanity/sanity-store.factory'
 import {getAllCategories, getAllProjects} from '@/lib/sanity/service'
-import {type I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
 import React, {Suspense} from 'react'
+
+import type {T_I18nPageParam} from '@/app/[lang]/page-params.schema'
 
 export const revalidate = 2
 
@@ -14,7 +15,7 @@ const getContentLakeData = async () => {
 }
 
 // const Projects = async ({searchParams}: PageSlugAndCategoryParams) => { /*Moved the logic in useSearchParams in projectGallery component*/
-const Projects = async ({params}: I_PageI18nParams) => {
+const Projects = async ({params}: T_I18nPageParam) => {
    const {projects, categories} = await getContentLakeData()
 
    return (

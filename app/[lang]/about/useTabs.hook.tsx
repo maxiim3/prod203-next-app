@@ -1,5 +1,7 @@
 import {useEffect, useState} from 'react'
 
+// OLD STORE
+
 export type TabType = Record<
    string,
    {
@@ -10,9 +12,9 @@ export type TabType = Record<
    }
 >
 
-export const useTabs = (Tabs: TabType) => {
-   const defaultTab = Object.keys(Tabs)[0] // first tab
-   const [activeTab, setActiveTab] = useState<keyof typeof Tabs>(defaultTab)
+export const useTabs = (Tabs: TabType[]) => {
+   const defaultTab: TabType = Object.keys(Tabs)[0] // first tab
+   const [activeTab, setActiveTab] = useState<TabType>(defaultTab)
    useEffect(() => {
       console.log(Tabs)
       setActiveTab(defaultTab)

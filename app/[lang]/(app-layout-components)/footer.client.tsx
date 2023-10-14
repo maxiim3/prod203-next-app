@@ -1,6 +1,6 @@
 'use client'
 
-import useLangParamsHook from '@/hooks/useLangParams.hook'
+import useLangParamsHook from '@/app/[lang]/use-lang-params.hook'
 import {cn} from '@/lib/utils'
 import routes from '@/static-content/route.static.content'
 import {Github} from 'lucide-react'
@@ -52,7 +52,7 @@ export default function Footer() {
 
    return (
       <footer className={'relative bg-gradient-to-b from-base-100 from-40% to-base-200'}>
-         <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
+         <div className="space-opacity-8 lg:space-opacity-16 mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="sm:flex sm:justify-between">
                <Image
                   width={260}

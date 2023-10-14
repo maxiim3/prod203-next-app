@@ -1,7 +1,7 @@
 'use client'
 
 import useAnimateProjectCards from '@/app/[lang]/projects/use-canimate-project-cards.hook'
-import useLangParamsHook from '@/hooks/useLangParams.hook'
+import useLangParamsHook from '@/app/[lang]/use-lang-params.hook'
 import ImageBuilder from '@/lib/sanity/image.builder'
 import {ProjectFactory} from '@/lib/sanity/project'
 import {motion} from 'framer-motion'

@@ -1,12 +1,13 @@
-import SectionActivity from '@/app/[lang]/about/(about-page-components)/section-activity.client'
-import SectionFounders from '@/app/[lang]/about/(about-page-components)/section-founders.client'
+import SectionActivity from '@/app/[lang]/about/(activities)/section-activity.ui.organism.client'
+import SectionFounders from '@/app/[lang]/about/(founders)/section-founders.ui.organism.client'
 import AboutPageLoader from '@/app/[lang]/about/loading'
 import {SectionTitle} from '@/components/section-title'
 import {cn} from '@/lib/utils'
-import {type I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
 import React, {Suspense, type ComponentPropsWithoutRef} from 'react'
 
-const About = ({params}: I_PageI18nParams) => {
+import type {T_I18nPageParam} from '@/app/[lang]/page-params.schema'
+
+const About = ({params}: T_I18nPageParam) => {
    const {lang} = params
    const staticContent_i18n = {
       en: ['Activity', 'Founders', 'Roasters'],
