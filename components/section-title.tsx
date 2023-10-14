@@ -1,5 +1,5 @@
 import {cn} from '@/lib/utils'
-import React, {ComponentPropsWithoutRef} from 'react'
+import React, {type ComponentPropsWithoutRef} from 'react'
 
 export const SectionTitle = ({children, className}: ComponentPropsWithoutRef<'h2'>) => (
    <h2

@@ -1,4 +1,7 @@
-import routes from '@/static-content/route.static.content'
+import {
+   Zod_AvailableLanguages,
+   type T_AvailableLanguages,
+} from '@/shared/i18n.ts/i18n.global.schema'
 import {NextRequest} from 'next/server'
 
 // Get the preferred locale, similar to the above or using a library
@@ -16,7 +19,7 @@ export function middleware(request: NextRequest) {
    }*/
 
    // Check if there is any supported locale in the pathname
-   let availableLanguages = ['fr', 'en']
+   let availableLanguages: T_AvailableLanguages[] = ['fr', 'en']
 
    const pathnameHasLocale = availableLanguages.some(
       locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
@@ -24,7 +27,7 @@ export function middleware(request: NextRequest) {
 
    if (pathnameHasLocale) return
 
-   const defaultLanguage = 'fr'
+   const defaultLanguage = Zod_AvailableLanguages.Values.fr
    /**
     example :
     response :
@@ -42,17 +45,21 @@ export function middleware(request: NextRequest) {
     **/
    const userPreferredLanguages = headers.get('accept-language')?.split(',')
 
-   let selectedLanguage: 'en' | 'fr' = defaultLanguage // match default language variable by default
+   let selectedLanguage: T_AvailableLanguages = defaultLanguage // match default language variable by default
 
    if (userPreferredLanguages) {
-      const userPrefersFrench = userPreferredLanguages.some(lang => lang.includes('fr'))
+      const userPrefersFrench = userPreferredLanguages.some(lang =>
+         lang.includes(Zod_AvailableLanguages.Values.fr)
+      )
       if (userPrefersFrench) {
-         selectedLanguage = 'fr'
+         selectedLanguage = Zod_AvailableLanguages.Values.fr
       } else {
          // statement won't reach this scope and loop again if user have a French preference in request.header['accept-language']
-         const userPrefersEnglish = userPreferredLanguages.some(lang => lang.includes('en'))
+         const userPrefersEnglish = userPreferredLanguages.some(lang =>
+            lang.includes(Zod_AvailableLanguages.Values.en)
+         )
          if (userPrefersEnglish) {
-            selectedLanguage = 'en'
+            selectedLanguage = Zod_AvailableLanguages.Values.en
          }
          // else : sticks with the defaultLanguage declaration
       }

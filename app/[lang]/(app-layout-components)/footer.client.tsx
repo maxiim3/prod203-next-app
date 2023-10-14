@@ -2,7 +2,7 @@
 
 import useLangParamsHook from '@/app/[lang]/use-lang-params.hook'
 import {cn} from '@/lib/utils'
-import routes from '@/static-content/route.static.content'
+import routes, {Route} from '@/static-content/route.static.content'
 import {Github} from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -87,12 +87,15 @@ export default function Footer() {
             <div className="grid grid-cols-1 gap-8 border-t border-primary/80 pt-8 sm:grid-cols-2 lg:grid-cols-4 lg:pt-16">
                <Section>
                   <SectionTitle>Liens rapides</SectionTitle>
-                  {routes.map((route, index) => {
+                  {routes.map(route => {
+                     const {name, path}: Route = route
+                     const title = name[lang]!
+
                      return (
                         <Item
-                           className={cn(pathname === route.path && 'font-semibold')}
-                           key={`footer-nav-${index}`}>
-                           <Link href={`/${lang}${route.path}`}>{route.name[lang]}</Link>
+                           className={cn(pathname === path && 'font-semibold')}
+                           key={`footer-nav${path}`}>
+                           <Link href={`/${lang}${path}`}>{title}</Link>
                         </Item>
                      )
                   })}

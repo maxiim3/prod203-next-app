@@ -1,5 +1,5 @@
-import {CategoryFactory, T_Category} from '@/lib/sanity/category'
-import {ProjectFactory, T_Project} from '@/lib/sanity/project'
+import {CategoryFactory, type T_Category} from '@/lib/sanity/category'
+import {ProjectFactory, type T_Project} from '@/lib/sanity/project'
 import sanityClient from '@/lib/sanity/sanity-client'
 
 // Using the fetchData function
