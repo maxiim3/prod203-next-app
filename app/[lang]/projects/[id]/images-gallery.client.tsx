@@ -50,6 +50,9 @@ export default function ImagesGallery({pictures}: {pictures: T_ProjectFactory['g
    }
 
    console.log(isModalOpen, currentImage)
+   // @ts-ignore
+   let activeImage = arrayOfPictures[currentImage]!
+
    return (
       <Section
          aria-label={"Galerie d'images"}
@@ -101,7 +104,7 @@ export default function ImagesGallery({pictures}: {pictures: T_ProjectFactory['g
                      <Image
                         fill={true}
                         className={twMerge('h-full w-full object-cover object-center')}
-                        src={arrayOfPictures[currentImage]}
+                        src={activeImage}
                         alt={'placeholder'}
                      />
                   </AspectRatio>
