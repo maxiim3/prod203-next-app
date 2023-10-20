@@ -14,7 +14,7 @@ export default function ImagesGallery({pictures}: {pictures: T_ProjectFactory['g
       () =>
          pictures!.map(img => {
             const builder = ImageBuilder(img)
-            console.log(builder)
+            // console.log(builder)
             return builder.url()
          }),
       [pictures]
@@ -49,7 +49,6 @@ export default function ImagesGallery({pictures}: {pictures: T_ProjectFactory['g
       return setCurrentImage(i => i - 1)
    }
 
-   console.log(isModalOpen, currentImage)
    // @ts-ignore
    let activeImage = arrayOfPictures[currentImage]!
 

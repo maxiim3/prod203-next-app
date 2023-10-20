@@ -14,7 +14,6 @@ export function HeaderBanner() {
    let y = useTransform(scrollYProgress, [0, 2], ['0%', '200%'])
    // let scale = useTransform(scrollYProgress, [0, 1], ['100%', '150%'])
    let opacity = useTransform(scrollYProgress, [0, 1], ['100%', '0%'])
-   console.log()
    return (
       <header className={'relative mx-auto h-screen lg:aspect-video lg:h-auto lg:w-screen'}>
          <motion.section
@@ -63,11 +62,11 @@ const ButtonCTA = () => {
 
       if (isIPhoneSafari) {
          // Add your code for iPhone Safari
-         console.log('This is iPhone Safari')
+         // console.log('This is iPhone Safari')
          return true
       } else {
          // Code for other browsers
-         console.log('This is not iPhone Safari')
+         // console.log('This is not iPhone Safari')
          return false
       }
    }, [isMounted])

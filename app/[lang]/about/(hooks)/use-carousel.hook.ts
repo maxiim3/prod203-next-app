@@ -25,12 +25,12 @@ export const useCarousel = () => {
 
       const handleMouseMove = (e: MouseEvent) => {
          if (!isDown) return
-         console.log(window.devicePixelRatio)
+         // console.log(window.devicePixelRatio)
          e.preventDefault()
          requestAnimationFrame(() => {
             const x = e.clientX - (slider?.offsetLeft || 0) // 👈 changed to clientX
             const walk = (x - startX) * 2 // scroll-fast
-            console.log(x, walk)
+            // console.log(x, walk)
             if (slider) {
                slider.scrollLeft = scrollLeft - walk
             }

@@ -29,7 +29,7 @@ export default function ContactForm() {
 
       const json = await response.json()
 
-      console.log(response)
+      // console.log(response)
 
       if ([200, 201, 203, 204].includes(response.status)) {
          setIsSubmittedWithSuccess(true)
@@ -38,7 +38,7 @@ export default function ContactForm() {
          setIsSubmittedWithSuccess(false)
       }
 
-      console.log(data)
+      // console.log(data)
 
       setIsFormSubmitted(true)
 

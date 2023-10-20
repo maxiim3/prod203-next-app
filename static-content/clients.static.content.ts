@@ -49,6 +49,11 @@ export const All_Clients: ClientClassFactory[] = [
    ),
    new ClientClassFactory('Revolte', 'Revolte', '/assets/clients/revolte-white.webp'),
    new ClientClassFactory('Warner Classic', 'Warner Classic', '/assets/clients/wc-white.webp'),
+   new ClientClassFactory(
+      'Studio Daguet',
+      'Studio Daguet - conception & production scénographique',
+      '/assets/clients/studio-daguet.svg'
+   ),
    // Add new clients here
 ]
 
