@@ -101,7 +101,11 @@ export function useVideoSource(
          // videoElement.load()
          const playPromise = videoElement.play()
          if (playPromise !== undefined) {
-            playPromise.then(e => console.log(e)).catch(error => console.error(error))
+            playPromise
+               .then(e => {
+                  // console.log(e)
+               })
+               .catch(error => console.error(error))
          }
       }
    }, [])
