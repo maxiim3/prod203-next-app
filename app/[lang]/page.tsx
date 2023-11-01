@@ -123,7 +123,7 @@ export default async function Home({params}: T_I18nPageParam) {
                               <Text>
                                  Taking on each challenge with passion, and driven by the enthusiasm
                                  and cohesion of our creative team, our ambition is to bring a
-                                 personal and unique touch to each of the projects entrusted to us
+                                 personal and unique touch to each of the projects entrusted to us.
                               </Text>
                            </span>
                         </>
@@ -157,7 +157,7 @@ export default async function Home({params}: T_I18nPageParam) {
                                  Relevant chaque défis avec passion, et animés par
                                  l&apos;enthousiasme et la cohésion de notre équipe créative, notre
                                  ambition est d&apos;apporter une touche personnelle et unique à
-                                 chacun des projets qui nous sont confiés
+                                 chacun des projets qui nous sont confiés.
                               </Text>
                            </span>
                         </>
