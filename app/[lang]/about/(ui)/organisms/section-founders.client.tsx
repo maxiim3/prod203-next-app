@@ -17,10 +17,15 @@ import React from 'react'
 import {twMerge} from 'tailwind-merge'
 
 export default function SectionFounders({className}: T_ClassName) {
-   const founderStore: T_FounderStore = useFounderTabsStore((store: T_FounderStore) => store)
+   const activeTab: T_FounderStore['activeTab'] = useFounderTabsStore(
+      (store: T_FounderStore) => store.activeTab
+   )
+   const setActiveTab: T_FounderStore['setActiveTab'] = useFounderTabsStore(
+      (store: T_FounderStore) => store.setActiveTab
+   )
    const {lang} = useLangParams()
 
-   const isActive = (key: T_FounderEnum) => founderStore.activeTab === key
+   const isActive = (key: T_FounderEnum) => activeTab === key
 
    return (
       <section
@@ -72,8 +77,8 @@ export default function SectionFounders({className}: T_ClassName) {
                         return (
                            <TabTitle
                               key={`tab-${index}-${key}`}
-                              active={key === founderStore.activeTab}
-                              onClick={() => founderStore.setActiveTab(key)}
+                              active={key === activeTab}
+                              onClick={() => setActiveTab(key)}
                               className={cn(
                                  'flex flex-1 items-center justify-center py-1 text-center text-xs xs:text-sm sm:tracking-wide md:py-3 md:text-base',
                                  'hover:bg-base-200'
@@ -88,29 +93,31 @@ export default function SectionFounders({className}: T_ClassName) {
             <main className={' flex flex-col items-center justify-center gap-2 px-2 md:px-6'}>
                <>
                   {[...Founders.entries()]
-                     .filter(([key, _]) => founderStore.activeTab === key)
+                     .filter(([key, _]) => activeTab === key)
                      .map(([key, founder], index) => {
-                        const {title, description}: Founder = founder
-                        const founderName = title[lang]!
+                        const {description}: Founder = founder
                         const founderDescription = description[lang]!
 
-                        return (
-                           <TabText
-                              className={
-                                 'prose m-0 w-full max-w-[80ch] font-poppins font-light !text-primary text-balance'
-                              }
-                              key={`tab-content-${index}`}>
-                              {founderDescription}
-                              {/*{founderDescription.length - 1 === index ? '' : '.'}*/}
-                           </TabText>
-                        )
+                        return founderDescription.split('. ').map((content, paragraphIndex) => {
+                           const maxIndex: number = founderDescription.split('. ').length - 1
+                           return (
+                              <TabText
+                                 className={
+                                    'prose m-0 w-full max-w-[80ch] font-poppins font-light !text-primary text-balance'
+                                 }
+                                 key={`tab-content-${index}`}>
+                                 {content}
+                                 {paragraphIndex !== maxIndex && '.'}
+                              </TabText>
+                           )
+                        })
                      })}
                </>
                <aside className={'w-full'}>
                   <Tooltip
                      className={'tooltip-primary tooltip-bottom font-normal text-primary-content'}
                      message={lang === 'en' ? 'Open in a new tab' : 'Ouvrir dans un nouvel onglet'}>
-                     {founderStore.activeTab === Zod_FounderEnum.Values.Jerome && (
+                     {activeTab === Zod_FounderEnum.Values.Jerome && (
                         <TabText
                            className={'flex w-fit items-center justify-start gap-1 text-primary'}>
                            <ExternalLinkIcon />
@@ -121,7 +128,7 @@ export default function SectionFounders({className}: T_ClassName) {
                            />
                         </TabText>
                      )}
-                     {founderStore.activeTab === Zod_FounderEnum.Values.Nathan && (
+                     {activeTab === Zod_FounderEnum.Values.Nathan && (
                         <TabText
                            className={'flex w-fit items-center justify-start gap-1 text-primary'}>
                            <ExternalLinkIcon />
