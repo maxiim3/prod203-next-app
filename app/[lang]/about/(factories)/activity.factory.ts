@@ -15,8 +15,8 @@ export const Zod_ActivityEnum = z.enum(['edit', 'music', 'production', 'soundDes
 export type T_ActivityEnum = z.infer<typeof Zod_ActivityEnum>
 
 export const Activities = new Map<T_ActivityEnum, Activity>([
-   [Zod_ActivityEnum.Values.edit, new Activity(content.activity.edit)],
    [Zod_ActivityEnum.Values.music, new Activity(content.activity.music)],
+   [Zod_ActivityEnum.Values.edit, new Activity(content.activity.edit)],
    [Zod_ActivityEnum.Values.production, new Activity(content.activity.production)],
    [Zod_ActivityEnum.Values.soundDesign, new Activity(content.activity.soundDesign)],
    [Zod_ActivityEnum.Values.live, new Activity(content.activity.live)],
