@@ -5,7 +5,7 @@ import type {T_I18nPageParam} from '@/app/[lang]/page-params.schema'
 import {SectionTitle} from '@/components/section-title'
 import {cn} from '@/lib/utils'
 
-export default async function Home({params}: T_I18nPageParam) {
+export default function Home({params}: T_I18nPageParam) {
    const {lang} = params
 
    // Add shadcn
