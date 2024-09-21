@@ -1,0 +1,381 @@
+[
+   {
+      "title": {
+         "en": "Compositor",
+         "fr": "Compositeur"
+      },
+      "artists": {
+         "nathan-stornetta": {
+            "artist": "Nathan Stornetta",
+            "assetdirectory": "nathan_stornetta",
+            "textNodes": [
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": "Né en Suisse, ",
+                     "en": "Born in Switzerland, "
+                  }
+               },
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "Nathan Stornetta",
+                     "en": "Nathan Stornetta"
+                  }
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": " est un compositeur, producteur et arrangeur. ",
+                     "en": " is a composer, producer, and arranger. "
+                  }
+               },
+               {
+                  "type": "line-break"
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": "Il a travaillé avec ",
+                     "en": "He has worked with "
+                  }
+               },
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "Hans Zimmer",
+                     "en": "Hans Zimmer"
+                  }
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": " sur des projets comme 'Chappie', 'Le Petit Prince', et 'Le Roi Lion'. ",
+                     "en": " on projects such as 'Chappie', 'The Little Prince', and 'The Lion King'. "
+                  }
+               },
+               {
+                  "type": "line-break"
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": "Depuis 2015, il est le principal compositeur du ",
+                     "en": "Since 2013, he has been the main composer for "
+                  }
+               },
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "Puy du Fou",
+                     "en": "Puy du Fou"
+                  }
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": ", créant la musique pour des spectacles comme 'Le Dernier Panache' et 'El Sueño de Toledo'. ",
+                     "en": ", creating music for shows like 'Le Dernier Panache' and 'El Sueño de Toledo'. "
+                  }
+               },
+               {
+                  "type": "line-break"
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": "Nathan a été formé au ",
+                     "en": "Nathan was trained at the "
+                  }
+               },
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "Royal College of Music de Londres.",
+                     "en": "Royal College of Music in London."
+                  }
+               }
+            ]
+         },
+         "martin-batchelar": {
+            "artist": "Martin Batchelar",
+            "assetdirectory": "martin_batchelar",
+            "textNodes": [
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "Martin Batchelar",
+                     "en": "Martin Batchelar"
+                  }
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": " est un compositeur et arrangeur londonien spécialisé dans la musique pour le cinéma, la télévision et le théâtre. ",
+                     "en": " is a London-based composer and arranger specializing in music for film, television, and theater. "
+                  }
+               },
+               {
+                  "type": "line-break"
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": "Il a travaillé sur ",
+                     "en": "He worked on "
+                  }
+               },
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "l'album 'WHO' de The Who",
+                     "en": "The Who's album 'WHO'"
+                  }
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": " et a fait des arrangements pour des artistes comme ",
+                     "en": " and has done arrangements for artists like "
+                  }
+               },
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "Paul McCartney et Elton John. ",
+                     "en": "Paul McCartney and Elton John. "
+                  }
+               },
+               {
+                  "type": "line-break"
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": "Sa musique a été utilisée dans des publicités pour ",
+                     "en": "His music has been used in advertisements for "
+                  }
+               },
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "Coca-Cola et Disney World Resort.",
+                     "en": "Coca-Cola and Disney World Resort."
+                  }
+               },
+               {
+                  "type": "line-break"
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": "Il est également le compositeur du podcast à succès 'My Dad Wrote A Porno'.",
+                     "en": "He is also the composer for the successful podcast 'My Dad Wrote A Porno'."
+                  }
+               }
+            ]
+         },
+         "samuel-pegg": {
+            "artist": "Samuel Pegg",
+            "assetdirectory": "samuel_pegg",
+            "textNodes": [
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "Samuel Pegg",
+                     "en": "Samuel Pegg"
+                  }
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": " est un compositeur polyvalent pour le cinéma, la télévision et la publicité. ",
+                     "en": " is a versatile composer for film, television, and advertising. "
+                  }
+               },
+               {
+                  "type": "line-break"
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": "Il a orchestré la musique de films comme 'Johnny English contre-attaque' et 'Moi, Daniel Blake'. ",
+                     "en": "He has orchestrated music for films such as 'Johnny English Strikes Again' and 'I, Daniel Blake'. "
+                  }
+               },
+               {
+                  "type": "line-break"
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": "Il a récemment créé de nouveaux arrangements pour l'",
+                     "en": "He recently created new arrangements for "
+                  }
+               },
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "Edith Piaf Symphonique. ",
+                     "en": "Edith Piaf Symphonique. "
+                  }
+               },
+               {
+                  "type": "line-break"
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": " Samuel est membre de la société ",
+                     "en": "Samuel is a member of "
+                  }
+               },
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "BAFTA",
+                     "en": "BAFTA"
+                  }
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": " et a été formé au ",
+                     "en": " and was trained at the "
+                  }
+               },
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "Royal College of Music de Londres.",
+                     "en": "Royal College of Music in London."
+                  }
+               }
+            ]
+         }
+      }
+   },
+   {
+      "title": {
+         "en": "Orchestra",
+         "fr": "Orchestre"
+      },
+      "artists": {
+         "legendis-orchestra": {
+            "artist": "Legendis Orchestra",
+            "assetdirectory": "legendis_orchestra",
+            "textNodes": [
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "Le Legendis Orchestra",
+                     "en": "The Legendis Orchestra"
+                  }
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": " est un ensemble orchestral d'exception, regroupant les meilleurs musiciens du monde. ",
+                     "en": " is an exceptional orchestral ensemble, bringing together the world's best musicians. "
+                  }
+               },
+               {
+                  "type": "line-break"
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": "Il est connu pour sa perfection et son excellence musicale dans divers projets, des bandes originales aux concerts.",
+                     "en": "It is known for its perfection and musical excellence in various projects, from soundtracks to concerts."
+                  }
+               }
+            ]
+         },
+         "prague-symphonic-ensemble": {
+            "artist": "Prague Symphonic Ensemble",
+            "assetdirectory": "prague_symphonic_ensemble",
+            "textNodes": [
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "Le Prague Symphonic Ensemble",
+                     "en": "The Prague Symphonic Ensemble"
+                  }
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": " est un orchestre à géométrie variable composé des meilleurs musiciens de Prague. ",
+                     "en": " is a variable-size orchestra composed of Prague's best musicians. "
+                  }
+               },
+               {
+                  "type": "line-break"
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": "Il excelle dans divers genres, des œuvres classiques aux musiques de films contemporains.",
+                     "en": "It excels in various genres, from classical works to contemporary film music."
+                  }
+               }
+            ]
+         }
+      }
+   },
+   {
+      "title": {
+         "en": "Bandmaster",
+         "fr": "Chef d'Orchestre"
+      },
+      "artists": {
+         "jerome-kuhn": {
+            "artist": "Jérôme Kuhn",
+            "assetdirectory": "jerome_kuhn",
+            "textNodes": [
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": "Jérôme Kuhn est directeur artistique du NOF –  ",
+                     "en": "Jérôme Kuhn is the artistic director of NOF – "
+                  }
+               },
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "Nouvel Opéra Fribourg et du Prague Symphonic Ensemble. ",
+                     "en": "Nouvel Opéra Fribourg and the Prague Symphonic Ensemble. "
+                  }
+               },
+               {
+                  "type": "line-break"
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": "Il s'est distingué dans le répertoire d'opéra contemporain et a collaboré avec de nombreux ensembles en Europe. ",
+                     "en": "He has distinguished himself in contemporary opera repertoire and has collaborated with numerous ensembles across Europe. "
+                  }
+               },
+               {
+                  "type": "line-break"
+               },
+               {
+                  "type": "text-regular",
+                  "content": {
+                     "fr": "Il est également actif dans le domaine de l'enregistrement pour des productions ",
+                     "en": "He is also active in recording for "
+                  }
+               },
+               {
+                  "type": "text-bold",
+                  "content": {
+                     "fr": "Netflix et HBO.",
+                     "en": "Netflix and HBO productions."
+                  }
+               }
+            ]
+         }
+      }
+   }
+]

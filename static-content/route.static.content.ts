@@ -1,7 +1,7 @@
 import {Zod_I18nContent, type T_I18nContent} from '@/shared/i18n.ts/i18n.global.schema'
 import {z, type TypeOf} from 'zod'
 
-export const Zod_RoutesEnum = z.enum(['/', '/projects', '/about', '/contact'])
+export const Zod_RoutesEnum = z.enum(['/', '/projects', '/about', '/contact', '/artists'])
 
 export const Z_Route = z.object({
    name: Zod_I18nContent,
@@ -38,6 +38,10 @@ const routes: Route[] = [
    Route.create({
       name: {en: 'Projects', fr: 'Projets'},
       path: Zod_RoutesEnum.Values['/projects'],
+   }),
+   Route.create({
+      name: {en: 'Artists', fr: 'Artistes'},
+      path: Zod_RoutesEnum.Values['/artists'],
    }),
    Route.create({
       name: {en: 'About', fr: 'À propos'},
