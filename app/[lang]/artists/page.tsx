@@ -8,14 +8,12 @@ import Image from 'next/image'
 import {useCallback, useEffect, useState} from 'react'
 import {createPortal} from 'react-dom'
 import useLangParams from '../use-lang-params.hook'
-import type {JSON_AssetCategory} from './artists-assets.types'
 import {useFetchAssets} from './useFetchAssets'
 
 export default function Home({params}: T_I18nPageParam) {
    const {lang} = params
    const assets = useFetchAssets()
-   // @ts-expect-error
-   const artistData: JSON_AssetCategory[] = content
+   const artistData = content
 
    return (
       <main className={'z-0 mx-auto w-screen py-24'}>
