@@ -31,40 +31,6 @@ interface LineBreak extends Pick<GenericNode<'line-break'>, 'type'> {}
 
 type TextNode = TextBold | TextNormal | TextLink | LineBreak
 
-const exampleJSON: TextNode[] = [
-   {
-      type: 'text-regular',
-      content: {
-         en: 'Hello',
-         fr: 'Bonjour',
-      },
-   },
-   {
-      type: 'text-regular',
-      content: {
-         en: ', ',
-         fr: ', ',
-      },
-   },
-   {
-      type: 'text-bold',
-      content: {
-         en: 'You',
-         fr: 'Toi',
-      },
-   },
-   {
-      type: 'line-break',
-   },
-   {
-      type: 'link',
-      content: {
-         en: 'Click Here',
-         fr: 'Clicquez ici',
-      },
-      url: '#',
-   },
-]
 function MapTextNodes({node}: {node: TextNode}) {
    const {lang} = useLangParams()
 
