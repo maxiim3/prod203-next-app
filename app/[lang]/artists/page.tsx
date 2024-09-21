@@ -4,11 +4,81 @@ import content from '@/app/[lang]/artists/artist-content.json'
 import type {T_I18nPageParam} from '@/app/[lang]/page-params.schema'
 import {SectionTitle} from '@/components/section-title'
 import {cn} from '@/lib/utils'
+import type {T_AvailableLanguages} from '@/shared/i18n.ts/i18n.global.schema'
 import Image from 'next/image'
+import Link from 'next/link'
 import {useCallback, useEffect, useState} from 'react'
 import {createPortal} from 'react-dom'
 import useLangParams from '../use-lang-params.hook'
 import {useFetchAssets} from './useFetchAssets'
+
+interface NodeContent {
+   en: string
+   fr: string
+}
+type NodeType = 'text-regular' | 'text-bold' | 'link' | 'line-break'
+interface GenericNode<T = NodeType> {
+   type: T
+   content: NodeContent
+}
+
+interface TextBold extends GenericNode<'text-regular'> {}
+interface TextNormal extends GenericNode<'text-bold'> {}
+interface TextLink extends GenericNode<'link'> {
+   url: string
+}
+interface LineBreak extends Pick<GenericNode<'line-break'>, 'type'> {}
+
+type TextNode = TextBold | TextNormal | TextLink | LineBreak
+
+const exampleJSON: TextNode[] = [
+   {
+      type: 'text-regular',
+      content: {
+         en: 'Hello',
+         fr: 'Bonjour',
+      },
+   },
+   {
+      type: 'text-regular',
+      content: {
+         en: ', ',
+         fr: ', ',
+      },
+   },
+   {
+      type: 'text-bold',
+      content: {
+         en: 'You',
+         fr: 'Toi',
+      },
+   },
+   {
+      type: 'line-break',
+   },
+   {
+      type: 'link',
+      content: {
+         en: 'Click Here',
+         fr: 'Clicquez ici',
+      },
+      url: '#',
+   },
+]
+function MapTextNodes({node}: {node: TextNode}) {
+   const {lang} = useLangParams()
+
+   switch (node.type) {
+      case 'link':
+         return <Link href={node.url}>{node.content[lang]}</Link>
+      case 'text-regular':
+         return <span className="m-0 p-0">{node.content[lang]}</span>
+      case 'text-bold':
+         return <b className="font-semibold">{node.content[lang]}</b>
+      case 'line-break':
+         return <br />
+   }
+}
 
 export default function Home({params}: T_I18nPageParam) {
    const {lang} = params
@@ -36,7 +106,7 @@ export default function Home({params}: T_I18nPageParam) {
                               />
                               <ArtistContent
                                  name={value.artist}
-                                 text={value[lang]}
+                                 textNodes={value.textNodes}
                               />
                            </div>
                         ))}
@@ -49,11 +119,18 @@ export default function Home({params}: T_I18nPageParam) {
    )
 }
 
-function ArtistContent({text, name}: {text: string; name?: string}) {
+function ArtistContent({textNodes, name}: {textNodes: TextNode[]; name?: string}) {
    return (
       <div className="flex h-96 flex-[60%] flex-col items-center justify-center gap-4 bg-transparent p-8 text-white">
          {name && <strong className={'w-full text-lg'}>{name}</strong>}
-         <p>{text}</p>
+         <article className="leading-relaxed">
+            {textNodes.map((node, key) => (
+               <MapTextNodes
+                  key={key}
+                  node={node}
+               />
+            ))}
+         </article>
       </div>
    )
 }
