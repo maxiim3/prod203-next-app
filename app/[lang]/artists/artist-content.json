@@ -7,16 +7,19 @@
     "artists": {
       "nathan-stornetta": {
         "artist": "Nathan Stornetta",
+        "assetdirectory": "nathan_stornetta",
         "fr": "Né en Suisse, Nathan Stornetta est un compositeur, producteur et arrangeur. Il a travaillé avec Hans Zimmer sur des projets comme 'Chappie', 'Le Petit Prince', et 'Le Roi Lion'. Depuis 2013, il est le principal compositeur du Puy du Fou, créant la musique pour des spectacles comme 'Le Dernier Panache' et 'El Sueño de Toledo'. Nathan a été formé au Royal College of Music de Londres.",
         "en": "Born in Switzerland, Nathan Stornetta is a composer, producer, and arranger. He has worked with Hans Zimmer on projects such as 'Chappie', 'The Little Prince', and 'The Lion King'. Since 2013, he has been the main composer for Puy du Fou, creating music for shows like 'Le Dernier Panache' and 'El Sueño de Toledo'. Nathan was trained at the Royal College of Music in London."
       },
       "martin-batchelar": {
         "artist": "Martin Batchelar",
+        "assetdirectory": "martin_batchelar",
         "fr": "Martin Batchelar est un compositeur et arrangeur londonien spécialisé dans la musique pour le cinéma, la télévision et le théâtre. Il a travaillé sur l'album 'WHO' de The Who et a fait des arrangements pour des artistes comme Paul McCartney et Elton John. Sa musique a été utilisée dans des publicités pour Coca-Cola et Disney World Resort. Il est également le compositeur du podcast à succès 'My Dad Wrote A Porno'.",
         "en": "Martin Batchelar is a London-based composer and arranger specializing in music for film, television, and theater. He worked on The Who's album 'WHO' and has done arrangements for artists like Paul McCartney and Elton John. His music has been used in advertisements for Coca-Cola and Disney World Resort. He is also the composer for the successful podcast 'My Dad Wrote A Porno'."
       },
       "samuel-pegg": {
         "artist": "Samuel Pegg",
+        "assetdirectory": "samuel_pegg",
         "fr": "Samuel Pegg est un compositeur polyvalent pour le cinéma, la télévision et la publicité. Il a orchestré la musique de films comme 'Johnny English contre-attaque' et 'Moi, Daniel Blake'. Il a récemment créé de nouveaux arrangements pour l'Edith Piaf Symphonique. Samuel est membre de la société BAFTA et a été formé au Royal College of Music de Londres.",
         "en": "Samuel Pegg is a versatile composer for film, television, and advertising. He has orchestrated music for films such as 'Johnny English Strikes Again' and 'I, Daniel Blake'. He recently created new arrangements for Edith Piaf Symphonique. Samuel is a member of BAFTA and was trained at the Royal College of Music in London."
       }
@@ -30,11 +33,13 @@
     "artists": {
       "legendis-orchestra": {
         "artist": "Legendis Orchestra",
+        "assetdirectory": "legendis_orchestra",
         "fr": "Le Legendis Orchestra est un ensemble orchestral d'exception, regroupant les meilleurs musiciens du monde. Il est connu pour sa perfection et son excellence musicale dans divers projets, des bandes originales aux concerts.",
         "en": "The Legendis Orchestra is an exceptional orchestral ensemble, bringing together the world's best musicians. It is known for its perfection and musical excellence in various projects, from soundtracks to concerts."
       },
       "prague-symphonic-ensemble": {
         "artist": "Prague Symphonic Ensemble",
+        "assetdirectory": "prague_symphonic_ensemble",
         "fr": "Le Prague Symphonic Ensemble est un orchestre à géométrie variable composé des meilleurs musiciens de Prague. Il excelle dans divers genres, des œuvres classiques aux musiques de films contemporains.",
         "en": "The Prague Symphonic Ensemble is a variable-size orchestra composed of Prague's best musicians. It excels in various genres, from classical works to contemporary film music."
       }
@@ -46,8 +51,9 @@
       "fr": "Chef d'Orchestre"
     },
     "artists": {
-      "jérôme-kuhn": {
+      "jerome-kuhn": {
         "artist": "Jérôme Kuhn",
+        "assetdirectory": "jerome_kuhn",
         "fr": "Jérôme Kuhn est directeur artistique du NOF – Nouvel Opéra Fribourg et du Prague Symphonic Ensemble. Il s'est distingué dans le répertoire d'opéra contemporain et a collaboré avec de nombreux ensembles en Europe. Il est également actif dans le domaine de l'enregistrement pour des productions Netflix et HBO.",
         "en": "Jérôme Kuhn is the artistic director of NOF – Nouvel Opéra Fribourg and the Prague Symphonic Ensemble. He has distinguished himself in contemporary opera repertoire and has collaborated with numerous ensembles across Europe. He is also active in recording for Netflix and HBO productions."
       }
