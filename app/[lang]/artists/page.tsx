@@ -6,6 +6,9 @@ import { SectionTitle } from '@/components/section-title'
 import { cn } from '@/lib/utils'
 import { useFetchAssets } from './useFetchAssets'
 import type { JSON_AssetCategory } from './artists-assets.types'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
+import { CardContent, Card } from '@/components/ui/card'
+import Image from 'next/image'
 
 export default function Home({ params }: T_I18nPageParam) {
    const { lang } = params
@@ -31,7 +34,10 @@ export default function Home({ params }: T_I18nPageParam) {
                               className={
                                  'flex flex-col gap-8 p-8 w-full border min-h-16 border-white/30 md:flex-row'
                               }>
-                              <ArtistImageContainer paths={assets[value.assetdirectory]!}/>
+                              <ArtistImageContainer
+                                 url={`/assets/artists/${value.assetdirectory}/`}
+                                 assets={assets[value.assetdirectory]!}
+                              />
                               <ArtistContent
                                  name={value.artist}
                                  text={value[lang]}
@@ -56,12 +62,37 @@ function ArtistContent({ text, name }: { text: string; name?: string }) {
    )
 }
 
-function ArtistImageContainer({ paths }: { paths: string[] }) {
+function ArtistImageContainer({ url, assets }: { url: string, assets: string[] }) {
 
-   return (<div
-      className='flex h-96 flex-col items-center justify-center p-8  flex-[40%] bg-slate-400 text-black'>
-      {paths?.map(p => (<p key={p}>{p}</p>))}
-   </div>
+   return (
+      <div
+         className='flex h-96 items-center justify-center p-8 flex-[40%] text-black'>
+         <Carousel className="w-full max-w-xs">
+            <CarouselContent>
+               {assets?.map((p, key) => (
+                  <CarouselItem key={key}>
+                     <div className="p-1">
+                        <Card>
+                           <CardContent className="flex items-center justify-center p-6 aspect-square">
+                              <Image
+                                 className={'object-cover'}
+                                 src={url?.concat(p)}
+                                 fill={true}
+                                 alt={p}
+                                 loading='lazy'
+                                 quality={12}
+                              />
+                              <span className="text-xs font-semibold">{url?.concat(p)}</span>
+                           </CardContent>
+                        </Card>
+                     </div>
+                  </CarouselItem>
+               ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+         </Carousel>
+      </div>
    )
 }
 
