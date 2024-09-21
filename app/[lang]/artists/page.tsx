@@ -60,7 +60,7 @@ function ArtistImageContainer({ paths }: { paths: string[] }) {
 
    return (<div
       className='flex h-96 flex-col items-center justify-center p-8  flex-[40%] bg-slate-400 text-black'>
-      {paths.map(p => (<p key={p}>{p}</p>))}
+      {paths?.map(p => (<p key={p}>{p}</p>))}
    </div>
    )
 }
