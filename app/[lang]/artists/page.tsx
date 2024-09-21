@@ -34,13 +34,15 @@ type TextNode = TextBold | TextNormal | TextLink | LineBreak
 function MapTextNodes({node}: {node: TextNode}) {
    const {lang} = useLangParams()
 
-   switch (node.type) {
+   if (!node) return
+
+   switch (node?.type) {
       case 'link':
-         return <Link href={node.url}>{node.content[lang]}</Link>
+         return <Link href={node?.url}>{node?.content[lang]}</Link>
       case 'text-regular':
-         return <span className="m-0 p-0">{node.content[lang]}</span>
+         return <span className="m-0 p-0">{node?.content[lang]}</span>
       case 'text-bold':
-         return <b className="font-semibold">{node.content[lang]}</b>
+         return <b className="font-semibold">{node?.content[lang]}</b>
       case 'line-break':
          return <br />
    }
