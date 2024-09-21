@@ -14,6 +14,7 @@ import {useFetchAssets} from './useFetchAssets'
 export default function Home({params}: T_I18nPageParam) {
    const {lang} = params
    const assets = useFetchAssets()
+   // @ts-expect-error
    const artistData: JSON_AssetCategory[] = content
 
    return (
