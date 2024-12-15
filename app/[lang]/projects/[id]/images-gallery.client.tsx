@@ -76,7 +76,7 @@ export default function ImagesGallery({pictures}: {pictures: T_ProjectFactory['g
                            'object-cover opacity-80 transition motion-safe:duration-700',
                            'group-hover:scale-125 group-hover:opacity-100'
                         )}
-                        src={imgSrc || '/image-placeholder.png'}
+                        src={imgSrc || '/assets/placeholders/image-placeholder.png'}
                         alt={'placeholder'}
                      />
                   </AspectRatio>

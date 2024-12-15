@@ -22,7 +22,7 @@ export const ProjectThumbnail = ({project, index}: ComponentProps) => {
    const containerRef = useAnimateProjectCards()
    // const imageSource = getImageSource(project)
    const {lang} = useLangParamsHook()
-   const thumbnailURL = thumbnail ? ImageBuilder(thumbnail).url() : '/imaheholder-hi.jpg'
+   const thumbnailURL = thumbnail ? ImageBuilder(thumbnail).url() : '/assets/placeholders/imageholder-hi.jpg'
 
    return (
       <motion.li
