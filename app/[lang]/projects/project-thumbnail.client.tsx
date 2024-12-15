@@ -1,7 +1,7 @@
 'use client'
 
 import useAnimateProjectCards from '@/app/[lang]/projects/use-canimate-project-cards.hook'
-import useLangParamsHook from '@/hooks/useLangParams.hook'
+import useLangParamsHook from '@/app/[lang]/use-lang-params.hook'
 import ImageBuilder from '@/lib/sanity/image.builder'
 import {ProjectFactory} from '@/lib/sanity/project'
 import {motion} from 'framer-motion'
@@ -76,6 +76,9 @@ export const ProjectThumbnail = ({project, index}: ComponentProps) => {
                   description[lang]
                      .filter((_, blockIndex) => blockIndex === 0)
                      .map((block, index) => {
+                        const content = block?.children[0]?.text
+                        if (!content) return <></>
+
                         return (
                            <p
                               className={twMerge(
@@ -84,7 +87,7 @@ export const ProjectThumbnail = ({project, index}: ComponentProps) => {
                                  `transition-all duration-300 motion-safe:sm:-translate-y-[50px] motion-safe:sm:opacity-75 motion-safe:sm:group-hover/card:sm:translate-y-0 motion-safe:sm:group-hover/card:sm:opacity-100`
                               )}
                               key={index}>
-                              {block.children[0].text}
+                              {content}
                            </p>
                         )
                      })}

@@ -1,15 +1,15 @@
 import {HeaderBanner} from '@/app/[lang]/(home-page-components)/header-banner.client'
 import MarqueeBanner from '@/app/[lang]/(home-page-components)/marquee-clients-banner.client'
 import MotionContent from '@/app/[lang]/(home-page-components)/motion-content.client'
-import ScrollButton from '@/app/[lang]/(home-page-components)/scroll-button.client'
 import {SectionTitle} from '@/components/section-title'
 import Icons from '@/lib/icons'
 import {cn} from '@/lib/utils'
-import {type I_PageI18nParams} from '@/schemas/i18n.page.props.schema'
 import Image from 'next/image'
 import React, {Suspense, type ComponentPropsWithoutRef} from 'react'
 
-export default async function Home({params}: I_PageI18nParams) {
+import type {T_I18nPageParam} from '@/app/[lang]/page-params.schema'
+
+export default async function Home({params}: T_I18nPageParam) {
    // service : Musiques Originales, Production Executive, Édition, Mixage, Mastering, Mixage Immersif Atoms, Design Sonore, Gestion de Projet
 
    const services = [
@@ -27,14 +27,14 @@ export default async function Home({params}: I_PageI18nParams) {
    return (
       <main className={'relative'}>
          <HeaderBanner />
-         <div className="relative flex snap-y snap-mandatory flex-col gap-4 overflow-y-auto bg-base-100/80  backdrop-blur-xl ">
+         <div className="snap-opacity overflow-opacity-auto relative flex snap-mandatory flex-col gap-4 bg-base-100/80  backdrop-blur-xl ">
             <Section
                id={'services'}
                ariaLabel={'Services'}
                className={'mt-4'}>
                <MotionContent className={'mt-16'}>
                   <SectionTitle>Services</SectionTitle>
-                  <article className="mx-auto my-8 grid w-fit grid-cols-2 place-content-center place-items-center gap-x-3 gap-y-5 xs:grid-cols-3 xs:gap-y-6 sm:grid-cols-4 sm:gap-x-8 sm:gap-y-8 md:grid-cols-5 ">
+                  <article className="gap-opacity-5 xs:gap-opacity-6 sm:gap-opacity-8 mx-auto my-8 grid w-fit grid-cols-2 place-content-center place-items-center gap-x-3 xs:grid-cols-3 sm:grid-cols-4 sm:gap-x-8 md:grid-cols-5 ">
                      {services.map(service => (
                         <span
                            key={service[params.lang]}
@@ -93,7 +93,7 @@ export default async function Home({params}: I_PageI18nParams) {
                   <SectionTitle className={'hidden'} />
                   <div
                      className={
-                        'relative mx-auto grid gap-4 border-y px-4 py-12 xs:px-8 sm:m-12 md:grid-cols-2'
+                        'border-opacity relative mx-auto grid gap-4 px-4 py-12 xs:px-8 sm:m-12 md:grid-cols-2'
                      }>
                      {params.lang === 'en' ? (
                         <>
@@ -123,7 +123,7 @@ export default async function Home({params}: I_PageI18nParams) {
                               <Text>
                                  Taking on each challenge with passion, and driven by the enthusiasm
                                  and cohesion of our creative team, our ambition is to bring a
-                                 personal and unique touch to each of the projects entrusted to us
+                                 personal and unique touch to each of the projects entrusted to us.
                               </Text>
                            </span>
                         </>
@@ -157,7 +157,7 @@ export default async function Home({params}: I_PageI18nParams) {
                                  Relevant chaque défis avec passion, et animés par
                                  l&apos;enthousiasme et la cohésion de notre équipe créative, notre
                                  ambition est d&apos;apporter une touche personnelle et unique à
-                                 chacun des projets qui nous sont confiés
+                                 chacun des projets qui nous sont confiés.
                               </Text>
                            </span>
                         </>
@@ -200,10 +200,25 @@ export default async function Home({params}: I_PageI18nParams) {
                   </Suspense>
                </MotionContent>
             </Section>
-            <ScrollButton
-               svg={{className: 'bg-transparent'}}
-               anchor={{href: '#', className: 'bg-base-100/10'}}
-            />
+            <a
+               href="#"
+               className={
+                  'btn-base-100  btn mx-auto mb-24 flex h-24 w-12 items-center justify-center rounded-md border-none  p-1 text-xl font-bold uppercase text-primary opacity-70 backdrop-blur-md backdrop:opacity-0 xs:h-16 xs:w-16'
+               }>
+               <svg
+                  width="64"
+                  className={cn(
+                     'h-8 w-8 text-primary xs:h-12 xs:w-12 sm:h-12 sm:w-12 lg:h-16 lg:w-16'
+                  )}
+                  height="64"
+                  viewBox="0 0 1024 1024"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                     fill="currentColor"
+                     d="m488.832 344.32l-339.84 356.672a32 32 0 0 0 0 44.16l.384.384a29.44 29.44 0 0 0 42.688 0l320-335.872l319.872 335.872a29.44 29.44 0 0 0 42.688 0l.384-.384a32 32 0 0 0 0-44.16L535.168 344.32a32 32 0 0 0-46.336 0z"
+                  />
+               </svg>
+            </a>
          </div>
       </main>
    )

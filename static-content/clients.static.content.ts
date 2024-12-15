@@ -69,6 +69,7 @@ export const All_Clients: ClientClassFactory[] = [
       'Institut Musical de Vendée',
       '/assets/clients/IMV.webp'
    ),
+
 ]
 
 const Half_Index = Math.floor(All_Clients.length / 2)

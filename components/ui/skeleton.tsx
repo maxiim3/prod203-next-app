@@ -1,5 +1,5 @@
 import {cn} from '@/lib/utils'
-import React, {ComponentPropsWithoutRef} from 'react'
+import React, {type ComponentPropsWithoutRef} from 'react'
 
 function Skeleton(props: ComponentPropsWithoutRef<'div'>) {
    return (

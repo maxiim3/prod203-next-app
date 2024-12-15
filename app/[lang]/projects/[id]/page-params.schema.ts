@@ -4,7 +4,6 @@ export type PageSlugAndCategoryParams = {
    params: {slug: string}
    searchParams: {category: string}
 }
-
 export const PageSlugParam = z.object({
    slug: z.string(),
 })

@@ -1,8 +1,8 @@
 'use client'
 
 import {useMounted} from '@/hooks/useMounted'
-import {useVideoSource, VideoSource} from '@/hooks/useVideoSource'
-import {CldVideoPlayer, CloudinaryVideoPlayer} from 'next-cloudinary'
+import {useVideoSource, type VideoSource} from '@/hooks/useVideoSource'
+import {CldVideoPlayer, type CloudinaryVideoPlayer} from 'next-cloudinary'
 import React, {useEffect, useRef} from 'react'
 import {twMerge} from 'tailwind-merge'
 
