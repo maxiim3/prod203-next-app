@@ -4,12 +4,12 @@
       "esModuleInterop": true,
       "skipDefaultLibCheck": true,
       "target": "es2022",
-      "verbatimModuleSyntax": true,
+      "verbatimModuleSyntax": false,
       "allowJs": true,
       "resolveJsonModule": true,
       "moduleDetection": "force",
       /*Strictness*/
-      "strict": true,
+      "strict": false,
       "noUncheckedIndexedAccess": true,
       /*for Nextjs*/
       "moduleResolution": "bundler",

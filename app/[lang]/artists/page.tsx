@@ -4,11 +4,8 @@ import content from '@/app/[lang]/artists/artist-content.json'
 import type {T_I18nPageParam} from '@/app/[lang]/page-params.schema'
 import {SectionTitle} from '@/components/section-title'
 import {cn} from '@/lib/utils'
-import type {T_AvailableLanguages} from '@/shared/i18n.ts/i18n.global.schema'
 import Image from 'next/image'
 import Link from 'next/link'
-import {useCallback, useEffect, useState} from 'react'
-import {createPortal} from 'react-dom'
 import useLangParams from '../use-lang-params.hook'
 import {useFetchAssets} from './useFetchAssets'
 
@@ -62,19 +59,20 @@ export default function Home({params}: T_I18nPageParam) {
                   return (
                      <>
                         <SectionTitle key={`title-${key}`}>{title[lang]}</SectionTitle>
-                        {Object.entries(artists).map(([key, value]) => (
+                        {Object.entries(artists).map(([artistKey, artistValue], index) => (
                            <div
-                              key={key}
-                              className={
-                                 'min-h-16 flex w-full flex-col-reverse items-center border border-primary/10 py-8 shadow-md md:flex-row'
-                              }>
-                              <ArtistImageContainer
-                                 url={`/assets/artists/${value.assetdirectory}/`}
-                                 assets={assets[value.assetdirectory]!}
-                              />
+                              key={artistKey}
+                              className={cn(
+                                 'min-h-16 flex w-full flex-col-reverse items-center border border-primary/10 py-8 shadow-md md:flex-row',
+                                 {'md:flex-row-reverse': (index + key) % 2 === 0}
+                              )}>
                               <ArtistContent
-                                 name={value.artist}
-                                 textNodes={value.textNodes}
+                                 name={artistValue.artist}
+                                 textNodes={artistValue.textNodes}
+                              />
+                              <ArtistImageContainer
+                                 url={`/assets/artists/${artistValue.assetdirectory}/`}
+                                 assets={assets[artistValue.assetdirectory]!}
                               />
                            </div>
                         ))}
@@ -89,7 +87,10 @@ export default function Home({params}: T_I18nPageParam) {
 
 function ArtistContent({textNodes, name}: {textNodes: TextNode[]; name?: string}) {
    return (
-      <div className="flex h-96 flex-[60%] flex-col items-center justify-center gap-4 bg-transparent p-8 text-white">
+      <div
+         className={
+            'flex h-96 flex-[60%] flex-col items-center justify-center gap-4 bg-transparent p-8 text-white'
+         }>
          {name && <strong className={'w-full text-lg'}>{name}</strong>}
          <article className="leading-relaxed">
             {textNodes.map((node, key) => (
@@ -109,97 +110,29 @@ function buildURL(url: string, endpoint: string) {
 }
 
 function ArtistImageContainer({url, assets}: {url: string; assets: string[]}) {
-   const [selectedIndex, setSelectedIndex] = useState(0)
-   const [openModal, setOpenModal] = useState(false)
-   const selectedImage = useCallback(
-      () => buildURL(url, assets[selectedIndex]!),
-      [url, assets, selectedIndex]
-   )
-
-   const onOpen = (imageIndex: number) => {
-      setSelectedIndex(imageIndex)
-      setOpenModal(true)
-   }
-
-   const onClose = useCallback(() => setOpenModal(false), [])
 
    return (
-      <div className="max-h-fill relative mx-auto flex h-auto flex-[40%] flex-wrap items-center justify-center gap-2">
-         {assets?.map((imgURL, key) => (
-            <div
-               key={imgURL}
-               className="group relative h-32 w-32 cursor-pointer overflow-clip rounded-sm"
-               onClick={() => onOpen(key)}>
-               <Image
-                  className={
-                     'aspect-square h-full w-full object-cover transition-transform duration-300 group-hover:scale-110'
-                  }
-                  width={4 * 40}
-                  height={4 * 40}
-                  src={buildURL(url, imgURL)}
-                  alt={buildURL(url, imgURL)}
-                  loading="lazy"
-                  quality={20}
-               />
-            </div>
-         ))}
-         {openModal &&
-            selectedImage() &&
-            createPortal(
-               <ImageModal
-                  image={selectedImage()!}
-                  closeModal={onClose}
-               />,
-               document.body
-            )}
-      </div>
-   )
-}
-
-function ImageModal({image, closeModal}: {image: string; closeModal: any}) {
-   const {lang} = useLangParams()
-
-   useEffect(() => {
-      const closeOnEscape = (key: KeyboardEvent) => key.key === 'Escape' && closeModal()
-      document.addEventListener('keydown', closeOnEscape)
-
-      return () => document.removeEventListener('keydown', closeOnEscape)
-   }, [closeModal])
-
-   return (
-      <div className="fixed inset-0 flex h-screen w-screen items-center justify-center overflow-hidden bg-base-200/90 text-primary">
-         <div className="relative w-full max-w-[680px] overflow-clip rounded-lg border-2 border-base-100/10 shadow-sm">
-            <button
-               className="color-primary text-md absolute right-4 top-4 rounded-lg bg-base-200/20 p-2 font-semibold uppercase underline underline-offset-4 transition-colors hover:bg-base-200/40"
-               onClick={closeModal}>
-               {lang === 'en' ? 'Close' : 'Fermer'}
-            </button>
-            <Image
-               className={'aspect-square h-full w-full object-cover'}
-               width={600}
-               height={600}
-               src={image}
-               alt={image}
-               loading="lazy"
-               quality={100}
-            />
-         </div>
-      </div>
-   )
-}
-
-function Placeholder({type, text, name}: {type: 'image' | 'text'; text: string; name?: string}) {
-   return (
-      <div
-         className={cn(
-            `flex h-96 flex-col items-center justify-center p-8 `,
-            type === 'image'
-               ? 'flex-[40%] bg-slate-400 text-black'
-               : 'flex-[60%] bg-transparent text-white',
-            name && 'gap-4'
-         )}>
-         {name && <strong className={'w-full text-lg'}>{name}</strong>}
-         {text}
+      <div className="max-h-fill relative mx-auto flex h-96 flex-[40%] flex-wrap items-center justify-center gap-2">
+         {assets
+            ?.filter(item => {
+               console.log(item)
+               return item.startsWith('ok')
+            })
+            .map((imgURL, key) => (
+               <div
+                  key={imgURL}
+                  className="relative h-96 w-96 overflow-clip rounded-sm">
+                  <Image
+                     className={'aspect-square h-full w-full object-cover'}
+                     width={4 * 96}
+                     height={4 * 96}
+                     src={buildURL(url, imgURL)}
+                     alt={buildURL(url, imgURL)}
+                     loading="lazy"
+                     quality={20}
+                  />
+               </div>
+            ))}
       </div>
    )
 }
