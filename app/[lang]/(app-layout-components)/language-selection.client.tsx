@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import {cn} from '@/lib/utils'
 import {Z_PageI18nParam} from '@/schemas/i18n.page.props.schema'
