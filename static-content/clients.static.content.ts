@@ -49,7 +49,26 @@ export const All_Clients: ClientClassFactory[] = [
    ),
    new ClientClassFactory('Revolte', 'Revolte', '/assets/clients/revolte-white.webp'),
    new ClientClassFactory('Warner Classic', 'Warner Classic', '/assets/clients/wc-white.webp'),
-   // Add new clients here
+   new ClientClassFactory(
+      'Le Puy du Fou',
+      'Le parc du Puy du Fou',
+      '/assets/clients/puy-du-fou.png'
+   ),
+   new ClientClassFactory(
+      'Musique des Sapeurs Pompiers de Paris',
+      'Musique des Sapeurs Pompiers de Paris',
+      '/assets/clients/sapeurs-pompiers-de-paris.webp'
+   ),
+   new ClientClassFactory(
+      'Parc animalier de Sainte-Croix',
+      'Parc animalier de Sainte-Croix',
+      '/assets/clients/sainte-croix.webp'
+   ),
+   new ClientClassFactory(
+      'Institut Musical de Vendée',
+      'Institut Musical de Vendée',
+      '/assets/clients/IMV.webp'
+   ),
 ]
 
 const Half_Index = Math.floor(All_Clients.length / 2)
