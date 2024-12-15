@@ -1,36 +1,36 @@
 {
-   "compilerOptions": {
-      /* base options*/
-      "esModuleInterop": true,
-      "skipDefaultLibCheck": true,
-      "target": "es2022",
-      "verbatimModuleSyntax": false,
-      "allowJs": true,
-      "resolveJsonModule": true,
-      "moduleDetection": "force",
-      /*Strictness*/
-      "strict": false,
-      "noUncheckedIndexedAccess": true,
-      /*for Nextjs*/
-      "moduleResolution": "bundler",
-      "module": "esnext",
-      "noEmit": true,
-      /*For Dom environment*/
-      "lib": ["dom", "dom.iterable", "es2022"],
-      /*Next default */
-      "skipLibCheck": true,
-      "strictPropertyInitialization": false,
-      "forceConsistentCasingInFileNames": true,
-      "isolatedModules": true,
-      "jsx": "preserve",
-      "incremental": true,
-      "plugins": [
-         {
-            "name": "next"
-         }
-      ],
-      "paths": {
-         "@/*": ["./*"]
+  "compilerOptions": {
+    /* base options*/
+    "esModuleInterop": true,
+    "skipDefaultLibCheck": true,
+    "target": "es2022",
+    "verbatimModuleSyntax": false,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    /*Strictness*/
+    "strict": false,
+    "noUncheckedIndexedAccess": true,
+    /*for Nextjs*/
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "noEmit": true,
+    /*For Dom environment*/
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "es2022"
+    ],
+    /*Next default */
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
       }
    },
    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
