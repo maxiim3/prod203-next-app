@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import type { JSON_AssetCategory } from "./artists-assets.types";
 import type { ArtistAPI } from "@/app/api/artists/route";
+import { useEffect, useState } from "react";
 
 async function fetchImages() {
     const response = await fetch('/api/artists');
