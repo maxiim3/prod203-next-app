@@ -25,5 +25,9 @@ export async function GET() {
       images[artistPath] = artist.filter(p => !p.startsWith('.'))
    }
 
+   for (let artist in images ) {
+     images[artist] = images[artist].filter(img => img.startsWith('ok') && img.endsWith('png'))
+   }
+
    return NextResponse.json(images)
 }
