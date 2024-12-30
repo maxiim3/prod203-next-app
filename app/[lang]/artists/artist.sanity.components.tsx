@@ -13,7 +13,7 @@ export function ArtistSanityDataContent({
    references,
 }: {
    name: string
-   description: Description
+   description: any
    references?: Reference[]
 }) {
    const {lang} = useLangParamsHook()
@@ -26,7 +26,7 @@ export function ArtistSanityDataContent({
          <article className="leading-relaxed">
             {description &&
                description?.[lang] &&
-               description[lang]
+               (description as Description)[lang]
                   .filter((_, blockIndex) => blockIndex === 0)
                   .map((block, index) => {
                      const content = block?.children[0]?.text
@@ -62,7 +62,7 @@ export function ArtistSanityDataContent({
 
                return (
                   <>
-                    {/*
+                     {/*
                       *********************************8
                               TODO 🚨
                         Add a thumbnail of reference

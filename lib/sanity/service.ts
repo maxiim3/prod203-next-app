@@ -34,8 +34,5 @@ export const getAllArtists = async () => {
      ArtistFactory(artist)
   )
 
-  console.log('fetching artists...')
-  console.log(artistResponse)
-
   return artists
 }

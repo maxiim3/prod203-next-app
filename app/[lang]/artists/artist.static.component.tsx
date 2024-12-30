@@ -3,14 +3,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import useLangParams from '../use-lang-params.hook'
-import type {TextNode} from './node.types'
+import type {LineBreak, TextBold, TextLink, TextNode, TextNormal} from './node.types'
 import {useFetchAssets} from './useFetchAssets'
 
 function buildURL(url: string, endpoint: string) {
    return url.concat(endpoint)
 }
 
-function MapTextNodes({node}: {node: TextNode}) {
+function MapTextNodes({node}: {node: TextBold | TextNormal | TextLink | LineBreak}) {
    const {lang} = useLangParams()
 
    if (!node) return
@@ -27,7 +27,7 @@ function MapTextNodes({node}: {node: TextNode}) {
    }
 }
 
-export function ArtistStaticDataContent({textNodes, name}: {textNodes: TextNode[]; name?: string}) {
+export function ArtistStaticDataContent({textNodes, name}: {textNodes: any; name?: string}) {
    return (
       <div
          className={
@@ -35,7 +35,7 @@ export function ArtistStaticDataContent({textNodes, name}: {textNodes: TextNode[
          }>
          {name && <strong className={'w-full text-lg'}>{name}</strong>}
          <article className="leading-relaxed">
-            {textNodes.map((node, key) => (
+            {(textNodes as Array<TextBold | TextNormal | TextLink | LineBreak>).map((node, key) => (
                <MapTextNodes
                   key={key + node.type}
                   node={node}

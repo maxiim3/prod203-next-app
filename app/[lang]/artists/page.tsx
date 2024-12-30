@@ -5,12 +5,18 @@ import {getAllArtists} from '@/lib/sanity/service'
 import {cn} from '@/lib/utils'
 import {ArtistSanityDataContent, ArtistSanityDataImageContainer} from './artist.sanity.components'
 import {ArtistStaticDataContent, ArtistStaticDataImageContainer} from './artist.static.component'
+import {
+   ArtistStaticDataFactory,
+   T_ArtistStaticData,
+   T_CategoryArtist,
+   Z_CategoryArtist,
+} from './artists-assets.types'
 
 export const revalidate = 2
 
 export default async function Home({params}: T_I18nPageParam) {
    const {lang} = params
-   const artistStaticData = content // static content
+   const artistStaticData: T_ArtistStaticData = ArtistStaticDataFactory(content) // static content
    const artists = await getAllArtists() // from Sanity.io Admin
 
    return (
@@ -47,7 +53,7 @@ export default async function Home({params}: T_I18nPageParam) {
                      key={artist._id + artist._createdAt}
                      className={cn(
                         'min-h-16 flex w-full flex-col-reverse items-center border border-primary/10 py-8 shadow-md md:flex-row',
-                        {'md:flex-row-reverse': (key) % 2 === 0}
+                        {'md:flex-row-reverse': key % 2 === 0}
                      )}>
                      <ArtistSanityDataContent
                         name={artist.name}
