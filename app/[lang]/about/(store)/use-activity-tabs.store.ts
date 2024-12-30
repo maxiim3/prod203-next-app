@@ -27,7 +27,7 @@ export const useActivityTabsStore = create<T_GenericStore<T_ActivityEnum, Activi
       if (safeKey.success) {
          return Activities.get(safeKey.data)
       }
-      throw new Error(`Key not found, ${safeKey.error.message}`)
+      throw new Error(`Key not found, or error while parsing key ${safeKey}`)
    },
 
    activeTab: Zod_ActivityEnum.Values.edit,
