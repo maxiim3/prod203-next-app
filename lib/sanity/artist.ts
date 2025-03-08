@@ -57,7 +57,9 @@ export namespace Artist {
       current: string
    }
 
-   export const ArtistFactory = (artist: Artist.Artist): Artist.Artist => {
+   export const ArtistFactory = (
+      artist: Artist.Artist
+   ): Pick<Artist.Artist, 'description' | 'image' | 'name' | 'references' | 'slug'> => {
       return {
          name: artist.name,
          slug: artist.slug,
