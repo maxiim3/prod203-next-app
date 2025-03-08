@@ -2,7 +2,6 @@
 
 import type {Artist} from '@/lib/sanity/artist'
 import ImageBuilder from '@/lib/sanity/image.builder'
-import {Pi} from 'lucide-react'
 import Image from 'next/image'
 import {twMerge} from 'tailwind-merge'
 import useLangParamsHook from '../use-lang-params.hook'
@@ -13,8 +12,8 @@ export function ArtistSanityDataContent({
    references,
 }: {
    name: string
-   description: Artist.Artist['description']
-   references?: Artist.Artist['references']
+   description: Artist.UiModel['description']
+   references?: Artist.UiModel['references']
 }) {
    const {lang} = useLangParamsHook()
    return (

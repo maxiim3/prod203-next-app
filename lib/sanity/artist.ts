@@ -1,3 +1,5 @@
+import {describe} from 'node:test'
+
 export namespace Artist {
    export type Artist = {
       _id: string
@@ -10,6 +12,14 @@ export namespace Artist {
       slug: Slug
       _rev: string
       _updatedAt: Date
+   }
+
+   export interface UiModel {
+      description: Description[]
+      image: Image
+      name: string
+      references: Reference[]
+      slug: Slug
    }
 
    export type Description = {
@@ -57,9 +67,7 @@ export namespace Artist {
       current: string
    }
 
-   export const ArtistFactory = (
-      artist: Artist.Artist
-   ): Pick<Artist.Artist, 'description' | 'image' | 'name' | 'references' | 'slug'> => {
+   export const ArtistFactory = (artist: Artist.Artist): Artist.UiModel => {
       return {
          name: artist.name,
          slug: artist.slug,

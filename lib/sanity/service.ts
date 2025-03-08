@@ -30,7 +30,7 @@ export const getAllCategories = async () => {
 
 export const getAllArtists = async () => {
    const artistResponse: Artist.Artist[] = await sanityClient.fetch(`*[_type == "artist"]`)
-   const artists: Artist.Artist[] = artistResponse.map(artist => Artist.ArtistFactory(artist))
+   const artists: Artist.UiModel[] = artistResponse.map(artist => Artist.ArtistFactory(artist))
 
    return artists
 }

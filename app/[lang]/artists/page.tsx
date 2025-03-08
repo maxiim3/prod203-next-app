@@ -52,7 +52,7 @@ export default async function Home({params}: T_I18nPageParam) {
                <SectionTitle>{lang === 'fr' ? 'Artistes' : 'Artists'}</SectionTitle>
                {artists.map((artist, key) => (
                   <div
-                     key={artist._id + artist._createdAt}
+                     key={artist.slug.current}
                      className={cn(
                         'min-h-16 flex w-full flex-col-reverse items-center border border-primary/10 py-8 shadow-md md:flex-row',
                         {'md:flex-row-reverse': key % 2 === 0}
