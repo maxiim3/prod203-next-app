@@ -83,7 +83,7 @@ const ButtonCTA = () => {
          <a
             href={'#services'}
             className={
-               'relative mx-auto h-16 w-12 overflow-hidden rounded-lg border-none bg-base-100/40 backdrop-blur-md backdrop:opacity-0 hover:bg-base-100/90 md:h-24 md:w-16'
+               'relative mx-auto h-16 w-12 overflow-hidden rounded-lg border-none bg-base-100/10 backdrop-blur-md transition-colors backdrop:opacity-0 hover:bg-base-100/50 md:h-24 md:w-16'
             }>
             <span className={'flex w-full animate-scroll items-center justify-center '}>
                <svg

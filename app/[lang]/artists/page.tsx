@@ -16,7 +16,7 @@ export const revalidate = 2
 
 export default async function Home({params}: T_I18nPageParam) {
    const {lang} = params
-   const artistStaticData: T_ArtistStaticData = ArtistStaticDataFactory(content) // static content
+   // const artistStaticData: T_ArtistStaticData = ArtistStaticDataFactory(content) // static content
    const artists = await getAllArtists() // from Sanity.io Admin
 
    return (
@@ -24,7 +24,7 @@ export default async function Home({params}: T_I18nPageParam) {
          <h1 className="sr-only">Artists</h1>
          <div className={'min-h-48 flex w-screen items-center justify-center'}>
             <div className={'box-border flex w-[calc(100vw-10px)] max-w-[990px] flex-col gap-8'}>
-               {artistStaticData.map(({artists, title}, key) => {
+               {/* {artistStaticData.map(({artists, title}, key) => {
                   return (
                      <>
                         <SectionTitle key={`title-${key}`}>{title[lang]}</SectionTitle>
@@ -47,7 +47,9 @@ export default async function Home({params}: T_I18nPageParam) {
                         ))}
                      </>
                   )
-               })}
+               })} */}
+               <h1 className="sr-only">Artists</h1>
+               <SectionTitle>{lang === 'fr' ? 'Artistes' : 'Artists'}</SectionTitle>
                {artists.map((artist, key) => (
                   <div
                      key={artist._id + artist._createdAt}
@@ -60,10 +62,12 @@ export default async function Home({params}: T_I18nPageParam) {
                         description={artist.description}
                         references={artist.references}
                      />
-                     <ArtistSanityDataImageContainer
-                        artistName={artist.name}
-                        image={artist.image}
-                     />
+                     {artist.image && (
+                        <ArtistSanityDataImageContainer
+                           artistName={artist.name}
+                           image={artist.image}
+                        />
+                     )}
                   </div>
                ))}
             </div>

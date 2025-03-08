@@ -1,80 +1,69 @@
-import { SanityAsset } from "@sanity/image-url/lib/types/types";
-import * as z from "zod";
+export namespace Artist {
+   export type Artist = {
+      _id: string
+      _type: string
+      _createdAt: Date
+      description: Description[]
+      image: Image
+      name: string
+      references: Reference[]
+      slug: Slug
+      _rev: string
+      _updatedAt: Date
+   }
 
+   export type Description = {
+      _key: string
+      _type: string
+      en: En[]
+      fr: En[]
+   }
 
-export const ChildSchema = z.object({
-    "_type": z.string(),
-    "_key": z.string(),
-    "text": z.string(),
-    "marks": z.array(z.any()),
-});
-export type Child = z.infer<typeof ChildSchema>;
+   export type En = {
+      _key: string
+      _type: string
+      children: Child[]
+      markDefs: any[]
+      style: string
+   }
 
-export const AssetSchema = z.object({
-    "_type": z.string(),
-    "_ref": z.string(),
-});
-export type Asset = z.infer<typeof AssetSchema>;
+   export type Child = {
+      _key: string
+      _type: string
+      marks: any[]
+      text: string
+   }
 
-export const SlugSchema = z.object({
-    "_type": z.string(),
-    "current": z.string(),
-});
-export type Slug = z.infer<typeof SlugSchema>;
+   export type Image = {
+      _type: string
+      asset: Asset
+   }
 
-export const EnSchema = z.object({
-    "_type": z.string(),
-    "_key": z.string(),
-    "style": z.string(),
-    "markDefs": z.array(z.any()),
-    "children": z.array(ChildSchema),
-});
-export type En = z.infer<typeof EnSchema>;
+   export type Asset = {
+      _ref: string
+      _type: string
+   }
 
-export const ImageSchema = z.object({
-    "_type": z.string(),
-    "asset": AssetSchema,
-});
-export type SanityImage = z.infer<typeof ImageSchema>;
+   export type Reference = {
+      _key: string
+      _type: string
+      image: Image
+      name: string
+      year: string
+   }
 
-export const ReferenceSchema = z.object({
-    "_type": z.string(),
-    "_key": z.string(),
-    "name": z.string(),
-    "year": z.string(),
-    "image": ImageSchema,
-});
-export type Reference = z.infer<typeof ReferenceSchema>;
+   export type Slug = {
+      _type: string
+      current: string
+   }
 
-export const DescriptionSchema = z.object({
-    "_type": z.string(),
-    "_key": z.string(),
-    "en": z.array(EnSchema),
-    "fr": z.array(EnSchema),
-});
-export type Description = z.infer<typeof DescriptionSchema>;
-
-export const SanityArtistSchema = z.object({
-    "_createdAt": z.coerce.date(),
-    "_id": z.string(),
-    "_rev": z.string(),
-    "_type": z.string(),
-    "_updatedAt": z.coerce.date(),
-    "name": z.string(),
-    "slug": SlugSchema,
-    "description": z.array(DescriptionSchema),
-    "image": ImageSchema,
-    "references": z.array(ReferenceSchema),
-});
-export type SanityArtist = z.infer<typeof SanityArtistSchema>;
-export type T_Artist = Omit<SanityArtist, '_createdAt' & '_rev' & '_updatedAt' & '_type'>
-
-export const ArtistFactory = (artist: SanityArtist) : T_Artist => {
-  return {
-     "name": artist.name,
-     "slug": artist.slug,
-     "description": artist.description,
-     "image": artist.image,
-     "references": artist.references
+   export const ArtistFactory = (artist: Artist.Artist): Artist.Artist => {
+      return {
+         name: artist.name,
+         slug: artist.slug,
+         description: artist.description,
+         image: artist.image,
+         references: artist.references,
+      }
    }
 }
