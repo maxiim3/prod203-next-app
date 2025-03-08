@@ -24,10 +24,11 @@ export const useActivityTabsStore = create<T_GenericStore<T_ActivityEnum, Activi
    getById: key => {
       const safeKey = Zod_ActivityEnum.safeParse(key)
 
-      if (safeKey.success) {
-         return Activities.get(safeKey.data)
+      if (!safeKey.success) {
+         throw new Error("Key not found")
       }
-      throw new Error(`Key not found, or error while parsing key ${safeKey}`)
+
+      return Activities.get(safeKey.data)
    },
 
    activeTab: Zod_ActivityEnum.Values.edit,
