@@ -99,7 +99,7 @@ const ImageComponent = ({
       alt={client.title}
       src={client.source}
       className={cn(
-         'mx-3 h-24 w-36 select-none object-contain object-center opacity-70',
+         'mx-3 h-24 w-36 select-none object-contain object-center opacity-70 transition-transform hover:scale-105',
          className
       )}
    />

@@ -27,6 +27,7 @@ export const useActivityTabsStore = create<T_GenericStore<T_ActivityEnum, Activi
       if (!safeKey.success) {
          throw new Error("Key not found")
       }
+
       return Activities.get(safeKey.data)
    },
 

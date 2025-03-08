@@ -27,7 +27,7 @@ export const useFounderTabsStore = create<T_GenericStore<T_FounderEnum, Founder>
       if (safeKey.success) {
          return Founders.get(safeKey.data)
       }
-      throw new Error(`Key not found, ${safeKey.error.message}`)
+      throw new Error(`Key not found in UseFounderStore, ${safeKey}`)
    },
 
    activeTab: Zod_FounderEnum.Values.Jerome,

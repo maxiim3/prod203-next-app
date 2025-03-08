@@ -1,3 +1,4 @@
+import {Artist} from '@/lib/sanity/artist'
 import {CategoryFactory, type T_Category} from '@/lib/sanity/category'
 import {ProjectFactory, type T_Project} from '@/lib/sanity/project'
 import sanityClient from '@/lib/sanity/sanity-client'
@@ -25,4 +26,11 @@ export const getAllCategories = async () => {
    )
 
    return categories
+}
+
+export const getAllArtists = async () => {
+   const artistResponse: Artist.Artist[] = await sanityClient.fetch(`*[_type == "artist"]`)
+   const artists: Artist.UiModel[] = artistResponse.map(artist => Artist.ArtistFactory(artist))
+
+   return artists
 }

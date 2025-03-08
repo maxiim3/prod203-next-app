@@ -27,14 +27,14 @@ export default async function Home({params}: T_I18nPageParam) {
    return (
       <main className={'relative'}>
          <HeaderBanner />
-         <div className="snap-opacity overflow-opacity-auto relative flex snap-mandatory flex-col gap-4 bg-base-100/80  backdrop-blur-xl ">
+         <div className="relative flex flex-col gap-4 snap-opacity overflow-opacity-auto snap-mandatory bg-base-100/80 backdrop-blur-xl ">
             <Section
                id={'services'}
                ariaLabel={'Services'}
                className={'mt-4'}>
                <MotionContent className={'mt-16'}>
                   <SectionTitle>Services</SectionTitle>
-                  <article className="gap-opacity-5 xs:gap-opacity-6 sm:gap-opacity-8 mx-auto my-8 grid w-fit grid-cols-2 place-content-center place-items-center gap-x-3 xs:grid-cols-3 sm:grid-cols-4 sm:gap-x-8 md:grid-cols-5 ">
+                  <article className="grid grid-cols-2 mx-auto my-8 gap-opacity-5 xs:gap-opacity-6 sm:gap-opacity-8 w-fit place-content-center place-items-center gap-x-3 xs:grid-cols-3 sm:grid-cols-4 sm:gap-x-8 md:grid-cols-5 ">
                      {services.map(service => (
                         <span
                            key={service[params.lang]}
@@ -61,30 +61,6 @@ export default async function Home({params}: T_I18nPageParam) {
                   </article>
                </MotionContent>
             </Section>
-            {/*<Section*/}
-            {/*   id="gallery-1"*/}
-            {/*   ariaLabel={'Gallery'}*/}
-            {/*   className={'my-24 h-fit'}>*/}
-            {/*   <MotionContent className={'min-h-[400px] overflow-hidden rounded-lg'}>*/}
-            {/*      <SectionTitle className={'hidden'} />*/}
-            {/*      <div className={'flex w-full items-center justify-center'}>*/}
-            {/*         <Image*/}
-            {/*            alt={''}*/}
-            {/*            src={'/assets/orchestra.webp'}*/}
-            {/*            fill={true}*/}
-            {/*            placeholder={'empty'}*/}
-            {/*            priority={false}*/}
-            {/*            quality={90}*/}
-            {/*            sizes={*/}
-            {/*               '(min-width: 768px) clamp(600px, 80vw, 980px), (min-width: 1200px) 1024px, clamp(200px, 100vw, 600px'*/}
-            {/*            }*/}
-            {/*            className={*/}
-            {/*               'aspect-portrait mask mask-parallelogram w-full object-contain object-center md:aspect-video'*/}
-            {/*            }*/}
-            {/*         />*/}
-            {/*      </div>*/}
-            {/*   </MotionContent>*/}
-            {/*</Section>*/}
             <Section
                id="about"
                className={'my-12'}

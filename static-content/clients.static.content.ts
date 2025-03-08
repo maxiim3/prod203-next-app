@@ -69,13 +69,12 @@ export const All_Clients: ClientClassFactory[] = [
       'Institut Musical de Vendée',
       '/assets/clients/IMV.webp'
    ),
-
 ]
 
 const Half_Index = Math.floor(All_Clients.length / 2)
 export const clients = All_Clients.slice(0, Half_Index)
 export const clients_02 = All_Clients.slice(Half_Index)
 
-Object.freeze(All_Clients)
-Object.freeze(clients)
-Object.freeze(clients_02)
+// Object.freeze(All_Clients)
+// Object.freeze(clients)
+// Object.freeze(clients_02)
