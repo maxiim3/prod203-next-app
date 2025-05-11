@@ -14,7 +14,7 @@ import Marquee from 'react-fast-marquee'
 function MarqueeClientsBanner() {
    return (
       <>
-         <div className={'md:hidden'}>
+         <div className={'2xl:hidden'}>
             <MarqueeContainerLeftDirection>
                {clients_01.map((client, index) => (
                   <figcaption key={`scrolling-client-coll-${index}`}>
@@ -51,7 +51,7 @@ function MarqueeClientsBanner() {
          </div>
          <article
             className={
-               'mx-auto hidden max-w-5xl items-center justify-center gap-x-2 gap-y-8 md:flex md:flex-wrap'
+               'mx-auto hidden max-w-5xl items-center justify-center gap-x-2 gap-y-8 2xl:flex 2xl:flex-wrap'
             }>
             {All_Clients.map((client, index) => (
                <figcaption key={`desktop-client-coll-${index}`}>
@@ -89,6 +89,10 @@ const MarqueeContainerLeftDirection = ({children}: {children: React.ReactNode}) 
    </Marquee>
 )
 
+/**
+ * The Image component includes a filter : brightness, grayscale and inversion (invert) of colors
+ * In order to uniformize all logos to pure white
+ */
 const ImageComponent = ({
    client,
    className,
@@ -99,7 +103,7 @@ const ImageComponent = ({
       alt={client.title}
       src={client.source}
       className={cn(
-         'mx-3 h-24 w-36 select-none object-contain object-center opacity-70 transition-transform hover:scale-105',
+         'mx-3 h-24 w-36 select-none object-contain object-center opacity-90 brightness-0 grayscale invert transition-transform hover:scale-105',
          className
       )}
    />

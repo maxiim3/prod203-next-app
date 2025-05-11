@@ -9,32 +9,33 @@ import React, {Suspense, type ComponentPropsWithoutRef} from 'react'
 
 import type {T_I18nPageParam} from '@/app/[lang]/page-params.schema'
 
+const services = [
+   {fr: 'Musiques Originales', en: 'Original Soundtrack', Icon: Icons.Piano},
+   {fr: 'Production Executive', en: 'Executive Production', Icon: Icons.Music},
+   {fr: 'Édition', en: 'Edition', source: '/assets/services/note-white.png'},
+   {fr: 'Enregistrement', en: 'Recording', source: '/assets/services/micro-white.png'},
+   {fr: 'Mixage', en: 'Mixing', Icon: Icons.Mixing},
+   {fr: 'Mastering', en: 'Mastering', Icon: Icons.SolidDisc},
+   {fr: 'Dolby Atmos', en: 'Dolby Atmos', Icon: Icons.Dolby},
+   {fr: 'Design Sonore', en: 'Sound Design', Icon: Icons.SoundWave},
+   {fr: 'Concert', en: 'Live Events', source: '/assets/services/piano-white.png'},
+   {fr: 'Gestion de Projet', en: 'Project Management', Icon: Icons.Calendar},
+]
+
 export default async function Home({params}: T_I18nPageParam) {
    // service : Musiques Originales, Production Executive, Édition, Mixage, Mastering, Mixage Immersif Atoms, Design Sonore, Gestion de Projet
 
-   const services = [
-      {fr: 'Musiques Originales', en: 'Original Soundtrack', Icon: Icons.Piano},
-      {fr: 'Production Executive', en: 'Executive Production', Icon: Icons.Music},
-      {fr: 'Édition', en: 'Edition', source: '/assets/services/note-white.png'},
-      {fr: 'Enregistrement', en: 'Recording', source: '/assets/services/micro-white.png'},
-      {fr: 'Mixage', en: 'Mixing', Icon: Icons.Mixing},
-      {fr: 'Mastering', en: 'Mastering', Icon: Icons.SolidDisc},
-      {fr: 'Dolby Atmos', en: 'Dolby Atmos', Icon: Icons.Dolby},
-      {fr: 'Design Sonore', en: 'Sound Design', Icon: Icons.SoundWave},
-      {fr: 'Concert', en: 'Live Events', source: '/assets/services/piano-white.png'},
-      {fr: 'Gestion de Projet', en: 'Project Management', Icon: Icons.Calendar},
-   ]
    return (
       <main className={'relative'}>
          <HeaderBanner />
-         <div className="relative flex flex-col gap-4 snap-opacity overflow-opacity-auto snap-mandatory bg-base-100/80 backdrop-blur-xl ">
+         <div className="snap-opacity overflow-opacity-auto relative flex snap-mandatory flex-col gap-4 bg-base-100/80 backdrop-blur-xl ">
             <Section
                id={'services'}
                ariaLabel={'Services'}
                className={'mt-4'}>
                <MotionContent className={'mt-16'}>
                   <SectionTitle>Services</SectionTitle>
-                  <article className="grid grid-cols-2 mx-auto my-8 gap-opacity-5 xs:gap-opacity-6 sm:gap-opacity-8 w-fit place-content-center place-items-center gap-x-3 xs:grid-cols-3 sm:grid-cols-4 sm:gap-x-8 md:grid-cols-5 ">
+                  <article className="gap-opacity-5 xs:gap-opacity-6 sm:gap-opacity-8 mx-auto my-8 grid w-fit grid-cols-2 place-content-center place-items-center gap-x-3 xs:grid-cols-3 sm:grid-cols-4 sm:gap-x-8 md:grid-cols-5 ">
                      {services.map(service => (
                         <span
                            key={service[params.lang]}
@@ -179,7 +180,7 @@ export default async function Home({params}: T_I18nPageParam) {
             <a
                href="#"
                className={
-                  'btn-base-100  btn mx-auto mb-24 flex h-24 w-12 items-center justify-center rounded-md border-none  p-1 text-xl font-bold uppercase text-primary opacity-70 backdrop-blur-md backdrop:opacity-0 xs:h-16 xs:w-16'
+                  'btn-base-100  btn mx-auto mb-24 flex h-24 w-12 items-center justify-center rounded-md border-none  p-1 text-xl font-bold uppercase text-primary opacity-90 backdrop-blur-md backdrop:opacity-0 xs:h-16 xs:w-16'
                }>
                <svg
                   width="64"
