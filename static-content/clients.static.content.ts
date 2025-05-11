@@ -2,6 +2,7 @@
 
 interface I_ClientInterface {
    title: string
+   /** @deprecated - not used */
    content: string
    source: string
 }
@@ -19,36 +20,24 @@ export class ClientClassFactory implements I_ClientInterface {
 }
 
 export const All_Clients: ClientClassFactory[] = [
-   new ClientClassFactory('24h Le Mans', '24h Le Mans', '/assets/clients/24h-white.webp'),
-   new ClientClassFactory('Balenciaga', 'Balenciaga', '/assets/clients/balenciaga-white.webp'),
-   new ClientClassFactory('Credit Agricole', 'Credit Agricole', '/assets/clients/ca-white.webp'),
-   new ClientClassFactory('Canal+', 'Canal+', '/assets/clients/canal-white.webp'),
-   new ClientClassFactory(
-      'Chateau Fort Sedan',
-      'Chateau Fort Sedan',
-      '/assets/clients/cfs-white.webp'
-   ),
-   new ClientClassFactory(
-      'Warner Music France',
-      'Warner Music France',
-      '/assets/clients/wmf-white.webp'
-   ),
-   new ClientClassFactory('Citroen', 'Citroen', '/assets/clients/citroen-white.webp'),
-   new ClientClassFactory('Coca Cola', 'Coca Cola', '/assets/clients/cocacola-white.webp'),
-   new ClientClassFactory(
-      'DisneyLand Paris',
-      'DisneyLand Paris',
-      '/assets/clients/disney-white.webp'
-   ),
-   new ClientClassFactory('FFF', 'FFF', '/assets/clients/fff-white.webp'),
-   new ClientClassFactory('GUM', 'GUM', '/assets/clients/gum-white.webp'),
+   new ClientClassFactory('24h Le Mans', '24h Le Mans', '/assets/clients/24h.webp'),
+   new ClientClassFactory('Balenciaga', 'Balenciaga', '/assets/clients/balenciaga.webp'),
+   new ClientClassFactory('Credit Agricole', 'Credit Agricole', '/assets/clients/ca.webp'),
+   new ClientClassFactory('Canal+', 'Canal+', '/assets/clients/canal.webp'),
+   new ClientClassFactory('Chateau Fort Sedan', 'Chateau Fort Sedan', '/assets/clients/cfs.webp'),
+   new ClientClassFactory('Warner Music France', 'Warner Music France', '/assets/clients/wmf.webp'),
+   new ClientClassFactory('Citroen', 'Citroen', '/assets/clients/citroen.webp'),
+   new ClientClassFactory('Coca Cola', 'Coca Cola', '/assets/clients/cocacola.webp'),
+   new ClientClassFactory('DisneyLand Paris', 'DisneyLand Paris', '/assets/clients/disney.webp'),
+   new ClientClassFactory('FFF', 'FFF', '/assets/clients/fff.webp'),
+   new ClientClassFactory('GUM', 'GUM', '/assets/clients/gum.webp'),
    new ClientClassFactory(
       'Nouvel Opéra Fribourg',
       'Nouvel Opéra Fribourg',
-      '/assets/clients/nof-white.webp'
+      '/assets/clients/nof.webp'
    ),
-   new ClientClassFactory('Revolte', 'Revolte', '/assets/clients/revolte-white.webp'),
-   new ClientClassFactory('Warner Classic', 'Warner Classic', '/assets/clients/wc-white.webp'),
+   new ClientClassFactory('Revolte', 'Revolte', '/assets/clients/revolte.webp'),
+   new ClientClassFactory('Warner Classic', 'Warner Classic', '/assets/clients/wc.webp'),
    new ClientClassFactory(
       'Le Puy du Fou',
       'Le parc du Puy du Fou',
@@ -69,6 +58,7 @@ export const All_Clients: ClientClassFactory[] = [
       'Institut Musical de Vendée',
       '/assets/clients/IMV.webp'
    ),
+   new ClientClassFactory('The Immersers', 'The Immersers', '/assets/clients/the-immersers.webp'),
 ]
 
 const Half_Index = Math.floor(All_Clients.length / 2)
